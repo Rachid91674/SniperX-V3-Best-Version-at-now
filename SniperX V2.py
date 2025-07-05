@@ -109,32 +109,82 @@ def get_trending_tokens():
 def filter_preliminary(tokens):
     now = datetime.datetime.now(datetime.timezone.utc)
     filtered = []
+    tokens_checked = 0
+    filtered_by_liquidity = 0
+    filtered_by_price = 0
+    filtered_by_age = 0
+    
     for token in tokens:
+        tokens_checked += 1
         if not isinstance(token, dict):
+            logging.debug(f"Token skipped: Not a dictionary")
             continue
+            
+        token_address = token.get('tokenAddress', 'unknown')
+        token_name = token.get('name', 'unnamed')
+        
+        # Liquidity check
         raw_liq_val = token.get("liquidityUsd", 0)
         try:
             liquidity = float(raw_liq_val if raw_liq_val is not None else 0)
-        except (ValueError, TypeError):
+        except (ValueError, TypeError) as e:
+            logging.warning(f"Token {token_name} ({token_address}): Invalid liquidity value '{raw_liq_val}': {e}")
             liquidity = 0.0
+            
+        if liquidity < PRELIM_LIQUIDITY_THRESHOLD:
+            logging.debug(f"Token {token_name} ({token_address}): Filtered by liquidity (${liquidity:,.2f} < ${PRELIM_LIQUIDITY_THRESHOLD:,.2f})")
+            filtered_by_liquidity += 1
+            continue
+            
+        # Price check
         try:
             price_usd = float(token.get("usdPrice", 0))
-        except (ValueError, TypeError):
+        except (ValueError, TypeError) as e:
+            logging.warning(f"Token {token_name} ({token_address}): Invalid price value: {e}")
             price_usd = 0.0
+            
+        if not (PRELIM_MIN_PRICE_USD <= price_usd <= PRELIM_MAX_PRICE_USD):
+            logging.debug(f"Token {token_name} ({token_address}): Filtered by price (${price_usd:.8f} not in [${PRELIM_MIN_PRICE_USD:.8f}, ${PRELIM_MAX_PRICE_USD:.8f}])")
+            filtered_by_price += 1
+            continue
+            
+        # Age check
         token_created_at = token.get("createdAt")
         minutes_diff = float("inf")
+        
         if token_created_at:
             try:
-                minutes_diff = (time.time() - token_created_at) / 60
-            except Exception:
+                # Parse the ISO 8601 timestamp
+                created_dt = dateparser.parse(token_created_at)
+                if created_dt:
+                    if created_dt.tzinfo is None:
+                        created_dt = created_dt.replace(tzinfo=datetime.timezone.utc)
+                    age_seconds = (now - created_dt).total_seconds()
+                    minutes_diff = age_seconds / 60
+                    logging.debug(f"Token {token_name} ({token_address}): Age = {minutes_diff:.1f} minutes")
+                else:
+                    logging.warning(f"Token {token_name} ({token_address}): Could not parse creation time: {token_created_at}")
+            except Exception as e:
+                logging.warning(f"Token {token_name} ({token_address}): Error calculating age: {e}")
                 minutes_diff = float("inf")
-        if (
-            liquidity >= PRELIM_LIQUIDITY_THRESHOLD
-            and PRELIM_MIN_PRICE_USD <= price_usd <= PRELIM_MAX_PRICE_USD
-            and minutes_diff <= PRELIM_AGE_DELTA_MINUTES
-        ):
-            filtered.append(token)
-    logging.info(f"{len(filtered)} tokens passed preliminary filters.")
+                
+        if minutes_diff > PRELIM_AGE_DELTA_MINUTES:
+            logging.debug(f"Token {token_name} ({token_address}): Filtered by age ({minutes_diff:.1f} > {PRELIM_AGE_DELTA_MINUTES:.1f} minutes)")
+            filtered_by_age += 1
+            continue
+            
+        # If we get here, the token passed all filters
+        filtered.append(token)
+        logging.info(f"Token {token_name} ({token_address}) passed preliminary filters: "
+                   f"Liquidity=${liquidity:,.2f}, Price=${price_usd:.8f}, Age={minutes_diff:.1f}min")
+    
+    # Log summary
+    logging.info(f"Preliminary filters summary - Checked: {tokens_checked}, "
+                f"Passed: {len(filtered)}, "
+                f"Filtered - Liquidity: {filtered_by_liquidity}, "
+                f"Price: {filtered_by_price}, "
+                f"Age: {filtered_by_age}")
+    
     return filtered
 
 async def fetch_token_data(session, token_address):
@@ -174,14 +224,38 @@ def get_token_metrics(token_pair_data_list):
 def whale_trap_avoidance(token_address, first_snap, second_snap):
     price1, liquidity1, volume1 = first_snap
     price2, liquidity2, volume2 = second_snap
+    
+    # Calculate percentage changes
     price_change_pct = (price2 - price1) / price1 if price1 else float('inf') if price2 > 0 else 0
     volume_change_pct = (volume2 - volume1) / volume1 if volume1 else float('inf') if volume2 > 0 else 0
     liq_change_pct = (liquidity2 - liquidity1) / liquidity1 if liquidity1 else float('inf') if liquidity2 > 0 else 0
-    if price_change_pct > WHALE_PRICE_UP_PCT and liq_change_pct > WHALE_LIQUIDITY_UP_PCT and volume_change_pct < WHALE_VOLUME_DOWN_PCT:
-        logging.warning(f"[WARN] Whale trap for {token_address}: Price↑, Liquidity↑, Vol Δ {volume_change_pct:.2%}")
-        return False
-    if price_change_pct > WHALE_PRICE_UP_PCT and liq_change_pct > WHALE_LIQUIDITY_UP_PCT and volume_change_pct >= WHALE_VOLUME_DOWN_PCT:
-        return True
+    
+    # Log the metrics for this token
+    logging.debug(f"Token {token_address} - Price: ${price1:.8f}→${price2:.8f} ({price_change_pct:+.2%}), "
+                f"Liq: ${liquidity1:,.2f}→${liquidity2:,.2f} ({liq_change_pct:+.2%}), "
+                f"Vol: ${volume1:,.2f}→${volume2:,.2f} ({volume_change_pct:+.2%})")
+    
+    # Check for whale trap pattern
+    if price_change_pct > WHALE_PRICE_UP_PCT and liq_change_pct > WHALE_LIQUIDITY_UP_PCT:
+        if volume_change_pct < WHALE_VOLUME_DOWN_PCT:
+            logging.warning(f"Whale trap detected for {token_address}: "
+                          f"Price↑ {price_change_pct:+.2%} > {WHALE_PRICE_UP_PCT:.0%}, "
+                          f"Liq↑ {liq_change_pct:+.2%} > {WHALE_LIQUIDITY_UP_PCT:.0%}, "
+                          f"Vol↓ {volume_change_pct:+.2%} < {WHALE_VOLUME_DOWN_PCT:.0%}")
+            return False
+        else:
+            logging.info(f"Token {token_address} passed whale trap check: "
+                       f"Price↑ {price_change_pct:+.2%}, "
+                       f"Liq↑ {liq_change_pct:+.2%}, "
+                       f"Vol Δ {volume_change_pct:+.2%}")
+            return True
+    
+    # Log why token didn't pass whale trap check
+    if price_change_pct <= WHALE_PRICE_UP_PCT:
+        logging.debug(f"Token {token_address}: Price change {price_change_pct:+.2%} ≤ threshold {WHALE_PRICE_UP_PCT:.0%}")
+    if liq_change_pct <= WHALE_LIQUIDITY_UP_PCT:
+        logging.debug(f"Token {token_address}: Liquidity change {liq_change_pct:+.2%} ≤ threshold {WHALE_LIQUIDITY_UP_PCT:.0%}")
+    
     return False
 
 def apply_whale_trap(tokens, first_snaps, second_snaps):
@@ -241,22 +315,121 @@ def process_window(win_minutes, prelim_tokens, script_dir_path):
     passed_whale_trap = apply_whale_trap(prelim_tokens, first_snaps, second_snaps)
     snipe_candidates, ghost_buyer_candidates = [], []
 
+    logging.info(f"Processing {len(passed_whale_trap)} tokens that passed whale trap check...")
+    
     for token_info in passed_whale_trap:
-        token_created_at = token_info.get("createdAt")
-        if token_created_at:
-            age_minutes = (time.time() - token_created_at) / 60
-            if age_minutes > SNIPE_GRADUATED_DELTA_MINUTES_FLOAT:
+        token_address = token_info.get('tokenAddress', 'unknown')
+        token_name = token_info.get('name', 'unnamed')
+        
+        # Age check - handle different createdAt formats
+        created_at = token_info.get("createdAt")
+        if created_at is not None:
+            try:
+                created_dt = None
+                
+                # Convert to string first to handle all cases
+                if not isinstance(created_at, str):
+                    created_at_str = str(created_at)
+                else:
+                    created_at_str = created_at
+                
+                # Try parsing as a timestamp first
+                try:
+                    # Check if it's a numeric string (timestamp)
+                    if created_at_str.replace('.', '', 1).isdigit():
+                        timestamp = float(created_at_str)
+                        # If it's in milliseconds, convert to seconds
+                        if timestamp > 1e12:
+                            timestamp = timestamp / 1000
+                        created_dt = datetime.datetime.fromtimestamp(timestamp, tz=datetime.timezone.utc)
+                        logging.debug(f"Token {token_name} ({token_address}): Parsed timestamp {timestamp} to datetime {created_dt}")
+                except (ValueError, TypeError) as e:
+                    logging.debug(f"Token {token_name} ({token_address}): Not a timestamp, trying date string parsing")
+                
+                # If not a timestamp, try parsing as a date string
+                if created_dt is None:
+                    try:
+                        created_dt = dateparser.parse(created_at_str)
+                        if created_dt is None:
+                            raise ValueError(f"Failed to parse date string: {created_at_str}")
+                        logging.debug(f"Token {token_name} ({token_address}): Parsed date string: {created_at_str} as {created_dt}")
+                    except Exception as e:
+                        logging.warning(f"Token {token_name} ({token_address}): Failed to parse date string '{created_at_str}': {e}")
+                        # Skip this token as we can't determine its age
+                        continue
+                
+                # Ensure we have a timezone-aware datetime
+                if created_dt.tzinfo is None:
+                    created_dt = created_dt.replace(tzinfo=datetime.timezone.utc)
+                
+                # Calculate age in minutes
+                age_minutes = (datetime.datetime.now(datetime.timezone.utc) - created_dt).total_seconds() / 60
+                
+                # Log the token's age for debugging
+                logging.debug(f"Token {token_name} ({token_address}): Age: {age_minutes:.1f} minutes")
+                
+                # Filter by age threshold
+                if age_minutes > SNIPE_GRADUATED_DELTA_MINUTES_FLOAT:
+                    logging.debug(f"Token {token_name} ({token_address}): Filtered by age ({age_minutes:.1f} > {SNIPE_GRADUATED_DELTA_MINUTES_FLOAT:.1f} minutes)")
+                    continue
+                    
+            except Exception as e:
+                logging.warning(f"Error calculating age for token {token_name} ({token_address}): {e}")
+                # Skip this token as we can't determine its age
                 continue
-        addr = token_info.get('tokenAddress')
-        p1,l1,v1 = first_snaps.get(addr,(0,0,0)); p2,l2,v2 = second_snaps.get(addr,(0,0,0))
+        
+        # Get price, liquidity, and volume data
+        p1, l1, v1 = first_snaps.get(token_address, (0, 0, 0))
+        p2, l2, v2 = second_snaps.get(token_address, (0, 0, 0))
+        
+        # Calculate changes
         liq_chg = (l2-l1)/l1 if l1 else float('inf') if l2 else 0
         vol_chg = (v2-v1)/v1 if v1 else float('inf') if v2 else 0
         prc_chg = (p2-p1)/p1 if p1 else float('inf') if p2 else 0
-        if vol_chg > 0.01 and prc_chg > 0.01 and liq_chg >= 0.05 and liq_chg > vol_chg and liq_chg > prc_chg:
+        
+        # Log metrics
+        logging.debug(f"Token {token_name} ({token_address}) metrics - "
+                    f"Price: ${p1:.8f}→${p2:.8f} ({prc_chg:+.2%}), "
+                    f"Liq: ${l1:,.2f}→${l2:,.2f} ({liq_chg:+.2%}), "
+                    f"Vol: ${v1:,.2f}→${v2:,.2f} ({vol_chg:+.2%})")
+        
+        # Check for Snipe conditions
+        snipe_conditions_met = [
+            vol_chg > 0.01,
+            prc_chg > 0.01,
+            liq_chg >= 0.05,
+            liq_chg > vol_chg,
+            liq_chg > prc_chg
+        ]
+        
+        if all(snipe_conditions_met):
+            logging.info(f"Token {token_name} ({token_address}) added to SNIPE candidates: "
+                       f"Vol↑ {vol_chg:+.2%}, Price↑ {prc_chg:+.2%}, Liq↑ {liq_chg:+.2%}")
             snipe_candidates.append(token_info)
+        else:
+            logging.debug(f"Token {token_name} ({token_address}) did not meet all SNIPE conditions: "
+                         f"Vol↑ {vol_chg:+.2%} > 1%: {vol_chg > 0.01}, "
+                         f"Price↑ {prc_chg:+.2%} > 1%: {prc_chg > 0.01}, "
+                         f"Liq↑ {liq_chg:+.2%} ≥ 5%: {liq_chg >= 0.05}, "
+                         f"Liq↑ > Vol↑: {liq_chg > vol_chg}, "
+                         f"Liq↑ > Price↑: {liq_chg > prc_chg}")
+        
+        # Check for Ghost Buyer conditions
         ghost_vol_min = GHOST_VOLUME_MIN_PCT_1M if win_minutes == 1 else GHOST_VOLUME_MIN_PCT_5M
-        if vol_chg > ghost_vol_min and abs(prc_chg) < (vol_chg * GHOST_PRICE_REL_MULTIPLIER):
+        ghost_conditions_met = [
+            vol_chg > ghost_vol_min,
+            abs(prc_chg) < (vol_chg * GHOST_PRICE_REL_MULTIPLIER)
+        ]
+        
+        if all(ghost_conditions_met):
+            logging.info(f"Token {token_name} ({token_address}) added to GHOST candidates: "
+                       f"Vol↑ {vol_chg:+.2%} > {ghost_vol_min:.0%}, "
+                       f"|Price| {abs(prc_chg):.2%} < {vol_chg * GHOST_PRICE_REL_MULTIPLIER:.2%} (Vol × {GHOST_PRICE_REL_MULTIPLIER})")
             ghost_buyer_candidates.append(token_info)
+        else:
+            logging.debug(f"Token {token_name} ({token_address}) did not meet GHOST conditions: "
+                         f"Vol↑ {vol_chg:+.2%} > {ghost_vol_min:.0%}: {vol_chg > ghost_vol_min}, "
+                         f"|Price| {abs(prc_chg):.2%} < {vol_chg * GHOST_PRICE_REL_MULTIPLIER:.2%}: {abs(prc_chg) < (vol_chg * GHOST_PRICE_REL_MULTIPLIER)}")
             
     final_results_for_csv = snipe_candidates + [t for t in ghost_buyer_candidates if t not in snipe_candidates]
     
