@@ -1,0 +1,147 @@
+2025-06-21 20:42:21,587 [ERROR] Error in main loop (attempt 1/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 898, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:50:13,678 [ERROR] Error in main loop (attempt 1/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 907, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:51:38,060 [ERROR] Error in main loop (attempt 1/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 907, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:53:13,461 [ERROR] Error in main loop (attempt 1/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:53:20,508 [ERROR] Error in main loop (attempt 2/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:53:29,550 [ERROR] Error in main loop (attempt 3/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:53:42,589 [ERROR] Error in main loop (attempt 4/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:54:03,641 [ERROR] Error in main loop (attempt 5/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:54:03,644 [ERROR] Too many consecutive errors (5). Restarting monitoring...
+2025-06-21 20:54:09,852 [ERROR] Error in main loop (attempt 1/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:54:16,879 [ERROR] Error in main loop (attempt 2/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:54:25,945 [ERROR] Error in main loop (attempt 3/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:54:38,970 [ERROR] Error in main loop (attempt 4/5): tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 912, in main
+    g_current_mint_address = token_info['mint_address']
+TypeError: tuple indices must be integers or slices, not str
+2025-06-21 20:56:02,906 [ERROR] Error in main loop (attempt 1/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:56:10,029 [ERROR] Error in main loop (attempt 2/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:56:19,095 [ERROR] Error in main loop (attempt 3/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:56:32,193 [ERROR] Error in main loop (attempt 4/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:56:53,252 [ERROR] Error in main loop (attempt 5/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:56:53,253 [ERROR] Too many consecutive errors (5). Restarting monitoring...
+2025-06-21 20:57:00,493 [ERROR] Error in main loop (attempt 1/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:57:07,806 [ERROR] Error in main loop (attempt 2/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    safe_task_wrapper(listen_for_trades(g_current_mint_address)),
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:57:16,900 [ERROR] Error in main loop (attempt 3/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    logging.debug(f"No tokens found in {INPUT_CSV_FILE}, waiting...")
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:57:29,931 [ERROR] Error in main loop (attempt 4/5): name 'safe_task_wrapper' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 925, in main
+    logging.debug(f"No tokens found in {INPUT_CSV_FILE}, waiting...")
+NameError: name 'safe_task_wrapper' is not defined
+2025-06-21 20:57:59,176 [INFO] 
+[ROCKET] Starting monitoring for token: UNKNOWN (None)
+2025-06-21 20:57:59,181 [INFO] [CHART] Baseline price: $0.000000000
+2025-06-21 20:57:59,220 [ERROR] Error in main loop (attempt 1/5): 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 950, in main
+    name=f'listener_{g_current_mint_address[:8]}'
+TypeError: 'NoneType' object is not subscriptable
+2025-06-21 20:58:06,241 [INFO] 
+[ROCKET] Starting monitoring for token: UNKNOWN (None)
+2025-06-21 20:58:06,242 [INFO] [CHART] Baseline price: $0.000000000
+2025-06-21 20:58:06,243 [ERROR] Error in main loop (attempt 2/5): 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 950, in main
+    name=f'listener_{g_current_mint_address[:8]}'
+TypeError: 'NoneType' object is not subscriptable
+2025-06-21 20:58:15,266 [INFO] 
+[ROCKET] Starting monitoring for token: UNKNOWN (None)
+2025-06-21 20:58:15,267 [INFO] [CHART] Baseline price: $0.000000000
+2025-06-21 20:58:15,270 [ERROR] Error in main loop (attempt 3/5): 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 950, in main
+    name=f'listener_{g_current_mint_address[:8]}'
+TypeError: 'NoneType' object is not subscriptable
+2025-06-21 20:58:28,295 [INFO] 
+[ROCKET] Starting monitoring for token: UNKNOWN (None)
+2025-06-21 20:58:28,297 [INFO] [CHART] Baseline price: $0.000000000
+2025-06-21 20:58:28,299 [ERROR] Error in main loop (attempt 4/5): 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 950, in main
+    name=f'listener_{g_current_mint_address[:8]}'
+TypeError: 'NoneType' object is not subscriptable
+2025-06-21 20:58:49,329 [INFO] 
+[ROCKET] Starting monitoring for token: UNKNOWN (None)
+2025-06-21 20:58:49,330 [INFO] [CHART] Baseline price: $0.000000000
+2025-06-21 20:58:49,331 [ERROR] Error in main loop (attempt 5/5): 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX\SniperX\SniperX-V3\Monitoring.py", line 950, in main
+TypeError: 'NoneType' object is not subscriptable
+2025-06-21 20:58:49,335 [ERROR] Too many consecutive errors (5). Restarting monitoring...
