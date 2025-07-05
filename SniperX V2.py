@@ -34,7 +34,7 @@ if not MORALIS_API_KEYS:
 
 EXCHANGE_NAME = os.getenv("EXCHANGE_NAME", "pumpfun")
 FETCH_LIMIT = 100
-MORALIS_API_URL = f"https://solana-gateway.moralis.io/token/mainnet/exchange/{EXCHANGE_NAME}/graduated?limit={FETCH_LIMIT}"
+MORALIS_API_URL = "https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana"
 DEFAULT_MAX_WORKERS = 1  # <<<< SET TO 1 AS PER USER REQUEST >>>>
 DEXSCREENER_CHAIN_ID = "solana"
 
@@ -78,18 +78,23 @@ GHOST_PRICE_REL_MULTIPLIER = get_env_float("GHOST_PRICE_REL_MULTIPLIER", 2.0)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
-def get_graduated_tokens():
-    print(f"[INFO] Fetching graduated tokens from '{EXCHANGE_NAME}'...")
+def get_trending_tokens():
+    print(f"[INFO] Fetching trending tokens from Moralis...")
+    url = "https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana"
+
     for idx, key in enumerate(MORALIS_API_KEYS, start=1):
         print(f"[INFO] Trying Moralis API key {idx}/{len(MORALIS_API_KEYS)}")
-        headers = {"Accept": "application/json", "Authorization": f"Bearer {key}"}
+        headers = {
+            "Accept": "application/json",
+            "X-API-Key": key,
+        }
         try:
-            resp = requests.get(MORALIS_API_URL, headers=headers, timeout=20)
+            resp = requests.get(url, headers=headers, timeout=20)
             resp.raise_for_status()
-            data = resp.json()
-            tokens = data.get('result') or []
-            print(f"[INFO] Retrieved {len(tokens)} tokens with key {idx}.")
-            return [t for t in tokens if isinstance(t, dict)] 
+            tokens = resp.json()
+            if isinstance(tokens, list):
+                print(f"[INFO] Retrieved {len(tokens)} trending tokens.")
+                return tokens
         except requests.exceptions.HTTPError as err:
             status = getattr(err.response, 'status_code', None)
             print(f"[WARN] Key {idx} HTTP {status} error: {err}. Trying next key.")
@@ -97,6 +102,7 @@ def get_graduated_tokens():
             print(f"[WARN] Request error with key {idx}: {err}. Trying next key.")
         except ValueError:
             print(f"[WARN] Invalid JSON with key {idx}. Trying next key.")
+
     print("[ERROR] All Moralis API keys failed; please check Moralis API quota.")
     return []
 
@@ -104,25 +110,29 @@ def filter_preliminary(tokens):
     now = datetime.datetime.now(datetime.timezone.utc)
     filtered = []
     for token in tokens:
-        if not isinstance(token, dict): continue
-        raw_liq_data = token.get("liquidity", {})
-        raw_liq_val = raw_liq_data.get("usd") if isinstance(raw_liq_data, dict) else token.get("liquidity")
-        try: liquidity = float(raw_liq_val if raw_liq_val is not None else 0)
-        except (ValueError, TypeError): liquidity = 0.0
-        try: price_usd = float(token.get("priceUsd", 0))
-        except (ValueError, TypeError): price_usd = 0.0
-        grad_str = token.get("graduatedAt")
-        minutes_diff = float('inf')
-        if grad_str:
+        if not isinstance(token, dict):
+            continue
+        raw_liq_val = token.get("liquidityUsd", 0)
+        try:
+            liquidity = float(raw_liq_val if raw_liq_val is not None else 0)
+        except (ValueError, TypeError):
+            liquidity = 0.0
+        try:
+            price_usd = float(token.get("usdPrice", 0))
+        except (ValueError, TypeError):
+            price_usd = 0.0
+        token_created_at = token.get("createdAt")
+        minutes_diff = float("inf")
+        if token_created_at:
             try:
-                grad = dateparser.parse(grad_str)
-                if isinstance(grad, datetime.datetime):
-                    grad = grad.replace(tzinfo=datetime.timezone.utc) if grad.tzinfo is None else grad.astimezone(datetime.timezone.utc)
-                    minutes_diff = (now - grad).total_seconds() / 60
-            except Exception as e: logging.debug(f"GraduatedAt parse error for {token.get('tokenAddress')}: {e}")
-        if (liquidity >= PRELIM_LIQUIDITY_THRESHOLD and
-            PRELIM_MIN_PRICE_USD <= price_usd <= PRELIM_MAX_PRICE_USD and
-            minutes_diff <= PRELIM_AGE_DELTA_MINUTES):
+                minutes_diff = (time.time() - token_created_at) / 60
+            except Exception:
+                minutes_diff = float("inf")
+        if (
+            liquidity >= PRELIM_LIQUIDITY_THRESHOLD
+            and PRELIM_MIN_PRICE_USD <= price_usd <= PRELIM_MAX_PRICE_USD
+            and minutes_diff <= PRELIM_AGE_DELTA_MINUTES
+        ):
             filtered.append(token)
     logging.info(f"{len(filtered)} tokens passed preliminary filters.")
     return filtered
@@ -230,16 +240,13 @@ def process_window(win_minutes, prelim_tokens, script_dir_path):
     
     passed_whale_trap = apply_whale_trap(prelim_tokens, first_snaps, second_snaps)
     snipe_candidates, ghost_buyer_candidates = [], []
-    now_utc = datetime.datetime.now(datetime.timezone.utc)
 
     for token_info in passed_whale_trap:
-        grad_str = token_info.get('graduatedAt')
-        if not grad_str: continue
-        grad_dt = dateparser.parse(grad_str)
-        if not isinstance(grad_dt, datetime.datetime): continue
-        grad_dt = grad_dt.replace(tzinfo=datetime.timezone.utc) if grad_dt.tzinfo is None else grad_dt.astimezone(datetime.timezone.utc)
-        age_minutes = (now_utc - grad_dt).total_seconds() / 60
-        if age_minutes > SNIPE_GRADUATED_DELTA_MINUTES_FLOAT: continue
+        token_created_at = token_info.get("createdAt")
+        if token_created_at:
+            age_minutes = (time.time() - token_created_at) / 60
+            if age_minutes > SNIPE_GRADUATED_DELTA_MINUTES_FLOAT:
+                continue
         addr = token_info.get('tokenAddress')
         p1,l1,v1 = first_snaps.get(addr,(0,0,0)); p2,l2,v2 = second_snaps.get(addr,(0,0,0))
         liq_chg = (l2-l1)/l1 if l1 else float('inf') if l2 else 0
@@ -490,7 +497,7 @@ def start_slave_watchdog(script_dir_path):
         return None
 
 def main_token_processing_loop(script_dir_path):
-    tokens = get_graduated_tokens()
+    tokens = get_trending_tokens()
     prelim_filtered_tokens = filter_preliminary(tokens)
     window_results_aggregator = {}
     if prelim_filtered_tokens:
