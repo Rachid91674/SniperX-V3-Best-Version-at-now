@@ -17,61 +17,63 @@ import logging
 import signal
 load_dotenv()
 
+def get_env_float(env_name, default):
+    """Safely get and convert an environment variable to float, handling quotes and comments."""
+    value = os.getenv(env_name, str(default)).split('#')[0].strip('\'" ')
+    try:
+        return float(value) if value else default
+    except (ValueError, TypeError):
+        return default
+
 # --- Global Configurations & Constants ---
 TEST_MODE = len(sys.argv) > 1 and sys.argv[1] == "--test"
-MORALIS_API_KEYS = [os.getenv(f"MORALIS_API_KEY_{i}", "").split('#')[0].strip() for i in range(1,6)]
-MORALIS_API_KEYS = [k for k in MORALIS_API_KEYS if k]
+MORALIS_API_KEYS = [k for k in [os.getenv(f"MORALIS_API_KEY_{i}", "").split('#')[0].strip() for i in range(1,6)] if k]
 if not MORALIS_API_KEYS:
     print("[ERROR] No Moralis API keys configured in .env. Exiting.")
     sys.exit(1)
+
 EXCHANGE_NAME = os.getenv("EXCHANGE_NAME", "pumpfun")
 FETCH_LIMIT = 100
 MORALIS_API_URL = f"https://solana-gateway.moralis.io/token/mainnet/exchange/{EXCHANGE_NAME}/graduated?limit={FETCH_LIMIT}"
-DEFAULT_MAX_WORKERS = 1 # <<<< SET TO 1 AS PER USER REQUEST >>>>
+DEFAULT_MAX_WORKERS = 1  # <<<< SET TO 1 AS PER USER REQUEST >>>>
 DEXSCREENER_CHAIN_ID = "solana"
-raw_snipe_age_env = os.getenv("SNIPE_GRADUATED_DELTA_MINUTES", "60")
-SNIPE_GRADUATED_DELTA_MINUTES_FLOAT = float(raw_snipe_age_env.split('#')[0].strip()) if raw_snipe_age_env else 60.0
-raw_wt = os.getenv("WHALE_TRAP_WINDOW_MINUTES", "1,5")
-raw_wt = raw_wt.split('#')[0].strip()
-parts = raw_wt.split(',')
+
+# Parse window minutes
+raw_wt = os.getenv("WHALE_TRAP_WINDOW_MINUTES", "1,5").split('#')[0].strip()
 WINDOW_MINS = []
-for part in parts:
+for part in raw_wt.split(','):
     try:
         val = int(part.strip())
-        if val > 0 : WINDOW_MINS.append(val)
-    except: pass
-if not WINDOW_MINS: WINDOW_MINS = [1, 5]
+        if val > 0: 
+            WINDOW_MINS.append(val)
+    except (ValueError, TypeError):
+        pass
+if not WINDOW_MINS:
+    WINDOW_MINS = [1, 5]
 
-raw_pl = os.getenv("PRELIM_LIQUIDITY_THRESHOLD", "5000").split('#')[0].strip()
-PRELIM_LIQUIDITY_THRESHOLD = float(raw_pl) if raw_pl else 5000.0
-raw_ppmin = os.getenv("PRELIM_MIN_PRICE_USD", "0.00001").split('#')[0].strip()
-PRELIM_MIN_PRICE_USD = float(raw_ppmin) if raw_ppmin else 0.00001
-raw_ppmax = os.getenv("PRELIM_MAX_PRICE_USD", "0.0004").split('#')[0].strip()
-PRELIM_MAX_PRICE_USD = float(raw_ppmax) if raw_ppmax else 0.0004
-raw_age = os.getenv("PRELIM_AGE_DELTA_MINUTES", "120").split('#')[0].strip()
-PRELIM_AGE_DELTA_MINUTES = float(raw_age) if raw_age else 120.0
-raw_wp = os.getenv("WHALE_PRICE_UP_PCT", "0.0").split('#')[0].strip()
-WHALE_PRICE_UP_PCT = float(raw_wp) if raw_wp else 0.0
-raw_wlq = os.getenv("WHALE_LIQUIDITY_UP_PCT", "0.0").split('#')[0].strip()
-WHALE_LIQUIDITY_UP_PCT = float(raw_wlq) if raw_wlq else 0.0
-raw_wvd = os.getenv("WHALE_VOLUME_DOWN_PCT", "0.0").split('#')[0].strip()
-WHALE_VOLUME_DOWN_PCT = float(raw_wvd) if raw_wvd else 0.0
-raw_sl1 = os.getenv("SNIPE_LIQUIDITY_MIN_PCT_1M","0.1").split('#')[0].strip()
-SNIPE_LIQUIDITY_MIN_PCT_1M = float(raw_sl1) if raw_sl1 else 0.1
-raw_sm1 = os.getenv("SNIPE_LIQUIDITY_MULTIPLIER_1M","1.5").split('#')[0].strip()
-SNIPE_LIQUIDITY_MULTIPLIER_1M = float(raw_sm1) if raw_sm1 else 1.5
-raw_sup = os.getenv("SNIPE_LIQUIDITY_UP_PCT", "0.30").split('#')[0].strip()
-SNIPE_LIQUIDITY_UP_PCT_CONFIG = float(raw_sup) if raw_sup else 0.30
-raw_sl5 = os.getenv("SNIPE_LIQUIDITY_MIN_PCT_5M", str(SNIPE_LIQUIDITY_UP_PCT_CONFIG)).split('#')[0].strip()
-SNIPE_LIQUIDITY_MIN_PCT_5M = float(raw_sl5) if raw_sl5 else SNIPE_LIQUIDITY_UP_PCT_CONFIG
-raw_sm5 = os.getenv("SNIPE_LIQUIDITY_MULTIPLIER_5M","5").split('#')[0].strip()
-SNIPE_LIQUIDITY_MULTIPLIER_5M = float(raw_sm5) if raw_sm5 else 5.0
-raw_gv1 = os.getenv("GHOST_VOLUME_MIN_PCT_1M", "0.5").split('#')[0].strip()
-GHOST_VOLUME_MIN_PCT_1M = float(raw_gv1) if raw_gv1 else 0.5
-raw_gv5 = os.getenv("GHOST_VOLUME_MIN_PCT_5M", "0.5").split('#')[0].strip()
-GHOST_VOLUME_MIN_PCT_5M = float(raw_gv5) if raw_gv5 else 0.5
-raw_gpr = os.getenv("GHOST_PRICE_REL_MULTIPLIER", "2").split('#')[0].strip()
-GHOST_PRICE_REL_MULTIPLIER = float(raw_gpr) if raw_gpr else 2.0
+# Load configuration values using the get_env_float helper
+SNIPE_GRADUATED_DELTA_MINUTES_FLOAT = get_env_float("SNIPE_GRADUATED_DELTA_MINUTES", 60.0)
+PRELIM_LIQUIDITY_THRESHOLD = get_env_float("PRELIM_LIQUIDITY_THRESHOLD", 5000.0)
+PRELIM_MIN_PRICE_USD = get_env_float("PRELIM_MIN_PRICE_USD", 0.00001)
+PRELIM_MAX_PRICE_USD = get_env_float("PRELIM_MAX_PRICE_USD", 0.0004)
+PRELIM_AGE_DELTA_MINUTES = get_env_float("PRELIM_AGE_DELTA_MINUTES", 120.0)
+
+# Whale trap configuration
+WHALE_PRICE_UP_PCT = get_env_float("WHALE_PRICE_UP_PCT", 0.0)
+WHALE_LIQUIDITY_UP_PCT = get_env_float("WHALE_LIQUIDITY_UP_PCT", 0.0)
+WHALE_VOLUME_DOWN_PCT = get_env_float("WHALE_VOLUME_DOWN_PCT", 0.0)
+
+# Snipe configuration
+SNIPE_LIQUIDITY_UP_PCT_CONFIG = get_env_float("SNIPE_LIQUIDITY_UP_PCT", 0.30)
+SNIPE_LIQUIDITY_MIN_PCT_1M = get_env_float("SNIPE_LIQUIDITY_MIN_PCT_1M", 0.1)
+SNIPE_LIQUIDITY_MULTIPLIER_1M = get_env_float("SNIPE_LIQUIDITY_MULTIPLIER_1M", 1.5)
+SNIPE_LIQUIDITY_MIN_PCT_5M = get_env_float("SNIPE_LIQUIDITY_MIN_PCT_5M", SNIPE_LIQUIDITY_UP_PCT_CONFIG)
+SNIPE_LIQUIDITY_MULTIPLIER_5M = get_env_float("SNIPE_LIQUIDITY_MULTIPLIER_5M", 5.0)
+
+# Ghost buyer configuration
+GHOST_VOLUME_MIN_PCT_1M = get_env_float("GHOST_VOLUME_MIN_PCT_1M", 0.5)
+GHOST_VOLUME_MIN_PCT_5M = get_env_float("GHOST_VOLUME_MIN_PCT_5M", 0.5)
+GHOST_PRICE_REL_MULTIPLIER = get_env_float("GHOST_PRICE_REL_MULTIPLIER", 2.0)
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")

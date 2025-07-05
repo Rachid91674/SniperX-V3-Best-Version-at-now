@@ -54,3 +54,6 @@ timestamp,token_name,mint_address,reason,buy_price,sell_price
 "2025-06-22 16:43:09","Bunkercoin","9AeBphkGfF5e5ipZdMp9aX6q2Wnhzua1AdMVJ3sKpump","Stop loss","0.000104500","0.000083830","-19.78%","LOSS"
 "2025-06-22 16:50:28","Bitcoil","68bdbmCFcBDs3uuetizSzwkR5u8UwXAAPi5LRh1apump","Stop loss","0.000064500","0.000058370","-9.50%","LOSS"
 "2025-06-22 19:26:29","the last toy","6AXFqRFS6d3jfu3rPsKm8CBLuvbHZVXaKWDurSX7pump","Take profit","0.000115300","0.000134800","16.91%","PROFIT"
+"2025-07-05 20:06:35","Unknown","EhSHK5ou95CUcQG1R8pjxDBRyd5jzfaxpCsJE549pump","No buy signal timeout","","","",""
+"2025-07-05 20:13:34","JUST GROK IT!","3mxwZdzHQ2u984rorsuR5ZJyTzrCVGo5Ryx3YcTNSVy8","Stop loss","0.000223200","0.000210200","-5.82%","LOSS"
+"2025-07-05 20:27:14","The Pump Prophecy","BjLKXXWMNkJKwYkWfvHBcaTcZnD2VRtMTR1oEVzUpump","No buy signal timeout","","","",""
