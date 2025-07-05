@@ -151,21 +151,42 @@ def filter_preliminary(tokens):
         # Age check
         token_created_at = token.get("createdAt")
         minutes_diff = float("inf")
-        
-        if token_created_at:
+
+        if token_created_at is not None:
             try:
-                # Parse the ISO 8601 timestamp
-                created_dt = dateparser.parse(token_created_at)
-                if created_dt:
-                    if created_dt.tzinfo is None:
-                        created_dt = created_dt.replace(tzinfo=datetime.timezone.utc)
-                    age_seconds = (now - created_dt).total_seconds()
-                    minutes_diff = age_seconds / 60
-                    logging.debug(f"Token {token_name} ({token_address}): Age = {minutes_diff:.1f} minutes")
-                else:
-                    logging.warning(f"Token {token_name} ({token_address}): Could not parse creation time: {token_created_at}")
+                created_at_str = str(token_created_at)
+                created_dt = None
+
+                # Handle timestamp values (seconds or milliseconds)
+                if created_at_str.replace(".", "", 1).isdigit():
+                    try:
+                        ts = float(created_at_str)
+                        if ts > 1e12:
+                            ts /= 1000
+                        created_dt = datetime.datetime.fromtimestamp(ts, tz=datetime.timezone.utc)
+                        logging.debug(
+                            f"Token {token_name} ({token_address}): Parsed timestamp {ts}"
+                        )
+                    except (ValueError, TypeError):
+                        created_dt = None
+
+                if created_dt is None:
+                    created_dt = dateparser.parse(created_at_str)
+                    if created_dt is None:
+                        raise ValueError(f"Failed to parse date string: {created_at_str}")
+
+                if created_dt.tzinfo is None:
+                    created_dt = created_dt.replace(tzinfo=datetime.timezone.utc)
+
+                age_seconds = (now - created_dt).total_seconds()
+                minutes_diff = age_seconds / 60
+                logging.debug(
+                    f"Token {token_name} ({token_address}): Age = {minutes_diff:.1f} minutes"
+                )
             except Exception as e:
-                logging.warning(f"Token {token_name} ({token_address}): Error calculating age: {e}")
+                logging.warning(
+                    f"Token {token_name} ({token_address}): Error calculating age: {e}"
+                )
                 minutes_diff = float("inf")
                 
         if minutes_diff > PRELIM_AGE_DELTA_MINUTES:
