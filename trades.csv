@@ -6,3 +6,4 @@ timestamp,token_name,mint_address,reason,buy_price,sell_price
 "2025-07-06 12:28:22","maow","Fh4GcNpEhZJvDDdXhUCe7jxzhqQKZk2NGgDY9zjBbonk","No buy signal timeout","","0.000280100","",""
 "2025-07-06 12:32:29","shabi","HG1UbzqLT3y4Cbiqq2t6LBaUnNFASgZYd4nd2BNTbonk","Stop loss","0.000110000","0.000098300","-10.64%","LOSS"
 "2025-07-06 12:45:58","Pepehini","AEY2YBqD4NAY7eM76iUxFrc9vhDWS14AoULJCDS8pump","No buy signal within timeout period","","","",""
+"2025-07-06 14:38:29","thebonkrapesalonwhenhebarks","8srGGXoVsbzqtz4Kw9r6e4P8Me9F7eDdgZ9zrXdpump","No buy signal timeout","","0.000003504","",""
