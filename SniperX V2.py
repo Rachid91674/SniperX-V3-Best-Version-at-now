@@ -15,7 +15,74 @@ from dotenv import load_dotenv
 import subprocess
 import logging
 import signal
+from typing import Optional, Dict, Any
 load_dotenv()
+
+def format_with_emojis(message: str, level: str = "INFO") -> str:
+    """Add emojis to log messages based on content and log level."""
+    # Emoji mapping for log levels
+    level_emojis = {
+        "INFO": "ℹ️",
+        "WARNING": "⚠️",
+        "ERROR": "❌",
+        "CRITICAL": "🔥",
+        "DEBUG": "🐛"
+    }
+    
+    # Common patterns to emoji
+    emoji_mapping = {
+        # Levels
+        "INFO": f"{level_emojis['INFO']} INFO",
+        "WARNING": f"{level_emojis['WARNING']} WARNING",
+        "ERROR": f"{level_emojis['ERROR']} ERROR",
+        "CRITICAL": f"{level_emojis['CRITICAL']} CRITICAL",
+        "DEBUG": f"{level_emojis['DEBUG']} DEBUG",
+        # Common patterns
+        "fetching": "🔍 Fetching",
+        "fetched": "✅ Fetched",
+        "processing": "⚙️ Processing",
+        "processed": "✅ Processed",
+        "token": "🪙 Token",
+        "tokens": "🪙 Tokens",
+        "price": "💰 Price",
+        "liquidity": "💧 Liquidity",
+        "volume": "📊 Volume",
+        "age": "⏳ Age",
+        "passed": "✅ Passed",
+        "filtered": "🚫 Filtered",
+        "starting": "🚀 Starting",
+        "completed": "🏁 Completed",
+        "error": "❌ Error",
+        "warning": "⚠️ Warning",
+        "whale": "🐋 Whale",
+        "snipe": "🎯 Snipe",
+        "ghost": "👻 Ghost",
+        "cycle": "🔄 Cycle"
+    }
+    
+    # Replace level first
+    for level_name in ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]:
+        message = message.replace(f"{level_name}", f"{level_emojis.get(level_name, level_name)} {level_name}")
+    
+    # Replace other patterns
+    for pattern, emoji_text in emoji_mapping.items():
+        if pattern in message.lower():
+            message = message.replace(pattern.title(), emoji_text)
+            message = message.replace(pattern.upper(), emoji_text.upper())
+            
+    # Special case for cycle start/end
+    if "starting new cycle" in message.lower():
+        message = f"🔄 {message}"
+    elif "cycle complete" in message.lower():
+        message = f"✅ {message}"
+    
+    return message
+
+# Custom formatter that adds emojis
+class EmojiLogFormatter(logging.Formatter):
+    def format(self, record):
+        original = super().format(record)
+        return format_with_emojis(original, record.levelname)
 
 def get_env_float(env_name, default):
     """Safely get and convert an environment variable to float, handling quotes and comments."""
@@ -53,10 +120,10 @@ if not WINDOW_MINS:
 
 # Load configuration values using the get_env_float helper
 SNIPE_GRADUATED_DELTA_MINUTES_FLOAT = get_env_float("SNIPE_GRADUATED_DELTA_MINUTES", 60.0)
-PRELIM_LIQUIDITY_THRESHOLD = get_env_float("PRELIM_LIQUIDITY_THRESHOLD", 5000.0)
-PRELIM_MIN_PRICE_USD = get_env_float("PRELIM_MIN_PRICE_USD", 0.00001)
-PRELIM_MAX_PRICE_USD = get_env_float("PRELIM_MAX_PRICE_USD", 0.0004)
-PRELIM_AGE_DELTA_MINUTES = get_env_float("PRELIM_AGE_DELTA_MINUTES", 120.0)
+PRELIM_LIQUIDITY_THRESHOLD = get_env_float('PRELIM_LIQUIDITY_THRESHOLD', 20000.0)  # $20,000 minimum liquidity
+PRELIM_MIN_PRICE_USD = get_env_float('PRELIM_MIN_PRICE_USD', 0.00065)  # $0.00065 minimum price
+PRELIM_MAX_PRICE_USD = get_env_float('PRELIM_MAX_PRICE_USD', 0.0099)  # $0.0099 maximum price
+PRELIM_AGE_DELTA_MINUTES = get_env_float('PRELIM_AGE_DELTA_MINUTES', 6000.0)  # 6000 minutes (~4.17 days) max age
 
 # Whale trap configuration
 WHALE_PRICE_UP_PCT = get_env_float("WHALE_PRICE_UP_PCT", 0.0)
@@ -76,14 +143,34 @@ GHOST_VOLUME_MIN_PCT_5M = get_env_float("GHOST_VOLUME_MIN_PCT_5M", 0.5)
 GHOST_PRICE_REL_MULTIPLIER = get_env_float("GHOST_PRICE_REL_MULTIPLIER", 2.0)
 
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
+# Configure root logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+# Create console handler with emoji formatter
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(EmojiLogFormatter("%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S"))
+
+# Remove existing handlers
+for handler in logger.handlers[:]:
+    logger.removeHandler(handler)
+
+# Add our emoji handler
+logger.addHandler(console_handler)
+
+# Also update the print function to use logging
+def print(*args, **kwargs):
+    level = kwargs.pop('level', logging.INFO)
+    sep = kwargs.get('sep', ' ')
+    message = sep.join(str(arg) for arg in args)
+    logger.log(level, message, **kwargs)
 
 def get_trending_tokens():
-    print(f"[INFO] Fetching trending tokens from Moralis...")
+    logger.info("Fetching trending tokens from Moralis...")
     url = "https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana"
 
     for idx, key in enumerate(MORALIS_API_KEYS, start=1):
-        print(f"[INFO] Trying Moralis API key {idx}/{len(MORALIS_API_KEYS)}")
+        logger.info(f"Trying Moralis API key {idx}/{len(MORALIS_API_KEYS)}")
         headers = {
             "Accept": "application/json",
             "X-API-Key": key,
@@ -418,9 +505,7 @@ def process_window(win_minutes, prelim_tokens, script_dir_path):
         snipe_conditions_met = [
             vol_chg > 0.01,
             prc_chg > 0.01,
-            liq_chg >= 0.05,
-            liq_chg > vol_chg,
-            liq_chg > prc_chg
+            liq_chg >= 0.015,
         ]
         
         if all(snipe_conditions_met):
@@ -431,21 +516,20 @@ def process_window(win_minutes, prelim_tokens, script_dir_path):
             logging.debug(f"Token {token_name} ({token_address}) did not meet all SNIPE conditions: "
                          f"Vol↑ {vol_chg:+.2%} > 1%: {vol_chg > 0.01}, "
                          f"Price↑ {prc_chg:+.2%} > 1%: {prc_chg > 0.01}, "
-                         f"Liq↑ {liq_chg:+.2%} ≥ 5%: {liq_chg >= 0.05}, "
-                         f"Liq↑ > Vol↑: {liq_chg > vol_chg}, "
-                         f"Liq↑ > Price↑: {liq_chg > prc_chg}")
+                         f"Liq↑ {liq_chg:+.2%} ≥ 1.5%: {liq_chg >= 0.015}")
         
         # Check for Ghost Buyer conditions
-        ghost_vol_min = GHOST_VOLUME_MIN_PCT_1M if win_minutes == 1 else GHOST_VOLUME_MIN_PCT_5M
+        ghost_vol_min = 0.30  # 30% minimum volume increase for 1m (overriding GHOST_VOLUME_MIN_PCT_1M)
+        ghost_price_multiplier = 3.0  # 3x volume to price ratio (overriding GHOST_PRICE_REL_MULTIPLIER)
         ghost_conditions_met = [
-            vol_chg > ghost_vol_min,
-            abs(prc_chg) < (vol_chg * GHOST_PRICE_REL_MULTIPLIER)
+            vol_chg > ghost_vol_min,  # Volume change > 30%
+            abs(prc_chg) < (vol_chg * ghost_price_multiplier)  # Price change < (Volume change × 3)
         ]
         
         if all(ghost_conditions_met):
             logging.info(f"Token {token_name} ({token_address}) added to GHOST candidates: "
                        f"Vol↑ {vol_chg:+.2%} > {ghost_vol_min:.0%}, "
-                       f"|Price| {abs(prc_chg):.2%} < {vol_chg * GHOST_PRICE_REL_MULTIPLIER:.2%} (Vol × {GHOST_PRICE_REL_MULTIPLIER})")
+                       f"|Price| {abs(prc_chg):.2%} < {vol_chg * ghost_price_multiplier:.2%} (Vol × {ghost_price_multiplier})")
             ghost_buyer_candidates.append(token_info)
         else:
             logging.debug(f"Token {token_name} ({token_address}) did not meet GHOST conditions: "
