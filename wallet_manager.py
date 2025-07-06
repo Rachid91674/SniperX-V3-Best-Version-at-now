@@ -84,7 +84,15 @@ class WalletManager:
             raise ValueError(f"Wallet keypair path '{keypair_path}' is invalid or file does not exist.")
 
         self.rpc_url = rpc_url
-        self.ws_url = rpc_url.replace("http", "ws") # Convert HTTP RPC to WS RPC
+        # Special handling for Helius WebSocket URL
+        if 'helius' in rpc_url.lower():
+            self.ws_url = rpc_url.replace('https', 'wss').replace('http', 'ws')
+            if '?' in self.ws_url:
+                self.ws_url = self.ws_url.split('?')[0] + '/ws' + '?' + self.ws_url.split('?', 1)[1]
+            else:
+                self.ws_url = self.ws_url + '/ws'
+        else:
+            self.ws_url = rpc_url.replace("http", "ws")
         self.keypair = Keypair.from_json(open(keypair_path).read())
         self.public_key = self.keypair.pubkey()
         self.current_sol_balance_lamports: int = 0  # Initialize the attribute
@@ -168,7 +176,7 @@ class WalletManager:
 
 
     async def subscribe_to_balance_changes(self):
-        """Subscribes to account changes for the wallet's public key."""
+        """Subscribes to account changes for the wallet's public key with improved error handling."""
         print(f"[WALLET_MANAGER] Subscribing to balance changes for {self.public_key} via WebSocket: {self.ws_url}...")
         
         # Initial balance fetch
@@ -185,32 +193,68 @@ class WalletManager:
             ],
         }
         
-        while True: # Loop to attempt reconnection if connection drops
+        retry_delay = 5  # Start with 5 seconds delay
+        max_retry_delay = 300  # Max 5 minutes between retries
+        
+        while True:  # Outer loop for reconnection attempts
             try:
-                async with websocket_connect(self.ws_url) as websocket:
+                print(f"[WALLET_MANAGER] Attempting to connect to WebSocket...")
+                async with websocket_connect(
+                    self.ws_url,
+                    ping_interval=30,  # Send ping every 30 seconds
+                    ping_timeout=10,   # Wait 10 seconds for pong response
+                    close_timeout=10,  # Timeout for close handshake
+                    max_queue=2**5,    # Reasonable queue size
+                    max_size=2**20,    # 1MB max message size
+                ) as websocket:
+                    print("[WALLET_MANAGER] WebSocket connected, sending subscription request...")
                     await websocket.send(json.dumps(request))
+                    
                     # Handle the first response which is the subscription ID
-                    first_resp = await websocket.recv()
-                    print(f"[WALLET_MANAGER] Subscription Response: {first_resp}")
+                    try:
+                        first_resp = await asyncio.wait_for(websocket.recv(), timeout=10.0)
+                        print(f"[WALLET_MANAGER] Subscription Response: {first_resp}")
+                        retry_delay = 5  # Reset retry delay on successful connection
+                    except asyncio.TimeoutError:
+                        print("[WALLET_MANAGER] Timeout waiting for subscription response")
+                        await asyncio.sleep(5)
+                        continue
 
                     # Listen for notifications
                     while True:
                         try:
-                            message = await asyncio.wait_for(websocket.recv(), timeout=60.0) # Add timeout to check connection
-                            await self._handle_account_notification(str(message))
+                            message = await asyncio.wait_for(websocket.recv(), timeout=60.0)
+                            if message:  # Only process non-empty messages
+                                await self._handle_account_notification(str(message))
                         except asyncio.TimeoutError:
-                            # print("[WALLET_MANAGER] WebSocket keep-alive check (no message in 60s).")
-                            # You might want to send a ping if supported by RPC, or just continue listening
-                            pass # Or send a ping if your RPC supports it: await websocket.ping()
-                        except Exception as e_inner:
-                            print(f"[WALLET_MANAGER] Inner WebSocket loop error: {e_inner}")
-                            break # Break inner to reconnect
-            except ConnectionRefusedError:
-                print(f"[WALLET_MANAGER] WebSocket connection refused. Retrying in 10 seconds...")
+                            # Send a ping if no message received in timeout period
+                            try:
+                                await websocket.ping()
+                                continue
+                            except Exception as ping_error:
+                                print(f"[WALLET_MANAGER] Ping failed: {ping_error}. Reconnecting...")
+                                break
+                        except websockets.exceptions.ConnectionClosed as e:
+                            print(f"[WALLET_MANAGER] WebSocket connection closed (code: {e.code}, reason: {e.reason or 'No reason'}). Reconnecting...")
+                            if e.code == 4000:  # Bad request
+                                print("[WALLET_MANAGER] Check if the RPC endpoint supports WebSocket subscriptions")
+                            break
+                        except Exception as e:
+                            print(f"[WALLET_MANAGER] WebSocket error: {str(e)[:200]}...")
+                            break
+                
+                # If we get here, connection was lost or error occurred
+                retry_delay = min(retry_delay * 2, max_retry_delay)  # Exponential backoff with max limit
+                print(f"[WALLET_MANAGER] Attempting to reconnect in {retry_delay} seconds...")
+                await asyncio.sleep(retry_delay)
+                
             except Exception as e:
-                print(f"[WALLET_MANAGER] WebSocket connection error: {e}. Retrying in 10 seconds...")
-            
-            await asyncio.sleep(10) # Wait before retrying connection
+                # Catch any other unexpected errors during connection setup
+                retry_delay = min(retry_delay * 2, max_retry_delay)
+                error_msg = str(e)[:200]  # Truncate long error messages
+                print(f"[WALLET_MANAGER] Connection error: {error_msg}... Retrying in {retry_delay} seconds...")
+                print(f"[WALLET_MANAGER] WebSocket URL: {self.ws_url}")
+                await asyncio.sleep(retry_delay) # Wait before retrying connection
 
 
 # --- Example Usage (can be run directly) ---
