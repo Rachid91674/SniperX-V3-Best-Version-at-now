@@ -1,111 +1,301 @@
-2025-07-06 13:15:05 [INFO] [MainThread] test_chrome:891 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
-2025-07-06 13:15:05 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
-2025-07-06 13:15:05 [INFO] [MainThread] test_chrome:141 - Found new token to process: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:05 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
-2025-07-06 13:15:05 [INFO] [MainThread] test_chrome:871 - Submitting 1 new tokens: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:05 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:15:05 [INFO] [BubbleWorker_0] test_chrome:500 - [Thread-35076] --- Starting processing for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk ---
-2025-07-06 13:15:07 [INFO] [BubbleWorker_0] test_chrome:510 - [Thread-35076] Attempt 1/3 for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:09 [INFO] [BubbleWorker_0] test_chrome:521 - [Thread-35076] Page readyState complete for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 1).
-2025-07-06 13:15:11 [INFO] [BubbleWorker_0] test_chrome:529 - [Thread-35076] Initial 'Address List' is visible for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 1).
-2025-07-06 13:15:12 [INFO] [BubbleWorker_0] test_chrome:541 - [Thread-35076] Timestamp: 'a few seconds ago' (Attempt 1).
-2025-07-06 13:15:12 [INFO] [BubbleWorker_0] test_chrome:544 - [Thread-35076] Data is fresh (Attempt 1).
-2025-07-06 13:15:15 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:15:21 [INFO] [BubbleWorker_0] test_chrome:627 - [BUBBLEMAPS] Clicked Magic Nodes for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:25 [ERROR] [BubbleWorker_0] test_chrome:640 - [Thread-35076] CRITICAL: Rank #1 data not found in initial list (Attempt 1).
-2025-07-06 13:15:25 [INFO] [BubbleWorker_0] test_chrome:510 - [Thread-35076] Attempt 2/3 for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:25 [INFO] [BubbleWorker_0] test_chrome:515 - [Thread-35076] Reloading page for attempt 2.
-2025-07-06 13:15:25 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:15:26 [INFO] [BubbleWorker_0] test_chrome:521 - [Thread-35076] Page readyState complete for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 2).
-2025-07-06 13:15:27 [INFO] [BubbleWorker_0] test_chrome:529 - [Thread-35076] Initial 'Address List' is visible for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 2).
-2025-07-06 13:15:29 [INFO] [BubbleWorker_0] test_chrome:541 - [Thread-35076] Timestamp: 'a few seconds ago' (Attempt 2).
-2025-07-06 13:15:29 [INFO] [BubbleWorker_0] test_chrome:544 - [Thread-35076] Data is fresh (Attempt 2).
-2025-07-06 13:15:31 [INFO] [BubbleWorker_0] test_chrome:627 - [BUBBLEMAPS] Clicked Magic Nodes for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:35 [ERROR] [BubbleWorker_0] test_chrome:640 - [Thread-35076] CRITICAL: Rank #1 data not found in initial list (Attempt 2).
-2025-07-06 13:15:35 [INFO] [BubbleWorker_0] test_chrome:510 - [Thread-35076] Attempt 3/3 for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:35 [INFO] [BubbleWorker_0] test_chrome:515 - [Thread-35076] Reloading page for attempt 3.
-2025-07-06 13:15:35 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:15:36 [INFO] [BubbleWorker_0] test_chrome:521 - [Thread-35076] Page readyState complete for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 3).
-2025-07-06 13:15:37 [INFO] [BubbleWorker_0] test_chrome:529 - [Thread-35076] Initial 'Address List' is visible for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 3).
-2025-07-06 13:15:39 [INFO] [BubbleWorker_0] test_chrome:541 - [Thread-35076] Timestamp: 'a few seconds ago' (Attempt 3).
-2025-07-06 13:15:39 [INFO] [BubbleWorker_0] test_chrome:544 - [Thread-35076] Data is fresh (Attempt 3).
-2025-07-06 13:15:41 [INFO] [BubbleWorker_0] test_chrome:627 - [BUBBLEMAPS] Clicked Magic Nodes for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:45 [ERROR] [BubbleWorker_0] test_chrome:640 - [Thread-35076] CRITICAL: Rank #1 data not found in initial list (Attempt 3).
-2025-07-06 13:15:45 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:15:48 [INFO] [BubbleWorker_0] test_chrome:709 - [Thread-35076] WebDriver quit for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk.
-2025-07-06 13:15:55 [ERROR] [MainThread] test_chrome:835 - Bubblemaps FAILED for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk.
-2025-07-06 13:15:55 [INFO] [MainThread] test_chrome:141 - Found new token to process: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:55 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
-2025-07-06 13:15:55 [INFO] [MainThread] test_chrome:871 - Submitting 1 new tokens: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:15:55 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:15:55 [INFO] [BubbleWorker_0] test_chrome:500 - [Thread-35076] --- Starting processing for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk ---
-2025-07-06 13:15:57 [INFO] [BubbleWorker_0] test_chrome:510 - [Thread-35076] Attempt 1/3 for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:16:05 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:16:15 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:16:26 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:16:36 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:16:46 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:16:56 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:06 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:16 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:24 [INFO] [BubbleWorker_0] test_chrome:521 - [Thread-35076] Page readyState complete for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 1).
-2025-07-06 13:17:26 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:27 [INFO] [BubbleWorker_0] test_chrome:529 - [Thread-35076] Initial 'Address List' is visible for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 1).
-2025-07-06 13:17:30 [INFO] [BubbleWorker_0] test_chrome:541 - [Thread-35076] Timestamp: '2 minutes ago' (Attempt 1).
-2025-07-06 13:17:30 [INFO] [BubbleWorker_0] test_chrome:551 - [Thread-35076] Data not fresh. Attempting in-page refresh (Attempt 1).
-2025-07-06 13:17:36 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:45 [WARNING] [BubbleWorker_0] test_chrome:564 - [Thread-35076] Refresh icon (data-testid='RefreshIcon') not found or not clickable for in-page refresh (Attempt 1). Continuing process as per request.
-2025-07-06 13:17:45 [INFO] [BubbleWorker_0] test_chrome:594 - [Thread-35076] Data still not fresh. Attempting full browser refresh (Attempt 1).
-2025-07-06 13:17:46 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:54 [ERROR] [BubbleWorker_0] test_chrome:610 - [Thread-35076] Data NOT fresh after all refresh attempts (Attempt 1). Timestamp: '3 minutes ago'.
-2025-07-06 13:17:54 [ERROR] [BubbleWorker_0] test_chrome:615 - [Thread-35076] CRITICAL: Data not fresh after all checks and refreshes on attempt 1.
-2025-07-06 13:17:54 [INFO] [BubbleWorker_0] test_chrome:510 - [Thread-35076] Attempt 2/3 for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:17:54 [INFO] [BubbleWorker_0] test_chrome:515 - [Thread-35076] Reloading page for attempt 2.
-2025-07-06 13:17:55 [INFO] [BubbleWorker_0] test_chrome:521 - [Thread-35076] Page readyState complete for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 2).
-2025-07-06 13:17:56 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:17:56 [INFO] [BubbleWorker_0] test_chrome:529 - [Thread-35076] Initial 'Address List' is visible for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 2).
-2025-07-06 13:17:58 [INFO] [BubbleWorker_0] test_chrome:541 - [Thread-35076] Timestamp: '3 minutes ago' (Attempt 2).
-2025-07-06 13:17:58 [INFO] [BubbleWorker_0] test_chrome:551 - [Thread-35076] Data not fresh. Attempting in-page refresh (Attempt 2).
-2025-07-06 13:18:06 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:18:14 [WARNING] [BubbleWorker_0] test_chrome:564 - [Thread-35076] Refresh icon (data-testid='RefreshIcon') not found or not clickable for in-page refresh (Attempt 2). Continuing process as per request.
-2025-07-06 13:18:14 [INFO] [BubbleWorker_0] test_chrome:594 - [Thread-35076] Data still not fresh. Attempting full browser refresh (Attempt 2).
-2025-07-06 13:18:16 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:18:21 [ERROR] [BubbleWorker_0] test_chrome:610 - [Thread-35076] Data NOT fresh after all refresh attempts (Attempt 2). Timestamp: '3 minutes ago'.
-2025-07-06 13:18:21 [ERROR] [BubbleWorker_0] test_chrome:615 - [Thread-35076] CRITICAL: Data not fresh after all checks and refreshes on attempt 2.
-2025-07-06 13:18:21 [INFO] [BubbleWorker_0] test_chrome:510 - [Thread-35076] Attempt 3/3 for token: 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk
-2025-07-06 13:18:21 [INFO] [BubbleWorker_0] test_chrome:515 - [Thread-35076] Reloading page for attempt 3.
-2025-07-06 13:18:22 [INFO] [BubbleWorker_0] test_chrome:521 - [Thread-35076] Page readyState complete for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 3).
-2025-07-06 13:18:23 [INFO] [BubbleWorker_0] test_chrome:529 - [Thread-35076] Initial 'Address List' is visible for 6FZ2ZJkDJdSvmktH6kdce75uqL7yz6SBF9FS5BgDbonk (Attempt 3).
-2025-07-06 13:18:25 [INFO] [BubbleWorker_0] test_chrome:541 - [Thread-35076] Timestamp: '3 minutes ago' (Attempt 3).
-2025-07-06 13:18:25 [INFO] [BubbleWorker_0] test_chrome:551 - [Thread-35076] Data not fresh. Attempting in-page refresh (Attempt 3).
-2025-07-06 13:18:26 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:18:36 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:18:40 [WARNING] [BubbleWorker_0] test_chrome:564 - [Thread-35076] Refresh icon (data-testid='RefreshIcon') not found or not clickable for in-page refresh (Attempt 3). Continuing process as per request.
-2025-07-06 13:18:40 [INFO] [BubbleWorker_0] test_chrome:594 - [Thread-35076] Data still not fresh. Attempting full browser refresh (Attempt 3).
-2025-07-06 13:18:46 [INFO] [MainThread] test_chrome:881 - Pool full (1). Waiting...
-2025-07-06 13:18:46 [ERROR] [BubbleWorker_0] test_chrome:612 - [Thread-35076] Full browser refresh failed or data still not fresh (Attempt 3): Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=137.0.7151.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+2025-07-06 14:10:24 [INFO] [MainThread] test_chrome:916 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-06 14:10:24 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-06 14:10:24 [INFO] [MainThread] test_chrome:141 - Found new token to process: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:10:24 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-06 14:10:24 [INFO] [MainThread] test_chrome:896 - Submitting 1 new tokens: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:10:24 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:10:24 [INFO] [BubbleWorker_0] test_chrome:525 - [Thread-9964] --- Starting processing for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN ---
+2025-07-06 14:10:27 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 1/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:10:29 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:10:30 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:10:33 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 1).
+2025-07-06 14:10:33 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 1).
+2025-07-06 14:10:34 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:10:43 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
 Stacktrace:
-	GetHandleVerifier [0x0x7ff7fa9dcda5+78885]
-	GetHandleVerifier [0x0x7ff7fa9dce00+78976]
-	(No symbol) [0x0x7ff7fa799bca]
-	(No symbol) [0x0x7ff7fa7859b5]
-	(No symbol) [0x0x7ff7fa7aa9ca]
-	(No symbol) [0x0x7ff7fa8205e5]
-	(No symbol) [0x0x7ff7fa840b42]
-	(No symbol) [0x0x7ff7fa818963]
-	(No symbol) [0x0x7ff7fa7e16b1]
-	(No symbol) [0x0x7ff7fa7e2443]
-	GetHandleVerifier [0x0x7ff7facb4eed+3061101]
-	GetHandleVerifier [0x0x7ff7facaf33d+3037629]
-	GetHandleVerifier [0x0x7ff7facce592+3165202]
-	GetHandleVerifier [0x0x7ff7fa9f730e+186766]
-	GetHandleVerifier [0x0x7ff7fa9feb3f+217535]
-	GetHandleVerifier [0x0x7ff7fa9e59b4+114740]
-	GetHandleVerifier [0x0x7ff7fa9e5b69+115177]
-	GetHandleVerifier [0x0x7ff7fa9cc368+10728]
+	GetHandleVerifier [0x0x7ff7d76fcda5+78885]
+	GetHandleVerifier [0x0x7ff7d76fce00+78976]
+	(No symbol) [0x0x7ff7d74b9bca]
+	(No symbol) [0x0x7ff7d7510766]
+	(No symbol) [0x0x7ff7d7510a1c]
+	(No symbol) [0x0x7ff7d7564467]
+	(No symbol) [0x0x7ff7d7538bcf]
+	(No symbol) [0x0x7ff7d756122f]
+	(No symbol) [0x0x7ff7d7538963]
+	(No symbol) [0x0x7ff7d75016b1]
+	(No symbol) [0x0x7ff7d7502443]
+	GetHandleVerifier [0x0x7ff7d79d4eed+3061101]
+	GetHandleVerifier [0x0x7ff7d79cf33d+3037629]
+	GetHandleVerifier [0x0x7ff7d79ee592+3165202]
+	GetHandleVerifier [0x0x7ff7d771730e+186766]
+	GetHandleVerifier [0x0x7ff7d771eb3f+217535]
+	GetHandleVerifier [0x0x7ff7d77059b4+114740]
+	GetHandleVerifier [0x0x7ff7d7705b69+115177]
+	GetHandleVerifier [0x0x7ff7d76ec368+10728]
 	BaseThreadInitThunk [0x0x7ffca36ae8d7+23]
 	RtlUserThreadStart [0x0x7ffca493c34c+44]
-.
-2025-07-06 13:18:46 [ERROR] [BubbleWorker_0] test_chrome:615 - [Thread-35076] CRITICAL: Data not fresh after all checks and refreshes on attempt 3.
+
+2025-07-06 14:10:44 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:10:46 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 1).
+2025-07-06 14:10:46 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 2/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:10:46 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 2.
+2025-07-06 14:10:47 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:10:48 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:10:50 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 2).
+2025-07-06 14:10:50 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 2).
+2025-07-06 14:10:52 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:10:54 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:10:56 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 2).
+2025-07-06 14:10:56 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 3/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:10:56 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 3.
+2025-07-06 14:10:57 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:10:58 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:11:01 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 3).
+2025-07-06 14:11:01 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 3).
+2025-07-06 14:11:03 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:11:04 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:11:07 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 3).
+2025-07-06 14:11:09 [INFO] [BubbleWorker_0] test_chrome:734 - [Thread-9964] WebDriver quit for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:11:14 [ERROR] [MainThread] test_chrome:860 - Bubblemaps FAILED for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:11:14 [INFO] [MainThread] test_chrome:141 - Found new token to process: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:11:14 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-06 14:11:14 [INFO] [MainThread] test_chrome:896 - Submitting 1 new tokens: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:11:14 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:11:14 [INFO] [BubbleWorker_0] test_chrome:525 - [Thread-9964] --- Starting processing for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN ---
+2025-07-06 14:11:16 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 1/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:11:18 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:11:19 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:11:21 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a minute ago' (Attempt 1).
+2025-07-06 14:11:21 [INFO] [BubbleWorker_0] test_chrome:576 - [Thread-9964] Data not fresh. Attempting in-page refresh (Attempt 1).
+2025-07-06 14:11:24 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:11:34 [INFO] [BubbleWorker_0] test_chrome:586 - [Thread-9964] Clicked in-page refresh (Attempt 1).
+2025-07-06 14:11:34 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:11:38 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-9964] Data fresh after successful in-page refresh (Attempt 1).
+2025-07-06 14:11:44 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:11:48 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7d76fcda5+78885]
+	GetHandleVerifier [0x0x7ff7d76fce00+78976]
+	(No symbol) [0x0x7ff7d74b9bca]
+	(No symbol) [0x0x7ff7d7510766]
+	(No symbol) [0x0x7ff7d7510a1c]
+	(No symbol) [0x0x7ff7d7564467]
+	(No symbol) [0x0x7ff7d7538bcf]
+	(No symbol) [0x0x7ff7d756122f]
+	(No symbol) [0x0x7ff7d7538963]
+	(No symbol) [0x0x7ff7d75016b1]
+	(No symbol) [0x0x7ff7d7502443]
+	GetHandleVerifier [0x0x7ff7d79d4eed+3061101]
+	GetHandleVerifier [0x0x7ff7d79cf33d+3037629]
+	GetHandleVerifier [0x0x7ff7d79ee592+3165202]
+	GetHandleVerifier [0x0x7ff7d771730e+186766]
+	GetHandleVerifier [0x0x7ff7d771eb3f+217535]
+	GetHandleVerifier [0x0x7ff7d77059b4+114740]
+	GetHandleVerifier [0x0x7ff7d7705b69+115177]
+	GetHandleVerifier [0x0x7ff7d76ec368+10728]
+	BaseThreadInitThunk [0x0x7ffca36ae8d7+23]
+	RtlUserThreadStart [0x0x7ffca493c34c+44]
+
+2025-07-06 14:11:54 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 1).
+2025-07-06 14:11:54 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 2/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:11:54 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 2.
+2025-07-06 14:11:54 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:11:55 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:11:58 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:12:00 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 2).
+2025-07-06 14:12:00 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 2).
+2025-07-06 14:12:04 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:12:10 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7d76fcda5+78885]
+	GetHandleVerifier [0x0x7ff7d76fce00+78976]
+	(No symbol) [0x0x7ff7d74b9bca]
+	(No symbol) [0x0x7ff7d7510766]
+	(No symbol) [0x0x7ff7d7510a1c]
+	(No symbol) [0x0x7ff7d7564467]
+	(No symbol) [0x0x7ff7d7538bcf]
+	(No symbol) [0x0x7ff7d756122f]
+	(No symbol) [0x0x7ff7d7538963]
+	(No symbol) [0x0x7ff7d75016b1]
+	(No symbol) [0x0x7ff7d7502443]
+	GetHandleVerifier [0x0x7ff7d79d4eed+3061101]
+	GetHandleVerifier [0x0x7ff7d79cf33d+3037629]
+	GetHandleVerifier [0x0x7ff7d79ee592+3165202]
+	GetHandleVerifier [0x0x7ff7d771730e+186766]
+	GetHandleVerifier [0x0x7ff7d771eb3f+217535]
+	GetHandleVerifier [0x0x7ff7d77059b4+114740]
+	GetHandleVerifier [0x0x7ff7d7705b69+115177]
+	GetHandleVerifier [0x0x7ff7d76ec368+10728]
+	BaseThreadInitThunk [0x0x7ffca36ae8d7+23]
+	RtlUserThreadStart [0x0x7ffca493c34c+44]
+
+2025-07-06 14:12:14 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:12:16 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 2).
+2025-07-06 14:12:16 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 3/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:12:16 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 3.
+2025-07-06 14:12:17 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:12:19 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:12:22 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a minute ago' (Attempt 3).
+2025-07-06 14:12:22 [INFO] [BubbleWorker_0] test_chrome:576 - [Thread-9964] Data not fresh. Attempting in-page refresh (Attempt 3).
+2025-07-06 14:12:24 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:12:34 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:12:37 [INFO] [BubbleWorker_0] test_chrome:586 - [Thread-9964] Clicked in-page refresh (Attempt 3).
+2025-07-06 14:12:43 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-9964] Data fresh after successful in-page refresh (Attempt 3).
+2025-07-06 14:12:44 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:12:53 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7d76fcda5+78885]
+	GetHandleVerifier [0x0x7ff7d76fce00+78976]
+	(No symbol) [0x0x7ff7d74b9bca]
+	(No symbol) [0x0x7ff7d7510766]
+	(No symbol) [0x0x7ff7d7510a1c]
+	(No symbol) [0x0x7ff7d7564467]
+	(No symbol) [0x0x7ff7d7538bcf]
+	(No symbol) [0x0x7ff7d756122f]
+	(No symbol) [0x0x7ff7d7538963]
+	(No symbol) [0x0x7ff7d75016b1]
+	(No symbol) [0x0x7ff7d7502443]
+	GetHandleVerifier [0x0x7ff7d79d4eed+3061101]
+	GetHandleVerifier [0x0x7ff7d79cf33d+3037629]
+	GetHandleVerifier [0x0x7ff7d79ee592+3165202]
+	GetHandleVerifier [0x0x7ff7d771730e+186766]
+	GetHandleVerifier [0x0x7ff7d771eb3f+217535]
+	GetHandleVerifier [0x0x7ff7d77059b4+114740]
+	GetHandleVerifier [0x0x7ff7d7705b69+115177]
+	GetHandleVerifier [0x0x7ff7d76ec368+10728]
+	BaseThreadInitThunk [0x0x7ffca36ae8d7+23]
+	RtlUserThreadStart [0x0x7ffca493c34c+44]
+
+2025-07-06 14:12:54 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:12:58 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 3).
+2025-07-06 14:13:00 [INFO] [BubbleWorker_0] test_chrome:734 - [Thread-9964] WebDriver quit for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:13:05 [ERROR] [MainThread] test_chrome:860 - Bubblemaps FAILED for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:13:05 [INFO] [MainThread] test_chrome:141 - Found new token to process: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:13:05 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-06 14:13:05 [INFO] [MainThread] test_chrome:896 - Submitting 1 new tokens: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:13:05 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:13:05 [INFO] [BubbleWorker_0] test_chrome:525 - [Thread-9964] --- Starting processing for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN ---
+2025-07-06 14:13:06 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 1/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:13:15 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:13:25 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:13:29 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:13:33 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:13:35 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:13:35 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a minute ago' (Attempt 1).
+2025-07-06 14:13:35 [INFO] [BubbleWorker_0] test_chrome:576 - [Thread-9964] Data not fresh. Attempting in-page refresh (Attempt 1).
+2025-07-06 14:13:42 [INFO] [BubbleWorker_0] test_chrome:586 - [Thread-9964] Clicked in-page refresh (Attempt 1).
+2025-07-06 14:13:45 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:13:48 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-9964] Data fresh after successful in-page refresh (Attempt 1).
+2025-07-06 14:13:51 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:13:55 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:13:57 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 1).
+2025-07-06 14:13:57 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 2/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:13:57 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 2.
+2025-07-06 14:13:58 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:14:00 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:14:02 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 2).
+2025-07-06 14:14:02 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 2).
+2025-07-06 14:14:05 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:14:05 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:14:10 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 2).
+2025-07-06 14:14:10 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 3/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:14:10 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 3.
+2025-07-06 14:14:11 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:14:13 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:14:15 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:14:15 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 3).
+2025-07-06 14:14:15 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 3).
+2025-07-06 14:14:18 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:14:23 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 3).
+2025-07-06 14:14:25 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:14:25 [INFO] [BubbleWorker_0] test_chrome:734 - [Thread-9964] WebDriver quit for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:14:35 [ERROR] [MainThread] test_chrome:860 - Bubblemaps FAILED for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:14:35 [INFO] [MainThread] test_chrome:141 - Found new token to process: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:14:35 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-06 14:14:35 [INFO] [MainThread] test_chrome:896 - Submitting 1 new tokens: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:14:35 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:14:35 [INFO] [BubbleWorker_0] test_chrome:525 - [Thread-9964] --- Starting processing for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN ---
+2025-07-06 14:14:36 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 1/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:14:38 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:14:39 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:14:42 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a minute ago' (Attempt 1).
+2025-07-06 14:14:42 [INFO] [BubbleWorker_0] test_chrome:576 - [Thread-9964] Data not fresh. Attempting in-page refresh (Attempt 1).
+2025-07-06 14:14:45 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:14:47 [INFO] [BubbleWorker_0] test_chrome:586 - [Thread-9964] Clicked in-page refresh (Attempt 1).
+2025-07-06 14:14:51 [WARNING] [BubbleWorker_0] test_chrome:611 - [Thread-9964] Data still not fresh after in-page refresh completed. Timestamp: 'a minute ago' (Attempt 1).
+2025-07-06 14:14:51 [INFO] [BubbleWorker_0] test_chrome:619 - [Thread-9964] Data still not fresh. Attempting full browser refresh (Attempt 1).
+2025-07-06 14:14:55 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:14:58 [INFO] [BubbleWorker_0] test_chrome:633 - [Thread-9964] Data fresh after full browser refresh (Attempt 1).
+2025-07-06 14:15:03 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:05 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:15:06 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 1).
+2025-07-06 14:15:06 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 2/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:06 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 2.
+2025-07-06 14:15:07 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:15:08 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:15:10 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 2).
+2025-07-06 14:15:10 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 2).
+2025-07-06 14:15:12 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:15 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:15:16 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 2).
+2025-07-06 14:15:16 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 3/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:16 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 3.
+2025-07-06 14:15:17 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:15:18 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:15:20 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 3).
+2025-07-06 14:15:20 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 3).
+2025-07-06 14:15:22 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:25 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:15:26 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 3).
+2025-07-06 14:15:29 [INFO] [BubbleWorker_0] test_chrome:734 - [Thread-9964] WebDriver quit for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:15:35 [ERROR] [MainThread] test_chrome:860 - Bubblemaps FAILED for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:15:35 [INFO] [MainThread] test_chrome:141 - Found new token to process: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:35 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-06 14:15:35 [INFO] [MainThread] test_chrome:896 - Submitting 1 new tokens: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:35 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:15:35 [INFO] [BubbleWorker_0] test_chrome:525 - [Thread-9964] --- Starting processing for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN ---
+2025-07-06 14:15:36 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 1/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:15:45 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:15:55 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:15:59 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:16:00 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:16:02 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a minute ago' (Attempt 1).
+2025-07-06 14:16:02 [INFO] [BubbleWorker_0] test_chrome:576 - [Thread-9964] Data not fresh. Attempting in-page refresh (Attempt 1).
+2025-07-06 14:16:03 [INFO] [BubbleWorker_0] test_chrome:586 - [Thread-9964] Clicked in-page refresh (Attempt 1).
+2025-07-06 14:16:05 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:16:08 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-9964] Data fresh after successful in-page refresh (Attempt 1).
+2025-07-06 14:16:15 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:16:19 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:22 [ERROR] [BubbleWorker_0] test_chrome:659 - [Thread-9964] Failed to extract initial address list (Attempt 1).
+2025-07-06 14:16:22 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 2/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:22 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 2.
+2025-07-06 14:16:22 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:16:23 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 2).
+2025-07-06 14:16:25 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:16:25 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 2).
+2025-07-06 14:16:25 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 2).
+2025-07-06 14:16:27 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:32 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 2).
+2025-07-06 14:16:32 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 3/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:32 [INFO] [BubbleWorker_0] test_chrome:540 - [Thread-9964] Reloading page for attempt 3.
+2025-07-06 14:16:32 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:16:33 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 3).
+2025-07-06 14:16:35 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:16:35 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 3).
+2025-07-06 14:16:35 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 3).
+2025-07-06 14:16:37 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:42 [ERROR] [BubbleWorker_0] test_chrome:665 - [Thread-9964] CRITICAL: Rank #1 data not found in initial list (Attempt 3).
+2025-07-06 14:16:44 [INFO] [BubbleWorker_0] test_chrome:734 - [Thread-9964] WebDriver quit for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:16:45 [ERROR] [MainThread] test_chrome:860 - Bubblemaps FAILED for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN.
+2025-07-06 14:16:45 [INFO] [MainThread] test_chrome:141 - Found new token to process: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:45 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-06 14:16:45 [INFO] [MainThread] test_chrome:896 - Submitting 1 new tokens: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:45 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...
+2025-07-06 14:16:45 [INFO] [BubbleWorker_0] test_chrome:525 - [Thread-9964] --- Starting processing for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN ---
+2025-07-06 14:16:46 [INFO] [BubbleWorker_0] test_chrome:535 - [Thread-9964] Attempt 1/3 for token: Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:48 [INFO] [BubbleWorker_0] test_chrome:546 - [Thread-9964] Page readyState complete for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:16:49 [INFO] [BubbleWorker_0] test_chrome:554 - [Thread-9964] Initial 'Address List' is visible for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN (Attempt 1).
+2025-07-06 14:16:52 [INFO] [BubbleWorker_0] test_chrome:566 - [Thread-9964] Timestamp: 'a few seconds ago' (Attempt 1).
+2025-07-06 14:16:52 [INFO] [BubbleWorker_0] test_chrome:569 - [Thread-9964] Data is fresh (Attempt 1).
+2025-07-06 14:16:54 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for Gd8TbG7FwaEZ8oiidRkeKjXhbnt3kHw6PLoekWiatboN
+2025-07-06 14:16:55 [INFO] [MainThread] test_chrome:906 - Pool full (1). Waiting...

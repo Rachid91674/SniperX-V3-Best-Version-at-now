@@ -275,129 +275,153 @@ def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> t
     processed_cluster_data = {} # Stores {cluster_muibox_key: supply_percentage_str}
     augmented_initial_data = initial_data_list[:] # Create a copy to modify
 
+    # This function is called AFTER "Magic Nodes" button is clicked.
+    # We assume initial_data_list now contains the "Magic Nodes" or linked wallets
+    # as they appear in the side panel list.
+
     for item_index, item_data in enumerate(augmented_initial_data):
-        # Ensure item_data is a dictionary and has the required keys
-        if not isinstance(item_data, dict) or not all(k in item_data for k in ['Rank', 'Address', 'MuiBox_Class_String']):
+        if not isinstance(item_data, dict) or not all(k in item_data for k in ['Rank', 'Address', 'MuiBox_Class_String', 'Individual_Percentage']):
             logging.warning(f"[{thread_id_str}] Skipping item at index {item_index} due to missing keys or incorrect type: {item_data}")
             continue
 
         rank_to_find_str = item_data['Rank']
         address_to_find = item_data['Address']
         current_muibox_class_string = item_data.get('MuiBox_Class_String', "MuiBox-Not-Found")
+        # cluster_id_for_log can be address or rank, using address for more specific logging
+        cluster_id_for_log = address_to_find 
+
         is_rank_one = (rank_to_find_str == "1")
-
-        # Determine if the current list entry visually represents an individual wallet.
-        # Any MuiBox class string that differs from the exact
-        # "MuiBox-root css-141d73e" should be treated as a cluster.
         normalized_class = " ".join(current_muibox_class_string.split())
-        individual_class = f"MuiBox-root {INDIVIDUAL_ADDRESS_MUIBOX_CLASS}"
-        is_individual_wallet_visual = normalized_class == individual_class
+        individual_class_check = f"MuiBox-root {INDIVIDUAL_ADDRESS_MUIBOX_CLASS}"
+        is_visually_individual_in_list = normalized_class == individual_class_check
 
-        if is_rank_one and is_individual_wallet_visual:
-            logging.info(f"[{thread_id_str}] Rank #1 ({address_to_find}) is visually individual. Treating its own holdings as its cluster data.")
+        # Handle Rank #1: if visually individual, its own percentage is its cluster data.
+        if is_rank_one and is_visually_individual_in_list:
+            logging.info(f"[{thread_id_str}] Magic Nodes: Rank #1 ({address_to_find}) is visually individual. Treating its own holdings as its cluster data.")
             individual_perc_str = item_data.get('Individual_Percentage', '0')
             item_data['Cluster_Supply_Percentage'] = individual_perc_str
             processed_cluster_data[RANK1_AS_CLUSTER_KEY] = individual_perc_str
+            # Log Rank 1 special handling as a "found" cluster
+            try:
+                perc_float_for_log = float(individual_perc_str)
+                logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log} (Rank 1 Individual), found {perc_float_for_log:.2f}%")
+            except ValueError:
+                 logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log} (Rank 1 Individual), found {individual_perc_str}%")
             continue
 
-        if is_individual_wallet_visual: # For ranks > 1 that are individual
-            item_data['Cluster_Supply_Percentage'] = '0'
-            continue
+        # For other items (or Rank 1 not visually individual) in Magic Nodes view:
+        # Use MuiBox class string to group items that might belong to the same underlying cluster visually.
+        # If Magic Nodes mode makes all MuiBox strings unique, this still works fine (each becomes its own key).
+        # If "MuiBox-Not-Found" or an empty string, use a default key or the address itself to ensure uniqueness if needed.
+        if not current_muibox_class_string or current_muibox_class_string == "MuiBox-Not-Found":
+            # Fallback key if MuiBox class is missing/invalid in Magic Nodes context for an item
+            # Using address ensures we try to process it if it's not Rank 1 individual.
+            normalized_muibox_key = f"MagicNodeAddress_{address_to_find}"
+        else:
+            normalized_muibox_key = " ".join(sorted(current_muibox_class_string.split()))
 
-        # For items part of a visual cluster (colored MuiBox)
-        normalized_muibox_key = " ".join(sorted(current_muibox_class_string.split()))
         if normalized_muibox_key in processed_cluster_data:
             item_data['Cluster_Supply_Percentage'] = processed_cluster_data[normalized_muibox_key]
+            logging.debug(f"[{thread_id_str}] Magic Node item Rank #{rank_to_find_str} ({address_to_find}) belongs to already processed visual group '{normalized_muibox_key}'. Skipping click.")
             continue
 
-        logging.info(f"[{thread_id_str}] Rank #{rank_to_find_str} ({address_to_find}) is part of a NEW visual cluster ('{normalized_muibox_key}'). Finding & Clicking.")
+        logging.info(f"[{thread_id_str}] Magic Node item: Rank #{rank_to_find_str} ({address_to_find}), MuiBoxKey: '{normalized_muibox_key}'. Attempting click to find cluster supply.")
+        
         target_button_element = None
         found_item_for_processing = False
-
-        # Attempt to find the specific item in the scrollable list
-        # This loop tries to scroll and find the item if not immediately visible
         for scroll_attempt in range(7): # Max 7 scroll attempts
-            # Re-fetch visible buttons in each attempt as DOM might change after scroll or interaction
             list_item_buttons_xpath = "//div[@data-testid='virtuoso-item-list']//div[contains(@class, 'MuiListItemButton-root')]"
             visible_buttons = driver.find_elements(By.XPATH, list_item_buttons_xpath)
-
             for button_element_candidate in visible_buttons:
                 try:
-                    # Extract rank and address from the candidate button
                     rank_text_candidate = button_element_candidate.find_element(By.XPATH, ".//span[starts-with(normalize-space(), '#')]").text.strip().replace('#', '')
                     addr_text_candidate = button_element_candidate.find_element(By.XPATH, ".//p[@aria-label]").text.strip()
-
                     if rank_text_candidate == rank_to_find_str and addr_text_candidate == address_to_find:
                         target_button_element = button_element_candidate
                         found_item_for_processing = True
                         break
-                except (NoSuchElementException, StaleElementReferenceException):
-                    # Element might be stale or parts missing, common in dynamic lists, try next candidate
-                    continue
-
-            if found_item_for_processing:
-                break # Exit scroll attempts loop if item found
-
-            # If not found, scroll down and try again
-            if scroll_attempt < 6: # Don't scroll on the last attempt
+                except (NoSuchElementException, StaleElementReferenceException): continue
+            if found_item_for_processing: break
+            if scroll_attempt < 6:
                 driver.execute_script("arguments[0].scrollTop += arguments[0].clientHeight * 0.75;", scroller)
-                time.sleep(1.5) # Wait for scroll and potential new items to load
+                time.sleep(1.5)
 
         if target_button_element:
             try:
-                # Scroll the found item into center view for reliable clicking
                 driver.execute_script("arguments[0].scrollIntoView({block:'center', behavior: 'smooth'});", target_button_element)
-                time.sleep(0.7) # Wait for scroll to complete
+                time.sleep(0.7)
 
-                click_element_with_fallback(driver, target_button_element, timeout=10, max_attempts=3, log_prefix=f"[{thread_id_str}] Cluster Item")
-                logging.info(f"[{thread_id_str}] Clicked on cluster item: Rank #{rank_to_find_str} ({address_to_find}).")
+                clicked_successfully = click_element_with_fallback(driver, target_button_element, timeout=10, max_attempts=3, log_prefix=f"[{thread_id_str}] Magic Node Item")
+                
+                extracted_supply_value = 'N/A' # Default
+                
+                if clicked_successfully:
+                    logging.info(f"[{thread_id_str}] Successfully clicked Magic Node list item: Rank #{rank_to_find_str} ({address_to_find}). Waiting 1s.")
+                    time.sleep(1) # Explicit 1-second wait after click, before extraction
 
-                extracted_supply_value = 'N/A'
-                try:
-                    # XPath for the "Cluster Supply: X.XX%" text, assuming it appears after click
-                    supply_el_xpath = "//p[starts-with(normalize-space(),'Cluster Supply:')][1]"
-                    supply_el = WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.XPATH,supply_el_xpath)))
+                    try:
+                        # XPath for the "Cluster Supply: X.XX%" text. This is critical.
+                        # It might change in Magic Nodes mode.
+                        supply_el_xpath = "//p[starts-with(normalize-space(),'Cluster Supply:')][1]"
+                        supply_el = WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.XPATH,supply_el_xpath)))
+                        
+                        raw_supply_text = supply_el.text.strip()
+                        match = re.search(r"Cluster Supply:\s*([\d\.]+)\s*%", raw_supply_text)
+                        if match:
+                            extracted_supply_value = match.group(1)
+                            try:
+                                perc_float_for_log = float(extracted_supply_value)
+                                logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found {perc_float_for_log:.2f}%")
+                            except ValueError:
+                                logging.warning(f"[{thread_id_str}] Could not convert supply '{extracted_supply_value}' to float for logging for {cluster_id_for_log}.")
+                                logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found {extracted_supply_value}%") # Log with string
+                        else:
+                            extracted_supply_value = 'Error:Format'
+                            logging.warning(f"[{thread_id_str}] Could not parse cluster supply from text: '{raw_supply_text}' for Rank {rank_to_find_str} ({address_to_find})")
+                            logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found Format Error (Text: {raw_supply_text})")
 
-                    match = re.search(r"Cluster Supply:\s*([\d\.]+)\s*%", supply_el.text.strip())
-                    if match:
-                        extracted_supply_value = match.group(1)
-                        logging.info(f"[{thread_id_str}] Extracted Cluster Supply for '{normalized_muibox_key}': {extracted_supply_value}%")
-                    else:
-                        extracted_supply_value = 'Error:Format'
-                        logging.warning(f"[{thread_id_str}] Could not parse cluster supply from text: '{supply_el.text.strip()}' for Rank {rank_to_find_str}")
-                except TimeoutException:
-                    extracted_supply_value = 'N/A:TimeoutOnSupply'
-                    logging.warning(f"[{thread_id_str}] Timeout waiting for cluster supply element for '{normalized_muibox_key}' (Rank {rank_to_find_str}).")
-                except Exception as e_supply_extract:
-                    extracted_supply_value = f'N/A:ErrorOnSupply ({type(e_supply_extract).__name__})'
-                    logging.warning(f"[{thread_id_str}] Error extracting cluster supply for '{normalized_muibox_key}' (Rank {rank_to_find_str}): {e_supply_extract}")
+
+                    except TimeoutException:
+                        extracted_supply_value = 'N/A:TimeoutOnSupply'
+                        logging.warning(f"[{thread_id_str}] Timeout waiting for cluster supply element for '{normalized_muibox_key}' (Rank {rank_to_find_str}, Addr {address_to_find}).")
+                        logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (Timeout)")
+                    except Exception as e_supply_extract:
+                        extracted_supply_value = f'N/A:ErrorOnSupply ({type(e_supply_extract).__name__})'
+                        logging.warning(f"[{thread_id_str}] Error extracting cluster supply for '{normalized_muibox_key}' (Rank {rank_to_find_str}, Addr {address_to_find}): {e_supply_extract}")
+                        logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (Extraction Error)")
+                else: # click_element_with_fallback failed
+                    logging.warning(f"[{thread_id_str}] Failed to click Magic Node list item: Rank #{rank_to_find_str} ({address_to_find}).")
+                    extracted_supply_value = 'Error:ClickFailedOnNode'
+                    # Log failure to click as per requirements
+                    logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (Click Failed)")
+
 
                 item_data['Cluster_Supply_Percentage'] = extracted_supply_value
                 processed_cluster_data[normalized_muibox_key] = extracted_supply_value
-
-                # After processing a cluster, the page state needs to be suitable for the next iteration.
-                # Bubblemaps might automatically close the cluster detail view, or it might overlay.
-                # If it overlays and needs explicit closing, a click on a 'close' button for the cluster detail
-                # would be needed here. For now, we assume the main list is still accessible for the next item.
-                # A short pause can help if the UI is transitioning.
-                time.sleep(1) # Small pause for UI to settle after cluster interaction
+                time.sleep(0.5) # Small pause for UI to settle, original code had time.sleep(1) here
 
             except StaleElementReferenceException:
-                logging.warning(f"[{thread_id_str}] StaleElementReferenceException when trying to click or process cluster for Rank #{rank_to_find_str}. Item might have changed.")
+                logging.warning(f"[{thread_id_str}] StaleElementReferenceException processing Magic Node Rank #{rank_to_find_str}. Item might have changed.")
                 item_data['Cluster_Supply_Percentage'] = 'Error:StaleElementOnClick'
                 processed_cluster_data[normalized_muibox_key] = 'Error:StaleElementOnClick'
+                logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (Stale Element)")
             except TimeoutException:
-                logging.warning(f"[{thread_id_str}] TimeoutException when trying to click cluster for Rank #{rank_to_find_str}. Element not clickable or disappeared.")
+                logging.warning(f"[{thread_id_str}] TimeoutException processing Magic Node Rank #{rank_to_find_str}. Element not clickable or disappeared.")
                 item_data['Cluster_Supply_Percentage'] = 'Error:TimeoutOnClick'
                 processed_cluster_data[normalized_muibox_key] = 'Error:TimeoutOnClick'
+                logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (Timeout On Click)")
             except Exception as e_click_general:
-                logging.error(f"[{thread_id_str}] General error clicking/processing cluster for Rank #{rank_to_find_str} ({address_to_find}): {e_click_general}", exc_info=True)
-                item_data['Cluster_Supply_Percentage'] = f'Error:ClickFailed ({type(e_click_general).__name__})'
-                processed_cluster_data[normalized_muibox_key] = f'Error:ClickFailed ({type(e_click_general).__name__})'
-        else:
-            logging.warning(f"[{thread_id_str}] Could not find item on page for Rank #{rank_to_find_str} ({address_to_find}) to click for cluster data after scroll attempts.")
+                logging.error(f"[{thread_id_str}] General error processing Magic Node Rank #{rank_to_find_str} ({address_to_find}): {e_click_general}", exc_info=True)
+                error_type_name = type(e_click_general).__name__
+                item_data['Cluster_Supply_Percentage'] = f'Error:ProcessingFailed ({error_type_name})'
+                processed_cluster_data[normalized_muibox_key] = f'Error:ProcessingFailed ({error_type_name})'
+                logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (General Error: {error_type_name})")
+        else: # target_button_element not found
+            logging.warning(f"[{thread_id_str}] Could not find Magic Node item on page for Rank #{rank_to_find_str} ({address_to_find}) after scroll attempts.")
             item_data['Cluster_Supply_Percentage'] = 'Error:ItemNotFoundOnPage'
-            # Not adding to processed_cluster_data as we couldn't get its MuiBox key reliably if item not found
+            # Do not add to processed_cluster_data if item itself not found, as MuiBox key might be unreliable
+            # Log this outcome as per requirements
+            logging.info(f"[CLUSTER] Clicked linked wallet: {cluster_id_for_log}, found N/A (Item Not Found In List)")
 
     return augmented_initial_data, processed_cluster_data
 
@@ -446,7 +470,8 @@ def save_cluster_summary_data(token_address: str, processed_cluster_data: dict):
 
         for cluster_key, perc_str_val in processed_cluster_data.items():
             try:
-                if isinstance(perc_str_val, str) and not any(err_indicator in perc_str_val for err_indicator in ["N/A", "Error", "Pending", "Found"]):
+                # "Found" removed from err_indicator list as it's not an error marker in perc_str_val
+                if isinstance(perc_str_val, str) and not any(err_indicator in perc_str_val for err_indicator in ["N/A", "Error", "Pending"]):
                     current_perc_float = float(perc_str_val)
                     global_sum_float += current_perc_float
                     # For "Individual_Cluster_Percentages", show the type of cluster
