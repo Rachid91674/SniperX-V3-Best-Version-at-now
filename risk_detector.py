@@ -10,9 +10,9 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
 # --- Configuration ---
-HIGH_CLUSTER_THRESHOLD_PERCENT = 10.0 
-DUMP_RISK_THRESHOLD_LP_VS_CLUSTER = 25.0 
-PRICE_IMPACT_THRESHOLD_CLUSTER_SELL = 30.0 
+HIGH_CLUSTER_THRESHOLD_PERCENT = 45.0 
+DUMP_RISK_THRESHOLD_LP_VS_CLUSTER = 100.6 
+PRICE_IMPACT_THRESHOLD_CLUSTER_SELL = 96.0 
 TOTAL_SUPPLY = 1_000_000_000 
 DEXSCREENER_API_ENDPOINT_TEMPLATE = "https://api.dexscreener.com/v1/dex/tokens/{token_address}" 
 REQUESTS_TIMEOUT = 15 
