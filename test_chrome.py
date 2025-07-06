@@ -427,6 +427,19 @@ def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> t
 
 # --- END MODIFIED FUNCTION ---
 
+def collect_rank_cluster_percentages(augmented_address_data: list) -> dict:
+    """Create a mapping of Rank -> cluster percentage from the augmented data."""
+    rank_map: OrderedDict[str, str] = OrderedDict()
+    for entry in augmented_address_data:
+        rank = entry.get("Rank")
+        if not rank:
+            continue
+        percent_val = entry.get("Cluster_Supply_Percentage", "N/A")
+        rank_key = f"Rank #{rank}"
+        logging.info(f"Cluster Rank {rank_key} → {percent_val}%")
+        rank_map[rank_key] = percent_val
+    return rank_map
+
 def save_address_data_txt(token_address, augmented_address_data, directory):
     os.makedirs(directory, exist_ok=True)
     filepath = os.path.join(directory, f"bubblemaps_data_{token_address}.txt")
@@ -470,14 +483,18 @@ def save_cluster_summary_data(token_address: str, processed_cluster_data: dict):
 
         for cluster_key, perc_str_val in processed_cluster_data.items():
             try:
-                # "Found" removed from err_indicator list as it's not an error marker in perc_str_val
-                if isinstance(perc_str_val, str) and not any(err_indicator in perc_str_val for err_indicator in ["N/A", "Error", "Pending"]):
-                    current_perc_float = float(perc_str_val)
+                if isinstance(perc_str_val, str):
+                    perc_clean = perc_str_val.replace('%', '')
+                else:
+                    perc_clean = str(perc_str_val)
+                if not any(err_indicator in perc_clean for err_indicator in ["N/A", "Error", "Pending"]):
+                    current_perc_float = float(perc_clean)
                     global_sum_float += current_perc_float
-                    # For "Individual_Cluster_Percentages", show the type of cluster
-                    if cluster_key == RANK1_AS_CLUSTER_KEY:
-                        valid_percentages_list.append(f"Rank#1_Direct:{current_perc_float:.2f}%")
-                    else: # It's a visual cluster based on MuiBox class
+                    if cluster_key == RANK1_AS_CLUSTER_KEY or cluster_key.startswith("Rank #1"):
+                        valid_percentages_list.append(f"Rank#1:{current_perc_float:.2f}%")
+                    elif str(cluster_key).startswith("Rank #"):
+                        valid_percentages_list.append(f"{cluster_key}:{current_perc_float:.2f}%")
+                    else:
                         valid_percentages_list.append(f"VisualCluster:{current_perc_float:.2f}%")
             except ValueError:
                 logging.warning(f"[{threading.get_ident()}] ValueError converting cluster supply '{perc_str_val}' for {token_address}, key '{cluster_key}'.")
@@ -669,9 +686,8 @@ def process_single_token_threaded(token_address_with_config: tuple):
 
                 # 4. Cluster Data Extraction (Presence of clusters is optional, but function should not error)
                 logging.info(f"[{thread_id_str}] Attempting to click clusters and extract supply data (Attempt {attempt + 1}).")
-                aug_data, clusters_info = click_clusters_and_extract_supply_data(thread_driver, initial_data)
-                # clusters_info being empty is acceptable as per user comment.
-                # aug_data containing data is a good sign.
+                aug_data, _ = click_clusters_and_extract_supply_data(thread_driver, initial_data)
+                # aug_data now contains cluster supply values for each rank
                 if not aug_data and initial_data: # If we had initial data but got no augmented data, it's a bit suspicious but not a hard fail for retry unless an exception occurred.
                     logging.warning(f"[{thread_id_str}] No augmented data from click_clusters_and_extract_supply_data, but initial data existed (Attempt {attempt + 1}).")
                 elif not initial_data and not aug_data:
@@ -681,11 +697,9 @@ def process_single_token_threaded(token_address_with_config: tuple):
 
                 # If all checks passed and critical data extracted:
                 save_address_data_txt(token_address, aug_data, EXTRACTED_DATA_DIR)
-                if isinstance(clusters_info, dict):
-                    with CLUSTER_SUMMARY_LOCK:
-                        save_cluster_summary_data(token_address, clusters_info)
-                else:
-                    logging.warning(f"[{thread_id_str}] clusters_info was not a dict, type: {type(clusters_info)}. Skipping summary save. (Attempt {attempt + 1})")
+                rank_cluster_map = collect_rank_cluster_percentages(aug_data)
+                with CLUSTER_SUMMARY_LOCK:
+                    save_cluster_summary_data(token_address, rank_cluster_map)
 
                 logging.info(f"[{thread_id_str}] Successfully processed and saved data for {token_address} on attempt {attempt + 1}.")
                 attempt_successful = True
