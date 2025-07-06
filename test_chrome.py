@@ -616,39 +616,17 @@ def process_single_token_threaded(token_address_with_config: tuple):
                     if attempt < MAX_BUBBLEMAPS_RETRIES - 1: continue
                     else: return token_address, False
 
-                # 2. "Show Contract" Interaction
-                show_contract_successful = False
+
+                # 2. "Magic Nodes" Interaction (replaces "Show Contract/Exchanges")
                 try:
-                    cb_id = "contractVisibilityCheckbox"
-                    visibility_checkbox_span_xpath = f"//input[@id='{cb_id}']/ancestor::span[contains(@class,'MuiCheckbox-root') or contains(@class,'MuiSwitch-root')][1]"
-                    clickable_element_for_visibility = WebDriverWait(thread_driver, 10).until(EC.presence_of_element_located((By.XPATH, visibility_checkbox_span_xpath)))
-
-                    checkbox_input_element = clickable_element_for_visibility.find_element(By.XPATH, f".//input[@id='{cb_id}']")
-                    is_checked_initially = checkbox_input_element.get_attribute('aria-checked') == 'true' or checkbox_input_element.is_selected()
-
-                    if not is_checked_initially:
-                        logging.info(f"[{thread_id_str}] 'Show Contract' not checked. Clicking (Attempt {attempt + 1}).")
-                        thread_driver.execute_script("arguments[0].scrollIntoView({block:'center'});", clickable_element_for_visibility)
-                        time.sleep(0.5)
-                        click_element_with_fallback(thread_driver, clickable_element_for_visibility, timeout=5, max_attempts=3, log_prefix=f"[{thread_id_str}] Show Contract")
-                        time.sleep(random.uniform(2,3)) # Wait for UI update
-                        # Re-check state
-                        checkbox_input_element = WebDriverWait(thread_driver, 5).until(EC.presence_of_element_located((By.ID, cb_id)))
-                        if checkbox_input_element.is_selected() or checkbox_input_element.get_attribute('aria-checked') == 'true':
-                            show_contract_successful = True
-                            logging.info(f"[{thread_id_str}] 'Show Contract' successfully checked (Attempt {attempt + 1}).")
-                        else:
-                            logging.warning(f"[{thread_id_str}] 'Show Contract' click attempted but not selected (Attempt {attempt + 1}).")
-                    else:
-                        show_contract_successful = True
-                        logging.info(f"[{thread_id_str}] 'Show Contract' already checked (Attempt {attempt + 1}).")
-                except Exception as e_vis:
-                    logging.warning(f"[{thread_id_str}] 'Show Contract' interaction failed (Attempt {attempt + 1}): {e_vis}.")
-
-                if not show_contract_successful:
-                    logging.error(f"[{thread_id_str}] CRITICAL: 'Show Contract' interaction failed on attempt {attempt + 1}.")
-                    if attempt < MAX_BUBBLEMAPS_RETRIES - 1: continue
-                    else: return token_address, False
+                    magic_nodes_button = WebDriverWait(thread_driver, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Magic Nodes')]"))
+                    )
+                    click_element_with_fallback(thread_driver, magic_nodes_button, timeout=5, max_attempts=2, log_prefix="[BUBBLEMAPS] Magic Nodes")
+                    time.sleep(2)
+                    logging.info(f"[BUBBLEMAPS] Clicked Magic Nodes for {token_address}")
+                except Exception as e:
+                    logging.warning(f"[BUBBLEMAPS] Magic Nodes button not found or not clickable: {e}")
 
                 # 3. Initial Data Extraction & Rank 01 Check
                 initial_data = extract_initial_address_list_data(thread_driver)
