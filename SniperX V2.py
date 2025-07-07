@@ -5,7 +5,6 @@ import requests
 import asyncio
 import aiohttp
 import datetime # Added for marker file timestamp
-import dateparser
 import csv      # Added for CSV writing
 import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -89,7 +88,7 @@ def get_trending_tokens():
             "X-API-Key": key,
         }
         try:
-            resp = requests.get(url, headers=headers, timeout=20)
+            resp = requests.get(url, headers=headers, timeout=60)
             resp.raise_for_status()
             tokens = resp.json()
             if isinstance(tokens, list):

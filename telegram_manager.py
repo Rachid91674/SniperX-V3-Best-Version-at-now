@@ -10,9 +10,10 @@ import json
 from decimal import Decimal
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext, CallbackQueryHandler
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext, CallbackQueryHandler, JobQueue
+import pytz
 import time
-from datetime import datetime
+import datetime
 
 # Try loading .env first, if not found try sniperx_config.env or env.txt
 if os.path.exists('.env'):
@@ -44,7 +45,7 @@ def setup_logging():
     # Create handlers
     console_handler = logging.StreamHandler()
     file_handler = logging.FileHandler(
-        os.path.join(logs_dir, f'telegram_bot_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log'),
+        os.path.join(logs_dir, f'telegram_bot_{datetime.datetime.now(pytz.UTC).strftime("%Y%m%d_%H%M%S")}.log'),
         encoding='utf-8'
     )
     
@@ -398,7 +399,7 @@ async def button_callback(update: Update, context: CallbackContext) -> None:
                                 balance_text = "Wallet manager is starting up. Please wait a moment and try again."
                                 logger.info(balance_text)
                             else:
-                                last_update = datetime.fromtimestamp(current_balance["timestamp"]).strftime("%H:%M:%S")
+                                last_update = datetime.fromtimestamp(current_balance["timestamp"], pytz.UTC).strftime("%H:%M:%S")
                                 balance_text = f"Current Balance:\nSOL: {current_balance['sol']:.6f}\nUSD: ${current_balance['usd']:.2f}\n\nLast Update: {last_update}"
                                 logger.info("Balance retrieved successfully")
                     except Exception as e:
@@ -413,7 +414,7 @@ async def button_callback(update: Update, context: CallbackContext) -> None:
                         balance_text = "Waiting for wallet balance update...\nPlease try again in a few seconds."
                         logger.info(balance_text)
                     else:
-                        last_update = datetime.fromtimestamp(current_balance["timestamp"]).strftime("%H:%M:%S")
+                        last_update = datetime.fromtimestamp(current_balance["timestamp"], pytz.UTC).strftime("%H:%M:%S")
                         balance_text = f"Current Balance:\nSOL: {current_balance['sol']:.6f}\nUSD: ${current_balance['usd']:.2f}\n\nLast Update: {last_update}"
                         logger.info("Balance retrieved successfully")
             except Exception as e:
@@ -423,7 +424,7 @@ async def button_callback(update: Update, context: CallbackContext) -> None:
                 if current_balance["sol"] == Decimal("0"):
                     balance_text = "Waiting for wallet balance update...\nPlease try again in a few seconds."
                 else:
-                    last_update = datetime.fromtimestamp(current_balance["timestamp"]).strftime("%H:%M:%S")
+                    last_update = datetime.fromtimestamp(current_balance["timestamp"], pytz.UTC).strftime("%H:%M:%S")
                     balance_text = f"Current Balance:\nSOL: {current_balance['sol']:.6f}\nUSD: ${current_balance['usd']:.2f}\n\nLast Update: {last_update}"
             
             # Always try to edit the existing message first
@@ -482,7 +483,8 @@ def main_telegram_bot() -> None:
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-    application = Application.builder().token(TELEGRAM_TOKEN).build()
+    job_queue = JobQueue()
+    application = Application.builder().token(TELEGRAM_TOKEN).job_queue(job_queue).build()
 
     # Command handlers
     application.add_handler(CommandHandler("start", start_command)) # Start SniperX

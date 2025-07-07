@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: pytest-trio
+Version: 0.8.0
+Summary: Pytest plugin for trio
+Home-page: https://github.com/python-trio/pytest-trio
+Author: Emmanuel Leblond
+Author-email: emmanuel.leblond@gmail.com
+License: MIT OR Apache-2.0
+Keywords: async,pytest,testing,trio
+Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: Software Development :: Testing
+Classifier: Framework :: Hypothesis
+Classifier: Framework :: Pytest
+Classifier: Framework :: Trio
+Requires-Python: >=3.7
+License-File: LICENSE
+License-File: LICENSE.APACHE2
+License-File: LICENSE.MIT
+Requires-Dist: trio (>=0.22.0)
+Requires-Dist: outcome (>=1.1.0)
+Requires-Dist: pytest (>=7.2.0)
+
+pytest-trio
+===========
+
+.. image:: https://img.shields.io/badge/chat-join%20now-blue.svg
+   :target: https://gitter.im/python-trio/general
+   :alt: Join chatroom
+
+.. image:: https://img.shields.io/badge/docs-read%20now-blue.svg
+   :target: https://pytest-trio.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+.. image:: https://img.shields.io/pypi/v/pytest-trio.svg
+   :target: https://pypi.org/project/pytest-trio
+   :alt: Latest PyPi version
+
+.. image:: https://github.com/python-trio/pytest-trio/workflows/CI/badge.svg?branch=master
+   :target: https://github.com/python-trio/pytest-trio/actions
+   :alt: Automated test status
+
+.. image:: https://codecov.io/gh/python-trio/pytest-trio/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/python-trio/pytest-trio
+   :alt: Test coverage
+
+This is a pytest plugin to help you test projects that use `Trio
+<https://trio.readthedocs.io/>`__, a friendly library for concurrency
+and async I/O in Python. For an overview of features, see our `manual
+<https://pytest-trio.readthedocs.io>`__, or jump straight to the
+`quickstart guide
+<https://pytest-trio.readthedocs.io/en/latest/quickstart.html>`__.
+
+
+Vital statistics
+----------------
+
+**Documentation:** https://pytest-trio.readthedocs.io
+
+**Bug tracker and source code:**
+https://github.com/python-trio/pytest-trio
+
+**License:** MIT or Apache 2, your choice.
+
+**Code of conduct:** Contributors are requested to follow our `code of
+conduct
+<https://github.com/python-trio/pytest-trio/blob/master/CODE_OF_CONDUCT.md>`__
+in all project spaces.
