@@ -289,7 +289,20 @@ def run_full_risk_analysis():
         else:
             risk_warnings.append("DexScreenerDataN/A")
 
-        output_row["Risk_Warning_Details"] = "; ".join(risk_warnings) if risk_warnings else "None"
+        if risk_warnings:
+            output_row["Risk_Warning_Details"] = "; ".join(risk_warnings)
+        else:
+            # Show the conditions that made it low risk
+            conditions = []
+            if cluster_percent_supply_val < HIGH_CLUSTER_THRESHOLD_PERCENT:
+                conditions.append(f"Cluster% < {HIGH_CLUSTER_THRESHOLD_PERCENT}%")
+            if 'Dump_Risk_LP_vs_Cluster_Ratio' in output_row and output_row['Dump_Risk_LP_vs_Cluster_Ratio'] != 'N/A':
+                if float(output_row['Dump_Risk_LP_vs_Cluster_Ratio']) < DUMP_RISK_THRESHOLD_LP_VS_CLUSTER:
+                    conditions.append(f"DumpRisk < {DUMP_RISK_THRESHOLD_LP_VS_CLUSTER}x")
+            if 'Price_Impact_Cluster_Sell_Percent' in output_row and output_row['Price_Impact_Cluster_Sell_Percent'] != 'N/A':
+                if float(output_row['Price_Impact_Cluster_Sell_Percent']) < PRICE_IMPACT_THRESHOLD_CLUSTER_SELL:
+                    conditions.append(f"PriceImpact < {PRICE_IMPACT_THRESHOLD_CLUSTER_SELL}%")
+            output_row["Risk_Warning_Details"] = "Low Risk: " + "; ".join(conditions) if conditions else "No conditions met"
         results_to_write.append(output_row)
 
     if results_to_write:
