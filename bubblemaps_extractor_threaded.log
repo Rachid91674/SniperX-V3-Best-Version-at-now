@@ -1,122 +1,31 @@
-2025-07-08 22:19:36 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
-2025-07-08 22:19:36 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
-2025-07-08 22:19:36 [INFO] [MainThread] test_chrome:141 - Found new token to process: 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk
-2025-07-08 22:19:36 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
-2025-07-08 22:19:36 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk
-2025-07-08 22:19:36 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-11920] --- Starting processing for token: 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk ---
-2025-07-08 22:19:39 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-11920] Attempt 1/3 for token: 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk
-2025-07-08 22:19:45 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-11920] Page readyState complete for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk (Attempt 1).
-2025-07-08 22:19:47 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-11920] 'Address List' is visible for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk.
-2025-07-08 22:20:05 [WARNING] [BubbleWorker_0] test_chrome:623 - [Thread-11920] Data not immediately fresh. Attempting in-page refresh.
-2025-07-08 22:20:13 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-11920] Data fresh after in-page refresh.
-2025-07-08 22:20:18 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk
-2025-07-08 22:20:29 [INFO] [BubbleWorker_0] test_chrome:335 - [11920] Extracted 10 initial holder ranks.
-2025-07-08 22:20:29 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-11920] Attempting to click clusters and extract supply data.
-2025-07-08 22:20:29 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-11920] Starting cluster click processing for 10 items.
-2025-07-08 22:20:32 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250708_222029.png
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #2 - 3cj6RN...7RnV
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #3 - hw2yrz...hmqe
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #4 - HMLftq...jtcW
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #5 - EWpJf4...vnX1
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #6 - DnQkoG...AG89
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #7 - 2dCPih...Xusj
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #8 - Cjxd8s...kvss
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #9 - FATqUo...RnDj
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #10 - AoUXTX...foR5
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-11920] Processing Rank #11 - 2gT4Cc...ZrFB
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-11920] Completed processing 10 items. Processed 0 unique clusters.
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-11920] Cluster processing completed.
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk: Clusters=0, GlobalSupply=0.00%, Status=CLEAN
-2025-07-08 22:20:43 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-11920] Successfully processed and saved data for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk on attempt 1.
-2025-07-08 22:20:46 [INFO] [BubbleWorker_0] test_chrome:697 - [Thread-11920] WebDriver quit for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk.
-2025-07-08 22:20:46 [INFO] [MainThread] test_chrome:785 - Bubblemaps SUCCESS for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk.
-2025-07-08 22:20:46 [INFO] [MainThread] test_chrome:792 - 1 tokens updated. Triggering risk_detector.py.
-2025-07-08 22:20:46 [INFO] [MainThread] test_chrome:703 - Attempting to run risk_detector.py...
-2025-07-08 22:20:49 [INFO] [MainThread] test_chrome:719 - risk_detector.py completed successfully.
-2025-07-08 22:20:49 [WARNING] [MainThread] test_chrome:721 - Risk Detector STDERR:
-2025-07-08 22:20:48 [INFO] [risk_detector.py:176] - --- Starting Full Token Risk Analysis ---
-2025-07-08 22:20:48 [INFO] [risk_detector.py:190] - Loaded 1 tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
-2025-07-08 22:20:48 [INFO] [risk_detector.py:170] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
-2025-07-08 22:20:48 [INFO] [risk_detector.py:223] - Processing token: 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk (Hyperbonk)
-2025-07-08 22:20:48 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk
-2025-07-08 22:20:48 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for 9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk: AvjhXNixoKMC2e2TfneYn9Uck6XjiB6vj61h8t8zUXLH, Liq_USD: 66505.22, Price_USD: 0.00039020
-2025-07-08 22:20:48 [INFO] [risk_detector.py:335] - Successfully wrote 1 processed token entries to C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv and C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv
-2025-07-08 22:20:48 [INFO] [risk_detector.py:342] - Removed processed tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
-2025-07-08 22:20:48 [INFO] [risk_detector.py:347] - Cleaned up C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
-2025-07-08 22:20:48 [INFO] [risk_detector.py:356] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv contains 2 lines (including header)
-2025-07-08 22:20:48 [INFO] [risk_detector.py:360] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv contains 2 lines (including header)
-2025-07-08 22:20:48 [INFO] [risk_detector.py:369] - --- Full Token Risk Analysis Finished ---
-2025-07-08 22:20:49 [INFO] [MainThread] test_chrome:516 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk.txt
-2025-07-08 22:20:49 [INFO] [MainThread] test_chrome:800 - CSV file changed, checking for new tokens.
-2025-07-08 22:20:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:20:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:21:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:21:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:21:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:21:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:21:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:21:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:21:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:21:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:22:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:22:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:22:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:22:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:22:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:22:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:22:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:22:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:23:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:23:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:23:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:23:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:23:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:23:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:23:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:23:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:24:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:24:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:24:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:24:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:24:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:24:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:24:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:24:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:25:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:25:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:25:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:25:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:25:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:25:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:25:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:25:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:26:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:26:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:26:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:26:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:26:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:26:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:26:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:26:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:27:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:27:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:27:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:27:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:27:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:27:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:27:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:27:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:28:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:28:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:28:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:28:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:28:34 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:28:34 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:28:49 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:28:49 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:29:04 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:29:04 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:29:19 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:29:19 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
-2025-07-08 22:29:35 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
-2025-07-08 22:29:35 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-08 22:45:31 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-08 22:45:31 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-08 22:45:31 [INFO] [MainThread] test_chrome:141 - Found new token to process: HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk
+2025-07-08 22:45:31 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-08 22:45:31 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk
+2025-07-08 22:45:31 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-21932] --- Starting processing for token: HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk ---
+2025-07-08 22:45:34 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-21932] Attempt 1/3 for token: HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk
+2025-07-08 22:46:10 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-21932] Page readyState complete for HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk (Attempt 1).
+2025-07-08 22:46:27 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-21932] 'Address List' is visible for HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk.
+2025-07-08 22:46:44 [WARNING] [BubbleWorker_0] test_chrome:623 - [Thread-21932] Data not immediately fresh. Attempting in-page refresh.
+2025-07-08 22:46:58 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-21932] Data fresh after in-page refresh.
+2025-07-08 22:47:03 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk
+2025-07-08 22:47:13 [INFO] [BubbleWorker_0] test_chrome:335 - [21932] Extracted 10 initial holder ranks.
+2025-07-08 22:47:13 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-21932] Attempting to click clusters and extract supply data.
+2025-07-08 22:47:13 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-21932] Starting cluster click processing for 10 items.
+2025-07-08 22:47:15 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250708_224713.png
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #2 - v2yNhm...A5a7
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #3 - FcEvp8...AA8D
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #5 - pump.fun Creator (66fN)
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #6 - 9GTVJL...FNEf
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #7 - 135Np6...eoGS
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #8 - pump.fun Creator (DUcF)
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #9 - 71A3Ho...oX4i
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #10 - 7b6ZEv...6YL1
+2025-07-08 22:47:32 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #11 - FxSuDZ...XiGa
+2025-07-08 22:47:33 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-21932] Processing Rank #12 - CJxAr8...oXCc
+2025-07-08 22:47:33 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-21932] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-08 22:47:33 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-21932] Cluster processing completed.
+2025-07-08 22:47:34 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk: Clusters=0, GlobalSupply=0.00%, Status=CLEAN
+2025-07-08 22:47:34 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-21932] Successfully processed and saved data for HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk on attempt 1.
+2025-07-08 22:47:43 [INFO] [BubbleWorker_0] test_chrome:697 - [Thread-21932] WebDriver quit for HLL31GKoyZr9ULMbENeHbtpx3RgaUHaH4qGpVHkdbonk.
