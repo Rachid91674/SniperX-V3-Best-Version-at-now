@@ -121,9 +121,9 @@ if not WINDOW_MINS:
 # Load configuration values using the get_env_float helper
 SNIPE_GRADUATED_DELTA_MINUTES_FLOAT = get_env_float("SNIPE_GRADUATED_DELTA_MINUTES", 60.0)
 PRELIM_LIQUIDITY_THRESHOLD = get_env_float('PRELIM_LIQUIDITY_THRESHOLD', 20000.0)  # $20,000 minimum liquidity
-PRELIM_MIN_PRICE_USD = get_env_float('PRELIM_MIN_PRICE_USD', 0.00065)  # $0.00065 minimum price
-PRELIM_MAX_PRICE_USD = get_env_float('PRELIM_MAX_PRICE_USD', 0.0099)  # $0.0099 maximum price
-PRELIM_AGE_DELTA_MINUTES = get_env_float('PRELIM_AGE_DELTA_MINUTES', 6000.0)  # 6000 minutes (~4.17 days) max age
+PRELIM_MIN_PRICE_USD = get_env_float('PRELIM_MIN_PRICE_USD', 0.0001)  # $0.0001 minimum price (reduced from $0.00065)
+PRELIM_MAX_PRICE_USD = get_env_float('PRELIM_MAX_PRICE_USD', 0.02)  # $0.02 maximum price (increased from $0.0099)
+PRELIM_AGE_DELTA_MINUTES = get_env_float('PRELIM_AGE_DELTA_MINUTES', 10080.0)  # 10080 minutes (1 week) max age (increased from ~4.17 days)
 
 # Whale trap configuration
 WHALE_PRICE_UP_PCT = get_env_float("WHALE_PRICE_UP_PCT", 0.0)

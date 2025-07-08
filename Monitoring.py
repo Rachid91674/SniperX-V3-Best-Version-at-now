@@ -24,16 +24,16 @@ INPUT_CSV_FILE = os.environ.get(
 )
 SOL_PRICE_UPDATE_INTERVAL_SECONDS = 15
 TRADE_LOGIC_INTERVAL_SECONDS = 0.05
-CSV_CHECK_INTERVAL_SECONDS = 5  # How often to check the CSV for changes
+CSV_CHECK_INTERVAL_SECONDS = 600  # 10 minutes timeout for token monitoring
 DEXSCREENER_PRICE_UPDATE_INTERVAL_SECONDS = 0.5  # How often to fetch price from Dexscreener when no trades
 
 # Minimum liquidity requirement when loading tokens from the CSV
 MIN_LIQUIDITY_USD = 10000.0
 
 # Trailing stop and partial take profit configuration
-TRAILING_STOP_THRESHOLD_PERCENT = 0.95  # Changed from 0.90 to 0.95 (5% drop from peak)
-TRAILING_STOP_ACTIVATION_PERCENT = 1.02  # Only activate trailing stop after 2% profit
-PARTIAL_TAKE_PROFIT_PERCENT = 1.05      # Log partial profit after 5% gain
+TRAILING_STOP_THRESHOLD_PERCENT = 0.80  # 20% drop from peak
+TRAILING_STOP_ACTIVATION_PERCENT = 1.01  # Activate trailing stop after 1% profit
+PARTIAL_TAKE_PROFIT_PERCENT = 1.15      # Take profit at 15% gain
 # STATUS_PRINT_INTERVAL_SECONDS removed (status now prints every loop iteration)
 
 # --- Global State Variables ---
@@ -51,12 +51,12 @@ g_buy_price_usd = None
 g_highest_price_usd = None
 g_partial_take_profit_logged = False
 g_token_monitor_start_time = 0  # Timestamp when monitoring of current token started
-BUY_SIGNAL_TIMEOUT_SECONDS = 300  # 5 minutes timeout for no buy signal
+BUY_SIGNAL_TIMEOUT_SECONDS = 600  # 10 minutes timeout for no buy signal
 
 g_current_tasks = []  # Holds tasks like listener, trader, csv_checker for cancellation
 g_processing_token = False  # Tracks if we're currently processing a token
 g_token_monitor_start_time = 0  # Timestamp when monitoring of current token started
-BUY_SIGNAL_TIMEOUT_SECONDS = 300  # 5 minutes timeout for no buy signal
+BUY_SIGNAL_TIMEOUT_SECONDS = 600  # 10 minutes timeout for no buy signal
 
 # Custom exception for signaling restart
 class RestartRequired(Exception):
@@ -216,9 +216,9 @@ class TokenProcessingComplete(Exception):
         print(f"[INFO] Token processing complete for {mint_address}. Ready for next token.")
 
 # --- Token Lifecycle Configuration ---
-TAKE_PROFIT_THRESHOLD_PERCENT = 1.10  # e.g., 10% profit
-STOP_LOSS_THRESHOLD_PERCENT = 0.95    # e.g., 5% loss
-STAGNATION_PRICE_THRESHOLD_PERCENT = 0.80 # e.g., price is 20% below baseline
+TAKE_PROFIT_THRESHOLD_PERCENT = 1.15  # 15% profit target
+STOP_LOSS_THRESHOLD_PERCENT = 0.80    # 20% stop loss
+STAGNATION_PRICE_THRESHOLD_PERCENT = 0.80  # 20% below baseline # e.g., price is 20% below baseline
 
 # Volume-based buy signal configuration
 MIN_VOLUME_RATIO = 1.2  # Minimum buy_volume/sell_volume ratio to consider a buy signal
@@ -226,7 +226,7 @@ MIN_TX_RATIO = 1.1      # Minimum buy_tx/sell_tx ratio to consider a buy signal
 MIN_BUY_VOLUME_USD = 10000  # Minimum buy volume in USD to consider a buy signal (increased from 1000 to 10000)
 MIN_BUY_TXS = 10           # Minimum number of buy transactions to consider a buy signal
 MIN_SELL_VOLUME_USD = 100  # Minimum sell volume for ratio calculation (avoids division by very small numbers)
-NO_BUY_SIGNAL_TIMEOUT_SECONDS = 180   # 3 minutes
+NO_BUY_SIGNAL_TIMEOUT_SECONDS = 600   # 10 minutes
 STAGNATION_TIMEOUT_SECONDS = 180      # 3 minutes
 BUY_SIGNAL_PRICE_INCREASE_PERCENT = 1.01 # 1% increase from baseline to consider it a buy signal
 PRICE_IMPACT_THRESHOLD_MONITOR = 80.0  # Maximum price impact percentage to monitor (exclusive)
@@ -293,18 +293,46 @@ def load_token_from_csv(csv_file_path):
                 except (ValueError, TypeError):
                     liquidity_val = 0.0
 
+                # Get risk status
+                risk_warning = row.get('Risk_Warning_Details', '').strip()
+                is_low_risk = 'Low Risk' in risk_warning
+                
+                # Check if we have holder data but no cluster data
+                has_holder_data = 'Holder_Percent' in row and row['Holder_Percent'] not in ['N/A', '']
+                has_cluster_data = row.get('Global_Cluster_Percentage', '0') not in ['0', '0.0', '0.00', 'N/A']
+                
+                # If we have holder data but no cluster data, use holder data for risk assessment
+                if has_holder_data and not has_cluster_data:
+                    try:
+                        holder_percent = float(row['Holder_Percent'].strip('%'))
+                        # Consider it a cluster if a single holder has significant percentage
+                        if holder_percent >= 1.0:  # 1% or more held by top holder
+                            holder_risk = holder_percent >= 5.0  # Considered risky if top holder has >5%
+                            if holder_risk:
+                                risk_warning = f"High holder concentration: {holder_percent}%"
+                                is_low_risk = False
+                            else:
+                                risk_warning = f"Single holder: {holder_percent}%"
+                                is_low_risk = True
+                            print(f"Using holder data (no cluster): {risk_warning}")
+                    except (ValueError, TypeError) as e:
+                        logging.warning(f"Error parsing holder percentage: {e}")
+                
                 # Check if token meets criteria
                 price_impact_ok = price_impact_val < PRICE_IMPACT_THRESHOLD_MONITOR
                 liquidity_ok = liquidity_val >= MIN_LIQUIDITY_USD
                 
                 print(f"Price Impact: {price_impact_val}% (Max: {PRICE_IMPACT_THRESHOLD_MONITOR}%) - {'OK' if price_impact_ok else 'Too High'}")
                 print(f"Liquidity: ${liquidity_val:,.2f} (Min: ${MIN_LIQUIDITY_USD:,.2f}) - {'OK' if liquidity_ok else 'Insufficient'}")
+                print(f"Risk Status: {risk_warning} - {'Low Risk' if is_low_risk else 'Not Low Risk'}")
                 
-                if price_impact_ok and liquidity_ok:
+                if is_low_risk and price_impact_ok and liquidity_ok:
                     print(f"✅ Token meets all criteria: {token_name}")
                     return mint_address, token_name
                 else:
                     reasons = []
+                    if not is_low_risk:
+                        reasons.append("not marked as Low Risk")
                     if not price_impact_ok:
                         reasons.append(f"price impact {price_impact_val}% >= {PRICE_IMPACT_THRESHOLD_MONITOR}%")
                     if not liquidity_ok:

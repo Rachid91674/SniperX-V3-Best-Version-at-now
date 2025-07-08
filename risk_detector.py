@@ -10,9 +10,9 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
 # --- Configuration ---
-HIGH_CLUSTER_THRESHOLD_PERCENT = 45.0 
-DUMP_RISK_THRESHOLD_LP_VS_CLUSTER = 100.6 
-PRICE_IMPACT_THRESHOLD_CLUSTER_SELL = 96.0 
+HIGH_CLUSTER_THRESHOLD_PERCENT = 5.0 
+DUMP_RISK_THRESHOLD_LP_VS_CLUSTER = 15.0 
+PRICE_IMPACT_THRESHOLD_CLUSTER_SELL = 35.69 
 TOTAL_SUPPLY = 1_000_000_000 
 DEXSCREENER_API_ENDPOINT_TEMPLATE = "https://api.dexscreener.com/v1/dex/tokens/{token_address}" 
 REQUESTS_TIMEOUT = 15 
@@ -232,8 +232,8 @@ def run_full_risk_analysis():
             "Overall_Risk_Status": "Data N/A", "Risk_Warning_Details": ""
         })
 
+        # Treat tokens without cluster data as having a high rank individual cluster
         cluster_info = cluster_data_map.get(token_address)
-        cluster_percent_supply_val = 0.0
         if cluster_info:
             output_row["Global_Cluster_Percentage"] = cluster_info.get("Global_Cluster_Percentage", "0.0")
             output_row["Highest_Risk_Reason_Cluster"] = cluster_info.get("Highest_Risk_Reason", "N/A")
@@ -243,8 +243,11 @@ def run_full_risk_analysis():
                 logging.warning(f"Could not parse Global_Cluster_Percentage '{output_row['Global_Cluster_Percentage']}' for {token_address}. Defaulting to 0.0 for calculations.")
                 cluster_percent_supply_val = 0.0
         else:
-            logging.info(f"No cluster summary found for {token_address}.")
-            output_row["Highest_Risk_Reason_Cluster"] = "Cluster data not found"
+            # When no cluster data is found, treat it as a high rank individual cluster (1% of supply)
+            logging.info(f"No cluster summary found for {token_address}. Treating as high rank individual cluster (1% supply).")
+            output_row["Global_Cluster_Percentage"] = "1.00"
+            output_row["Highest_Risk_Reason_Cluster"] = "High rank individual (no cluster data)"
+            cluster_percent_supply_val = 1.0  # 1% of supply as a conservative estimate
 
         time.sleep(0.2) 
         liquidity_usd, price_usd, pair_addr, token_name_dex = get_primary_pool_data_from_dexscreener(token_address)
