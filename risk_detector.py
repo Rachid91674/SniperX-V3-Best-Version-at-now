@@ -3,28 +3,26 @@ import math
 import requests
 import time
 import os
-import sys 
+import sys
 import logging
+from collections import OrderedDict
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
 # --- Configuration ---
-HIGH_CLUSTER_THRESHOLD_PERCENT = 5.0 
-DUMP_RISK_THRESHOLD_LP_VS_CLUSTER = 15.0 
-PRICE_IMPACT_THRESHOLD_CLUSTER_SELL = 35.69 
-TOTAL_SUPPLY = 1_000_000_000 
-DEXSCREENER_API_ENDPOINT_TEMPLATE = "https://api.dexscreener.com/v1/dex/tokens/{token_address}" 
-REQUESTS_TIMEOUT = 15 
+HIGH_CLUSTER_THRESHOLD_PERCENT = 5.0
+DUMP_RISK_THRESHOLD_LP_VS_CLUSTER = 15.0
+PRICE_IMPACT_THRESHOLD_CLUSTER_SELL = 35.69
+TOTAL_SUPPLY = 1_000_000_000
+DEXSCREENER_API_ENDPOINT_TEMPLATE = "https://api.dexscreener.com/v1/dex/tokens/{token_address}"
+REQUESTS_TIMEOUT = 15
 
 # --- File Paths (assuming in the same directory as the script) ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_TOKENS_CSV = os.path.join(SCRIPT_DIR, "sniperx_results_1m.csv")
 CLUSTER_SUMMARY_CSV = os.path.join(SCRIPT_DIR, "cluster_summaries.csv")
 OUTPUT_RISK_ANALYSIS_CSV = os.path.join(SCRIPT_DIR, "token_risk_analysis.csv")
-FILTERED_TOKENS_WITH_ALL_RISKS_CSV = os.path.join(
-    SCRIPT_DIR, "filtered_tokens_with_all_risks.csv"
-)
 
 # --- Helper Functions ---
 def get_primary_pool_data_from_dexscreener(token_address, chain_id="solana"):
@@ -133,243 +131,176 @@ def calculate_lp_percent(liquidity_usd_in_pool, token_price_usd):
 
 def calculate_dump_risk_lp_vs_cluster(cluster_percent_supply, lp_percent_supply):
     if lp_percent_supply is None or lp_percent_supply == 0:
-        return float('inf') if cluster_percent_supply > 0 else 0.0 
+        return float('inf') if cluster_percent_supply > 0 else 0.0
     if cluster_percent_supply is None: return 0.0
-    return (cluster_percent_supply / lp_percent_supply) * 100 
+    return cluster_percent_supply / lp_percent_supply
 
 def calculate_price_impact_cluster_sell(pool_project_token_amount, cluster_sell_token_amount):
-    if cluster_sell_token_amount is None or cluster_sell_token_amount == 0:
-        return 0.0  # No sell pressure, no impact
-
-    # At this point, cluster_sell_token_amount is a positive number
-    if pool_project_token_amount is None: # pool_project_token_amount could be None
-        return 0.0 # Consistent with test (None, 100) expecting 0.0
-
-    if pool_project_token_amount == 0: # Pool is empty, but there's sell pressure
+    if cluster_sell_token_amount is None or cluster_sell_token_amount <= 0:
+        return 0.0
+    if pool_project_token_amount is None or pool_project_token_amount <= 0:
         return 100.0
     
-    # Normal calculation: pool_project_token_amount > 0 and cluster_sell_token_amount > 0
-    # Denominator (pool_project_token_amount + cluster_sell_token_amount) cannot be zero here.
-    price_ratio_after_sell = (pool_project_token_amount / (pool_project_token_amount + cluster_sell_token_amount)) ** 2
+    price_ratio_after_sell = (pool_project_token_amount / (pool_project_token_amount + cluster_sell_token_amount))
     price_impact_percent = (1 - price_ratio_after_sell) * 100
     return price_impact_percent
 
-def load_cluster_summaries(path):
+
+def load_csv_data(path, key_column='Token_Address'):
     if not os.path.exists(path):
-        logging.error(f"Cluster summary file not found at {path}")
+        logging.warning(f"CSV file not found at {path}")
         return {}
-    summaries = {}
+    data_map = OrderedDict()
     try:
-        with open(path, 'r', encoding='utf-8-sig') as f: 
+        with open(path, 'r', encoding='utf-8-sig') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                if 'Token_Address' in row:
-                    summaries[row['Token_Address']] = row
-                else:
-                    logging.warning(f"Skipping row in cluster summary due to missing 'Token_Address': {row}")
-            logging.info(f"Successfully loaded {len(summaries)} entries from {path}")
+                key = row.get(key_column)
+                if key:
+                    data_map[key] = row
+            logging.info(f"Successfully loaded {len(data_map)} entries from {path}")
     except Exception as e:
-        logging.error(f"Error loading cluster summaries from {path}: {e}", exc_info=True)
-    return summaries
+        logging.error(f"Error loading data from {path}: {e}", exc_info=True)
+    return data_map
+
+def write_csv_data(path, headers, data_rows, mode='w'):
+    try:
+        with open(path, mode, newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=headers)
+            if mode == 'w' or not os.path.getsize(path) > 0:
+                writer.writeheader()
+            writer.writerows(data_rows)
+        return True
+    except Exception as e:
+        logging.error(f"Error writing to {path}: {e}")
+        return False
+
 
 def run_full_risk_analysis():
     logging.info("--- Starting Full Token Risk Analysis ---")
 
-    if not os.path.exists(INPUT_TOKENS_CSV):
-        logging.error(f"Input tokens file not found: {INPUT_TOKENS_CSV}. Aborting.")
+    input_tokens_map = load_csv_data(INPUT_TOKENS_CSV, key_column='Address')
+    if not input_tokens_map:
+        logging.info("No new tokens found in input file. Exiting.")
         return
+
+    cluster_data_map = load_csv_data(CLUSTER_SUMMARY_CSV, key_column='Token_Address')
     
-    input_tokens = []
-    input_headers = []
-    try:
-        with open(INPUT_TOKENS_CSV, 'r', encoding='utf-8-sig') as f:
-            reader = csv.DictReader(f)
-            input_headers = reader.fieldnames if reader.fieldnames else []
-            for row in reader:
-                input_tokens.append(row)
-        logging.info(f"Loaded {len(input_tokens)} tokens from {INPUT_TOKENS_CSV}")
-    except Exception as e:
-        logging.error(f"Error loading input tokens from {INPUT_TOKENS_CSV}: {e}", exc_info=True)
-        return
+    results_to_write = []
+    processed_token_addresses = set()
 
-    if not input_tokens:
-        logging.info("No tokens found in input file. Exiting.")
-        return
-
-    cluster_data_map = load_cluster_summaries(CLUSTER_SUMMARY_CSV)
-    if not cluster_data_map:
-        logging.warning("Cluster summary data is empty or failed to load. Proceeding without cluster-specific risk factors.")
-
-    results_to_write = []    
-    output_headers = input_headers + [
-        "Global_Cluster_Percentage", "Highest_Risk_Reason_Cluster",
-        "DexScreener_Pair_Address", "DexScreener_Liquidity_USD", "DexScreener_Token_Price_USD", "DexScreener_Token_Name",
-        "LP_Percent_Supply", "Cluster_Token_Amount_Est", "Pool_Project_Token_Amount_Est",
-        "Dump_Risk_LP_vs_Cluster_Ratio", "Price_Impact_Cluster_Sell_Percent",
-        "Overall_Risk_Status", "Risk_Warning_Details"
+    # Define the full set of headers for the output CSV
+    base_headers = list(next(iter(input_tokens_map.values())).keys()) if input_tokens_map else []
+    risk_headers = [
+        "Global_Cluster_Percentage", "DexScreener_Pair_Address", "DexScreener_Liquidity_USD", 
+        "DexScreener_Token_Price_USD", "DexScreener_Token_Name", "LP_Percent_Supply", 
+        "Cluster_Token_Amount_Est", "Pool_Project_Token_Amount_Est", "Dump_Risk_LP_vs_Cluster_Ratio", 
+        "Price_Impact_Cluster_Sell_Percent", "Overall_Risk_Status", "Risk_Warning_Details"
     ]
-    output_headers = sorted(list(set(output_headers)), key=output_headers.index) 
+    output_headers = base_headers + [h for h in risk_headers if h not in base_headers]
 
-    for token_row in input_tokens:
-        output_row = {header: token_row.get(header, "") for header in input_headers} 
-        token_address = token_row.get("Address")
+    for token_address, token_row in input_tokens_map.items():
+        processed_token_addresses.add(token_address)
+        logging.info(f"Processing token: {token_address} ({token_row.get('Name', 'N/A')})")
+        
+        output_row = token_row.copy()
+        output_row.update({h: "N/A" for h in risk_headers})
 
-        if not token_address:
-            logging.warning(f"Skipping row due to missing 'Address': {token_row}")
-            for risk_header in output_headers[len(input_headers):]: output_row[risk_header] = "N/A"
+        cluster_info = cluster_data_map.get(token_address)
+        if not cluster_info:
+            logging.warning(f"No cluster summary found for {token_address}. Cannot perform risk analysis.")
+            output_row["Overall_Risk_Status"] = "Data Missing"
+            output_row["Risk_Warning_Details"] = "Bubblemaps data not available."
             results_to_write.append(output_row)
             continue
         
-        logging.info(f"Processing token: {token_address} ({token_row.get('Name', 'N/A')})")
+        try:
+            cluster_percent_supply_val = float(cluster_info.get("Global_Cluster_Percentage", "0.0"))
+            output_row["Global_Cluster_Percentage"] = f"{cluster_percent_supply_val:.2f}"
+        except (ValueError, TypeError):
+            logging.warning(f"Could not parse Global_Cluster_Percentage for {token_address}. Skipping.")
+            output_row["Overall_Risk_Status"] = "Data Error"
+            output_row["Risk_Warning_Details"] = "Invalid cluster percentage format."
+            results_to_write.append(output_row)
+            continue
 
-        output_row.update({
-            "Global_Cluster_Percentage": "N/A", "Highest_Risk_Reason_Cluster": "N/A",
-            "DexScreener_Pair_Address": "N/A", "DexScreener_Liquidity_USD": "N/A", 
-            "DexScreener_Token_Price_USD": "N/A", "DexScreener_Token_Name": "N/A",
-            "LP_Percent_Supply": "N/A", "Cluster_Token_Amount_Est": "N/A", 
-            "Pool_Project_Token_Amount_Est": "N/A",
-            "Dump_Risk_LP_vs_Cluster_Ratio": "N/A", "Price_Impact_Cluster_Sell_Percent": "N/A",
-            "Overall_Risk_Status": "Data N/A", "Risk_Warning_Details": ""
-        })
-
-        # Treat tokens without cluster data as having a high rank individual cluster
-        cluster_info = cluster_data_map.get(token_address)
-        if cluster_info:
-            output_row["Global_Cluster_Percentage"] = cluster_info.get("Global_Cluster_Percentage", "0.0")
-            output_row["Highest_Risk_Reason_Cluster"] = cluster_info.get("Highest_Risk_Reason", "N/A")
-            try:
-                cluster_percent_supply_val = float(output_row["Global_Cluster_Percentage"])
-            except ValueError:
-                logging.warning(f"Could not parse Global_Cluster_Percentage '{output_row['Global_Cluster_Percentage']}' for {token_address}. Defaulting to 0.0 for calculations.")
-                cluster_percent_supply_val = 0.0
-        else:
-            # When no cluster data is found, treat it as a high rank individual cluster (1% of supply)
-            logging.info(f"No cluster summary found for {token_address}. Treating as high rank individual cluster (1% supply).")
-            output_row["Global_Cluster_Percentage"] = "1.00"
-            output_row["Highest_Risk_Reason_Cluster"] = "High rank individual (no cluster data)"
-            cluster_percent_supply_val = 1.0  # 1% of supply as a conservative estimate
-
-        time.sleep(0.2) 
+        time.sleep(0.2)
         liquidity_usd, price_usd, pair_addr, token_name_dex = get_primary_pool_data_from_dexscreener(token_address)
+        
+        if liquidity_usd is None or price_usd is None:
+            logging.warning(f"No valid DexScreener data for {token_address}. Cannot perform risk analysis.")
+            output_row["Overall_Risk_Status"] = "Data Missing"
+            output_row["Risk_Warning_Details"] = "DexScreener data not available."
+            results_to_write.append(output_row)
+            continue
+
+        output_row["DexScreener_Pair_Address"] = pair_addr
+        output_row["DexScreener_Liquidity_USD"] = f"{liquidity_usd:.2f}"
+        output_row["DexScreener_Token_Price_USD"] = f"{price_usd:.8f}"
+        output_row["DexScreener_Token_Name"] = token_name_dex or token_row.get('Name', 'N/A')
+
+        lp_percent = calculate_lp_percent(liquidity_usd, price_usd)
+        output_row["LP_Percent_Supply"] = f"{lp_percent:.4f}"
+
+        cluster_token_amount = (cluster_percent_supply_val / 100.0) * TOTAL_SUPPLY
+        output_row["Cluster_Token_Amount_Est"] = f"{cluster_token_amount:.2f}"
+        
+        pool_project_token_amount = (liquidity_usd / 2.0) / price_usd if price_usd > 0 else 0
+        output_row["Pool_Project_Token_Amount_Est"] = f"{pool_project_token_amount:.2f}"
+        
+        dump_risk_ratio = calculate_dump_risk_lp_vs_cluster(cluster_percent_supply_val, lp_percent)
+        output_row["Dump_Risk_LP_vs_Cluster_Ratio"] = f"{dump_risk_ratio:.2f}"
+
+        price_impact_pct = calculate_price_impact_cluster_sell(pool_project_token_amount, cluster_token_amount)
+        output_row["Price_Impact_Cluster_Sell_Percent"] = f"{price_impact_pct:.2f}"
 
         risk_warnings = []
-        if liquidity_usd is not None and price_usd is not None and pair_addr is not None:
-            output_row["DexScreener_Pair_Address"] = pair_addr
-            output_row["DexScreener_Liquidity_USD"] = f"{liquidity_usd:.2f}"
-            output_row["DexScreener_Token_Price_USD"] = f"{price_usd:.8f}"
-            output_row["DexScreener_Token_Name"] = token_name_dex if token_name_dex else token_row.get('Name', 'N/A') 
+        if cluster_percent_supply_val >= HIGH_CLUSTER_THRESHOLD_PERCENT:
+            risk_warnings.append(f"HighCluster({cluster_percent_supply_val:.1f}% >= {HIGH_CLUSTER_THRESHOLD_PERCENT:.1f}%)")
+        if dump_risk_ratio * 100 >= DUMP_RISK_THRESHOLD_LP_VS_CLUSTER: # Corrected calculation
+             risk_warnings.append(f"HighDumpRisk({dump_risk_ratio:.1f}x >= {DUMP_RISK_THRESHOLD_LP_VS_CLUSTER/100:.1f}x)")
+        if price_impact_pct >= PRICE_IMPACT_THRESHOLD_CLUSTER_SELL:
+            risk_warnings.append(f"HighPriceImpact({price_impact_pct:.1f}% >= {PRICE_IMPACT_THRESHOLD_CLUSTER_SELL:.1f}%)")
 
-            lp_percent = calculate_lp_percent(liquidity_usd, price_usd)
-            output_row["LP_Percent_Supply"] = f"{lp_percent:.4f}"
-
-            cluster_token_amount = (cluster_percent_supply_val / 100.0) * TOTAL_SUPPLY
-            output_row["Cluster_Token_Amount_Est"] = f"{cluster_token_amount:.2f}"
-
-            pool_project_token_amount = 0
-            if price_usd > 0:
-                pool_project_token_amount = (liquidity_usd / 2.0) / price_usd
-            output_row["Pool_Project_Token_Amount_Est"] = f"{pool_project_token_amount:.2f}"
-
-            dump_risk_ratio = calculate_dump_risk_lp_vs_cluster(cluster_percent_supply_val, lp_percent)
-            output_row["Dump_Risk_LP_vs_Cluster_Ratio"] = f"{dump_risk_ratio:.2f}"
-
-            price_impact_pct = calculate_price_impact_cluster_sell(pool_project_token_amount, cluster_token_amount)
-            output_row["Price_Impact_Cluster_Sell_Percent"] = f"{price_impact_pct:.2f}"
-
-            if cluster_percent_supply_val >= HIGH_CLUSTER_THRESHOLD_PERCENT:
-                risk_warnings.append(f"HighCluster({cluster_percent_supply_val:.1f}% >= {HIGH_CLUSTER_THRESHOLD_PERCENT:.1f}%)")
-            if dump_risk_ratio >= DUMP_RISK_THRESHOLD_LP_VS_CLUSTER:
-                risk_warnings.append(f"HighDumpRisk({dump_risk_ratio:.1f}x >= {DUMP_RISK_THRESHOLD_LP_VS_CLUSTER:.1f}x)")
-            if price_impact_pct >= PRICE_IMPACT_THRESHOLD_CLUSTER_SELL:
-                risk_warnings.append(f"HighPriceImpact({price_impact_pct:.1f}% >= {PRICE_IMPACT_THRESHOLD_CLUSTER_SELL:.1f}%)")
-            
-            if not risk_warnings and lp_percent > 0: 
-                output_row["Overall_Risk_Status"] = "Low Risk"
-            elif risk_warnings:
-                output_row["Overall_Risk_Status"] = "High Risk"
-            else:
-                output_row["Overall_Risk_Status"] = "Medium Risk / Check Data" 
+        if not risk_warnings:
+            output_row["Overall_Risk_Status"] = "Low Risk"
+            output_row["Risk_Warning_Details"] = "All risk metrics passed."
         else:
-            risk_warnings.append("DexScreenerDataN/A")
-
-        if risk_warnings:
+            output_row["Overall_Risk_Status"] = "High Risk"
             output_row["Risk_Warning_Details"] = "; ".join(risk_warnings)
-        else:
-            # Show the conditions that made it low risk
-            conditions = []
-            if cluster_percent_supply_val < HIGH_CLUSTER_THRESHOLD_PERCENT:
-                conditions.append(f"Cluster% < {HIGH_CLUSTER_THRESHOLD_PERCENT}%")
-            if 'Dump_Risk_LP_vs_Cluster_Ratio' in output_row and output_row['Dump_Risk_LP_vs_Cluster_Ratio'] != 'N/A':
-                if float(output_row['Dump_Risk_LP_vs_Cluster_Ratio']) < DUMP_RISK_THRESHOLD_LP_VS_CLUSTER:
-                    conditions.append(f"DumpRisk < {DUMP_RISK_THRESHOLD_LP_VS_CLUSTER}x")
-            if 'Price_Impact_Cluster_Sell_Percent' in output_row and output_row['Price_Impact_Cluster_Sell_Percent'] != 'N/A':
-                if float(output_row['Price_Impact_Cluster_Sell_Percent']) < PRICE_IMPACT_THRESHOLD_CLUSTER_SELL:
-                    conditions.append(f"PriceImpact < {PRICE_IMPACT_THRESHOLD_CLUSTER_SELL}%")
-            output_row["Risk_Warning_Details"] = "Low Risk: " + "; ".join(conditions) if conditions else "No conditions met"
+        
         results_to_write.append(output_row)
 
     if results_to_write:
-        try:
-            # Write to token_risk_analysis.csv
-            with open(OUTPUT_RISK_ANALYSIS_CSV, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.DictWriter(f, fieldnames=output_headers, quoting=csv.QUOTE_NONNUMERIC)
-                writer.writeheader()
-                for row in results_to_write:
-                    try:
-                        writer.writerow(row)
-                    except Exception as row_error:
-                        logging.error(f"Error writing row to {OUTPUT_RISK_ANALYSIS_CSV}: {row_error}\nRow data: {row}")
-                        continue
-
-            # Write to filtered_tokens_with_all_risks.csv
-            with open(FILTERED_TOKENS_WITH_ALL_RISKS_CSV, 'w', newline='', encoding='utf-8') as f_filtered:
-                filtered_writer = csv.DictWriter(f_filtered, fieldnames=output_headers, quoting=csv.QUOTE_NONNUMERIC)
-                filtered_writer.writeheader()
-                for row in results_to_write:
-                    try:
-                        filtered_writer.writerow(row)
-                    except Exception as row_error:
-                        logging.error(f"Error writing row to {FILTERED_TOKENS_WITH_ALL_RISKS_CSV}: {row_error}\nRow data: {row}")
-                        continue
-
-            logging.info(f"Successfully wrote {len(results_to_write)} processed token entries to {OUTPUT_RISK_ANALYSIS_CSV} and {FILTERED_TOKENS_WITH_ALL_RISKS_CSV}")
-            
-            # Clean up input files
-            try:
-                # Remove processed tokens from sniperx_results_1m.csv
-                if os.path.exists(INPUT_TOKENS_CSV):
-                    os.remove(INPUT_TOKENS_CSV)
-                    logging.info(f"Removed processed tokens from {INPUT_TOKENS_CSV}")
-                
-                # Clean up cluster_summaries.csv
-                if os.path.exists(CLUSTER_SUMMARY_CSV):
-                    os.remove(CLUSTER_SUMMARY_CSV)
-                    logging.info(f"Cleaned up {CLUSTER_SUMMARY_CSV}")
-                
-            except Exception as cleanup_error:
-                logging.error(f"Error cleaning up input files: {cleanup_error}")
-            
-            # Verify the output files were written correctly
-            try:
-                with open(OUTPUT_RISK_ANALYSIS_CSV, 'r', encoding='utf-8') as f:
-                    lines = f.readlines()
-                    logging.info(f"{OUTPUT_RISK_ANALYSIS_CSV} contains {len(lines)} lines (including header)")
-                
-                with open(FILTERED_TOKENS_WITH_ALL_RISKS_CSV, 'r', encoding='utf-8') as f:
-                    lines = f.readlines()
-                    logging.info(f"{FILTERED_TOKENS_WITH_ALL_RISKS_CSV} contains {len(lines)} lines (including header)")
-            except Exception as verify_error:
-                logging.error(f"Error verifying output files: {verify_error}")
-                
-        except Exception as e:
-            logging.error(f"Error in file operations: {e}", exc_info=True)
-    else:
-        logging.info("No token data processed to write.")
+        # Append results to the main analysis file
+        existing_risk_analysis = load_csv_data(OUTPUT_RISK_ANALYSIS_CSV, key_column='Address')
+        for row in results_to_write:
+            existing_risk_analysis[row['Address']] = row
         
+        write_csv_data(OUTPUT_RISK_ANALYSIS_CSV, output_headers, existing_risk_analysis.values(), mode='w')
+        logging.info(f"Wrote/Updated {len(results_to_write)} token(s) in {OUTPUT_RISK_ANALYSIS_CSV}")
+
+    if processed_token_addresses:
+        # Clean up input files by removing only the processed tokens
+        remaining_input_tokens = {k: v for k, v in input_tokens_map.items() if k not in processed_token_addresses}
+        remaining_cluster_data = {k: v for k, v in cluster_data_map.items() if k not in processed_token_addresses}
+
+        if remaining_input_tokens:
+            write_csv_data(INPUT_TOKENS_CSV, list(next(iter(remaining_input_tokens.values())).keys()), remaining_input_tokens.values(), 'w')
+        elif os.path.exists(INPUT_TOKENS_CSV):
+            os.remove(INPUT_TOKENS_CSV) # Delete if empty
+        
+        if remaining_cluster_data:
+            write_csv_data(CLUSTER_SUMMARY_CSV, list(next(iter(remaining_cluster_data.values())).keys()), remaining_cluster_data.values(), 'w')
+        elif os.path.exists(CLUSTER_SUMMARY_CSV):
+            os.remove(CLUSTER_SUMMARY_CSV) # Delete if empty
+            
+        logging.info(f"Cleaned up {len(processed_token_addresses)} processed token(s) from source files.")
+
     logging.info("--- Full Token Risk Analysis Finished ---")
 
 if __name__ == "__main__":
     try:
         run_full_risk_analysis()
     except Exception as e:
-        logging.error(f"Critical error in risk_detector main execution: {e}", exc_info=True)
+        logging.critical(f"Critical error in risk_detector main execution: {e}", exc_info=True)

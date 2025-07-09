@@ -30742,3 +30742,1561 @@ Stacktrace:
 2025-07-09 16:43:16 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
 2025-07-09 16:43:31 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
 2025-07-09 16:43:31 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:14:36 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:14:40 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:14:40 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:14:40 [INFO] [MainThread] test_chrome:141 - Found new token to process: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:14:40 [INFO] [MainThread] test_chrome:150 - Found 1 new tokens to process
+2025-07-09 17:14:40 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:14:40 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-9908] --- Starting processing for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp ---
+2025-07-09 17:14:46 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-9908] Attempt 1/3 for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:14:50 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-9908] Page readyState complete for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp (Attempt 1).
+2025-07-09 17:14:55 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-9908] 'Address List' is visible for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:14:59 [INFO] [BubbleWorker_0] test_chrome:620 - [Thread-9908] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:15:06 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:15:24 [INFO] [BubbleWorker_0] test_chrome:335 - [9908] Extracted 10 initial holder ranks.
+2025-07-09 17:15:24 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-9908] Attempting to click clusters and extract supply data.
+2025-07-09 17:15:24 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-9908] Starting cluster click processing for 10 items.
+2025-07-09 17:15:25 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_171524.png
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #2 - 24yzfK...Nj9B
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #3 - 8DYpna...aYQP
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #4 - 987a1J...BzBi
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #5 - pump.fun Creator (ANAV)
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #6 - B7nB9Q...gPc1
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #7 - DpFnZY...p8Us
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #8 - 4hDGjw...4kia
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #9 - 88ttcy...et9x
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #10 - Cte14w...kkNa
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-9908] Processing Rank #11 - JA3qYR...HTCM
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-9908] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-9908] Cluster processing completed.
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp: Clusters=0, GlobalSupply=0.00%, Status=CLEAN
+2025-07-09 17:15:37 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-9908] Successfully processed and saved data for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp on attempt 1.
+2025-07-09 17:15:45 [INFO] [BubbleWorker_0] test_chrome:697 - [Thread-9908] WebDriver quit for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:15:50 [INFO] [MainThread] test_chrome:785 - Bubblemaps SUCCESS for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:15:50 [INFO] [MainThread] test_chrome:792 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 17:15:50 [INFO] [MainThread] test_chrome:703 - Attempting to run risk_detector.py...
+2025-07-09 17:15:53 [INFO] [MainThread] test_chrome:719 - risk_detector.py completed successfully.
+2025-07-09 17:15:53 [WARNING] [MainThread] test_chrome:721 - Risk Detector STDERR:
+2025-07-09 17:15:52 [INFO] [risk_detector.py:176] - --- Starting Full Token Risk Analysis ---
+2025-07-09 17:15:52 [INFO] [risk_detector.py:190] - Loaded 1 tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:15:52 [INFO] [risk_detector.py:170] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:15:52 [INFO] [risk_detector.py:223] - Processing token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp (simple memecoin)
+2025-07-09 17:15:52 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:15:52 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp: 2cpnb4w81oc7rmtSLC1aEKtMD4dJ5y6q2CCBUf5DZq26, Liq_USD: 20865.26, Price_USD: 0.00003350
+2025-07-09 17:15:52 [INFO] [risk_detector.py:335] - Successfully wrote 1 processed token entries to C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv and C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv
+2025-07-09 17:15:52 [INFO] [risk_detector.py:342] - Removed processed tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:15:52 [INFO] [risk_detector.py:347] - Cleaned up C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:15:52 [INFO] [risk_detector.py:356] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv contains 2 lines (including header)
+2025-07-09 17:15:52 [INFO] [risk_detector.py:360] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv contains 2 lines (including header)
+2025-07-09 17:15:52 [INFO] [risk_detector.py:369] - --- Full Token Risk Analysis Finished ---
+2025-07-09 17:15:53 [INFO] [MainThread] test_chrome:516 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.txt
+2025-07-09 17:15:53 [INFO] [MainThread] test_chrome:800 - CSV file changed, checking for new tokens.
+2025-07-09 17:15:53 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:15:53 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:16:08 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:16:08 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:16:23 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:16:23 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:16:38 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:16:38 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:16:57 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:16:59 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:16:59 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:16:59 [INFO] [MainThread] test_chrome:141 - Found new token to process: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:16:59 [INFO] [MainThread] test_chrome:141 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:16:59 [INFO] [MainThread] test_chrome:150 - Found 2 new tokens to process
+2025-07-09 17:16:59 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:16:59 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-8640] --- Starting processing for token: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk ---
+2025-07-09 17:17:02 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-8640] Attempt 1/3 for token: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:17:05 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-8640] Page readyState complete for GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk (Attempt 1).
+2025-07-09 17:17:10 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-8640] 'Address List' is visible for GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk.
+2025-07-09 17:17:15 [INFO] [BubbleWorker_0] test_chrome:620 - [Thread-8640] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:17:22 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:17:38 [INFO] [BubbleWorker_0] test_chrome:335 - [8640] Extracted 10 initial holder ranks.
+2025-07-09 17:17:38 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-8640] Attempting to click clusters and extract supply data.
+2025-07-09 17:17:38 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-8640] Starting cluster click processing for 10 items.
+2025-07-09 17:17:39 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_171738.png
+2025-07-09 17:17:51 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #2 - DbbYgz...yFkn
+2025-07-09 17:17:51 [INFO] [BubbleWorker_0] test_chrome:393 - [Thread-8640] Rank #2 (DbbYgz...yFkn) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 17:17:56 [INFO] [BubbleWorker_0] test_chrome:439 - [Thread-8640] Found target Rank #2. Attempting click.
+2025-07-09 17:17:59 [INFO] [BubbleWorker_0] test_chrome:443 - [Thread-8640] Successfully clicked on Rank #2
+2025-07-09 17:18:01 [INFO] [BubbleWorker_0] test_chrome:482 - [Thread-8640] Extracted Cluster Supply for Rank 2: 5.09%
+2025-07-09 17:18:03 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_2_processed_20250709_171802.png
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #3 - pump.fun Creator (7mbZ)
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #5 - AQpB1n...fGqf
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #6 - GLJhn9...XGGS
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #7 - 7hXu4e...itgG
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #8 - HxjhkC...v72q
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #9 - 5jv8Cm...Kqzh
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #10 - Cn25Zq...XeHM
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #11 - BZakxU...vqCq
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-8640] Processing Rank #12 - Hz594p...97yE
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-8640] Completed processing 10 items. Processed 1 unique clusters.
+2025-07-09 17:18:04 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-8640] Cluster processing completed.
+2025-07-09 17:18:05 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk: Clusters=1, GlobalSupply=5.09%, Status=RISKY
+2025-07-09 17:18:05 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-8640] Successfully processed and saved data for GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk on attempt 1.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:18:11 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:141 - Found new token to process: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:141 - Found new token to process: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:141 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:150 - Found 3 new tokens to process
+2025-07-09 17:18:13 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:18:13 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-18940] --- Starting processing for token: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7 ---
+2025-07-09 17:18:16 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-18940] Attempt 1/3 for token: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:18:18 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-18940] Page readyState complete for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7 (Attempt 1).
+2025-07-09 17:18:21 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-18940] 'Address List' is visible for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7.
+2025-07-09 17:18:25 [INFO] [BubbleWorker_0] test_chrome:620 - [Thread-18940] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:18:32 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:18:52 [INFO] [BubbleWorker_0] test_chrome:335 - [18940] Extracted 10 initial holder ranks.
+2025-07-09 17:18:52 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-18940] Attempting to click clusters and extract supply data.
+2025-07-09 17:18:52 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-18940] Starting cluster click processing for 10 items.
+2025-07-09 17:18:53 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_171852.png
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #2 - ELjXFx...2y1j
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #3 - 1xTW5Z...Lje7
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #4 - A7CKKC...n6i9
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #5 - 2QrNNz...A3Sc
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #6 - 62vZmM...2bQw
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #8 - CANx1a...o8iJ
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #9 - 5BLBhy...cTFe
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #10 - CawQp5...V1f9
+2025-07-09 17:19:04 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #11 - AkvWdg...BB2y
+2025-07-09 17:19:05 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-18940] Processing Rank #12 - EERt2N...djpz
+2025-07-09 17:19:05 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-18940] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 17:19:05 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-18940] Cluster processing completed.
+2025-07-09 17:19:05 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7: Clusters=0, GlobalSupply=0.00%, Status=CLEAN
+2025-07-09 17:19:05 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-18940] Successfully processed and saved data for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7 on attempt 1.
+2025-07-09 17:19:09 [INFO] [BubbleWorker_0] test_chrome:697 - [Thread-18940] WebDriver quit for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:19:17 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:141 - Found new token to process: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:141 - Found new token to process: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:141 - Found new token to process: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:141 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:150 - Found 4 new tokens to process
+2025-07-09 17:19:19 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:19:19 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-4740] --- Starting processing for token: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk ---
+2025-07-09 17:19:22 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-4740] Attempt 1/3 for token: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:19:34 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-4740] Page readyState complete for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk (Attempt 1).
+2025-07-09 17:19:36 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-4740] 'Address List' is visible for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk.
+2025-07-09 17:19:38 [INFO] [BubbleWorker_0] test_chrome:620 - [Thread-4740] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:19:42 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:20:00 [INFO] [BubbleWorker_0] test_chrome:335 - [4740] Extracted 10 initial holder ranks.
+2025-07-09 17:20:00 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-4740] Attempting to click clusters and extract supply data.
+2025-07-09 17:20:00 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-4740] Starting cluster click processing for 10 items.
+2025-07-09 17:20:01 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_172000.png
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #2 - 2eitE1...uXew
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #3 - AHPbYf...LNY8
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #4 - C1Rz4G...C4Hn
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #5 - CdChS9...kMjs
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #6 - F7BDjU...jYs3
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #7 - 3y7r7m...u4hp
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #8 - 4wqZwV...hEJm
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #9 - 8M3sgw...XEPa
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #10 - C3U8Kc...ZNqL
+2025-07-09 17:20:13 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-4740] Processing Rank #11 - Hjndpc...uN5b
+2025-07-09 17:20:14 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-4740] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 17:20:14 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-4740] Cluster processing completed.
+2025-07-09 17:20:14 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk: Clusters=0, GlobalSupply=0.00%, Status=CLEAN
+2025-07-09 17:20:14 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-4740] Successfully processed and saved data for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk on attempt 1.
+2025-07-09 17:20:18 [INFO] [BubbleWorker_0] test_chrome:697 - [Thread-4740] WebDriver quit for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:20:26 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:20:27 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:141 - Found new token to process: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:141 - Found new token to process: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:141 - Found new token to process: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:141 - Found new token to process: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:141 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:150 - Found 5 new tokens to process
+2025-07-09 17:20:28 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:20:28 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-16216] --- Starting processing for token: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump ---
+2025-07-09 17:20:30 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-16216] Attempt 1/3 for token: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:20:33 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-16216] Page readyState complete for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump (Attempt 1).
+2025-07-09 17:20:45 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-16216] 'Address List' is visible for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump.
+2025-07-09 17:20:47 [INFO] [BubbleWorker_0] test_chrome:620 - [Thread-16216] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:20:56 [INFO] [BubbleWorker_0] test_chrome:643 - [BUBBLEMAPS] Clicked Magic Nodes for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:21:15 [INFO] [BubbleWorker_0] test_chrome:335 - [16216] Extracted 10 initial holder ranks.
+2025-07-09 17:21:15 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-16216] Attempting to click clusters and extract supply data.
+2025-07-09 17:21:15 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-16216] Starting cluster click processing for 10 items.
+2025-07-09 17:21:16 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_172115.png
+2025-07-09 17:21:28 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16216] Processing Rank #2 - BHSRjs...xHVz
+2025-07-09 17:21:28 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16216] Processing Rank #4 - 3xrq35...Wsv7
+2025-07-09 17:21:29 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16216] Processing Rank #5 - 4yVviU...Pgs3
+2025-07-09 17:21:29 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16216] Processing Rank #6 - HK8Bvq...MRpX
+2025-07-09 17:21:29 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16216] Processing Rank #7 - pump.fun Creator (6v9K)
+2025-07-09 17:21:29 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16216] Processing Rank #8 - 5FQKmu...8ka1
+2025-07-09 17:21:29 [INFO] [BubbleWorker_0] test_chrome:393 - [Thread-16216] Rank #8 (5FQKmu...8ka1) is a NEW visual cluster. Finding & Clicking...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:21:40 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:830 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:82 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:141 - Found new token to process: DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:141 - Found new token to process: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:141 - Found new token to process: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:141 - Found new token to process: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:141 - Found new token to process: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:141 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:150 - Found 6 new tokens to process
+2025-07-09 17:21:43 [INFO] [MainThread] test_chrome:810 - Submitting 1 new tokens: DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump
+2025-07-09 17:21:43 [INFO] [BubbleWorker_0] test_chrome:582 - [Thread-16356] --- Starting processing for token: DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump ---
+2025-07-09 17:21:47 [INFO] [BubbleWorker_0] test_chrome:592 - [Thread-16356] Attempt 1/3 for token: DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump
+2025-07-09 17:21:56 [INFO] [BubbleWorker_0] test_chrome:602 - [Thread-16356] Page readyState complete for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump (Attempt 1).
+2025-07-09 17:21:58 [INFO] [BubbleWorker_0] test_chrome:609 - [Thread-16356] 'Address List' is visible for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump.
+2025-07-09 17:22:09 [INFO] [BubbleWorker_0] test_chrome:620 - [Thread-16356] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:22:20 [WARNING] [BubbleWorker_0] test_chrome:645 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+
+2025-07-09 17:22:34 [INFO] [BubbleWorker_0] test_chrome:335 - [16356] Extracted 10 initial holder ranks.
+2025-07-09 17:22:34 [INFO] [BubbleWorker_0] test_chrome:655 - [Thread-16356] Attempting to click clusters and extract supply data.
+2025-07-09 17:22:34 [INFO] [BubbleWorker_0] test_chrome:343 - [Thread-16356] Starting cluster click processing for 10 items.
+2025-07-09 17:22:35 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_172234.png
+2025-07-09 17:22:47 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #2 - 5sJji1...c15t
+2025-07-09 17:22:47 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #3 - Ri2Jzf...QhJM
+2025-07-09 17:22:47 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #4 - BXaPTL...VYqy
+2025-07-09 17:22:47 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #5 - ALkNg4...KUuj
+2025-07-09 17:22:47 [INFO] [BubbleWorker_0] test_chrome:393 - [Thread-16356] Rank #5 (ALkNg4...KUuj) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 17:22:52 [INFO] [BubbleWorker_0] test_chrome:439 - [Thread-16356] Found target Rank #5. Attempting click.
+2025-07-09 17:22:54 [INFO] [BubbleWorker_0] test_chrome:443 - [Thread-16356] Successfully clicked on Rank #5
+2025-07-09 17:22:56 [INFO] [BubbleWorker_0] test_chrome:482 - [Thread-16356] Extracted Cluster Supply for Rank 5: 3.88%
+2025-07-09 17:22:57 [INFO] [BubbleWorker_0] test_chrome:177 - Screenshot saved as debug_screenshots\cluster_5_processed_20250709_172256.png
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #6 - 2GiKDj...MNxi
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #7 - j427Y4...gbKo
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #8 - CUHBzS...9P7H
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #9 - 5VW7EQ...BcVQ
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #10 - DzGszQ...j8j9
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:377 - [Thread-16356] Processing Rank #11 - 5DtbZS...J4F8
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:408 - [Thread-16356] Completed processing 10 items. Processed 1 unique clusters.
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:661 - [Thread-16356] Cluster processing completed.
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:572 - Saved cluster summary for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump: Clusters=1, GlobalSupply=3.88%, Status=OPPORTUNITY
+2025-07-09 17:22:58 [INFO] [BubbleWorker_0] test_chrome:671 - [Thread-16356] Successfully processed and saved data for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump on attempt 1.
+2025-07-09 17:23:02 [INFO] [BubbleWorker_0] test_chrome:697 - [Thread-16356] WebDriver quit for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump.
+2025-07-09 17:23:03 [INFO] [MainThread] test_chrome:785 - Bubblemaps SUCCESS for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump.
+2025-07-09 17:23:03 [INFO] [MainThread] test_chrome:792 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 17:23:03 [INFO] [MainThread] test_chrome:703 - Attempting to run risk_detector.py...
+2025-07-09 17:23:08 [INFO] [MainThread] test_chrome:719 - risk_detector.py completed successfully.
+2025-07-09 17:23:08 [WARNING] [MainThread] test_chrome:721 - Risk Detector STDERR:
+2025-07-09 17:23:04 [INFO] [risk_detector.py:176] - --- Starting Full Token Risk Analysis ---
+2025-07-09 17:23:04 [INFO] [risk_detector.py:190] - Loaded 6 tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:23:04 [INFO] [risk_detector.py:170] - Successfully loaded 4 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:23:04 [INFO] [risk_detector.py:223] - Processing token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (every pre-sale is a scam)
+2025-07-09 17:23:04 [INFO] [risk_detector.py:247] - No cluster summary found for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk. Treating as high rank individual cluster (1% supply).
+2025-07-09 17:23:04 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:23:05 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk: HCLeS3HvUDsiKyBrkEXqEbQG89zcL35x1K7nZGuxJmea, Liq_USD: 68008.09, Price_USD: 0.00037460
+2025-07-09 17:23:05 [INFO] [risk_detector.py:223] - Processing token: GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk (crime candles)
+2025-07-09 17:23:05 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk
+2025-07-09 17:23:05 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk: C7SWrajgtyg85eCnYYQep1STqxinVJKLwTz2c7YCMWgf, Liq_USD: 26038.39, Price_USD: 0.00006123
+2025-07-09 17:23:05 [INFO] [risk_detector.py:223] - Processing token: Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7 (Pumpi)
+2025-07-09 17:23:05 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7
+2025-07-09 17:23:06 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for Duncu7xvR7prxAerj9Gg1hxbtU46EriKtcYn6ZfN7zr7: FEphrbmXXDqhQRkSJDFDCUt4sBd1BoHBp4KkdXEJgQJu, Liq_USD: 21280.79, Price_USD: 0.00003569
+2025-07-09 17:23:06 [INFO] [risk_detector.py:223] - Processing token: 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk (BopCat)
+2025-07-09 17:23:06 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk
+2025-07-09 17:23:06 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for 4FeE6Nc8ESns4forbkNGU7rgLLRaSMPoyZsPn3Vgbonk: Bk1o2163w2xuVCfdMUNVvrurgMX24ST49pq78mvc7Yfp, Liq_USD: 20694.32, Price_USD: 0.00003815
+2025-07-09 17:23:06 [INFO] [risk_detector.py:223] - Processing token: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump (doggo)
+2025-07-09 17:23:06 [INFO] [risk_detector.py:247] - No cluster summary found for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump. Treating as high rank individual cluster (1% supply).
+2025-07-09 17:23:06 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:23:07 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump: 3bSuopoVFbbHpeikU7urtoj6YCJFeS1WEkSkCs4K7D5B, Liq_USD: 22383.82, Price_USD: 0.00004495
+2025-07-09 17:23:07 [INFO] [risk_detector.py:223] - Processing token: DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump (KILLPILL)
+2025-07-09 17:23:07 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump
+2025-07-09 17:23:07 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump: HVXRJR3QCkcGH472dxu5VPgYMYh3WX4ApLtrL3UmZGxD, Liq_USD: 22141.82, Price_USD: 0.00004324
+2025-07-09 17:23:07 [INFO] [risk_detector.py:335] - Successfully wrote 6 processed token entries to C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv and C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv
+2025-07-09 17:23:07 [INFO] [risk_detector.py:342] - Removed processed tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:23:07 [INFO] [risk_detector.py:347] - Cleaned up C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:23:07 [INFO] [risk_detector.py:356] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv contains 7 lines (including header)
+2025-07-09 17:23:07 [INFO] [risk_detector.py:360] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv contains 7 lines (including header)
+2025-07-09 17:23:07 [INFO] [risk_detector.py:369] - --- Full Token Risk Analysis Finished ---
+2025-07-09 17:23:08 [INFO] [MainThread] test_chrome:516 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_DffBgzSP7BE6QYzpcma8S3BgfFJbCj12cJ5LQDjdpump.txt
+2025-07-09 17:23:08 [INFO] [MainThread] test_chrome:800 - CSV file changed, checking for new tokens.
+2025-07-09 17:23:08 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:23:08 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:23:23 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:23:23 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:23:38 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:23:38 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:23:53 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:23:53 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:24:08 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:24:08 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:24:23 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:24:23 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:24:38 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:24:38 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:24:53 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:24:53 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:25:08 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:25:08 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:25:23 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:25:23 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:25:38 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:25:38 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:25:53 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:25:53 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:26:08 [WARNING] [MainThread] test_chrome:107 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:26:08 [INFO] [MainThread] test_chrome:816 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:40:46 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:40:48 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:40:48 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:40:48 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:40:48 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 17:40:48 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:40:48 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-26784] --- Starting processing for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk ---
+2025-07-09 17:40:50 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-26784] Attempt 1/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:40:54 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-26784] Page readyState complete for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (Attempt 1).
+2025-07-09 17:40:56 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-26784] 'Address List' is visible for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 17:41:00 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-26784] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:41:09 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:41:21 [INFO] [BubbleWorker_0] test_chrome:338 - [26784] Extracted 10 initial holder ranks.
+2025-07-09 17:41:21 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-26784] Attempting to click clusters and extract supply data.
+2025-07-09 17:41:21 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-26784] Starting cluster click processing for 10 items.
+2025-07-09 17:41:22 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_174121.png
+2025-07-09 17:41:34 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #8 - HCaee2...2Gq2
+2025-07-09 17:41:34 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #9 - 灵魂之汁浇给.sol
+2025-07-09 17:41:34 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #10 - JTTWW2...uJXE
+2025-07-09 17:41:34 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #11 - FRE5FJ...2n7z
+2025-07-09 17:41:34 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-26784] Rank #11 (FRE5FJ...2n7z) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 17:41:37 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-26784] Found target Rank #11. Attempting click.
+2025-07-09 17:41:38 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-26784] Successfully clicked on Rank #11
+2025-07-09 17:41:39 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-26784] Extracted Cluster Supply for Rank 11: 5.44%
+2025-07-09 17:41:40 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_11_processed_20250709_174139.png
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #12 - 4zEJNv...mpFs
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #13 - willjeetsoon.sol
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #14 - CwyjjY...TGGJ
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #15 - Eannj3...wjB2
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #16 - F22uTK...imBr
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-26784] Processing Rank #17 - A94ZBg...qUVM
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-26784] Completed processing 10 items. Processed 1 unique clusters.
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-26784] Cluster processing completed.
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk: Clusters=1, GlobalSupply=5.44%, Status=RISKY
+2025-07-09 17:41:41 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-26784] Successfully processed and saved data for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk on attempt 1.
+2025-07-09 17:41:44 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-26784] WebDriver quit for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 17:41:48 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 17:41:48 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 17:41:48 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 17:41:50 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 17:41:50 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 17:41:49 [INFO] [risk_detector.py:176] - --- Starting Full Token Risk Analysis ---
+2025-07-09 17:41:49 [INFO] [risk_detector.py:190] - Loaded 1 tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:41:49 [INFO] [risk_detector.py:170] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:41:49 [INFO] [risk_detector.py:223] - Processing token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (every pre-sale is a scam)
+2025-07-09 17:41:49 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 17:41:49 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk: HCLeS3HvUDsiKyBrkEXqEbQG89zcL35x1K7nZGuxJmea, Liq_USD: 66914.77, Price_USD: 0.00035760
+2025-07-09 17:41:49 [INFO] [risk_detector.py:335] - Successfully wrote 1 processed token entries to C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv and C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv
+2025-07-09 17:41:49 [INFO] [risk_detector.py:342] - Removed processed tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:41:49 [INFO] [risk_detector.py:347] - Cleaned up C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:41:49 [INFO] [risk_detector.py:356] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv contains 2 lines (including header)
+2025-07-09 17:41:49 [INFO] [risk_detector.py:360] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv contains 2 lines (including header)
+2025-07-09 17:41:49 [INFO] [risk_detector.py:369] - --- Full Token Risk Analysis Finished ---
+2025-07-09 17:41:50 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.txt
+2025-07-09 17:41:50 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 17:41:50 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:41:50 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:41:58 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:42:00 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:42:00 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:42:00 [INFO] [MainThread] test_chrome:144 - Found new token to process: 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:42:00 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 17:42:00 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:42:00 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-14328] --- Starting processing for token: 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk ---
+2025-07-09 17:42:02 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-14328] Attempt 1/3 for token: 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:42:05 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-14328] Page readyState complete for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk (Attempt 1).
+2025-07-09 17:42:06 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-14328] 'Address List' is visible for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk.
+2025-07-09 17:42:09 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-14328] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:42:20 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:42:22 [INFO] [BubbleWorker_0] test_chrome:338 - [14328] Extracted 0 initial holder ranks.
+2025-07-09 17:42:22 [ERROR] [BubbleWorker_0] test_chrome:659 - [Thread-14328] Failed to extract initial address list (Attempt 1).
+2025-07-09 17:42:22 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-14328] Attempt 2/3 for token: 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:42:22 [INFO] [BubbleWorker_0] test_chrome:605 - [Thread-14328] Reloading page for attempt 2.
+2025-07-09 17:42:24 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-14328] Page readyState complete for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk (Attempt 2).
+2025-07-09 17:42:25 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-14328] 'Address List' is visible for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk.
+2025-07-09 17:42:27 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-14328] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:42:30 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:42:35 [INFO] [BubbleWorker_0] test_chrome:338 - [14328] Extracted 10 initial holder ranks.
+2025-07-09 17:42:35 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-14328] Attempting to click clusters and extract supply data.
+2025-07-09 17:42:35 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-14328] Starting cluster click processing for 10 items.
+2025-07-09 17:42:36 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_174235.png
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #2 - FLQJhc...kaM9
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #3 - 993wWN...wusr
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #4 - FcNunk...nwjs
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #5 - 5Xiv8z...dVKJ
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #6 - D3o89q...gWd2
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #7 - 6Nr4ig...UMvW
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #8 - 6QzRsu...yjSW
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #9 - E6qaxd...TwSf
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #10 - EEzuUV...G4Qi
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14328] Processing Rank #11 - 9mMevb...59Pe
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-14328] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-14328] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-14328] Treating Rank #2 (Individual Supply: 0.97%) as the primary risk cluster.
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-14328] Cluster processing completed.
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk: Clusters=1, GlobalSupply=0.97%, Status=OPPORTUNITY
+2025-07-09 17:42:48 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-14328] Successfully processed and saved data for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk on attempt 2.
+2025-07-09 17:42:51 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-14328] WebDriver quit for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk.
+2025-07-09 17:43:00 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk.
+2025-07-09 17:43:00 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 17:43:00 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 17:43:03 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 17:43:03 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 17:43:01 [INFO] [risk_detector.py:176] - --- Starting Full Token Risk Analysis ---
+2025-07-09 17:43:01 [INFO] [risk_detector.py:190] - Loaded 1 tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:43:01 [INFO] [risk_detector.py:170] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:43:01 [INFO] [risk_detector.py:223] - Processing token: 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk (Wakuku)
+2025-07-09 17:43:02 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk
+2025-07-09 17:43:02 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for 839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk: CZizZjUsbr8KgeWdKRgKMQuRhgbhtUdw76zLyvnKJFx4, Liq_USD: 32316.84, Price_USD: 0.00009491
+2025-07-09 17:43:02 [INFO] [risk_detector.py:335] - Successfully wrote 1 processed token entries to C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv and C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv
+2025-07-09 17:43:02 [INFO] [risk_detector.py:342] - Removed processed tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:43:02 [INFO] [risk_detector.py:347] - Cleaned up C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:43:02 [INFO] [risk_detector.py:356] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv contains 2 lines (including header)
+2025-07-09 17:43:02 [INFO] [risk_detector.py:360] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv contains 2 lines (including header)
+2025-07-09 17:43:02 [INFO] [risk_detector.py:369] - --- Full Token Risk Analysis Finished ---
+2025-07-09 17:43:03 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_839XWXQEi7drpNinkvYiQW29ujmpP8rSxN1bNyhtbonk.txt
+2025-07-09 17:43:03 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 17:43:03 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:43:03 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:43:18 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:43:18 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:43:33 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:43:33 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:43:48 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:43:48 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 17:44:03 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:44:03 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:44:15 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:44:17 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:44:17 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:44:17 [INFO] [MainThread] test_chrome:144 - Found new token to process: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:44:17 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 17:44:17 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:44:17 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-19496] --- Starting processing for token: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump ---
+2025-07-09 17:44:19 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-19496] Attempt 1/3 for token: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:44:22 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-19496] Page readyState complete for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump (Attempt 1).
+2025-07-09 17:44:23 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-19496] 'Address List' is visible for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump.
+2025-07-09 17:44:26 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-19496] Data is fresh: 'in a few seconds'.
+2025-07-09 17:44:38 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:44:45 [INFO] [BubbleWorker_0] test_chrome:338 - [19496] Extracted 4 initial holder ranks.
+2025-07-09 17:44:45 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-19496] Attempting to click clusters and extract supply data.
+2025-07-09 17:44:45 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-19496] Starting cluster click processing for 4 items.
+2025-07-09 17:44:45 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_174445.png
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19496] Processing Rank #15 - Ea9eLo...KsMw
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19496] Processing Rank #16 - 2cuCAv...2gzE
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19496] Processing Rank #17 - 4HLLru...x3x6
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19496] Processing Rank #18 - 3EwAHD...4wbN
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-19496] Completed processing 4 items. Processed 0 unique clusters.
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-19496] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-19496] Treating Rank #15 (Individual Supply: 1.14%) as the primary risk cluster.
+2025-07-09 17:44:56 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-19496] Cluster processing completed.
+2025-07-09 17:44:57 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump: Clusters=1, GlobalSupply=1.14%, Status=OPPORTUNITY
+2025-07-09 17:44:57 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-19496] Successfully processed and saved data for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump on attempt 1.
+2025-07-09 17:44:59 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-19496] WebDriver quit for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump.
+2025-07-09 17:45:09 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump.
+2025-07-09 17:45:09 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 17:45:09 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 17:45:12 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 17:45:12 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 17:45:10 [INFO] [risk_detector.py:176] - --- Starting Full Token Risk Analysis ---
+2025-07-09 17:45:10 [INFO] [risk_detector.py:190] - Loaded 1 tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:45:10 [INFO] [risk_detector.py:170] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:45:10 [INFO] [risk_detector.py:223] - Processing token: wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump (doggo)
+2025-07-09 17:45:11 [INFO] [risk_detector.py:32] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump
+2025-07-09 17:45:11 [INFO] [risk_detector.py:116] - [DEXSCREENER] Primary pair for wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump: 3bSuopoVFbbHpeikU7urtoj6YCJFeS1WEkSkCs4K7D5B, Liq_USD: 23851.92, Price_USD: 0.00004913
+2025-07-09 17:45:11 [INFO] [risk_detector.py:335] - Successfully wrote 1 processed token entries to C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv and C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv
+2025-07-09 17:45:11 [INFO] [risk_detector.py:342] - Removed processed tokens from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:45:11 [INFO] [risk_detector.py:347] - Cleaned up C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:45:11 [INFO] [risk_detector.py:356] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv contains 2 lines (including header)
+2025-07-09 17:45:11 [INFO] [risk_detector.py:360] - C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\filtered_tokens_with_all_risks.csv contains 2 lines (including header)
+2025-07-09 17:45:11 [INFO] [risk_detector.py:369] - --- Full Token Risk Analysis Finished ---
+2025-07-09 17:45:12 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_wE99GdBDAbvozaoyojNicXZnYzvj9mcbWPnRe7Hpump.txt
+2025-07-09 17:45:12 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 17:45:12 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:45:12 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:45:26 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:45:28 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:45:28 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:45:28 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 17:45:28 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 17:45:28 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 17:45:28 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-9460] --- Starting processing for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk ---
+2025-07-09 17:45:30 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-9460] Attempt 1/3 for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 17:45:33 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-9460] Page readyState complete for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Attempt 1).
+2025-07-09 17:45:35 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-9460] 'Address List' is visible for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 17:45:37 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-9460] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:45:47 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff664456f75+76917]
+	GetHandleVerifier [0x0x7ff664456fd0+77008]
+	(No symbol) [0x0x7ff664209dea]
+	(No symbol) [0x0x7ff664260256]
+	(No symbol) [0x0x7ff66426050c]
+	(No symbol) [0x0x7ff6642b3887]
+	(No symbol) [0x0x7ff6642884af]
+	(No symbol) [0x0x7ff6642b065c]
+	(No symbol) [0x0x7ff664288243]
+	(No symbol) [0x0x7ff664251431]
+	(No symbol) [0x0x7ff6642521c3]
+	GetHandleVerifier [0x0x7ff66472d2ad+3051437]
+	GetHandleVerifier [0x0x7ff664727903+3028483]
+	GetHandleVerifier [0x0x7ff66474589d+3151261]
+	GetHandleVerifier [0x0x7ff66447183e+185662]
+	GetHandleVerifier [0x0x7ff6644796ff+218111]
+	GetHandleVerifier [0x0x7ff66445faf4+112628]
+	GetHandleVerifier [0x0x7ff66445fca9+113065]
+	GetHandleVerifier [0x0x7ff664446c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 17:45:51 [INFO] [BubbleWorker_0] test_chrome:338 - [9460] Extracted 10 initial holder ranks.
+2025-07-09 17:45:51 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-9460] Attempting to click clusters and extract supply data.
+2025-07-09 17:45:51 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-9460] Starting cluster click processing for 10 items.
+2025-07-09 17:45:52 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_174551.png
+2025-07-09 17:46:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #2 - HfiSd2...5Fy3
+2025-07-09 17:46:03 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-9460] Rank #2 (HfiSd2...5Fy3) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 17:46:05 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-9460] Found target Rank #2. Attempting click.
+2025-07-09 17:46:06 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-9460] Successfully clicked on Rank #2
+2025-07-09 17:46:08 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-9460] Extracted Cluster Supply for Rank 2: 6.42%
+2025-07-09 17:46:08 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_2_processed_20250709_174608.png
+2025-07-09 17:46:09 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #3 - 7hs7jA...9E6x
+2025-07-09 17:46:09 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #4 - Aw213N...8nqA
+2025-07-09 17:46:09 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #5 - Fn9QmJ...UZsg
+2025-07-09 17:46:10 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #6 - E1zs6r...mDur
+2025-07-09 17:46:10 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-9460] Rank #6 (E1zs6r...mDur) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 17:46:13 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-9460] Found target Rank #6. Attempting click.
+2025-07-09 17:46:14 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-9460] Successfully clicked on Rank #6
+2025-07-09 17:46:16 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-9460] Extracted Cluster Supply for Rank 6: 3.53%
+2025-07-09 17:46:16 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_6_processed_20250709_174616.png
+2025-07-09 17:46:17 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #7 - 6fpXEd...bdPU
+2025-07-09 17:46:17 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #8 - HfxN5R...QZMi
+2025-07-09 17:46:17 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #9 - 37nud4...Q6RL
+2025-07-09 17:46:17 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-9460] Rank #9 (37nud4...Q6RL) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 17:46:20 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-9460] Found target Rank #9. Attempting click.
+2025-07-09 17:46:21 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-9460] Successfully clicked on Rank #9
+2025-07-09 17:46:23 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-9460] Extracted Cluster Supply for Rank 9: 3.94%
+2025-07-09 17:46:23 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_9_processed_20250709_174623.png
+2025-07-09 17:46:24 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #10 - 23REa7...VXLQ
+2025-07-09 17:46:24 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-9460] Processing Rank #11 - 8mvfpi...9YKN
+2025-07-09 17:46:24 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-9460] Completed processing 10 items. Processed 3 unique clusters.
+2025-07-09 17:46:24 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-9460] Cluster processing completed.
+2025-07-09 17:46:24 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk: Clusters=3, GlobalSupply=13.89%, Status=RISKY
+2025-07-09 17:46:24 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-9460] Successfully processed and saved data for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk on attempt 1.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:46:32 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:46:34 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:46:34 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:46:34 [INFO] [MainThread] test_chrome:144 - Found new token to process: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:46:34 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 17:46:34 [INFO] [MainThread] test_chrome:153 - Found 2 new tokens to process
+2025-07-09 17:46:34 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:46:34 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-18872] --- Starting processing for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp ---
+2025-07-09 17:46:36 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-18872] Attempt 1/3 for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:46:39 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-18872] Page readyState complete for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp (Attempt 1).
+2025-07-09 17:46:41 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-18872] 'Address List' is visible for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:46:43 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-18872] Data is fresh: 'a few seconds ago'.
+2025-07-09 17:46:53 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff664456f75+76917]
+	GetHandleVerifier [0x0x7ff664456fd0+77008]
+	(No symbol) [0x0x7ff664209dea]
+	(No symbol) [0x0x7ff664260256]
+	(No symbol) [0x0x7ff66426050c]
+	(No symbol) [0x0x7ff6642b3887]
+	(No symbol) [0x0x7ff6642884af]
+	(No symbol) [0x0x7ff6642b065c]
+	(No symbol) [0x0x7ff664288243]
+	(No symbol) [0x0x7ff664251431]
+	(No symbol) [0x0x7ff6642521c3]
+	GetHandleVerifier [0x0x7ff66472d2ad+3051437]
+	GetHandleVerifier [0x0x7ff664727903+3028483]
+	GetHandleVerifier [0x0x7ff66474589d+3151261]
+	GetHandleVerifier [0x0x7ff66447183e+185662]
+	GetHandleVerifier [0x0x7ff6644796ff+218111]
+	GetHandleVerifier [0x0x7ff66445faf4+112628]
+	GetHandleVerifier [0x0x7ff66445fca9+113065]
+	GetHandleVerifier [0x0x7ff664446c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 17:46:56 [INFO] [BubbleWorker_0] test_chrome:338 - [18872] Extracted 0 initial holder ranks.
+2025-07-09 17:46:56 [ERROR] [BubbleWorker_0] test_chrome:659 - [Thread-18872] Failed to extract initial address list (Attempt 1).
+2025-07-09 17:46:56 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-18872] Attempt 2/3 for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:46:56 [INFO] [BubbleWorker_0] test_chrome:605 - [Thread-18872] Reloading page for attempt 2.
+2025-07-09 17:47:00 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-18872] Page readyState complete for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp (Attempt 2).
+2025-07-09 17:47:04 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-18872] 'Address List' is visible for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:47:06 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-18872] Data is fresh: 'a few seconds ago'.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 17:57:59 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 17:58:00 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 17:58:00 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 17:58:00 [INFO] [MainThread] test_chrome:144 - Found new token to process: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:58:00 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 17:58:00 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:58:01 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-27096] --- Starting processing for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp ---
+2025-07-09 17:58:02 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-27096] Attempt 1/3 for token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:58:09 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-27096] Page readyState complete for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp (Attempt 1).
+2025-07-09 17:58:16 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-27096] 'Address List' is visible for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:58:34 [WARNING] [BubbleWorker_0] test_chrome:632 - [Thread-27096] Data not immediately fresh. Attempting in-page refresh.
+2025-07-09 17:59:09 [INFO] [BubbleWorker_0] test_chrome:638 - [Thread-27096] Data fresh after in-page refresh.
+2025-07-09 17:59:12 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:59:19 [INFO] [BubbleWorker_0] test_chrome:338 - [27096] Extracted 10 initial holder ranks.
+2025-07-09 17:59:19 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-27096] Attempting to click clusters and extract supply data.
+2025-07-09 17:59:19 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-27096] Starting cluster click processing for 10 items.
+2025-07-09 17:59:20 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_175919.png
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #2 - 987a1J...BzBi
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #3 - 24yzfK...Nj9B
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #4 - 4hDGjw...4kia
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #5 - 8DYpna...aYQP
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #6 - pump.fun Creator (ANAV)
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #7 - DpFnZY...p8Us
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #8 - 88ttcy...et9x
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #9 - CWoDWM...Sban
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #10 - Cte14w...kkNa
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-27096] Processing Rank #11 - JA3qYR...HTCM
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-27096] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-27096] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-27096] Treating Rank #2 (Individual Supply: 3.04%) as the primary risk cluster.
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-27096] Cluster processing completed.
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp: Clusters=1, GlobalSupply=3.04%, Status=OPPORTUNITY
+2025-07-09 17:59:31 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-27096] Successfully processed and saved data for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp on attempt 1.
+2025-07-09 17:59:35 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-27096] WebDriver quit for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:59:42 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.
+2025-07-09 17:59:42 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 17:59:42 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 17:59:45 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 17:59:45 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 17:59:44 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 17:59:44 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 17:59:44 [INFO] [risk_detector.py:161] - Successfully loaded 2 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 17:59:44 [INFO] [risk_detector.py:204] - Processing token: DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp (simple memecoin)
+2025-07-09 17:59:44 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp
+2025-07-09 17:59:44 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp: 2cpnb4w81oc7rmtSLC1aEKtMD4dJ5y6q2CCBUf5DZq26, Liq_USD: 23956.96, Price_USD: 0.00004382
+2025-07-09 17:59:44 [INFO] [risk_detector.py:161] - Successfully loaded 0 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 17:59:44 [INFO] [risk_detector.py:281] - Wrote/Updated 1 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 17:59:44 [INFO] [risk_detector.py:298] - Cleaned up 1 processed token(s) from source files.
+2025-07-09 17:59:44 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 17:59:45 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp.txt
+2025-07-09 17:59:45 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 17:59:45 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 17:59:45 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:00:00 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:00:00 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:00:15 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:00:15 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:00:30 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:00:30 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:00:45 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:00:45 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:01:00 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:01:00 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:01:15 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:01:15 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 18:01:34 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 18:01:36 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 18:01:36 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 18:01:36 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 18:01:36 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 18:01:36 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 18:01:36 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-4152] --- Starting processing for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk ---
+2025-07-09 18:01:38 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-4152] Attempt 1/3 for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 18:01:42 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-4152] Page readyState complete for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Attempt 1).
+2025-07-09 18:01:44 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-4152] 'Address List' is visible for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 18:02:01 [WARNING] [BubbleWorker_0] test_chrome:632 - [Thread-4152] Data not immediately fresh. Attempting in-page refresh.
+2025-07-09 18:02:09 [INFO] [BubbleWorker_0] test_chrome:638 - [Thread-4152] Data fresh after in-page refresh.
+2025-07-09 18:02:19 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+
+2025-07-09 18:02:26 [INFO] [BubbleWorker_0] test_chrome:338 - [4152] Extracted 10 initial holder ranks.
+2025-07-09 18:02:26 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-4152] Attempting to click clusters and extract supply data.
+2025-07-09 18:02:26 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-4152] Starting cluster click processing for 10 items.
+2025-07-09 18:02:26 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_180226.png
+2025-07-09 18:02:38 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #2 - HfiSd2...5Fy3
+2025-07-09 18:02:38 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-4152] Rank #2 (HfiSd2...5Fy3) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 18:02:41 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-4152] Found target Rank #2. Attempting click.
+2025-07-09 18:02:42 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-4152] Successfully clicked on Rank #2
+2025-07-09 18:02:46 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-4152] Extracted Cluster Supply for Rank 2: 6.42%
+2025-07-09 18:02:49 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_2_processed_20250709_180246.png
+2025-07-09 18:02:50 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #3 - 7hs7jA...9E6x
+2025-07-09 18:02:50 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #4 - Aw213N...8nqA
+2025-07-09 18:02:50 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #5 - Fn9QmJ...UZsg
+2025-07-09 18:02:50 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #6 - E1zs6r...mDur
+2025-07-09 18:02:50 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-4152] Rank #6 (E1zs6r...mDur) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 18:02:55 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-4152] Found target Rank #6. Attempting click.
+2025-07-09 18:02:57 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-4152] Successfully clicked on Rank #6
+2025-07-09 18:02:59 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-4152] Extracted Cluster Supply for Rank 6: 3.53%
+2025-07-09 18:03:02 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_6_processed_20250709_180259.png
+2025-07-09 18:03:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #7 - 6fpXEd...bdPU
+2025-07-09 18:03:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #8 - HfxN5R...QZMi
+2025-07-09 18:03:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #9 - 37nud4...Q6RL
+2025-07-09 18:03:03 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-4152] Rank #9 (37nud4...Q6RL) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 18:03:10 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-4152] Found target Rank #9. Attempting click.
+2025-07-09 18:03:14 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-4152] Successfully clicked on Rank #9
+2025-07-09 18:03:16 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-4152] Extracted Cluster Supply for Rank 9: 4.09%
+2025-07-09 18:03:19 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_9_processed_20250709_180316.png
+2025-07-09 18:03:20 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #10 - 23REa7...VXLQ
+2025-07-09 18:03:20 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-4152] Processing Rank #11 - 8mvfpi...9YKN
+2025-07-09 18:03:20 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-4152] Completed processing 10 items. Processed 3 unique clusters.
+2025-07-09 18:03:20 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-4152] Cluster processing completed.
+2025-07-09 18:03:21 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk: Clusters=3, GlobalSupply=14.04%, Status=RISKY
+2025-07-09 18:03:21 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-4152] Successfully processed and saved data for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk on attempt 1.
+2025-07-09 18:03:27 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-4152] WebDriver quit for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 18:03:37 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 18:03:37 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 18:03:37 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 18:03:40 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 18:03:40 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 18:03:38 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 18:03:38 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 18:03:38 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 18:03:38 [INFO] [risk_detector.py:204] - Processing token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Bruno the Hero)
+2025-07-09 18:03:38 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 18:03:39 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk: HadJ38YpnWnAMGieV9TW1PSyZgM9J3HN4NSNDsUixJ2J, Liq_USD: 22305.27, Price_USD: 0.00004526
+2025-07-09 18:03:39 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 18:03:39 [INFO] [risk_detector.py:281] - Wrote/Updated 1 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 18:03:39 [INFO] [risk_detector.py:298] - Cleaned up 1 processed token(s) from source files.
+2025-07-09 18:03:39 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 18:03:40 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.txt
+2025-07-09 18:03:40 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 18:03:40 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:03:40 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:03:55 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:03:55 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 18:04:03 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 18:04:05 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 18:04:05 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 18:04:05 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 18:04:05 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 18:04:05 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 18:04:05 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-19232] --- Starting processing for token: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump ---
+2025-07-09 18:04:08 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-19232] Attempt 1/3 for token: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 18:04:12 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-19232] Page readyState complete for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump (Attempt 1).
+2025-07-09 18:04:15 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-19232] 'Address List' is visible for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump.
+2025-07-09 18:04:18 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-19232] Data is fresh: 'a few seconds ago'.
+2025-07-09 18:04:28 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff664456f75+76917]
+	GetHandleVerifier [0x0x7ff664456fd0+77008]
+	(No symbol) [0x0x7ff664209dea]
+	(No symbol) [0x0x7ff664260256]
+	(No symbol) [0x0x7ff66426050c]
+	(No symbol) [0x0x7ff6642b3887]
+	(No symbol) [0x0x7ff6642884af]
+	(No symbol) [0x0x7ff6642b065c]
+	(No symbol) [0x0x7ff664288243]
+	(No symbol) [0x0x7ff664251431]
+	(No symbol) [0x0x7ff6642521c3]
+	GetHandleVerifier [0x0x7ff66472d2ad+3051437]
+	GetHandleVerifier [0x0x7ff664727903+3028483]
+	GetHandleVerifier [0x0x7ff66474589d+3151261]
+	GetHandleVerifier [0x0x7ff66447183e+185662]
+	GetHandleVerifier [0x0x7ff6644796ff+218111]
+	GetHandleVerifier [0x0x7ff66445faf4+112628]
+	GetHandleVerifier [0x0x7ff66445fca9+113065]
+	GetHandleVerifier [0x0x7ff664446c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 18:04:40 [INFO] [BubbleWorker_0] test_chrome:338 - [19232] Extracted 10 initial holder ranks.
+2025-07-09 18:04:40 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-19232] Attempting to click clusters and extract supply data.
+2025-07-09 18:04:41 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-19232] Starting cluster click processing for 10 items.
+2025-07-09 18:04:42 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_180441.png
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #2 - lolsh.sol
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #3 - 8yJFWm...Pydj
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #4 - 8mserK...bej9
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #5 - 2jzBeP...4Ekj
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #6 - 9HCTuT...hp9z
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #7 - EmXDXY...3S4v
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #8 - dialed.sol
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #9 - CrFDxh...cMqB
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #10 - B4buno...WQwK
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-19232] Processing Rank #11 - C3nLTN...d9hP
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-19232] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-19232] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-19232] Treating Rank #2 (Individual Supply: 2.82%) as the primary risk cluster.
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-19232] Cluster processing completed.
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump: Clusters=1, GlobalSupply=2.82%, Status=OPPORTUNITY
+2025-07-09 18:04:53 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-19232] Successfully processed and saved data for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump on attempt 1.
+2025-07-09 18:05:00 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-19232] WebDriver quit for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump.
+2025-07-09 18:05:06 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump.
+2025-07-09 18:05:06 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 18:05:06 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 18:05:09 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 18:05:09 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 18:05:07 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 18:05:07 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 18:05:07 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 18:05:07 [INFO] [risk_detector.py:204] - Processing token: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump (SCAMCOIN)
+2025-07-09 18:05:08 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 18:05:08 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump: AtDt2DCCo7Nnq6AWebbwZjfSdS5c2GGHKJmdK7jKTkDg, Liq_USD: 27121.06, Price_USD: 0.00006259
+2025-07-09 18:05:08 [INFO] [risk_detector.py:161] - Successfully loaded 2 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 18:05:08 [INFO] [risk_detector.py:281] - Wrote/Updated 1 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 18:05:08 [INFO] [risk_detector.py:298] - Cleaned up 1 processed token(s) from source files.
+2025-07-09 18:05:08 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 18:05:09 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump.txt
+2025-07-09 18:05:09 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 18:05:09 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:05:09 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:05:24 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:05:24 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:05:39 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:05:39 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:05:54 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:05:54 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:06:09 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:06:09 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:06:24 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:06:24 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:06:39 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:06:39 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:06:54 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:06:54 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:07:09 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:07:09 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 18:07:26 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 18:07:30 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 18:07:30 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 18:07:30 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
+2025-07-09 18:07:30 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:07:45 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
+2025-07-09 18:07:45 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:08:00 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
+2025-07-09 18:08:00 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:08:15 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
+2025-07-09 18:08:15 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:08:30 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
+2025-07-09 18:08:30 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 18:08:36 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 18:08:37 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 18:08:38 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 18:08:38 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:08:38 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 18:08:38 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:08:38 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-1948] --- Starting processing for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk ---
+2025-07-09 18:08:40 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-1948] Attempt 1/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:08:43 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-1948] Page readyState complete for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (Attempt 1).
+2025-07-09 18:08:47 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-1948] 'Address List' is visible for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 18:08:49 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-1948] Data is fresh: 'a few seconds ago'.
+2025-07-09 18:09:00 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff664456f75+76917]
+	GetHandleVerifier [0x0x7ff664456fd0+77008]
+	(No symbol) [0x0x7ff664209dea]
+	(No symbol) [0x0x7ff664260256]
+	(No symbol) [0x0x7ff66426050c]
+	(No symbol) [0x0x7ff6642b3887]
+	(No symbol) [0x0x7ff6642884af]
+	(No symbol) [0x0x7ff6642b065c]
+	(No symbol) [0x0x7ff664288243]
+	(No symbol) [0x0x7ff664251431]
+	(No symbol) [0x0x7ff6642521c3]
+	GetHandleVerifier [0x0x7ff66472d2ad+3051437]
+	GetHandleVerifier [0x0x7ff664727903+3028483]
+	GetHandleVerifier [0x0x7ff66474589d+3151261]
+	GetHandleVerifier [0x0x7ff66447183e+185662]
+	GetHandleVerifier [0x0x7ff6644796ff+218111]
+	GetHandleVerifier [0x0x7ff66445faf4+112628]
+	GetHandleVerifier [0x0x7ff66445fca9+113065]
+	GetHandleVerifier [0x0x7ff664446c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 18:09:05 [INFO] [BubbleWorker_0] test_chrome:338 - [1948] Extracted 0 initial holder ranks.
+2025-07-09 18:09:05 [ERROR] [BubbleWorker_0] test_chrome:659 - [Thread-1948] Failed to extract initial address list (Attempt 1).
+2025-07-09 18:09:05 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-1948] Attempt 2/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:09:05 [INFO] [BubbleWorker_0] test_chrome:605 - [Thread-1948] Reloading page for attempt 2.
+2025-07-09 18:09:10 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-1948] Page readyState complete for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (Attempt 2).
+2025-07-09 18:09:14 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-1948] 'Address List' is visible for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 18:09:17 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-1948] Data is fresh: 'a few seconds ago'.
+2025-07-09 18:09:30 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff664456f75+76917]
+	GetHandleVerifier [0x0x7ff664456fd0+77008]
+	(No symbol) [0x0x7ff664209dea]
+	(No symbol) [0x0x7ff664260256]
+	(No symbol) [0x0x7ff66426050c]
+	(No symbol) [0x0x7ff6642b3887]
+	(No symbol) [0x0x7ff6642884af]
+	(No symbol) [0x0x7ff6642b065c]
+	(No symbol) [0x0x7ff664288243]
+	(No symbol) [0x0x7ff664251431]
+	(No symbol) [0x0x7ff6642521c3]
+	GetHandleVerifier [0x0x7ff66472d2ad+3051437]
+	GetHandleVerifier [0x0x7ff664727903+3028483]
+	GetHandleVerifier [0x0x7ff66474589d+3151261]
+	GetHandleVerifier [0x0x7ff66447183e+185662]
+	GetHandleVerifier [0x0x7ff6644796ff+218111]
+	GetHandleVerifier [0x0x7ff66445faf4+112628]
+	GetHandleVerifier [0x0x7ff66445fca9+113065]
+	GetHandleVerifier [0x0x7ff664446c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 18:09:39 [INFO] [BubbleWorker_0] test_chrome:338 - [1948] Extracted 0 initial holder ranks.
+2025-07-09 18:09:39 [ERROR] [BubbleWorker_0] test_chrome:659 - [Thread-1948] Failed to extract initial address list (Attempt 2).
+2025-07-09 18:09:39 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-1948] Attempt 3/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:09:39 [INFO] [BubbleWorker_0] test_chrome:605 - [Thread-1948] Reloading page for attempt 3.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 18:09:46 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 18:09:50 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 18:09:50 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 18:09:50 [INFO] [MainThread] test_chrome:144 - Found new token to process: EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump
+2025-07-09 18:09:50 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:09:50 [INFO] [MainThread] test_chrome:153 - Found 2 new tokens to process
+2025-07-09 18:09:50 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump
+2025-07-09 18:09:50 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-20832] --- Starting processing for token: EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump ---
+2025-07-09 18:09:52 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-20832] Attempt 1/3 for token: EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump
+2025-07-09 18:10:01 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-20832] Page readyState complete for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump (Attempt 1).
+2025-07-09 18:10:02 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-20832] 'Address List' is visible for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump.
+2025-07-09 18:10:04 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-20832] Data is fresh: 'a few seconds ago'.
+2025-07-09 18:10:09 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump
+2025-07-09 18:10:16 [INFO] [BubbleWorker_0] test_chrome:338 - [20832] Extracted 10 initial holder ranks.
+2025-07-09 18:10:16 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-20832] Attempting to click clusters and extract supply data.
+2025-07-09 18:10:16 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-20832] Starting cluster click processing for 10 items.
+2025-07-09 18:10:20 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_181016.png
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #2 - 4nFMip...DMrZ
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #3 - 2fapWf...KcnD
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #4 - pump.fun Creator (bv88)
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #5 - DfaUFn...Qjt2
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #6 - binladen.sol
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #7 - BFM1WP...1J2G
+2025-07-09 18:10:31 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-20832] Rank #7 (BFM1WP...1J2G) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 18:10:34 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-20832] Found target Rank #7. Attempting click.
+2025-07-09 18:10:35 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-20832] Successfully clicked on Rank #7
+2025-07-09 18:10:38 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-20832] Extracted Cluster Supply for Rank 7: 3.25%
+2025-07-09 18:10:41 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_7_processed_20250709_181038.png
+2025-07-09 18:10:42 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #8 - GYkQzX...UizF
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #9 - 1xTW5Z...Lje7
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #10 - HoHkhp...S69D
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-20832] Processing Rank #11 - 5msG7i...gZ7V
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-20832] Completed processing 10 items. Processed 1 unique clusters.
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-20832] Cluster processing completed.
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump: Clusters=1, GlobalSupply=3.25%, Status=OPPORTUNITY
+2025-07-09 18:10:43 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-20832] Successfully processed and saved data for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump on attempt 1.
+2025-07-09 18:10:48 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-20832] WebDriver quit for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump.
+2025-07-09 18:10:50 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump.
+2025-07-09 18:10:50 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 18:10:50 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 18:10:55 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 18:10:57 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 18:10:57 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 18:10:57 [INFO] [MainThread] test_chrome:144 - Found new token to process: D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy
+2025-07-09 18:10:57 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 18:10:57 [INFO] [MainThread] test_chrome:153 - Found 2 new tokens to process
+2025-07-09 18:10:57 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy
+2025-07-09 18:10:57 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-14404] --- Starting processing for token: D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy ---
+2025-07-09 18:10:59 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-14404] Attempt 1/3 for token: D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy
+2025-07-09 18:11:07 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-14404] Page readyState complete for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy (Attempt 1).
+2025-07-09 18:11:07 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-14404] 'Address List' is visible for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy.
+2025-07-09 18:11:09 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-14404] Data is fresh: 'a few seconds ago'.
+2025-07-09 18:11:17 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy
+2025-07-09 18:11:22 [INFO] [BubbleWorker_0] test_chrome:338 - [14404] Extracted 10 initial holder ranks.
+2025-07-09 18:11:22 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-14404] Attempting to click clusters and extract supply data.
+2025-07-09 18:11:22 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-14404] Starting cluster click processing for 10 items.
+2025-07-09 18:11:23 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_181122.png
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #2 - B8GDuP...Zyoo
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #3 - AaCaX4...RiXE
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #4 - SL7nsU...KA8M
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #5 - ASbJ4h...NJvJ
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #6 - jyVG5v...yYAD
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #7 - BHSRjs...xHVz
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #8 - FsTD5u...T8gx
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #9 - CvuDMp...h3eY
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #10 - HeVgHM...wkwo
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14404] Processing Rank #11 - 3kQMBn...7enT
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-14404] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-14404] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-14404] Treating Rank #2 (Individual Supply: 2.96%) as the primary risk cluster.
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-14404] Cluster processing completed.
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy: Clusters=1, GlobalSupply=2.96%, Status=OPPORTUNITY
+2025-07-09 18:11:35 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-14404] Successfully processed and saved data for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy on attempt 1.
+2025-07-09 18:11:38 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-14404] WebDriver quit for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy.
+2025-07-09 18:11:47 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy.
+2025-07-09 18:11:47 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 18:11:47 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 18:11:51 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 18:11:51 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 18:11:49 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 18:11:49 [INFO] [risk_detector.py:161] - Successfully loaded 5 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 18:11:49 [INFO] [risk_detector.py:161] - Successfully loaded 2 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 18:11:49 [INFO] [risk_detector.py:204] - Processing token: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump (SCAMCOIN)
+2025-07-09 18:11:49 [WARNING] [risk_detector.py:211] - No cluster summary found for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump. Cannot perform risk analysis.
+2025-07-09 18:11:49 [INFO] [risk_detector.py:204] - Processing token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (every pre-sale is a scam)
+2025-07-09 18:11:49 [WARNING] [risk_detector.py:211] - No cluster summary found for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk. Cannot perform risk analysis.
+2025-07-09 18:11:49 [INFO] [risk_detector.py:204] - Processing token: EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump (PUMPFUN OFFICIAL CAT)
+2025-07-09 18:11:49 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump
+2025-07-09 18:11:50 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for EwH5uYAc2z3JnBSpXupKzJPmHyZFws8Q9ZXteT3ypump: 6H2wKCNPpxFXKY1n4TFt1pRYMxmGufo4Gu91DoRnSPj, Liq_USD: 24670.67, Price_USD: 0.00004511
+2025-07-09 18:11:50 [INFO] [risk_detector.py:204] - Processing token: D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy (Niggadamus)
+2025-07-09 18:11:50 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy
+2025-07-09 18:11:51 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy: 3ZX6yCUe75YddvTcGY7jSnsEpQUpMTZKGn2Qa3WnBi5q, Liq_USD: 20966.27, Price_USD: 0.00003893
+2025-07-09 18:11:51 [INFO] [risk_detector.py:204] - Processing token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Bruno the Hero)
+2025-07-09 18:11:51 [WARNING] [risk_detector.py:211] - No cluster summary found for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk. Cannot perform risk analysis.
+2025-07-09 18:11:51 [INFO] [risk_detector.py:161] - Successfully loaded 3 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 18:11:51 [INFO] [risk_detector.py:281] - Wrote/Updated 5 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 18:11:51 [INFO] [risk_detector.py:298] - Cleaned up 5 processed token(s) from source files.
+2025-07-09 18:11:51 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 18:11:51 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_D13fnErVZTjrcs1GkFMyBcuoDT2jUZBk1Pdkr1cEkSQy.txt
+2025-07-09 18:11:51 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 18:11:51 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:11:51 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 18:12:06 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 18:12:06 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:00:23 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:144 - Found new token to process: 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:144 - Found new token to process: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:144 - Found new token to process: fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:153 - Found 3 new tokens to process
+2025-07-09 19:00:26 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump
+2025-07-09 19:00:26 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-3992] --- Starting processing for token: 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump ---
+2025-07-09 19:00:33 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-3992] Attempt 1/3 for token: 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump
+2025-07-09 19:00:36 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-3992] Page readyState complete for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump (Attempt 1).
+2025-07-09 19:00:39 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-3992] 'Address List' is visible for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump.
+2025-07-09 19:00:41 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-3992] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:00:51 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7bc0a6f75+76917]
+	GetHandleVerifier [0x0x7ff7bc0a6fd0+77008]
+	(No symbol) [0x0x7ff7bbe59dea]
+	(No symbol) [0x0x7ff7bbeb0256]
+	(No symbol) [0x0x7ff7bbeb050c]
+	(No symbol) [0x0x7ff7bbf03887]
+	(No symbol) [0x0x7ff7bbed84af]
+	(No symbol) [0x0x7ff7bbf0065c]
+	(No symbol) [0x0x7ff7bbed8243]
+	(No symbol) [0x0x7ff7bbea1431]
+	(No symbol) [0x0x7ff7bbea21c3]
+	GetHandleVerifier [0x0x7ff7bc37d2ad+3051437]
+	GetHandleVerifier [0x0x7ff7bc377903+3028483]
+	GetHandleVerifier [0x0x7ff7bc39589d+3151261]
+	GetHandleVerifier [0x0x7ff7bc0c183e+185662]
+	GetHandleVerifier [0x0x7ff7bc0c96ff+218111]
+	GetHandleVerifier [0x0x7ff7bc0afaf4+112628]
+	GetHandleVerifier [0x0x7ff7bc0afca9+113065]
+	GetHandleVerifier [0x0x7ff7bc096c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 19:00:56 [INFO] [BubbleWorker_0] test_chrome:338 - [3992] Extracted 10 initial holder ranks.
+2025-07-09 19:00:56 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-3992] Attempting to click clusters and extract supply data.
+2025-07-09 19:00:56 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-3992] Starting cluster click processing for 10 items.
+2025-07-09 19:00:57 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_190056.png
+2025-07-09 19:01:08 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #2 - 76ZUBj...xzZc
+2025-07-09 19:01:08 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #3 - 49Lsva...qkdg
+2025-07-09 19:01:08 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #4 - 7S3E2L...rxhW
+2025-07-09 19:01:08 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #5 - ACJAdS...aeDb
+2025-07-09 19:01:08 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #6 - 7mspGV...cKKm
+2025-07-09 19:01:08 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-3992] Rank #6 (7mspGV...cKKm) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:01:14 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-3992] Found target Rank #6. Attempting click.
+2025-07-09 19:01:15 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-3992] Successfully clicked on Rank #6
+2025-07-09 19:01:16 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-3992] Extracted Cluster Supply for Rank 6: 5.04%
+2025-07-09 19:01:17 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_6_processed_20250709_190116.png
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #7 - 9t6xjx...Pvr6
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #8 - 7TtS3J...S58U
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #9 - 43dom9...XERb
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #10 - 5PzSab...mvxv
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-3992] Processing Rank #11 - 285sCM...sbaY
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-3992] Completed processing 10 items. Processed 1 unique clusters.
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-3992] Cluster processing completed.
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump: Clusters=1, GlobalSupply=5.04%, Status=RISKY
+2025-07-09 19:01:18 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-3992] Successfully processed and saved data for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump on attempt 1.
+2025-07-09 19:01:21 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-3992] WebDriver quit for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump.
+2025-07-09 19:01:26 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump.
+2025-07-09 19:01:26 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 19:01:26 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 19:01:28 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 19:01:28 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 19:01:27 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 19:01:27 [INFO] [risk_detector.py:161] - Successfully loaded 3 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 19:01:27 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 19:01:27 [INFO] [risk_detector.py:204] - Processing token: fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump (rotation cycle)
+2025-07-09 19:01:27 [WARNING] [risk_detector.py:211] - No cluster summary found for fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump. Cannot perform risk analysis.
+2025-07-09 19:01:27 [INFO] [risk_detector.py:204] - Processing token: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q (RICH THE KID)
+2025-07-09 19:01:27 [WARNING] [risk_detector.py:211] - No cluster summary found for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q. Cannot perform risk analysis.
+2025-07-09 19:01:27 [INFO] [risk_detector.py:204] - Processing token: 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump (Umamusume Pretty Derby)
+2025-07-09 19:01:27 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump
+2025-07-09 19:01:27 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump: 71ZC8NmLj9ncL1QkF9vnDWaWPxhF5X7SqympstY6GPya, Liq_USD: 29919.67, Price_USD: 0.00008198
+2025-07-09 19:01:27 [INFO] [risk_detector.py:161] - Successfully loaded 0 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:01:27 [INFO] [risk_detector.py:281] - Wrote/Updated 3 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:01:27 [INFO] [risk_detector.py:298] - Cleaned up 3 processed token(s) from source files.
+2025-07-09 19:01:27 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 19:01:28 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump.txt
+2025-07-09 19:01:28 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 19:01:28 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:01:28 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:01:36 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:144 - Found new token to process: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:144 - Found new token to process: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:144 - Found new token to process: CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:153 - Found 3 new tokens to process
+2025-07-09 19:01:38 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump
+2025-07-09 19:01:38 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-12352] --- Starting processing for token: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump ---
+2025-07-09 19:01:40 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-12352] Attempt 1/3 for token: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump
+2025-07-09 19:01:42 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-12352] Page readyState complete for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump (Attempt 1).
+2025-07-09 19:01:44 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-12352] 'Address List' is visible for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump.
+2025-07-09 19:01:47 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-12352] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:01:57 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7bc0a6f75+76917]
+	GetHandleVerifier [0x0x7ff7bc0a6fd0+77008]
+	(No symbol) [0x0x7ff7bbe59dea]
+	(No symbol) [0x0x7ff7bbeb0256]
+	(No symbol) [0x0x7ff7bbeb050c]
+	(No symbol) [0x0x7ff7bbf03887]
+	(No symbol) [0x0x7ff7bbed84af]
+	(No symbol) [0x0x7ff7bbf0065c]
+	(No symbol) [0x0x7ff7bbed8243]
+	(No symbol) [0x0x7ff7bbea1431]
+	(No symbol) [0x0x7ff7bbea21c3]
+	GetHandleVerifier [0x0x7ff7bc37d2ad+3051437]
+	GetHandleVerifier [0x0x7ff7bc377903+3028483]
+	GetHandleVerifier [0x0x7ff7bc39589d+3151261]
+	GetHandleVerifier [0x0x7ff7bc0c183e+185662]
+	GetHandleVerifier [0x0x7ff7bc0c96ff+218111]
+	GetHandleVerifier [0x0x7ff7bc0afaf4+112628]
+	GetHandleVerifier [0x0x7ff7bc0afca9+113065]
+	GetHandleVerifier [0x0x7ff7bc096c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 19:02:10 [INFO] [BubbleWorker_0] test_chrome:338 - [12352] Extracted 10 initial holder ranks.
+2025-07-09 19:02:10 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-12352] Attempting to click clusters and extract supply data.
+2025-07-09 19:02:10 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-12352] Starting cluster click processing for 10 items.
+2025-07-09 19:02:11 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_190210.png
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #2 - EngHAD...FZZc
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #3 - E3ysq3...wCLS
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #4 - 46nFPD...Vicj
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #5 - wjDpDD...9YUz
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #6 - H8TjP2...tLWJ
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #7 - SBPraD...CqwB
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #8 - Af6KLx...7QbB
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #9 - 2Pfkb1...aStr
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #10 - 9cMMsg...8Aje
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-12352] Processing Rank #11 - 5jnRcK...jAN1
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-12352] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-12352] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-12352] Treating Rank #2 (Individual Supply: 3.35%) as the primary risk cluster.
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-12352] Cluster processing completed.
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump: Clusters=1, GlobalSupply=3.35%, Status=OPPORTUNITY
+2025-07-09 19:02:23 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-12352] Successfully processed and saved data for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump on attempt 1.
+2025-07-09 19:02:26 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-12352] WebDriver quit for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump.
+2025-07-09 19:02:28 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump.
+2025-07-09 19:02:28 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 19:02:28 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 19:02:31 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 19:02:31 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 19:02:29 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 19:02:29 [INFO] [risk_detector.py:161] - Successfully loaded 3 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 19:02:29 [INFO] [risk_detector.py:161] - Successfully loaded 1 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 19:02:29 [INFO] [risk_detector.py:204] - Processing token: CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk (CERO)
+2025-07-09 19:02:29 [WARNING] [risk_detector.py:211] - No cluster summary found for CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk. Cannot perform risk analysis.
+2025-07-09 19:02:29 [INFO] [risk_detector.py:204] - Processing token: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk (You good mud?)
+2025-07-09 19:02:29 [WARNING] [risk_detector.py:211] - No cluster summary found for HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk. Cannot perform risk analysis.
+2025-07-09 19:02:29 [INFO] [risk_detector.py:204] - Processing token: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump (Just A Pump Guy)
+2025-07-09 19:02:29 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump
+2025-07-09 19:02:31 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump: 93SdoQd3wn3dWo4KqBC1Q42JbtfamM7PvZzFEURQapjV, Liq_USD: 45035.80, Price_USD: 0.00018470
+2025-07-09 19:02:31 [INFO] [risk_detector.py:161] - Successfully loaded 3 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:02:31 [INFO] [risk_detector.py:281] - Wrote/Updated 3 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:02:31 [INFO] [risk_detector.py:298] - Cleaned up 3 processed token(s) from source files.
+2025-07-09 19:02:31 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 19:02:31 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump.txt
+2025-07-09 19:02:31 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 19:02:31 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:02:31 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:02:48 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:02:50 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:02:50 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:02:50 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:02:50 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:02:50 [INFO] [MainThread] test_chrome:153 - Found 2 new tokens to process
+2025-07-09 19:02:50 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:02:50 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-7424] --- Starting processing for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk ---
+2025-07-09 19:02:51 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-7424] Attempt 1/3 for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:03:34 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-7424] Page readyState complete for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Attempt 1).
+2025-07-09 19:04:20 [ERROR] [BubbleWorker_0] test_chrome:621 - [Thread-7424] Critical: 'Address List' not visible on attempt 1.
+2025-07-09 19:04:20 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-7424] Attempt 2/3 for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:04:20 [INFO] [BubbleWorker_0] test_chrome:605 - [Thread-7424] Reloading page for attempt 2.
+2025-07-09 19:04:23 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-7424] Page readyState complete for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Attempt 2).
+2025-07-09 19:04:42 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-7424] 'Address List' is visible for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 19:04:44 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-7424] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:04:56 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7bc0a6f75+76917]
+	GetHandleVerifier [0x0x7ff7bc0a6fd0+77008]
+	(No symbol) [0x0x7ff7bbe59dea]
+	(No symbol) [0x0x7ff7bbeb0256]
+	(No symbol) [0x0x7ff7bbeb050c]
+	(No symbol) [0x0x7ff7bbf03887]
+	(No symbol) [0x0x7ff7bbed84af]
+	(No symbol) [0x0x7ff7bbf0065c]
+	(No symbol) [0x0x7ff7bbed8243]
+	(No symbol) [0x0x7ff7bbea1431]
+	(No symbol) [0x0x7ff7bbea21c3]
+	GetHandleVerifier [0x0x7ff7bc37d2ad+3051437]
+	GetHandleVerifier [0x0x7ff7bc377903+3028483]
+	GetHandleVerifier [0x0x7ff7bc39589d+3151261]
+	GetHandleVerifier [0x0x7ff7bc0c183e+185662]
+	GetHandleVerifier [0x0x7ff7bc0c96ff+218111]
+	GetHandleVerifier [0x0x7ff7bc0afaf4+112628]
+	GetHandleVerifier [0x0x7ff7bc0afca9+113065]
+	GetHandleVerifier [0x0x7ff7bc096c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:05:10 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:144 - Found new token to process: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:144 - Found new token to process: fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:153 - Found 4 new tokens to process
+2025-07-09 19:05:12 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:05:12 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-2572] --- Starting processing for token: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q ---
+2025-07-09 19:05:14 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-2572] Attempt 1/3 for token: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:05:17 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-2572] Page readyState complete for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q (Attempt 1).
+2025-07-09 19:05:18 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-2572] 'Address List' is visible for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q.
+2025-07-09 19:05:23 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-2572] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:05:32 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:05:57 [INFO] [BubbleWorker_0] test_chrome:338 - [2572] Extracted 10 initial holder ranks.
+2025-07-09 19:05:57 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-2572] Attempting to click clusters and extract supply data.
+2025-07-09 19:05:57 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-2572] Starting cluster click processing for 10 items.
+2025-07-09 19:06:01 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_190558.png
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #2 - 4F9qEQ...gJfV
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #3 - 6CpZWh...VAJN
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #4 - FVwvUu...tmZU
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #5 - 2DAzzC...vV6u
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #6 - 6Qs5xk...peSx
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #7 - 9acV5H...55zh
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #8 - 13KQ8m...2mk9
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #9 - FZUPYg...udJw
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #10 - HLSoKW...M9J1
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-2572] Processing Rank #11 - Cb1vp6...hjx3
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-2572] Completed processing 10 items. Processed 0 unique clusters.
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:670 - [Thread-2572] No visual clusters found. Searching for top individual holder to use as a proxy.
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:686 - [Thread-2572] Treating Rank #2 (Individual Supply: 2.51%) as the primary risk cluster.
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-2572] Cluster processing completed.
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q: Clusters=1, GlobalSupply=2.51%, Status=OPPORTUNITY
+2025-07-09 19:06:14 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-2572] Successfully processed and saved data for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q on attempt 1.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:06:21 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:144 - Found new token to process: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:144 - Found new token to process: CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:144 - Found new token to process: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:144 - Found new token to process: fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:153 - Found 6 new tokens to process
+2025-07-09 19:06:23 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk
+2025-07-09 19:06:23 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-11172] --- Starting processing for token: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk ---
+2025-07-09 19:06:25 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-11172] Attempt 1/3 for token: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk
+2025-07-09 19:06:29 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-11172] Page readyState complete for HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk (Attempt 1).
+2025-07-09 19:06:31 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-11172] 'Address List' is visible for HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk.
+2025-07-09 19:06:41 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-11172] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:06:49 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk
+2025-07-09 19:07:22 [INFO] [BubbleWorker_0] test_chrome:338 - [11172] Extracted 10 initial holder ranks.
+2025-07-09 19:07:22 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-11172] Attempting to click clusters and extract supply data.
+2025-07-09 19:07:22 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-11172] Starting cluster click processing for 10 items.
+2025-07-09 19:07:23 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_190722.png
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:07:33 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:153 - Found 7 new tokens to process
+2025-07-09 19:07:35 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk
+2025-07-09 19:07:35 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-22604] --- Starting processing for token: G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk ---
+2025-07-09 19:07:37 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-22604] Attempt 1/3 for token: G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk
+2025-07-09 19:07:40 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-22604] Page readyState complete for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk (Attempt 1).
+2025-07-09 19:07:41 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-22604] 'Address List' is visible for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk.
+2025-07-09 19:07:47 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-22604] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:07:57 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk
+2025-07-09 19:08:10 [INFO] [BubbleWorker_0] test_chrome:338 - [22604] Extracted 10 initial holder ranks.
+2025-07-09 19:08:10 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-22604] Attempting to click clusters and extract supply data.
+2025-07-09 19:08:10 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-22604] Starting cluster click processing for 10 items.
+2025-07-09 19:08:12 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_190810.png
+2025-07-09 19:08:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #2 - DaL7nd...TvyT
+2025-07-09 19:08:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #3 - AM25UX...RvQu
+2025-07-09 19:08:23 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #4 - BHSRjs...xHVz
+2025-07-09 19:08:23 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-22604] Rank #4 (BHSRjs...xHVz) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:08:26 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-22604] Found target Rank #4. Attempting click.
+2025-07-09 19:08:27 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-22604] Successfully clicked on Rank #4
+2025-07-09 19:08:28 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-22604] Extracted Cluster Supply for Rank 4: 2.89%
+2025-07-09 19:08:29 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_4_processed_20250709_190828.png
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #5 - C5RS7A...dALi
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #6 - 8TMraK...r6M8
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #7 - B55Tjj...NBNq
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #8 - 65GtBC...dADu
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #9 - F5zsRs...jCVK
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #10 - CAMoXH...zKBb
+2025-07-09 19:08:30 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-22604] Rank #10 (CAMoXH...zKBb) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:08:39 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-22604] Found target Rank #10. Attempting click.
+2025-07-09 19:08:41 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-22604] Successfully clicked on Rank #10
+2025-07-09 19:08:45 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-22604] Extracted Cluster Supply for Rank 10: 1.80%
+2025-07-09 19:08:50 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_10_processed_20250709_190845.png
+2025-07-09 19:08:51 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-22604] Processing Rank #11 - 6GTFEB...wJLa
+2025-07-09 19:08:51 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-22604] Completed processing 10 items. Processed 2 unique clusters.
+2025-07-09 19:08:51 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-22604] Cluster processing completed.
+2025-07-09 19:08:52 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk: Clusters=2, GlobalSupply=4.69%, Status=OPPORTUNITY
+2025-07-09 19:08:52 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-22604] Successfully processed and saved data for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk on attempt 1.
+2025-07-09 19:08:58 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-22604] WebDriver quit for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk.
+2025-07-09 19:09:05 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk.
+2025-07-09 19:09:05 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 19:09:05 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 19:09:08 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 19:09:08 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 19:09:06 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 19:09:06 [INFO] [risk_detector.py:161] - Successfully loaded 9 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 19:09:06 [INFO] [risk_detector.py:161] - Successfully loaded 2 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 19:09:06 [INFO] [risk_detector.py:204] - Processing token: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump (SCAMCOIN)
+2025-07-09 19:09:06 [WARNING] [risk_detector.py:211] - No cluster summary found for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump. Cannot perform risk analysis.
+2025-07-09 19:09:06 [INFO] [risk_detector.py:204] - Processing token: 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump (Umamusume Pretty Derby)
+2025-07-09 19:09:06 [WARNING] [risk_detector.py:211] - No cluster summary found for 4Fc9CBeAy2sPooHcRux3PnLC9ap9tFp5NxHn1hC8pump. Cannot perform risk analysis.
+2025-07-09 19:09:06 [INFO] [risk_detector.py:204] - Processing token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Bruno the Hero)
+2025-07-09 19:09:06 [WARNING] [risk_detector.py:211] - No cluster summary found for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk. Cannot perform risk analysis.
+2025-07-09 19:09:06 [INFO] [risk_detector.py:204] - Processing token: fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump (rotation cycle)
+2025-07-09 19:09:06 [WARNING] [risk_detector.py:211] - No cluster summary found for fXWYvug6aCcpFgJERQAxYuUyXjedaKiv4Pi69kgpump. Cannot perform risk analysis.
+2025-07-09 19:09:06 [INFO] [risk_detector.py:204] - Processing token: 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q (RICH THE KID)
+2025-07-09 19:09:06 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q
+2025-07-09 19:09:07 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 7pxKM7V65Huvw3tNXaURDJQcbmJLfG6MtAPm6pm77x8q: ANmsDF8LJFUMRBVqDfQ1PM8i4jtpuWYMBicBmxknZTvY, Liq_USD: 113021.24, Price_USD: 0.00100300
+2025-07-09 19:09:07 [INFO] [risk_detector.py:204] - Processing token: CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk (CERO)
+2025-07-09 19:09:07 [WARNING] [risk_detector.py:211] - No cluster summary found for CvHoH43LY1c56L4YKBj1fR9RyzNrys1BQKbJHjUAbonk. Cannot perform risk analysis.
+2025-07-09 19:09:07 [INFO] [risk_detector.py:204] - Processing token: HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk (You good mud?)
+2025-07-09 19:09:07 [WARNING] [risk_detector.py:211] - No cluster summary found for HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk. Cannot perform risk analysis.
+2025-07-09 19:09:07 [INFO] [risk_detector.py:204] - Processing token: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump (Just A Pump Guy)
+2025-07-09 19:09:07 [WARNING] [risk_detector.py:211] - No cluster summary found for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump. Cannot perform risk analysis.
+2025-07-09 19:09:07 [INFO] [risk_detector.py:204] - Processing token: G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk (Bonk)
+2025-07-09 19:09:07 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk
+2025-07-09 19:09:07 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk: 2GBkGDVu5SUbbwsnVPwCi9mCrCDtQRW5kSCBqymdGkKg, Liq_USD: 26069.47, Price_USD: 0.00005848
+2025-07-09 19:09:07 [INFO] [risk_detector.py:161] - Successfully loaded 6 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:09:07 [INFO] [risk_detector.py:281] - Wrote/Updated 9 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:09:07 [INFO] [risk_detector.py:298] - Cleaned up 9 processed token(s) from source files.
+2025-07-09 19:09:07 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 19:09:08 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk.txt
+2025-07-09 19:09:08 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 19:09:08 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:09:08 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:09:23 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:09:23 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:09:38 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:09:38 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:09:53 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:09:53 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:10:08 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:10:08 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:10:23 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:10:23 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:10:38 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:10:38 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 19:10:53 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:10:53 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:11:09 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:11:11 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:11:11 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:11:11 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:11:11 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:11:11 [INFO] [MainThread] test_chrome:153 - Found 2 new tokens to process
+2025-07-09 19:11:11 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:11:11 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-13908] --- Starting processing for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk ---
+2025-07-09 19:11:13 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-13908] Attempt 1/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:11:17 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-13908] Page readyState complete for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (Attempt 1).
+2025-07-09 19:11:19 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-13908] 'Address List' is visible for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 19:11:25 [INFO] [BubbleWorker_0] test_chrome:629 - [Thread-13908] Data is fresh: 'a few seconds ago'.
+2025-07-09 19:11:36 [WARNING] [BubbleWorker_0] test_chrome:654 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7bc0a6f75+76917]
+	GetHandleVerifier [0x0x7ff7bc0a6fd0+77008]
+	(No symbol) [0x0x7ff7bbe59dea]
+	(No symbol) [0x0x7ff7bbeb0256]
+	(No symbol) [0x0x7ff7bbeb050c]
+	(No symbol) [0x0x7ff7bbf03887]
+	(No symbol) [0x0x7ff7bbed84af]
+	(No symbol) [0x0x7ff7bbf0065c]
+	(No symbol) [0x0x7ff7bbed8243]
+	(No symbol) [0x0x7ff7bbea1431]
+	(No symbol) [0x0x7ff7bbea21c3]
+	GetHandleVerifier [0x0x7ff7bc37d2ad+3051437]
+	GetHandleVerifier [0x0x7ff7bc377903+3028483]
+	GetHandleVerifier [0x0x7ff7bc39589d+3151261]
+	GetHandleVerifier [0x0x7ff7bc0c183e+185662]
+	GetHandleVerifier [0x0x7ff7bc0c96ff+218111]
+	GetHandleVerifier [0x0x7ff7bc0afaf4+112628]
+	GetHandleVerifier [0x0x7ff7bc0afca9+113065]
+	GetHandleVerifier [0x0x7ff7bc096c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 19:11:42 [INFO] [BubbleWorker_0] test_chrome:338 - [13908] Extracted 10 initial holder ranks.
+2025-07-09 19:11:42 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-13908] Attempting to click clusters and extract supply data.
+2025-07-09 19:11:42 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-13908] Starting cluster click processing for 10 items.
+2025-07-09 19:11:42 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_191142.png
+2025-07-09 19:11:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #2 - FW29rf...Tx6g
+2025-07-09 19:11:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #3 - 5M8ACG...QW3Y
+2025-07-09 19:11:56 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #4 - 3xRT22...sv8j
+2025-07-09 19:11:56 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-13908] Rank #4 (3xRT22...sv8j) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:11:59 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-13908] Found target Rank #4. Attempting click.
+2025-07-09 19:12:00 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-13908] Successfully clicked on Rank #4
+2025-07-09 19:12:02 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-13908] Extracted Cluster Supply for Rank 4: 5.44%
+2025-07-09 19:12:03 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_4_processed_20250709_191202.png
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #5 - 4zEJNv...mpFs
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #6 - EMK8da...i1KK
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #7 - 8uzBUQ...Z4ZC
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #8 - HCaee2...2Gq2
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #9 - 6ryE2V...Rqmq
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #10 - DFVZHh...3eTi
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-13908] Processing Rank #11 - CizorL...muBi
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-13908] Completed processing 10 items. Processed 1 unique clusters.
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-13908] Cluster processing completed.
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk: Clusters=1, GlobalSupply=5.44%, Status=RISKY
+2025-07-09 19:12:04 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-13908] Successfully processed and saved data for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk on attempt 1.
+2025-07-09 19:12:07 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-13908] WebDriver quit for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:12:16 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:12:18 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:12:18 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:12:18 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:12:18 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:12:18 [INFO] [MainThread] test_chrome:153 - Found 2 new tokens to process
+2025-07-09 19:12:18 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:12:18 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-9796] --- Starting processing for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk ---
+2025-07-09 19:12:20 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-9796] Attempt 1/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:12:23 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-9796] Page readyState complete for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (Attempt 1).
+2025-07-09 19:12:25 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-9796] 'Address List' is visible for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 19:12:42 [WARNING] [BubbleWorker_0] test_chrome:632 - [Thread-9796] Data not immediately fresh. Attempting in-page refresh.
+2025-07-09 19:12:58 [ERROR] [BubbleWorker_0] test_chrome:640 - [Thread-9796] In-page refresh failed or data still not fresh: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7bc0a6f75+76917]
+	GetHandleVerifier [0x0x7ff7bc0a6fd0+77008]
+	(No symbol) [0x0x7ff7bbe59dea]
+	(No symbol) [0x0x7ff7bbeb0256]
+	(No symbol) [0x0x7ff7bbeb050c]
+	(No symbol) [0x0x7ff7bbf03887]
+	(No symbol) [0x0x7ff7bbed84af]
+	(No symbol) [0x0x7ff7bbf0065c]
+	(No symbol) [0x0x7ff7bbed8243]
+	(No symbol) [0x0x7ff7bbea1431]
+	(No symbol) [0x0x7ff7bbea21c3]
+	GetHandleVerifier [0x0x7ff7bc37d2ad+3051437]
+	GetHandleVerifier [0x0x7ff7bc377903+3028483]
+	GetHandleVerifier [0x0x7ff7bc39589d+3151261]
+	GetHandleVerifier [0x0x7ff7bc0c183e+185662]
+	GetHandleVerifier [0x0x7ff7bc0c96ff+218111]
+	GetHandleVerifier [0x0x7ff7bc0afaf4+112628]
+	GetHandleVerifier [0x0x7ff7bc0afca9+113065]
+	GetHandleVerifier [0x0x7ff7bc096c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 19:12:58 [ERROR] [BubbleWorker_0] test_chrome:643 - [Thread-9796] CRITICAL: Data not fresh after all checks on attempt 1.
+2025-07-09 19:12:58 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-9796] Attempt 2/3 for token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:12:58 [INFO] [BubbleWorker_0] test_chrome:605 - [Thread-9796] Reloading page for attempt 2.
+2025-07-09 19:13:01 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-9796] Page readyState complete for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (Attempt 2).
+2025-07-09 19:13:06 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-9796] 'Address List' is visible for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk.
+2025-07-09 19:13:22 [WARNING] [BubbleWorker_0] test_chrome:632 - [Thread-9796] Data not immediately fresh. Attempting in-page refresh.
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:13:30 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:144 - Found new token to process: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:144 - Found new token to process: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:144 - Found new token to process: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:153 - Found 3 new tokens to process
+2025-07-09 19:13:33 [INFO] [MainThread] test_chrome:849 - Submitting 1 new tokens: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:13:33 [INFO] [BubbleWorker_0] test_chrome:591 - [Thread-14732] --- Starting processing for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk ---
+2025-07-09 19:13:36 [INFO] [BubbleWorker_0] test_chrome:601 - [Thread-14732] Attempt 1/3 for token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:13:41 [INFO] [BubbleWorker_0] test_chrome:611 - [Thread-14732] Page readyState complete for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Attempt 1).
+2025-07-09 19:13:42 [INFO] [BubbleWorker_0] test_chrome:618 - [Thread-14732] 'Address List' is visible for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 19:14:00 [WARNING] [BubbleWorker_0] test_chrome:632 - [Thread-14732] Data not immediately fresh. Attempting in-page refresh.
+2025-07-09 19:14:08 [INFO] [BubbleWorker_0] test_chrome:638 - [Thread-14732] Data fresh after in-page refresh.
+2025-07-09 19:14:17 [INFO] [BubbleWorker_0] test_chrome:652 - [BUBBLEMAPS] Clicked Magic Nodes for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:14:39 [INFO] [BubbleWorker_0] test_chrome:338 - [14732] Extracted 10 initial holder ranks.
+2025-07-09 19:14:39 [INFO] [BubbleWorker_0] test_chrome:664 - [Thread-14732] Attempting to click clusters and extract supply data.
+2025-07-09 19:14:39 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-14732] Starting cluster click processing for 10 items.
+2025-07-09 19:14:41 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_191439.png
+2025-07-09 19:14:53 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #2 - HfiSd2...5Fy3
+2025-07-09 19:14:53 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-14732] Rank #2 (HfiSd2...5Fy3) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:14:56 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-14732] Found target Rank #2. Attempting click.
+2025-07-09 19:14:57 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-14732] Successfully clicked on Rank #2
+2025-07-09 19:14:59 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-14732] Extracted Cluster Supply for Rank 2: 6.52%
+2025-07-09 19:15:02 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_2_processed_20250709_191459.png
+2025-07-09 19:15:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #3 - 7hs7jA...9E6x
+2025-07-09 19:15:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #4 - Aw213N...8nqA
+2025-07-09 19:15:03 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #5 - 9CeN9P...n6rB
+2025-07-09 19:15:03 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-14732] Rank #5 (9CeN9P...n6rB) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:15:07 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-14732] Found target Rank #5. Attempting click.
+2025-07-09 19:15:08 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-14732] Successfully clicked on Rank #5
+2025-07-09 19:15:12 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-14732] Extracted Cluster Supply for Rank 5: 7.48%
+2025-07-09 19:15:15 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_5_processed_20250709_191512.png
+2025-07-09 19:15:16 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #6 - Fn9QmJ...UZsg
+2025-07-09 19:15:16 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #7 - E1zs6r...mDur
+2025-07-09 19:15:16 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #8 - 6fpXEd...bdPU
+2025-07-09 19:15:16 [INFO] [BubbleWorker_0] test_chrome:396 - [Thread-14732] Rank #8 (6fpXEd...bdPU) is a NEW visual cluster. Finding & Clicking...
+2025-07-09 19:15:28 [INFO] [BubbleWorker_0] test_chrome:442 - [Thread-14732] Found target Rank #8. Attempting click.
+2025-07-09 19:15:30 [INFO] [BubbleWorker_0] test_chrome:446 - [Thread-14732] Successfully clicked on Rank #8
+2025-07-09 19:15:36 [INFO] [BubbleWorker_0] test_chrome:485 - [Thread-14732] Extracted Cluster Supply for Rank 8: 4.49%
+2025-07-09 19:15:39 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_8_processed_20250709_191536.png
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #9 - HfxN5R...QZMi
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #10 - 37nud4...Q6RL
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:380 - [Thread-14732] Processing Rank #11 - 23REa7...VXLQ
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:411 - [Thread-14732] Completed processing 10 items. Processed 3 unique clusters.
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:700 - [Thread-14732] Cluster processing completed.
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:581 - Saved cluster summary for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk: Clusters=3, GlobalSupply=18.49%, Status=RISKY
+2025-07-09 19:15:40 [INFO] [BubbleWorker_0] test_chrome:710 - [Thread-14732] Successfully processed and saved data for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk on attempt 1.
+2025-07-09 19:15:43 [INFO] [BubbleWorker_0] test_chrome:736 - [Thread-14732] WebDriver quit for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 19:15:43 [INFO] [MainThread] test_chrome:824 - Bubblemaps SUCCESS for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.
+2025-07-09 19:15:43 [INFO] [MainThread] test_chrome:831 - 1 tokens updated. Triggering risk_detector.py.
+2025-07-09 19:15:43 [INFO] [MainThread] test_chrome:742 - Attempting to run risk_detector.py...
+2025-07-09 19:15:47 [INFO] [MainThread] test_chrome:758 - risk_detector.py completed successfully.
+2025-07-09 19:15:47 [WARNING] [MainThread] test_chrome:760 - Risk Detector STDERR:
+2025-07-09 19:15:45 [INFO] [risk_detector.py:180] - --- Starting Full Token Risk Analysis ---
+2025-07-09 19:15:45 [INFO] [risk_detector.py:161] - Successfully loaded 4 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv
+2025-07-09 19:15:45 [INFO] [risk_detector.py:161] - Successfully loaded 2 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\cluster_summaries.csv
+2025-07-09 19:15:45 [INFO] [risk_detector.py:204] - Processing token: 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump (SCAMCOIN)
+2025-07-09 19:15:45 [WARNING] [risk_detector.py:211] - No cluster summary found for 6gd5ubix2Ubzeup2ycUxSgWVKFTrSugLXFsqhBQRpump. Cannot perform risk analysis.
+2025-07-09 19:15:45 [INFO] [risk_detector.py:204] - Processing token: 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk (every pre-sale is a scam)
+2025-07-09 19:15:45 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk
+2025-07-09 19:15:46 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk: HCLeS3HvUDsiKyBrkEXqEbQG89zcL35x1K7nZGuxJmea, Liq_USD: 30872.36, Price_USD: 0.00007417
+2025-07-09 19:15:46 [INFO] [risk_detector.py:204] - Processing token: 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump (Just A Pump Guy)
+2025-07-09 19:15:46 [WARNING] [risk_detector.py:211] - No cluster summary found for 52YMkGeejtyCyVLMVKuiaViAk4GRHqDLvsUDVwqLpump. Cannot perform risk analysis.
+2025-07-09 19:15:46 [INFO] [risk_detector.py:204] - Processing token: 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk (Bruno the Hero)
+2025-07-09 19:15:46 [INFO] [risk_detector.py:30] - [DEXSCREENER] Querying for pairs: https://api.dexscreener.com/latest/dex/search?q=699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk
+2025-07-09 19:15:46 [INFO] [risk_detector.py:114] - [DEXSCREENER] Primary pair for 699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk: HadJ38YpnWnAMGieV9TW1PSyZgM9J3HN4NSNDsUixJ2J, Liq_USD: 22253.08, Price_USD: 0.00004492
+2025-07-09 19:15:46 [INFO] [risk_detector.py:161] - Successfully loaded 9 entries from C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:15:47 [INFO] [risk_detector.py:281] - Wrote/Updated 4 token(s) in C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\token_risk_analysis.csv
+2025-07-09 19:15:47 [INFO] [risk_detector.py:298] - Cleaned up 4 processed token(s) from source files.
+2025-07-09 19:15:47 [INFO] [risk_detector.py:300] - --- Full Token Risk Analysis Finished ---
+2025-07-09 19:15:47 [INFO] [MainThread] test_chrome:519 - Deleted token data file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\bubblemaps_token_data\bubblemaps_data_699ndAkcXncnxSb1KNkpv7P13VuERcVnScpL4zDkbonk.txt
+2025-07-09 19:15:47 [INFO] [MainThread] test_chrome:839 - CSV file changed, checking for new tokens.
+2025-07-09 19:15:47 [WARNING] [MainThread] test_chrome:110 - Monitored CSV file C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\sniperx_results_1m.csv not found.
+2025-07-09 19:15:47 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+
+--- Watchdog launching test_chrome.py at Wed Jul  9 19:15:53 2025 due to sniperx_results_1m.csv change ---
+2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
+2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...

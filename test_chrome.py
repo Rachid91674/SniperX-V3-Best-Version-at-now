@@ -38,7 +38,10 @@ CLUSTER_SUMMARY_FILE = 'cluster_summaries.csv'
 
 # Exact CSS class string that Bubblemaps uses for non-clustered addresses.
 INDIVIDUAL_ADDRESS_MUIBOX_CLASS = 'css-141d73e'
-RANK1_AS_CLUSTER_KEY = "Rank1_Treated_As_Cluster" # Special key for Rank #1 if it's individual but treated as cluster
+# --- START: NEW CODE ---
+# Special key for a synthetic cluster created from the top individual holder
+SYNTHETIC_CLUSTER_KEY = "Top_Individual_Holder_as_Cluster" 
+# --- END: NEW CODE ---
 
 CHECK_INTERVAL = 15
 CHROME_DRIVER_PATH = None
@@ -537,8 +540,14 @@ def save_cluster_summary_data(token_address: str, processed_cluster_data: dict):
                 if isinstance(perc_str_val, str) and not any(err in perc_str_val for err in ["N/A", "Error"]):
                     current_perc_float = float(perc_str_val)
                     global_sum_float += current_perc_float
-                    # All clusters are now visual clusters. The key is the MuiBox class string.
-                    valid_percentages_list.append(f"VisualCluster:{current_perc_float:.2f}%")
+                    # --- START: MODIFIED CODE ---
+                    # Distinguish between real and synthetic clusters in the output
+                    if cluster_key == SYNTHETIC_CLUSTER_KEY:
+                        cluster_type_label = "TopIndividual"
+                    else:
+                        cluster_type_label = "VisualCluster"
+                    valid_percentages_list.append(f"{cluster_type_label}:{current_perc_float:.2f}%")
+                    # --- END: MODIFIED CODE ---
             except (ValueError, TypeError):
                 logging.warning(f"[{threading.get_ident()}] Could not convert cluster supply '{perc_str_val}' for {token_address}, key '{cluster_key}'.")
 
@@ -655,6 +664,36 @@ def process_single_token_threaded(token_address_with_config: tuple):
                 logging.info(f"[{thread_id_str}] Attempting to click clusters and extract supply data.")
                 aug_data, clusters_info = click_clusters_and_extract_supply_data(thread_driver, initial_data)
                 
+                # --- START: NEW LOGIC ---
+                # Fallback: If no visual clusters were found, use the top individual holder as a synthetic cluster.
+                if not clusters_info and aug_data:
+                    logging.info(f"[{thread_id_str}] No visual clusters found. Searching for top individual holder to use as a proxy.")
+                    
+                    CONTRACT_IDENTIFIERS = ['pump', 'raydium', 'creator', 'squads']
+                    top_individual_holder = None
+                    
+                    for holder_data in aug_data:
+                        address_name = holder_data.get('Address', '').lower()
+                        # Find the first holder that is NOT a known contract/LP address
+                        if not any(sub in address_name for sub in CONTRACT_IDENTIFIERS):
+                            top_individual_holder = holder_data
+                            break # Found the first valid individual holder
+                            
+                    if top_individual_holder:
+                        rank = top_individual_holder.get('Rank')
+                        percentage = top_individual_holder.get('Individual_Percentage')
+                        
+                        logging.info(f"[{thread_id_str}] Treating Rank #{rank} (Individual Supply: {percentage}%) as the primary risk cluster.")
+                        
+                        # Create the synthetic cluster entry using its individual percentage
+                        if percentage and percentage not in ('N/A', '0'):
+                            clusters_info[SYNTHETIC_CLUSTER_KEY] = percentage
+                        else:
+                            logging.warning(f"[{thread_id_str}] Top individual holder (Rank #{rank}) had an invalid percentage: {percentage}")
+                    else:
+                        logging.warning(f"[{thread_id_str}] No visual clusters were found, and could not identify a top individual holder to use as a proxy.")
+                # --- END: NEW LOGIC ---
+
                 if not aug_data and initial_data:
                     logging.warning(f"[{thread_id_str}] No augmented data from cluster processing, but initial data existed.")
                 else:
