@@ -1,4 +1,38 @@
-2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:869 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
-2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
-2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:153 - Found 0 new tokens to process
-2025-07-09 19:15:55 [INFO] [MainThread] test_chrome:855 - No new tokens, no active tasks. Waiting 15s...
+2025-07-09 21:18:40 [INFO] [MainThread] test_chrome:953 - --- Starting Bubblemaps Extractor (Multi-Threaded) ---
+2025-07-09 21:18:40 [INFO] [MainThread] test_chrome:85 - Chrome binary found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-09 21:18:40 [INFO] [MainThread] test_chrome:144 - Found new token to process: 9NqZyWyp2141PMTAFTfi8HbHwnBsGhqEJf4UHiVevs73
+2025-07-09 21:18:40 [INFO] [MainThread] test_chrome:153 - Found 1 new tokens to process
+2025-07-09 21:18:40 [INFO] [MainThread] test_chrome:933 - Submitting 1 new tokens: 9NqZyWyp2141PMTAFTfi8HbHwnBsGhqEJf4UHiVevs73
+2025-07-09 21:18:40 [INFO] [BubbleWorker_0] test_chrome:675 - [Thread-14604] --- Starting processing for token: 9NqZyWyp2141PMTAFTfi8HbHwnBsGhqEJf4UHiVevs73 ---
+2025-07-09 21:18:42 [INFO] [BubbleWorker_0] test_chrome:685 - [Thread-14604] Attempt 1/3 for token: 9NqZyWyp2141PMTAFTfi8HbHwnBsGhqEJf4UHiVevs73
+2025-07-09 21:18:45 [INFO] [BubbleWorker_0] test_chrome:695 - [Thread-14604] Page readyState complete for 9NqZyWyp2141PMTAFTfi8HbHwnBsGhqEJf4UHiVevs73 (Attempt 1).
+2025-07-09 21:18:46 [INFO] [BubbleWorker_0] test_chrome:702 - [Thread-14604] 'Address List' is visible for 9NqZyWyp2141PMTAFTfi8HbHwnBsGhqEJf4UHiVevs73.
+2025-07-09 21:18:48 [INFO] [BubbleWorker_0] test_chrome:713 - [Thread-14604] Data is fresh: 'a few seconds ago'.
+2025-07-09 21:18:58 [WARNING] [BubbleWorker_0] test_chrome:738 - [BUBBLEMAPS] Magic Nodes button not found or not clickable: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7bc0a6f75+76917]
+	GetHandleVerifier [0x0x7ff7bc0a6fd0+77008]
+	(No symbol) [0x0x7ff7bbe59dea]
+	(No symbol) [0x0x7ff7bbeb0256]
+	(No symbol) [0x0x7ff7bbeb050c]
+	(No symbol) [0x0x7ff7bbf03887]
+	(No symbol) [0x0x7ff7bbed84af]
+	(No symbol) [0x0x7ff7bbf0065c]
+	(No symbol) [0x0x7ff7bbed8243]
+	(No symbol) [0x0x7ff7bbea1431]
+	(No symbol) [0x0x7ff7bbea21c3]
+	GetHandleVerifier [0x0x7ff7bc37d2ad+3051437]
+	GetHandleVerifier [0x0x7ff7bc377903+3028483]
+	GetHandleVerifier [0x0x7ff7bc39589d+3151261]
+	GetHandleVerifier [0x0x7ff7bc0c183e+185662]
+	GetHandleVerifier [0x0x7ff7bc0c96ff+218111]
+	GetHandleVerifier [0x0x7ff7bc0afaf4+112628]
+	GetHandleVerifier [0x0x7ff7bc0afca9+113065]
+	GetHandleVerifier [0x0x7ff7bc096c78+10616]
+	BaseThreadInitThunk [0x0x7ff89ac7e8d7+23]
+	RtlUserThreadStart [0x0x7ff89cf1c34c+44]
+
+2025-07-09 21:19:01 [INFO] [BubbleWorker_0] test_chrome:338 - [14604] Extracted 10 initial holder ranks.
+2025-07-09 21:19:01 [INFO] [BubbleWorker_0] test_chrome:748 - [Thread-14604] Attempting to click clusters and extract supply data.
+2025-07-09 21:19:01 [INFO] [BubbleWorker_0] test_chrome:346 - [Thread-14604] Starting cluster click processing for 10 items.
+2025-07-09 21:19:02 [INFO] [BubbleWorker_0] test_chrome:180 - Screenshot saved as debug_screenshots\cluster_processing_start_20250709_211901.png

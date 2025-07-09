@@ -251,7 +251,46 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
                 print(f"\n💰 Initial Baseline Price for {token_name}: ${g_baseline_price_usd:.9f}")
 
             pnl_pct_str = f"PnL: {(((usd_price_per_token / g_buy_price_usd) - 1) * 100):+.2f}%" if g_buy_price_usd else "PnL: N/A"
-            print(f"🔍 {token_name} | ${usd_price_per_token:.9f} | {pnl_pct_str} | Status: {g_trade_status.upper()}", end='\r')
+            
+            # Clear previous output with spaces and return to start of line
+            print('\r' + ' ' * 200, end='\r')
+            
+            # Print current status
+            print(f"🔍 {token_name} | ${usd_price_per_token:.9f} | {pnl_pct_str} | Status: {g_trade_status.upper()}")
+            
+            if dex_data:
+                # Calculate condition statuses
+                price_cond = usd_price_per_token > g_baseline_price_usd * BUY_SIGNAL_PRICE_INCREASE_PERCENT
+                vol_cond = dex_data.get('buy_volume', 0) >= MIN_BUY_VOLUME_USD
+                tx_cond = dex_data.get('buys', 0) >= MIN_BUY_TXS
+                
+                vol_ratio = dex_data['buy_volume'] / max(dex_data['sell_volume'], MIN_SELL_VOLUME_USD) if dex_data['sell_volume'] > 0 else float('inf')
+                tx_ratio = dex_data['buys'] / max(dex_data['sells'], 1)
+                
+                vol_ratio_cond = vol_ratio >= MIN_VOLUME_RATIO
+                tx_ratio_cond = tx_ratio >= MIN_TX_RATIO
+                
+                # Print conditions
+                print("\n📊 Trade Conditions Status:")
+                print(f"  • Price Increase: {'✅' if price_cond else '❌'} (Current: {usd_price_per_token:.9f} | Needed: {g_baseline_price_usd * BUY_SIGNAL_PRICE_INCREASE_PERCENT:.9f})")
+                print(f"  • Buy Volume: {'✅' if vol_cond else '❌'} (Current: ${dex_data.get('buy_volume', 0):.2f} | Needed: ${MIN_BUY_VOLUME_USD:.2f})")
+                print(f"  • Buy TXs: {'✅' if tx_cond else '❌'} (Current: {dex_data.get('buys', 0)} | Needed: {MIN_BUY_TXS})")
+                print(f"  • Volume Ratio: {'✅' if vol_ratio_cond else '❌'} (Current: {vol_ratio:.2f}x | Needed: {MIN_VOLUME_RATIO:.1f}x)")
+                print(f"  • TX Ratio: {'✅' if tx_ratio_cond else '❌'} (Current: {tx_ratio:.2f}x | Needed: {MIN_TX_RATIO:.1f}x)")
+                
+                # Print additional market data
+                print("\n📈 Market Data:")
+                print(f"  • 5m Volume: ${dex_data.get('volume_5m', 0):.2f} | 1h Volume: ${dex_data.get('volume_1h', 0):.2f}")
+                print(f"  • Liquidity: ${dex_data.get('liquidity', 0):.2f}")
+                print(f"  • Price Impact: {dex_data.get('price_impact', 0):.2f}%")
+                
+                # Print time until timeout
+                time_elapsed = current_time - g_token_monitor_start_time
+                time_remaining = max(0, NO_BUY_SIGNAL_TIMEOUT_SECONDS - time_elapsed)
+                print(f"\n⏱️  Time Remaining: {int(time_remaining // 60)}m {int(time_remaining % 60)}s")
+                
+                # Move cursor up to overwrite on next update
+                print("\033[12A", end='')
 
             if g_trade_status == 'monitoring':
                 if (current_time - g_token_monitor_start_time) > NO_BUY_SIGNAL_TIMEOUT_SECONDS:

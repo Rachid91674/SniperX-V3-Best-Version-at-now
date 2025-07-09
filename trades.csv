@@ -14,3 +14,8 @@ timestamp,token_name,mint_address,reason,buy_price,sell_price
 "2025-07-08 15:59:19","Burnie Madoff Securities LLC","MfYN55rtdebAqq3MEtu8uPKtSokvtaJEdKESCi62MGF","No buy signal within timeout period","","","",""
 "2025-07-08 22:30:51","Hyperbonk","9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk","No buy signal within timeout period","","","",""
 2025-07-09 18:43:25,simple memecoin,DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp,Processing complete,,,,
+"2025-07-09 19:43:40","every pre-sale is a scam","398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk","Stop loss","0.000066060","0.000062700","-5.09%","LOSS"
+"2025-07-09 19:46:45","Bonk","G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk","No buy signal timeout","","0.000031660","",""
+"2025-07-09 20:03:56","You good mud?","HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk","Stop loss","0.000101800","0.000085850","-15.67%","LOSS"
+2025-07-09 20:23:51,VALA CAPITAL MARKETS,GMcThHFBnN6zjB2Mvbgdi19A2m35g81y7B1AKhgGbonk,Take profit,0.000055510,0.000066730,20.21%,PROFIT
+2025-07-09 20:52:38,The Dog,7MF9Nquj74aXoAN62KJTk3bK9cHVYbZFCixgGHQwbonk,No buy signal timeout,,0.000025380,,
