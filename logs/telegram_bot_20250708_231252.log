@@ -1,0 +1,15 @@
+2025-07-08 23:12:52,287 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-07-08 23:12:52,295 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-08 23:12:52,301 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-08 23:12:52,320 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-08 23:12:52,320 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-08 23:12:52,340 - __main__ - INFO - Telegram Manager Bot started. Send /menu to interact.
+2025-07-08 23:12:52,345 - telegram.ext.ExtBot - DEBUG - Entering: send_message
+2025-07-08 23:12:52,365 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-08 23:12:57,387 - httpcore.connection - DEBUG - connect_tcp.failed exception=ConnectTimeout(TimeoutError())
+2025-07-08 23:12:57,387 - __main__ - ERROR - Could not send startup message to TELEGRAM_CHAT_ID 7049055170: Timed out
+2025-07-08 23:12:57,389 - telegram.ext.ExtBot - DEBUG - Entering: get_me
+2025-07-08 23:12:57,389 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-08 23:13:02,398 - httpcore.connection - DEBUG - connect_tcp.failed exception=ConnectTimeout(TimeoutError())
+2025-07-08 23:13:02,399 - telegram.ext.Application - DEBUG - This Application is already shut down. Returning.
+2025-07-08 23:13:02,401 - __main__ - ERROR - Error in polling: Timed out

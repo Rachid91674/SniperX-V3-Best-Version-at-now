@@ -1,21 +1,5 @@
 timestamp,token_name,mint_address,reason,buy_price,sell_price
-"2025-07-07 20:34:47","MORE THAN ORDINARY","Ddb2kqQwhBodGW4broD1Uh4pYw4fM47apQSyX8kRbonk","No buy signal timeout","","0.000031530","",""
-"2025-07-07 20:44:48","onchain savings coin","69jE7XhCXmEUmQ5V8bY116fwcbz6dhCchjdYtyNrbonk","No buy signal timeout","","0.000075700","",""
-"2025-07-07 20:54:49","chrome","6vJYVL8jSaY4VFJQVdK7Pafq62XxjmoG6356Cw3Ebonk","No buy signal timeout","","0.000011480","",""
-"2025-07-07 21:00:31","Real America Party","6P3k7kWyFQnHL9UMVwYGV6QykL495KBLQqwXeabApump","Partial take profit","0.000070910","0.000082830","16.81%","PROFIT"
-"2025-07-07 21:00:31","Real America Party","6P3k7kWyFQnHL9UMVwYGV6QykL495KBLQqwXeabApump","Take profit","0.000070910","0.000082830","16.81%","PROFIT"
-"2025-07-07 21:10:34","bonky","2vFN9pwjTXCBLwUoBDK6wA46wDSYFCr1B7Sz5vfdbonk","No buy signal within timeout period","","","",""
-"2025-07-08 13:06:09","The Great Comeback","HB8sdLtp1HSNTyr3sCiXYxwYB5u1vdF2faXxqxCpump","No buy signal timeout","","0.000003751","",""
-"2025-07-08 13:26:11","The Herd Theory","G7zErBs4k8EAamV87AmYb52PdgfLZ2mC5KjYKEuVbonk","No buy signal within timeout period","","","",""
-"2025-07-08 13:42:58","dogwifhair","6yHXzbneXqSYJsXYryA5ovyeHDG3WZcBSdupurE8bonk","Partial take profit","0.000517800","0.000622100","20.14%","PROFIT"
-"2025-07-08 13:42:58","dogwifhair","6yHXzbneXqSYJsXYryA5ovyeHDG3WZcBSdupurE8bonk","Take profit","0.000517800","0.000622100","20.14%","PROFIT"
-"2025-07-08 13:53:00","supercoin","3oNLZjLuqdTAS9iUEbUNdqTP7USvh65EVvdtoDabpump","No buy signal within timeout period","","","",""
-"2025-07-08 14:21:03","dogwifhair","6yHXzbneXqSYJsXYryA5ovyeHDG3WZcBSdupurE8bonk","No buy signal within timeout period","","","",""
-"2025-07-08 15:59:19","Burnie Madoff Securities LLC","MfYN55rtdebAqq3MEtu8uPKtSokvtaJEdKESCi62MGF","No buy signal within timeout period","","","",""
-"2025-07-08 22:30:51","Hyperbonk","9Ji1YChcpn9DXh8R9sn1uXLQkviW1v5rLbjYYevPbonk","No buy signal within timeout period","","","",""
-2025-07-09 18:43:25,simple memecoin,DvcunSdG15dYCvQFiTjwXdfdNborS7zppMacen8Jjoqp,Processing complete,,,,
-"2025-07-09 19:43:40","every pre-sale is a scam","398gLAnc7DEBxdk4HveQUc6WFUtfBtGWR3U8jz3obonk","Stop loss","0.000066060","0.000062700","-5.09%","LOSS"
-"2025-07-09 19:46:45","Bonk","G1AbaiJXW6NuLcGc6BvxwWESdSdM7podB1tEczqhbonk","No buy signal timeout","","0.000031660","",""
-"2025-07-09 20:03:56","You good mud?","HhfyQNANe8DNAgSaMNRAW5GAs6J15PpTNMUpzBbbonk","Stop loss","0.000101800","0.000085850","-15.67%","LOSS"
-2025-07-09 20:23:51,VALA CAPITAL MARKETS,GMcThHFBnN6zjB2Mvbgdi19A2m35g81y7B1AKhgGbonk,Take profit,0.000055510,0.000066730,20.21%,PROFIT
-2025-07-09 20:52:38,The Dog,7MF9Nquj74aXoAN62KJTk3bK9cHVYbZFCixgGHQwbonk,No buy signal timeout,,0.000025380,,
+2025-07-09 23:26:36,#ReleaseTheFiles,HFodNTpvBusn3z3rfaAZpx7NALuXUrkJmYhrBGn9bonk,No buy signal timeout,,0.000036390,,
+2025-07-09 23:36:38,crime candles,GKcF1UPJ2eZs9WKW8WZgKtHk6Lcp16tBvE7RrtDbbonk,No buy signal timeout,,0.000066570,,
+2025-07-10 00:30:45,Bong,EBkhmqqrDXDDLBNvedZhb9Fdqs3m7LdZKem2znRPBoNG,Take profit,0.000011420,0.000013150,15.15%,PROFIT
+2025-07-10 00:40:51,Tinfoil Cult,FjCTpAv1fvQxryWNVkQP1N2XeqkbPwWxgxEftbWPbonk,No buy signal timeout,,0.000033810,,

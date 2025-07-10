@@ -1,0 +1,15 @@
+2025-07-08 23:19:30,664 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-07-08 23:19:30,671 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-08 23:19:30,675 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-08 23:19:30,691 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-08 23:19:30,691 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-08 23:19:30,738 - __main__ - INFO - Telegram Manager Bot started. Send /menu to interact.
+2025-07-08 23:19:30,741 - telegram.ext.ExtBot - DEBUG - Entering: send_message
+2025-07-08 23:19:30,761 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-08 23:19:30,780 - httpcore.connection - DEBUG - connect_tcp.failed exception=ConnectError(gaierror(11001, 'getaddrinfo failed'))
+2025-07-08 23:19:30,782 - __main__ - ERROR - Could not send startup message to TELEGRAM_CHAT_ID 7049055170: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-07-08 23:19:30,782 - telegram.ext.ExtBot - DEBUG - Entering: get_me
+2025-07-08 23:19:30,784 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-08 23:19:30,788 - httpcore.connection - DEBUG - connect_tcp.failed exception=ConnectError(gaierror(11001, 'getaddrinfo failed'))
+2025-07-08 23:19:30,788 - telegram.ext.Application - DEBUG - This Application is already shut down. Returning.
+2025-07-08 23:19:30,790 - __main__ - ERROR - Error in polling: httpx.ConnectError: [Errno 11001] getaddrinfo failed

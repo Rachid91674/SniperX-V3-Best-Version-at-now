@@ -1,0 +1,20 @@
+2025-07-08 23:57:14,119 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-07-08 23:57:14,121 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-08 23:57:14,125 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-08 23:57:14,133 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-08 23:57:14,133 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-08 23:57:14,149 - __main__ - INFO - Telegram Manager Bot started. Send /menu to interact.
+2025-07-08 23:57:14,149 - telegram.ext.ExtBot - DEBUG - Entering: send_message
+2025-07-08 23:57:14,164 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-08 23:57:19,175 - httpcore.connection - DEBUG - connect_tcp.failed exception=ConnectTimeout(TimeoutError())
+2025-07-08 23:57:19,176 - __main__ - ERROR - Could not send startup message to TELEGRAM_CHAT_ID 7049055170: Timed out
+2025-07-08 23:57:19,176 - telegram.ext.ExtBot - DEBUG - Entering: get_me
+2025-07-08 23:57:19,180 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-08 23:57:24,164 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000011E84808EE0>
+2025-07-08 23:57:24,164 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000011E84778340> server_hostname='api.telegram.org' timeout=5.0
+2025-07-08 23:57:27,544 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000011E84809000>
+2025-07-08 23:57:27,545 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-08 23:57:27,546 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-08 23:57:27,546 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-08 23:57:27,546 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-08 23:57:27,546 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
