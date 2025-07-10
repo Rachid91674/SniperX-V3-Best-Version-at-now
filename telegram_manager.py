@@ -513,29 +513,48 @@ def main_telegram_bot() -> None:
     finally:
         # Cleanup when bot stops
         global sniperx_process, wallet_manager_process
-        if sniperx_process and sniperx_process.poll() is None:
-            logger.info("Telegram bot shutting down. Attempting to stop SniperX V2.py...")
-            if os.name == 'nt':
-                sniperx_process.terminate()
-            else:
-                os.kill(sniperx_process.pid, signal.SIGINT)
+        def terminate_process(process, process_name):
+            if not process or process.poll() is not None:
+                return
+                
+            pid = process.pid
+            logger.info(f"Attempting to stop {process_name} (PID: {pid})...")
+            
             try:
-                sniperx_process.wait(5)
-            except subprocess.TimeoutExpired:
-                sniperx_process.kill()
-            logger.info("SniperX V2.py process terminated during bot shutdown.")
+                if os.name == 'nt':
+                    # On Windows, try taskkill first as it's more reliable
+                    try:
+                        subprocess.run(['taskkill', '/F', '/T', '/PID', str(pid)], 
+                                    timeout=5, check=True, capture_output=True)
+                        logger.info(f"{process_name} terminated successfully using taskkill.")
+                        return
+                    except (subprocess.SubprocessError, FileNotFoundError) as e:
+                        logger.warning(f"taskkill failed for {process_name} (PID: {pid}): {e}")
+                        # Fall back to terminate() if taskkill fails
+                        process.terminate()
+                else:
+                    # On Unix-like systems
+                    os.kill(pid, signal.SIGINT)
+                
+                # Wait for process to terminate
+                try:
+                    process.wait(5)
+                    logger.info(f"{process_name} terminated gracefully.")
+                except subprocess.TimeoutExpired:
+                    logger.warning(f"{process_name} did not terminate gracefully, forcing kill...")
+                    if os.name == 'nt':
+                        process.kill()
+                    else:
+                        os.kill(pid, signal.SIGKILL)
+                    process.wait(5)
+            except Exception as e:
+                logger.error(f"Error terminating {process_name} (PID: {pid}): {e}")
+            finally:
+                logger.info(f"{process_name} shutdown completed.")
         
-        if wallet_manager_process and wallet_manager_process.poll() is None:
-            logger.info("Stopping wallet manager...")
-            if os.name == 'nt':
-                wallet_manager_process.terminate()
-            else:
-                os.kill(wallet_manager_process.pid, signal.SIGINT)
-            try:
-                wallet_manager_process.wait(5)
-            except subprocess.TimeoutExpired:
-                wallet_manager_process.kill()
-            logger.info("Wallet manager terminated during bot shutdown.")
+        # Terminate processes
+        terminate_process(sniperx_process, "SniperX V2.py")
+        terminate_process(wallet_manager_process, "Wallet Manager")
         
         loop.close()
 
