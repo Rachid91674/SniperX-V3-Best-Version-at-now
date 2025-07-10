@@ -6,6 +6,7 @@ import os
 import sys
 import logging
 from collections import OrderedDict
+import pandas as pd
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
@@ -286,14 +287,28 @@ def run_full_risk_analysis():
         remaining_cluster_data = {k: v for k, v in cluster_data_map.items() if k not in processed_token_addresses}
 
         if remaining_input_tokens:
-            write_csv_data(INPUT_TOKENS_CSV, list(next(iter(remaining_input_tokens.values())).keys()), remaining_input_tokens.values(), 'w')
+            write_csv_data(
+                INPUT_TOKENS_CSV,
+                list(next(iter(remaining_input_tokens.values())).keys()),
+                remaining_input_tokens.values(),
+                'w'
+            )
         elif os.path.exists(INPUT_TOKENS_CSV):
-            os.remove(INPUT_TOKENS_CSV) # Delete if empty
-        
+            df_in = pd.read_csv(INPUT_TOKENS_CSV)
+            df_in = df_in[~df_in['Address'].isin(processed_token_addresses)]
+            df_in.to_csv(INPUT_TOKENS_CSV, index=False)
+
         if remaining_cluster_data:
-            write_csv_data(CLUSTER_SUMMARY_CSV, list(next(iter(remaining_cluster_data.values())).keys()), remaining_cluster_data.values(), 'w')
+            write_csv_data(
+                CLUSTER_SUMMARY_CSV,
+                list(next(iter(remaining_cluster_data.values())).keys()),
+                remaining_cluster_data.values(),
+                'w'
+            )
         elif os.path.exists(CLUSTER_SUMMARY_CSV):
-            os.remove(CLUSTER_SUMMARY_CSV) # Delete if empty
+            df_cs = pd.read_csv(CLUSTER_SUMMARY_CSV)
+            df_cs = df_cs[~df_cs['Token_Address'].isin(processed_token_addresses)]
+            df_cs.to_csv(CLUSTER_SUMMARY_CSV, index=False)
             
         logging.info(f"Cleaned up {len(processed_token_addresses)} processed token(s) from source files.")
 
