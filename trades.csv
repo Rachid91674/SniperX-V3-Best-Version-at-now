@@ -20,3 +20,8 @@ timestamp,token_name,mint_address,reason,buy_price,sell_price
 2025-07-11 04:13:24,NALA ON SOL,GoNhVbssiGouTYBUDLVzFpXqF8aKTEqLS3HxYPffpump,Take profit,0.000089570,0.000103100,15.11%,PROFIT
 2025-07-11 04:49:58,NVDIA Ai,56HZJCeoYtiPUdhx2iMPvXXVYxbUXSC9XjSesNKdqt6D,Stop loss,0.000289100,0.000282000,-2.46%,LOSS
 2025-07-11 06:17:56,john,GRooFnoJn7t2SMZzaL4mMKaHNoTVLbyL8aLWHMKFbonk,Stop loss,0.000033080,0.000031720,-4.11%,LOSS
+2025-07-11 08:22:26,Biggie,AZLnqLjfHwiUjNQJAv2E1pdegeChrr6gx8UoDCfmbonk,No buy signal timeout,,0.000031120,,
+2025-07-11 10:18:54,Saluting Fish,2Wj8nszSUesAjKrr2PsXRmTKbHVjbyTPiD2wQaM7bonk,No buy signal timeout,,0.000173200,,
+2025-07-11 12:09:01,The 1st coin made to fail,9owd5QwPGbtJhp1b7WVRpXzoXfDKqC1h2JeiesYKbonk,Take profit,0.000056150,0.000076630,36.47%,PROFIT
+2025-07-11 13:13:55,FRONGZ,3QmkeGW6y3HUXBpTzEU83VKHAJbVYkoV99HCdqSsbonk,No buy signal timeout,,0.000009145,,
+2025-07-11 13:47:36,Cou,8RbPkDKxqgyKzDvPTPQGAbWNzwf6VgFueV2c7gsTbonk,Stop loss,0.000062380,0.000058170,-6.75%,LOSS
