@@ -1,10 +1,22 @@
 timestamp,token_name,mint_address,reason,buy_price,sell_price
-2025-07-10 14:45:56,Grok 4,Ar8FNn4xzrRZnxyi1uTsMCik9rete5UiU18g2B8apump,No buy signal timeout,,0.000040950,,
-2025-07-10 14:49:36,What Did I miss?,FUVkgu4YS2sm3gGiUomTmT9cNjkp5KLqUn1h6E3ybonk,Stop loss,0.000058620,0.000056330,-3.91%,LOSS
-2025-07-10 14:56:46,SOLO LEVELING,GNmw9SgwhwBWYN9eHM8m6MHEsToMDiZmv4tvo1bMbonk,No buy signal timeout,,0.000367800,,
-2025-07-10 15:07:25,Bitcoin Game,BcSEP7Z45219RFV76zvG2FfHgod5wRjj12zhXCfHbonk,Stop loss,0.000058350,0.000048000,-17.74%,LOSS
-2025-07-10 15:31:40,Kwon Eunbi,BzJ3yBrmeCugS7mNHcvhbNw6tv7JXSXCoULJu5hdbonk,Stop loss,0.000050780,0.000046830,-7.78%,LOSS
-2025-07-10 15:36:47,Kwon Eunbi,BzJ3yBrmeCugS7mNHcvhbNw6tv7JXSXCoULJu5hdbonk,No buy signal timeout,,0.000044260,,
-2025-07-10 15:50:54,bull,dFDvTmZAT4j5RxCBJdcD8kWfsdvpGqt5HpbLhRFbonk,Take profit,0.000097530,0.000152500,56.36%,PROFIT
-2025-07-10 16:13:14,Ryan,FgW6j5Kcy9msdG9v9jo9VbtNz8VXNudWdXXNitPgbonk,No buy signal timeout,,0.000032200,,
-2025-07-10 16:17:30,bull,dFDvTmZAT4j5RxCBJdcD8kWfsdvpGqt5HpbLhRFbonk,Stop loss,0.000096610,0.000080860,-16.30%,LOSS
+2025-07-10 20:25:56,Clickbait Coin,FFrjvUsw8Mdb5LMKG1VwpYT7Jo5FsMwUzirxqo6bbonk,No buy signal timeout,,0.000176900,,
+2025-07-10 20:29:04,2-3years Dagestan and forget,8BojTbbG2nnTXA1WgpHxoKdqdoa3AAnDvzqynHZdpump,No buy signal timeout,,0.000039200,,
+2025-07-10 20:43:01,67COIN,76rTxzztXjJe7AUaBi7jQ5J61MFgpQgB4Cc934sWbonk,Take profit,0.000074590,0.000083240,11.60%,PROFIT
+2025-07-10 20:45:47,BULL COIN,5ijvvfMFnvdpQajBgzstydqh4ZFe9X5ejrU1xmcebonk,Take profit,0.000060980,0.000068860,12.92%,PROFIT
+2025-07-10 21:18:19,molang,9GCjrfLyH8DoogPmodPQtqHxaYSLyAQtvUumJFSCbonk,Take profit,0.000018650,0.000026180,40.38%,PROFIT
+2025-07-10 22:00:47,Solana Cult,9WrDRGJRyZERJFKAzManVUNyar49zPsfuA9r3yMEyhdD,No buy signal timeout,,0.000072400,,
+2025-07-10 22:11:52,brdg.fun,GqXsuvY2vBBC1ZfwDKyvhzJjA3SbCSWGYAUY6WoGpump,Take profit,0.000208700,0.000246200,17.97%,PROFIT
+2025-07-10 22:14:55,agbo,BxRwnoxSFjy9cytZT4h3NPw57Uk1uyqVvtiNsDCjbonk,No buy signal timeout,,0.000074200,,
+2025-07-10 22:31:41,dump,8LzjzgHRKnZVxtSHV5C5XDCAg1TJ6BPkjbemrJ7Cdump,Stop loss,0.000039780,0.000037890,-4.75%,LOSS
+2025-07-10 23:13:29,BTC RollerCoaster Guy,29AsstyhDeZTEtEE9E6ujosf33wisaFGQoPsWM6RdYrA,Stop loss,0.000162300,0.000145500,-10.35%,LOSS
+2025-07-10 23:39:16,Jewish Intuition,SShzPVeF4S5njzuKpuB9QJHsFs7qq8vvNHWkYi4pump,No buy signal timeout,,0.000003987,,
+2025-07-11 00:14:22,Bitpup,6rhj2VuBR6zrp5GifRDrKwWvot81VTCqVSVoW6g4pump,No buy signal timeout,,0.000043420,,
+2025-07-11 00:28:59,LaunchBonkOnX,8UYq7vBrPSUxUL45rbbmPJtsgrBoLiPpg7Hywb1mbonk,Stop loss,0.000099160,0.000095100,-4.09%,LOSS
+2025-07-11 00:36:36,Balls Tingling Coin,7szoXyfKWBeSVAnNJBLZ4mYUopFbHJ7UTz55Xbabbonk,No buy signal timeout,,0.000063450,,
+2025-07-11 02:44:20,GRONK,eupRuQGmbxRWUU3Ptxb1QuUsoB9mTCmWVb58GJAbonk,Stop loss,0.000048780,0.000045000,-7.75%,LOSS
+2025-07-11 02:58:13,Help Roland Find Girlfriend,3FKWcw1zqBoHhVxSQwjDUJ7F1WoLyDxGeq1xG2tpbonk,No buy signal timeout,,0.000089190,,
+2025-07-11 03:02:54,Jackpot On Bonk,GVPQGfYL8qx8WyA38Sa49p7RrMypEdHi5hWRCbxhbonk,Stop loss,0.000081330,0.000070290,-13.57%,LOSS
+2025-07-11 03:05:01,Debit,AdrdBM9qRsh8GTp67HGHVWndpLHf1pVKascaKT5Upump,Take profit,0.000047030,0.000070210,49.29%,PROFIT
+2025-07-11 04:13:24,NALA ON SOL,GoNhVbssiGouTYBUDLVzFpXqF8aKTEqLS3HxYPffpump,Take profit,0.000089570,0.000103100,15.11%,PROFIT
+2025-07-11 04:49:58,NVDIA Ai,56HZJCeoYtiPUdhx2iMPvXXVYxbUXSC9XjSesNKdqt6D,Stop loss,0.000289100,0.000282000,-2.46%,LOSS
+2025-07-11 06:17:56,john,GRooFnoJn7t2SMZzaL4mMKaHNoTVLbyL8aLWHMKFbonk,Stop loss,0.000033080,0.000031720,-4.11%,LOSS

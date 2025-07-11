@@ -1,0 +1,11 @@
+Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
+2	8vdDs9...L8Eu	3.38	MuiBox-root css-141d73e	0
+3	CFGbuW...cgWJ	3.25	MuiBox-root css-141d73e	0
+4	6zpds2...Ezga	2.88	MuiBox-root css-141d73e	0
+5	ZhQrAR...Zayc	2.84	MuiBox-root css-141d73e	0
+6	2tPQ4t...7iVo	2.05	MuiBox-root css-141d73e	0
+7	Aqw3ke...bg3t	2.05	MuiBox-root css-141d73e	0
+8	8yAEst...2yUs	2.04	MuiBox-root css-141d73e	0
+9	6znNmz...qEtq	1.91	MuiBox-root css-141d73e	0
+10	5YiPuv...nQaL	1.78	MuiBox-root css-141d73e	0
+11	4uvWoT...xRZN	1.74	MuiBox-root css-141d73e	0
