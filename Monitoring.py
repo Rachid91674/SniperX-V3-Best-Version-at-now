@@ -318,8 +318,25 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
                     log_trade_result(token_name, mint_address, "Take profit", g_buy_price_usd, usd_price_per_token)
                     return
                 if usd_price_per_token <= g_buy_price_usd * STOP_LOSS_THRESHOLD_PERCENT:
-                    print(f"\n🛑 STOP LOSS for {token_name} at ${usd_price_per_token:.9f}")
-                    log_trade_result(token_name, mint_address, "Stop loss", g_buy_price_usd, usd_price_per_token)
+                    trigger_time = datetime.utcnow()
+                    print(
+                        f"\n🛑 STOP LOSS for {token_name} at ${usd_price_per_token:.9f} "
+                        f"(trigger {trigger_time.strftime('%H:%M:%S.%f')[:-3]} UTC)"
+                    )
+                    tx_start = time.time()
+                    log_trade_result(
+                        token_name,
+                        mint_address,
+                        "Stop loss",
+                        g_buy_price_usd,
+                        usd_price_per_token,
+                    )
+                    tx_end = time.time()
+                    delta = tx_end - trigger_time.timestamp()
+                    print(
+                        f"⌛ Stop-loss transaction sent at {datetime.utcnow().strftime('%H:%M:%S.%f')[:-3]} UTC | "
+                        f"Delta: {delta:.3f}s"
+                    )
                     return
                 if g_highest_price_usd > g_buy_price_usd * TRAILING_STOP_ACTIVATION_PERCENT and usd_price_per_token <= g_highest_price_usd * TRAILING_STOP_THRESHOLD_PERCENT:
                     print(f"\n🛑 TRAILING STOP for {token_name} at ${usd_price_per_token:.9f} (Peak: ${g_highest_price_usd:.9f})")
