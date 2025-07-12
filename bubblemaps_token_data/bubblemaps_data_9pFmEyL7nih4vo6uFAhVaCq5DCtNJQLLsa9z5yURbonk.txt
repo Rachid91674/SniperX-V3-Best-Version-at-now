@@ -1,0 +1,11 @@
+Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
+2	lebronraymonejamesjr.sol	2.64	MuiBox-root css-141d73e	0
+3	86ssNT...icPg	2.10	MuiBox-root css-141d73e	0
+4	7PTMAA...fC9N	2.09	MuiBox-root css-141d73e	0
+5	won.sol	1.99	MuiBox-root css-141d73e	0
+6	2XpwKM...Vhtu	1.76	MuiBox-root css-141d73e	0
+7	war.sol	1.65	MuiBox-root css-141d73e	0
+8	6kMEMa...AccN	1.63	MuiBox-root css-141d73e	0
+9	binladen.sol	1.57	MuiBox-root css-141d73e	0
+10	staticc.sol	1.38	MuiBox-root css-141d73e	0
+11	mevzoid.sol	1.38	MuiBox-root css-141d73e	0

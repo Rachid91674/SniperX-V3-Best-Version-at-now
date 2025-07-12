@@ -1,0 +1,11 @@
+Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
+4	646ASQ...uwXG	2.66	MuiBox-root css-141d73e	0
+5	4CmN6j...2Twc	2.61	MuiBox-root css-141d73e	0
+6	pump.fun Creator (3MyS)	2.51	MuiBox-root css-141d73e	0
+7	3XoUvP...b5w8	2.31	MuiBox-root css-141d73e	0
+8	AGqjiv...FYLm	2.24	MuiBox-root css-141d73e	0
+9	414FRN...Sr7Y	2.20	MuiBox-root css-141d73e	0
+10	freakpay.sol	2.12	MuiBox-root css-141d73e	0
+11	8cXUDB...22mU	2.05	MuiBox-root css-141d73e	0
+14	financialgain.sol	1.62	MuiBox-root css-1fk5ysy	3.14
+15	Ci8HDz...JiLu	1.61	MuiBox-root css-141d73e	0

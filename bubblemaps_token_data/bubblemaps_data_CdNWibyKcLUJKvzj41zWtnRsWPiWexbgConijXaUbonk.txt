@@ -1,11 +1,11 @@
 Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
-2	C9h8dH...ZKLv	3.75	MuiBox-root css-141d73e	0
-3	VJSDW6...Usy1	3.08	MuiBox-root css-141d73e	0
-4	AjTkkt...3LgF	2.71	MuiBox-root css-141d73e	0
-5	82MRZM...9SuZ	2.46	MuiBox-root css-141d73e	0
-6	4yVviU...Pgs3	2.36	MuiBox-root css-141d73e	0
-7	6eLwvn...DXFo	2.25	MuiBox-root css-141d73e	0
-8	7JYb41...z6nc	2.18	MuiBox-root css-141d73e	0
-9	greenfnthanksforplaying.sol	1.96	MuiBox-root css-141d73e	0
-10	DqKM9f...YQ8e	1.91	MuiBox-root css-141d73e	0
-11	6p1C2o...QYPe	1.87	MuiBox-root css-141d73e	0
+2	FnjYPf...Hsq5	2.89	MuiBox-root css-141d73e	0
+3	4e1SKW...iZqa	2.62	MuiBox-root css-141d73e	0
+4	soloxbt.sol	2.48	MuiBox-root css-141d73e	0
+5	Cogv5P...fXku	2.39	MuiBox-root css-141d73e	0
+6	mevzoid.sol	2.38	MuiBox-root css-141d73e	0
+7	BC8yiF...Z9TW	2.36	MuiBox-root css-141d73e	0
+8	@guappy-eth	1.82	MuiBox-root css-141d73e	0
+9	8rwVXL...RjsA	1.77	MuiBox-root css-141d73e	0
+10	7qWNvn...w5FK	1.75	MuiBox-root css-141d73e	0
+11	🔵🔵🔵.sol	1.65	MuiBox-root css-141d73e	0

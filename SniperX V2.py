@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import logging
 import requests
 import asyncio
 import aiohttp
@@ -11,11 +12,90 @@ import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import sys
 import time
+import threading
 from dotenv import load_dotenv
 import subprocess
-import logging
 import signal
 from typing import Optional, Dict, Any
+from logger_util import setup_logger
+
+# Initialize logger with a special name to prevent recursion
+logger = logging.getLogger('SniperXMain')
+logger.setLevel(logging.INFO)
+
+# Remove any existing handlers to avoid duplicates
+for handler in logger.handlers[:]:
+    logger.removeHandler(handler)
+
+# Create logs directory if it doesn't exist
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs')
+os.makedirs(log_dir, exist_ok=True)
+
+# Create file handler which logs even debug messages
+log_file = os.path.join(log_dir, f'sniperx_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+
+# Create console handler with a higher log level
+console_handler = logging.StreamHandler(sys.__stdout__)
+console_handler.setLevel(logging.INFO)
+
+# Create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+console_handler.setFormatter(formatter)
+
+# Add the handlers to the logger
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
+# Store original stdout/stderr
+_original_stdout = sys.__stdout__
+_original_stderr = sys.__stderr__
+
+class StreamToLogger:
+    _lock = threading.Lock()
+    _in_write = False
+    
+    def __init__(self, logger, log_level=logging.INFO, original_stream=None):
+        self.logger = logger
+        self.log_level = log_level
+        self.original_stream = original_stream
+        self._buffer = []
+
+    def write(self, buf):
+        if not buf.strip():
+            return
+            
+        # Prevent recursive logging
+        if StreamToLogger._in_write:
+            return
+            
+        try:
+            StreamToLogger._in_write = True
+            with StreamToLogger._lock:
+                # Log the message
+                self.logger.log(self.log_level, buf.strip())
+                # Also write to original stream if needed
+                if self.original_stream:
+                    self.original_stream.write(buf)
+        except Exception as e:
+            # If logging fails, write to stderr directly
+            if self.original_stream:
+                self.original_stream.write(f"[Logging Error] {str(e)}\n")
+        finally:
+            StreamToLogger._in_write = False
+
+    def flush(self):
+        if self.original_stream:
+            self.original_stream.flush()
+
+# Only redirect stdout/stderr if they haven't been redirected already
+if not isinstance(sys.stdout, StreamToLogger):
+    sys.stdout = StreamToLogger(logger, logging.INFO, _original_stdout)
+if not isinstance(sys.stderr, StreamToLogger):
+    sys.stderr = StreamToLogger(logger, logging.ERROR, _original_stderr)
+
 load_dotenv()
 
 def format_with_emojis(message: str, level: str = "INFO") -> str:
@@ -96,7 +176,7 @@ def get_env_float(env_name, default):
 TEST_MODE = len(sys.argv) > 1 and sys.argv[1] == "--test"
 MORALIS_API_KEYS = [k for k in [os.getenv(f"MORALIS_API_KEY_{i}", "").split('#')[0].strip() for i in range(1,6)] if k]
 if not MORALIS_API_KEYS:
-    print("[ERROR] No Moralis API keys configured in .env. Exiting.")
+    logger.error("[ERROR] No Moralis API keys configured in .env. Exiting.")
     sys.exit(1)
 
 EXCHANGE_NAME = os.getenv("EXCHANGE_NAME", "pumpfun")
@@ -141,29 +221,6 @@ SNIPE_LIQUIDITY_MULTIPLIER_5M = get_env_float("SNIPE_LIQUIDITY_MULTIPLIER_5M", 5
 GHOST_VOLUME_MIN_PCT_1M = get_env_float("GHOST_VOLUME_MIN_PCT_1M", 0.5)
 GHOST_VOLUME_MIN_PCT_5M = get_env_float("GHOST_VOLUME_MIN_PCT_5M", 0.5)
 GHOST_PRICE_REL_MULTIPLIER = get_env_float("GHOST_PRICE_REL_MULTIPLIER", 2.0)
-
-
-# Configure root logger
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-
-# Create console handler with emoji formatter
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(EmojiLogFormatter("%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S"))
-
-# Remove existing handlers
-for handler in logger.handlers[:]:
-    logger.removeHandler(handler)
-
-# Add our emoji handler
-logger.addHandler(console_handler)
-
-# Also update the print function to use logging
-def print(*args, **kwargs):
-    level = kwargs.pop('level', logging.INFO)
-    sep = kwargs.get('sep', ' ')
-    message = sep.join(str(arg) for arg in args)
-    logger.log(level, message, **kwargs)
 
 def get_trending_tokens():
     logger.info("Fetching trending tokens from Moralis...")

@@ -1,0 +1,11 @@
+Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
+2	荣耀.sol	2.95	MuiBox-root css-141d73e	0
+3	FJqQKA...RM9z	2.62	MuiBox-root css-141d73e	0
+4	EyYvbW...xAQW	2.35	MuiBox-root css-141d73e	0
+5	🔵🔵🔵.sol	2.25	MuiBox-root css-141d73e	0
+6	m7Kaas...YuF7	2.10	MuiBox-root css-141d73e	0
+7	BsyVQo...VpQY	2.06	MuiBox-root css-141d73e	0
+8	9ru9BS...BvxX	2.02	MuiBox-root css-141d73e	0
+9	5aDiY6...R5V3	2.01	MuiBox-root css-141d73e	0
+10	pump.fun Creator (58Us)	1.99	MuiBox-root css-141d73e	0
+11	pump.fun Creator (5C91)	1.92	MuiBox-root css-141d73e	0

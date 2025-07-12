@@ -3,6 +3,7 @@
 Bubblemaps Extractor - Multi-Threaded (Multiple Windows)
 """
 import sys
+import datetime
 import pytest
 pytest.importorskip("selenium")
 import csv
@@ -56,17 +57,82 @@ MAX_BUBBLEMAPS_RETRIES = 3
 PROCESSED_TOKENS_LOCK = threading.Lock()
 CLUSTER_SUMMARY_LOCK = threading.Lock()
 
-def setup_logging():
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] [%(threadName)s] %(module)s:%(lineno)d - %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        handlers=[
-            logging.FileHandler("bubblemaps_extractor_threaded.log", mode='w', encoding='utf-8'),
-            logging.StreamHandler(sys.stdout)
-        ]
-    )
-setup_logging()
+# Initialize logger with a special name to prevent recursion
+logger = logging.getLogger('BubblemapsExtractor')
+logger.setLevel(logging.INFO)
+
+# Remove any existing handlers to avoid duplicates
+for handler in logger.handlers[:]:
+    logger.removeHandler(handler)
+
+# Create logs directory if it doesn't exist
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs')
+os.makedirs(log_dir, exist_ok=True)
+
+# Create file handler which logs even debug messages
+log_file = os.path.join(log_dir, f'bubblemaps_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+
+# Create console handler with a higher log level
+console_handler = logging.StreamHandler(sys.__stdout__)
+console_handler.setLevel(logging.INFO)
+
+# Create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - [%(threadName)s] - %(message)s')
+file_handler.setFormatter(formatter)
+console_handler.setFormatter(formatter)
+
+# Add the handlers to the logger
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
+# Store original stdout/stderr
+_original_stdout = sys.__stdout__
+_original_stderr = sys.__stderr__
+
+class StreamToLogger:
+    _lock = threading.Lock()
+    _in_write = False
+    
+    def __init__(self, logger, log_level=logging.INFO, original_stream=None):
+        self.logger = logger
+        self.log_level = log_level
+        self.original_stream = original_stream
+        self._buffer = []
+
+    def write(self, buf):
+        if not buf.strip():
+            return
+            
+        # Prevent recursive logging
+        if StreamToLogger._in_write:
+            return
+            
+        try:
+            StreamToLogger._in_write = True
+            with StreamToLogger._lock:
+                # Log the message
+                self.logger.log(self.log_level, buf.strip())
+                # Also write to original stream if needed
+                if self.original_stream:
+                    self.original_stream.write(buf)
+        except Exception as e:
+            # If logging fails, write to stderr directly
+            if self.original_stream:
+                self.original_stream.write(f"[Logging Error] {str(e)}\n")
+        finally:
+            StreamToLogger._in_write = False
+
+    def flush(self):
+        if self.original_stream:
+            self.original_stream.flush()
+
+# Only redirect stdout/stderr if they haven't been redirected already
+if not isinstance(sys.stdout, StreamToLogger):
+    sys.stdout = StreamToLogger(logger, logging.INFO, _original_stdout)
+if not isinstance(sys.stderr, StreamToLogger):
+    sys.stderr = StreamToLogger(logger, logging.ERROR, _original_stderr)
 
 def detect_chrome_binary_path(provided_path: str | None) -> str | None:
     paths_to_check = []
@@ -82,9 +148,9 @@ def detect_chrome_binary_path(provided_path: str | None) -> str | None:
     for path_str in paths_to_check:
         path_obj = Path(path_str)
         if path_obj.exists() and path_obj.is_file():
-            logging.info(f"Chrome binary found at: {path_str}")
+            logger.info(f"Chrome binary found at: {path_str}")
             return str(path_obj)
-    logging.warning("Could not automatically detect Chrome binary path from common locations.")
+    logger.warning("Could not automatically detect Chrome binary path from common locations.")
     return None
 
 def load_processed_tokens_threadsafe(filepath: str) -> set:
@@ -94,7 +160,7 @@ def load_processed_tokens_threadsafe(filepath: str) -> set:
             with open(filepath, 'r', encoding='utf-8') as f:
                 return set(line.strip() for line in f if line.strip())
         except Exception as e:
-            logging.error(f"Error loading processed tokens from {filepath}: {e}")
+            logger.error(f"Error loading processed tokens from {filepath}: {e}")
             return set()
 
 def save_processed_token_threadsafe(filepath: str, token_address: str):
@@ -102,12 +168,12 @@ def save_processed_token_threadsafe(filepath: str, token_address: str):
         with open(filepath, 'a', encoding='utf-8') as f:
             f.write(token_address + '\n')
     except Exception as e:
-        logging.error(f"Error saving processed token {token_address} to {filepath}: {e}")
+        logger.error(f"Error saving processed token {token_address} to {filepath}: {e}")
 
 def get_new_tokens_from_csv_threadsafe(csv_filepath: str, current_processed_tokens: set) -> list:
     new_tokens = []
     if not os.path.exists(csv_filepath):
-        logging.warning(f"Monitored CSV file {csv_filepath} not found.")
+        logger.warning(f"Monitored CSV file {csv_filepath} not found.")
         return new_tokens
     
     try:
@@ -141,22 +207,22 @@ def get_new_tokens_from_csv_threadsafe(csv_filepath: str, current_processed_toke
 
                 if token_address and token_address not in current_processed_tokens:
                     new_tokens.append(token_address)
-                    logging.info(f"Found new token to process: {token_address}")
+                    logger.info(f"Found new token to process: {token_address}")
                     
                     # Limit the number of new tokens to process in one batch
                     if len(new_tokens) >= 10:  # Process max 10 new tokens at a time
                         break
 
     except Exception as e:
-        logging.error(f"Error reading CSV file {csv_filepath}: {e}", exc_info=True)
+        logger.error(f"Error reading CSV file {csv_filepath}: {e}", exc_info=True)
     
-    logging.info(f"Found {len(new_tokens)} new tokens to process")
+    logger.info(f"Found {len(new_tokens)} new tokens to process")
     return new_tokens
 
 def initialize_driver(chrome_binary_path: str, driver_path: str | None = None) -> webdriver.Chrome | None:
     chrome_options = Options()
     if not chrome_binary_path:
-        logging.error("Chrome binary path is not configured."); return None
+        logger.error("Chrome binary path is not configured."); return None
     chrome_options.binary_location = chrome_binary_path
     chrome_options.add_argument("--start-maximized")
     try:
@@ -165,10 +231,10 @@ def initialize_driver(chrome_binary_path: str, driver_path: str | None = None) -
             service_args['executable_path'] = driver_path
         service = Service(**service_args)
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        logging.debug(f"[{threading.get_ident()}] WebDriver initialized.")
+        logger.debug(f"[{threading.get_ident()}] WebDriver initialized.")
         return driver
-    except WebDriverException as e: logging.error(f"WebDriverException on init: {e}"); return None
-    except Exception as e: logging.error(f"Unexpected error on WebDriver init: {e}"); return None
+    except WebDriverException as e: logger.error(f"WebDriverException on init: {e}"); return None
+    except Exception as e: logger.error(f"Unexpected error on WebDriver init: {e}"); return None
 
 def take_screenshot(driver, name="screenshot"):
     """Take a screenshot for debugging"""
@@ -177,10 +243,10 @@ def take_screenshot(driver, name="screenshot"):
         os.makedirs("debug_screenshots", exist_ok=True)
         filename = os.path.join("debug_screenshots", f"{name}_{timestamp}.png")
         driver.save_screenshot(filename)
-        logging.info(f"Screenshot saved as {filename}")
+        logger.info(f"Screenshot saved as {filename}")
         return filename
     except Exception as e:
-        logging.error(f"Failed to take screenshot: {e}")
+        logger.error(f"Failed to take screenshot: {e}")
         return None
 
 def is_element_visible(driver, by, value, timeout=10):
@@ -191,7 +257,7 @@ def is_element_visible(driver, by, value, timeout=10):
         )
         return element.is_displayed() and element.is_enabled()
     except Exception as e:
-        logging.debug(f"Element not visible: {value} - {str(e)}")
+        logger.debug(f"Element not visible: {value} - {str(e)}")
         return False
 
 def switch_to_correct_frame(driver):
@@ -202,10 +268,10 @@ def switch_to_correct_frame(driver):
             EC.presence_of_element_located((By.TAG_NAME, "iframe"))
         )
         driver.switch_to.frame(iframe)
-        logging.info("Switched to iframe")
+        logger.info("Switched to iframe")
         return True
     except Exception as e:
-        logging.debug(f"No iframe found or error switching: {e}")
+        logger.debug(f"No iframe found or error switching: {e}")
         return False
 
 def click_element_with_fallback(driver, element, timeout: int = 10, max_attempts: int = 3, log_prefix: str = ""):
@@ -228,41 +294,41 @@ def click_element_with_fallback(driver, element, timeout: int = 10, max_attempts
             
             # Try standard click first
             element.click()
-            logging.debug(f"{full_log_prefix} Click successful on attempt {attempt}")
+            logger.debug(f"{full_log_prefix} Click successful on attempt {attempt}")
             return True
             
         except StaleElementReferenceException:
-            logging.warning(f"{full_log_prefix} Element is stale, attempting to relocate")
+            logger.warning(f"{full_log_prefix} Element is stale, attempting to relocate")
             take_screenshot(driver, f"stale_element_attempt_{attempt}")
             time.sleep(1)
             continue
             
         except Exception as click_exc:
-            logging.warning(f"{full_log_prefix} Standard click failed on attempt {attempt}: {str(click_exc)[:200]}")
+            logger.warning(f"{full_log_prefix} Standard click failed on attempt {attempt}: {str(click_exc)[:200]}")
             
             # Try JavaScript click as fallback
             try:
                 driver.execute_script("arguments[0].click();", element)
-                logging.debug(f"{full_log_prefix} JS click succeeded on attempt {attempt}")
+                logger.debug(f"{full_log_prefix} JS click succeeded on attempt {attempt}")
                 return True
             except Exception as js_exc:
-                logging.warning(f"{full_log_prefix} JS click failed on attempt {attempt}: {str(js_exc)[:200]}")
+                logger.warning(f"{full_log_prefix} JS click failed on attempt {attempt}: {str(js_exc)[:200]}")
                 
                 # Try one more approach - move to element and click
                 try:
                     from selenium.webdriver.common.action_chains import ActionChains
                     ActionChains(driver).move_to_element(element).click().perform()
-                    logging.debug(f"{full_log_prefix} ActionChains click succeeded on attempt {attempt}")
+                    logger.debug(f"{full_log_prefix} ActionChains click succeeded on attempt {attempt}")
                     return True
                 except Exception as ac_exc:
-                    logging.warning(f"{full_log_prefix} ActionChains click failed: {str(ac_exc)[:200]}")
+                    logger.warning(f"{full_log_prefix} ActionChains click failed: {str(ac_exc)[:200]}")
         
         if attempt < max_attempts:
-            logging.info(f"{full_log_prefix} Retrying click in 1 second... (attempt {attempt + 1}/{max_attempts})")
+            logger.info(f"{full_log_prefix} Retrying click in 1 second... (attempt {attempt + 1}/{max_attempts})")
             time.sleep(1)
     
     take_screenshot(driver, "click_failed_final")
-    logging.error(f"{full_log_prefix} Failed to click element after {max_attempts} attempts")
+    logger.error(f"{full_log_prefix} Failed to click element after {max_attempts} attempts")
     return False
 
 def ensure_address_list_panel_open(driver):
@@ -277,15 +343,15 @@ def ensure_address_list_panel_open(driver):
             collapse_div.size.get('height', 0) == 0
         )
         if collapsed:
-            logging.info(f"[{threading.get_ident()}] Address List panel is collapsed, clicking to expand.")
+            logger.info(f"[{threading.get_ident()}] Address List panel is collapsed, clicking to expand.")
             header_btn.click()
             time.sleep(1) # Wait for animation
     except Exception as e:
-        logging.debug(f"[{threading.get_ident()}] ensure_address_list_panel_open error: {e}")
+        logger.debug(f"[{threading.get_ident()}] ensure_address_list_panel_open error: {e}")
 
 def extract_initial_address_list_data(driver) -> list:
     TARGET_MAX_RANK_EXTRACTION = 10
-    logging.debug(f"[{threading.get_ident()}] Attempting direct extraction (ranks 1-{TARGET_MAX_RANK_EXTRACTION}).")
+    logger.debug(f"[{threading.get_ident()}] Attempting direct extraction (ranks 1-{TARGET_MAX_RANK_EXTRACTION}).")
     address_data_map = {}
     try:
         WebDriverWait(driver, 20).until(
@@ -300,11 +366,11 @@ def extract_initial_address_list_data(driver) -> list:
         time.sleep(2)
 
         items_in_view = driver.find_elements(By.XPATH, "//div[@data-testid='virtuoso-item-list']/div[@data-item-index]")
-        if not items_in_view: logging.warning(f"[{threading.get_ident()}] No items in list after scroll to top."); return []
+        if not items_in_view: logger.warning(f"[{threading.get_ident()}] No items in list after scroll to top."); return []
 
         for item_container in items_in_view:
             if len(address_data_map) >= TARGET_MAX_RANK_EXTRACTION:
-                logging.debug(f"[{threading.get_ident()}] All {TARGET_MAX_RANK_EXTRACTION} target ranks collected."); break
+                logger.debug(f"[{threading.get_ident()}] All {TARGET_MAX_RANK_EXTRACTION} target ranks collected."); break
             try:
                 btn = item_container.find_element(By.XPATH, ".//div[contains(@class, 'MuiListItemButton-root')]")
 
@@ -330,25 +396,25 @@ def extract_initial_address_list_data(driver) -> list:
                     address_data_map[rank_int] = {'Rank':rank_txt,'Address':addr_txt,'Individual_Percentage':perc_txt,'MuiBox_Class_String':mui_class,'Cluster_Supply_Percentage':'N/A'}
 
             except (StaleElementReferenceException, NoSuchElementException) as e: 
-                logging.debug(f"[{threading.get_ident()}] Stale/missing sub-element in item list: {e}"); continue
+                logger.debug(f"[{threading.get_ident()}] Stale/missing sub-element in item list: {e}"); continue
             except Exception as e: 
-                logging.error(f"[{threading.get_ident()}] Error extracting from item: {e}")
+                logger.error(f"[{threading.get_ident()}] Error extracting from item: {e}")
 
         final_data = sorted(address_data_map.values(), key=lambda x: int(x['Rank']))
-        logging.info(f"[{threading.get_ident()}] Extracted {len(final_data)} initial holder ranks.")
+        logger.info(f"[{threading.get_ident()}] Extracted {len(final_data)} initial holder ranks.")
         return final_data
     except Exception as e: 
-        logging.error(f"[{threading.get_ident()}] Err in extract_initial_address_list_data: {e}", exc_info=True)
+        logger.error(f"[{threading.get_ident()}] Err in extract_initial_address_list_data: {e}", exc_info=True)
         return []
 
 def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> tuple[list, dict]:
     thread_id_str = f"Thread-{threading.get_ident()}"
-    logging.info(f"[{thread_id_str}] Starting cluster click processing for {len(initial_data_list)} items.")
+    logger.info(f"[{thread_id_str}] Starting cluster click processing for {len(initial_data_list)} items.")
     
     take_screenshot(driver, "cluster_processing_start")
 
     if not isinstance(initial_data_list, list):
-        logging.error(f"[{thread_id_str}] initial_data_list is not a list. Type: {type(initial_data_list)}. Aborting.")
+        logger.error(f"[{thread_id_str}] initial_data_list is not a list. Type: {type(initial_data_list)}. Aborting.")
         return [], {}
 
     switch_to_correct_frame(driver)
@@ -358,7 +424,7 @@ def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> t
             EC.presence_of_element_located((By.XPATH, "//div[@data-testid='virtuoso-scroller']"))
         )
     except TimeoutException:
-        logging.error(f"[{thread_id_str}] Main scroller for address list not found. Cannot process clusters.")
+        logger.error(f"[{thread_id_str}] Main scroller for address list not found. Cannot process clusters.")
         take_screenshot(driver, "scroller_not_found")
         return initial_data_list, {}
 
@@ -370,14 +436,14 @@ def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> t
 
     for item_index, item_data in enumerate(augmented_initial_data):
         if not isinstance(item_data, dict) or not all(k in item_data for k in ['Rank', 'Address', 'MuiBox_Class_String']):
-            logging.warning(f"[{thread_id_str}] Skipping item at index {item_index} due to missing keys or incorrect type: {item_data}")
+            logger.warning(f"[{thread_id_str}] Skipping item at index {item_index} due to missing keys or incorrect type: {item_data}")
             continue
 
         rank_to_find_str = item_data['Rank']
         address_to_find = item_data['Address']
         current_muibox_class_string = item_data.get('MuiBox_Class_String', "MuiBox-Not-Found")
         
-        logging.info(f"[{thread_id_str}] Processing Rank #{rank_to_find_str} - {address_to_find}")
+        logger.info(f"[{thread_id_str}] Processing Rank #{rank_to_find_str} - {address_to_find}")
 
         normalized_class = " ".join(current_muibox_class_string.split())
         individual_class_pattern = f"MuiBox-root {INDIVIDUAL_ADDRESS_MUIBOX_CLASS}"
@@ -393,10 +459,10 @@ def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> t
             item_data['Cluster_Supply_Percentage'] = processed_cluster_data[normalized_muibox_key]
             continue
 
-        logging.info(f"[{thread_id_str}] Rank #{rank_to_find_str} ({address_to_find}) is a NEW visual cluster. Finding & Clicking...")
+        logger.info(f"[{thread_id_str}] Rank #{rank_to_find_str} ({address_to_find}) is a NEW visual cluster. Finding & Clicking...")
         
         if not click_cluster_item(driver, scroller, rank_to_find_str, address_to_find, thread_id_str):
-            logging.warning(f"[{thread_id_str}] Failed to find/click cluster for Rank #{rank_to_find_str}")
+            logger.warning(f"[{thread_id_str}] Failed to find/click cluster for Rank #{rank_to_find_str}")
             item_data['Cluster_Supply_Percentage'] = 'Error:ClickFailed'
             continue
             
@@ -408,7 +474,7 @@ def click_clusters_and_extract_supply_data(driver, initial_data_list: list) -> t
         take_screenshot(driver, f"cluster_{rank_to_find_str}_processed")
         time.sleep(1)
     
-    logging.info(f"[{thread_id_str}] Completed processing {len(augmented_initial_data)} items. "
+    logger.info(f"[{thread_id_str}] Completed processing {len(augmented_initial_data)} items. "
                  f"Processed {len(processed_cluster_data)} unique clusters.")
     
     return augmented_initial_data, processed_cluster_data
@@ -419,7 +485,7 @@ def click_cluster_item(driver, scroller, rank_to_find_str, address_to_find, thre
     time.sleep(2)  # Wait for list to reset to the top
 
     for scroll_attempt in range(max_scroll_attempts):
-        logging.debug(f"[{thread_id_str}] Scroll attempt {scroll_attempt + 1}/{max_scroll_attempts} to find Rank #{rank_to_find_str}")
+        logger.debug(f"[{thread_id_str}] Scroll attempt {scroll_attempt + 1}/{max_scroll_attempts} to find Rank #{rank_to_find_str}")
         try:
             # Re-find elements on each attempt as the DOM changes in a virtualized list
             list_item_buttons = driver.find_elements(
@@ -428,7 +494,7 @@ def click_cluster_item(driver, scroller, rank_to_find_str, address_to_find, thre
             )
             
             if not list_item_buttons:
-                logging.warning(f"[{thread_id_str}] No list item buttons found on attempt {scroll_attempt + 1}")
+                logger.warning(f"[{thread_id_str}] No list item buttons found on attempt {scroll_attempt + 1}")
 
             for button in list_item_buttons:
                 try:
@@ -439,15 +505,15 @@ def click_cluster_item(driver, scroller, rank_to_find_str, address_to_find, thre
                     addr_text = addr_el.text.strip()
                     
                     if rank_text == rank_to_find_str and addr_text == address_to_find:
-                        logging.info(f"[{thread_id_str}] Found target Rank #{rank_to_find_str}. Attempting click.")
+                        logger.info(f"[{thread_id_str}] Found target Rank #{rank_to_find_str}. Attempting click.")
                         if click_element_with_fallback(
                             driver, button, timeout=10, max_attempts=3, log_prefix=f"Cluster Item #{rank_to_find_str}"
                         ):
-                            logging.info(f"[{thread_id_str}] Successfully clicked on Rank #{rank_to_find_str}")
+                            logger.info(f"[{thread_id_str}] Successfully clicked on Rank #{rank_to_find_str}")
                             time.sleep(1.5)  # Wait for cluster details panel to appear
                             return True
                         else:
-                            logging.error(f"[{thread_id_str}] Click FAILED for Rank #{rank_to_find_str} even with fallback.")
+                            logger.error(f"[{thread_id_str}] Click FAILED for Rank #{rank_to_find_str} even with fallback.")
                             return False
                             
                 except (NoSuchElementException, StaleElementReferenceException):
@@ -456,16 +522,16 @@ def click_cluster_item(driver, scroller, rank_to_find_str, address_to_find, thre
             
             # If we finished the loop and didn't find it, scroll down for the next attempt
             if scroll_attempt < max_scroll_attempts - 1:
-                logging.debug(f"[{thread_id_str}] Rank #{rank_to_find_str} not in current view, scrolling down.")
+                logger.debug(f"[{thread_id_str}] Rank #{rank_to_find_str} not in current view, scrolling down.")
                 driver.execute_script("arguments[0].scrollTop += arguments[0].clientHeight * 0.85;", scroller)
                 time.sleep(2)  # Wait for new items to render
                 
         except Exception as e:
-            logging.error(f"[{thread_id_str}] Unhandled error in click_cluster_item (attempt {scroll_attempt+1}): {e}", exc_info=True)
+            logger.error(f"[{thread_id_str}] Unhandled error in click_cluster_item (attempt {scroll_attempt+1}): {e}", exc_info=True)
             take_screenshot(driver, f"error_click_cluster_{rank_to_find_str}_attempt_{scroll_attempt+1}")
             time.sleep(1)
     
-    logging.error(f"[{thread_id_str}] FAILED to find and click cluster for Rank #{rank_to_find_str} after {max_scroll_attempts} attempts.")
+    logger.error(f"[{thread_id_str}] FAILED to find and click cluster for Rank #{rank_to_find_str} after {max_scroll_attempts} attempts.")
     return False
 
 def extract_cluster_supply(driver, thread_id_str, rank_to_find_str, normalized_muibox_key):
@@ -482,19 +548,19 @@ def extract_cluster_supply(driver, thread_id_str, rank_to_find_str, normalized_m
         
         if match:
             extracted_value = match.group(1)
-            logging.info(f"[{thread_id_str}] Extracted Cluster Supply for Rank {rank_to_find_str}: {extracted_value}%")
+            logger.info(f"[{thread_id_str}] Extracted Cluster Supply for Rank {rank_to_find_str}: {extracted_value}%")
             return extracted_value
         else:
-            logging.warning(f"[{thread_id_str}] Could not parse cluster supply from text: '{supply_text}' for Rank {rank_to_find_str}")
+            logger.warning(f"[{thread_id_str}] Could not parse cluster supply from text: '{supply_text}' for Rank {rank_to_find_str}")
             return 'Error:Format'
             
     except TimeoutException:
-        logging.warning(f"[{thread_id_str}] Timeout waiting for cluster supply element for Rank {rank_to_find_str}.")
+        logger.warning(f"[{thread_id_str}] Timeout waiting for cluster supply element for Rank {rank_to_find_str}.")
         return 'N/A:TimeoutOnSupply'
         
     except Exception as e:
         error_type = type(e).__name__
-        logging.warning(f"[{thread_id_str}] Error extracting cluster supply for Rank {rank_to_find_str}: {e}")
+        logger.warning(f"[{thread_id_str}] Error extracting cluster supply for Rank {rank_to_find_str}: {e}")
         take_screenshot(driver, f"error_extract_supply_{rank_to_find_str}_{error_type}")
         return f'N/A:ErrorOnSupply ({error_type})'
 
@@ -506,7 +572,7 @@ def save_address_data_txt(token_address, augmented_address_data, directory):
             f.write("Rank\tAddress\tIndividual_Percentage\tMuiBox_Class\tCluster_Supply_Percentage\n")
             for entry in augmented_address_data:
                 f.write(f"{entry.get('Rank','N/A')}\t{entry.get('Address','N/A')}\t{entry.get('Individual_Percentage','N/A')}\t{entry.get('MuiBox_Class_String','N/A')}\t{entry.get('Cluster_Supply_Percentage','N/A')}\n")
-    except IOError as e: logging.error(f"IOError saving to {filepath}: {e}")
+    except IOError as e: logger.error(f"IOError saving to {filepath}: {e}")
 
 def cleanup_token_data(token_address: str):
     """Remove the saved bubblemaps text file for a token if it exists."""
@@ -516,11 +582,11 @@ def cleanup_token_data(token_address: str):
     try:
         if os.path.exists(filepath):
             os.remove(filepath)
-            logging.info(f"Deleted token data file {filepath}")
+            logger.info(f"Deleted token data file {filepath}")
         else:
-            logging.debug(f"Token data file not found for cleanup: {filepath}")
+            logger.debug(f"Token data file not found for cleanup: {filepath}")
     except Exception as e:
-        logging.error(f"Error deleting token data file {filepath}: {e}")
+        logger.error(f"Error deleting token data file {filepath}: {e}")
 
 def save_cluster_summary_data(token_address: str, processed_cluster_data: dict):
     # This function must be called with CLUSTER_SUMMARY_LOCK acquired
@@ -549,7 +615,7 @@ def save_cluster_summary_data(token_address: str, processed_cluster_data: dict):
                     valid_percentages_list.append(f"{cluster_type_label}:{current_perc_float:.2f}%")
                     # --- END: MODIFIED CODE ---
             except (ValueError, TypeError):
-                logging.warning(f"[{threading.get_ident()}] Could not convert cluster supply '{perc_str_val}' for {token_address}, key '{cluster_key}'.")
+                logger.warning(f"[{threading.get_ident()}] Could not convert cluster supply '{perc_str_val}' for {token_address}, key '{cluster_key}'.")
 
         global_cluster_percentage_sum_str = f"{global_sum_float:.2f}"
         individual_cluster_percentages_str = "; ".join(valid_percentages_list) if valid_percentages_list else "None Valid"
@@ -578,9 +644,9 @@ def save_cluster_summary_data(token_address: str, processed_cluster_data: dict):
             writer.writerow([token_address,num_distinct_clusters,global_cluster_percentage_sum_str,individual_cluster_percentages_str,token_status_eval,status_color_eval])
             f.flush()
             os.fsync(f.fileno())
-        logging.info(f"Saved cluster summary for {token_address}: Clusters={num_distinct_clusters}, GlobalSupply={global_cluster_percentage_sum_str}%, Status={token_status_eval}")
+        logger.info(f"Saved cluster summary for {token_address}: Clusters={num_distinct_clusters}, GlobalSupply={global_cluster_percentage_sum_str}%, Status={token_status_eval}")
     except IOError as e:
-        logging.error(f"Error saving cluster summary for {token_address}: {e}")
+        logger.error(f"Error saving cluster summary for {token_address}: {e}")
 
 # The rest of the file remains the same...
 
@@ -588,7 +654,7 @@ def process_single_token_threaded(token_address_with_config: tuple):
     token_address, chrome_binary_path_config, chrome_driver_path_override_config = token_address_with_config
     thread_id_str = f"Thread-{threading.get_ident()}"
     thread_driver = None
-    logging.info(f"[{thread_id_str}] --- Starting processing for token: {token_address} ---")
+    logger.info(f"[{thread_id_str}] --- Starting processing for token: {token_address} ---")
 
     try: # Outer try for driver initialization and final cleanup
         thread_driver = initialize_driver(chrome_binary_path_config, chrome_driver_path_override_config)
@@ -598,27 +664,27 @@ def process_single_token_threaded(token_address_with_config: tuple):
         bubblemaps_url = f"https://v2.bubblemaps.io/map?address={token_address}&chain=solana&limit=100"
 
         for attempt in range(MAX_BUBBLEMAPS_RETRIES):
-            logging.info(f"[{thread_id_str}] Attempt {attempt + 1}/{MAX_BUBBLEMAPS_RETRIES} for token: {token_address}")
+            logger.info(f"[{thread_id_str}] Attempt {attempt + 1}/{MAX_BUBBLEMAPS_RETRIES} for token: {token_address}")
             attempt_successful = False
             try: # Inner try for a single attempt's logic
                 if attempt > 0:
-                    logging.info(f"[{thread_id_str}] Reloading page for attempt {attempt + 1}.")
+                    logger.info(f"[{thread_id_str}] Reloading page for attempt {attempt + 1}.")
                     thread_driver.refresh()
                 else:
                     thread_driver.get(bubblemaps_url)
 
                 WebDriverWait(thread_driver, 75).until(lambda d: d.execute_script('return document.readyState') == 'complete')
-                logging.info(f"[{thread_id_str}] Page readyState complete for {token_address} (Attempt {attempt + 1}).")
+                logger.info(f"[{thread_id_str}] Page readyState complete for {token_address} (Attempt {attempt + 1}).")
 
                 try:
                     WebDriverWait(thread_driver, 45).until(
                         EC.visibility_of_element_located((By.XPATH, "//p[contains(text(),'Address List')]"))
                     )
                     ensure_address_list_panel_open(thread_driver)
-                    logging.info(f"[{thread_id_str}] 'Address List' is visible for {token_address}.")
+                    logger.info(f"[{thread_id_str}] 'Address List' is visible for {token_address}.")
                     time.sleep(random.uniform(1.5, 2.5))
                 except TimeoutException:
-                    logging.error(f"[{thread_id_str}] Critical: 'Address List' not visible on attempt {attempt + 1}.")
+                    logger.error(f"[{thread_id_str}] Critical: 'Address List' not visible on attempt {attempt + 1}.")
                     if attempt < MAX_BUBBLEMAPS_RETRIES - 1: continue
                     else: return token_address, False
 
@@ -626,21 +692,21 @@ def process_single_token_threaded(token_address_with_config: tuple):
                 data_is_fresh = False
                 try:
                     timestamp_el = WebDriverWait(thread_driver, 15).until(EC.presence_of_element_located((By.XPATH, "//p[contains(text(), 'a few seconds ago') or contains(text(), 'Live')]")))
-                    logging.info(f"[{thread_id_str}] Data is fresh: '{timestamp_el.text.strip()}'.")
+                    logger.info(f"[{thread_id_str}] Data is fresh: '{timestamp_el.text.strip()}'.")
                     data_is_fresh = True
                 except TimeoutException:
-                    logging.warning(f"[{thread_id_str}] Data not immediately fresh. Attempting in-page refresh.")
+                    logger.warning(f"[{thread_id_str}] Data not immediately fresh. Attempting in-page refresh.")
                     try:
                         refresh_icon = WebDriverWait(thread_driver, 15).until(EC.element_to_be_clickable((By.XPATH, "//*[@data-testid='RefreshIcon']")))
                         click_element_with_fallback(thread_driver, refresh_icon, log_prefix=f"[{thread_id_str}] Refresh")
                         WebDriverWait(thread_driver, 60).until(EC.presence_of_element_located((By.XPATH, "//p[contains(text(), 'a few seconds ago') or contains(text(), 'Live')]")))
                         data_is_fresh = True
-                        logging.info(f"[{thread_id_str}] Data fresh after in-page refresh.")
+                        logger.info(f"[{thread_id_str}] Data fresh after in-page refresh.")
                     except Exception as e_refresh:
-                        logging.error(f"[{thread_id_str}] In-page refresh failed or data still not fresh: {e_refresh}")
+                        logger.error(f"[{thread_id_str}] In-page refresh failed or data still not fresh: {e_refresh}")
 
                 if not data_is_fresh:
-                    logging.error(f"[{thread_id_str}] CRITICAL: Data not fresh after all checks on attempt {attempt + 1}.")
+                    logger.error(f"[{thread_id_str}] CRITICAL: Data not fresh after all checks on attempt {attempt + 1}.")
                     if attempt < MAX_BUBBLEMAPS_RETRIES - 1: continue
                     else: return token_address, False
 
@@ -649,25 +715,25 @@ def process_single_token_threaded(token_address_with_config: tuple):
                     magic_nodes_button = WebDriverWait(thread_driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Magic Nodes')]")))
                     click_element_with_fallback(thread_driver, magic_nodes_button, timeout=5, max_attempts=2, log_prefix="[BUBBLEMAPS] Magic Nodes")
                     time.sleep(2)
-                    logging.info(f"[BUBBLEMAPS] Clicked Magic Nodes for {token_address}")
+                    logger.info(f"[BUBBLEMAPS] Clicked Magic Nodes for {token_address}")
                 except Exception as e:
-                    logging.warning(f"[BUBBLEMAPS] Magic Nodes button not found or not clickable: {e}")
+                    logger.warning(f"[BUBBLEMAPS] Magic Nodes button not found or not clickable: {e}")
 
                 # Initial Data Extraction
                 initial_data = extract_initial_address_list_data(thread_driver)
                 if not initial_data:
-                    logging.error(f"[{thread_id_str}] Failed to extract initial address list (Attempt {attempt + 1}).")
+                    logger.error(f"[{thread_id_str}] Failed to extract initial address list (Attempt {attempt + 1}).")
                     if attempt < MAX_BUBBLEMAPS_RETRIES - 1: continue
                     else: return token_address, False
 
                 # Cluster Data Extraction
-                logging.info(f"[{thread_id_str}] Attempting to click clusters and extract supply data.")
+                logger.info(f"[{thread_id_str}] Attempting to click clusters and extract supply data.")
                 aug_data, clusters_info = click_clusters_and_extract_supply_data(thread_driver, initial_data)
                 
                 # --- START: NEW LOGIC ---
                 # Fallback: If no visual clusters were found, use the top individual holder as a synthetic cluster.
                 if not clusters_info and aug_data:
-                    logging.info(f"[{thread_id_str}] No visual clusters found. Searching for top individual holder to use as a proxy.")
+                    logger.info(f"[{thread_id_str}] No visual clusters found. Searching for top individual holder to use as a proxy.")
                     
                     CONTRACT_IDENTIFIERS = ['pump', 'raydium', 'creator', 'squads']
                     top_individual_holder = None
@@ -683,21 +749,21 @@ def process_single_token_threaded(token_address_with_config: tuple):
                         rank = top_individual_holder.get('Rank')
                         percentage = top_individual_holder.get('Individual_Percentage')
                         
-                        logging.info(f"[{thread_id_str}] Treating Rank #{rank} (Individual Supply: {percentage}%) as the primary risk cluster.")
+                        logger.info(f"[{thread_id_str}] Treating Rank #{rank} (Individual Supply: {percentage}%) as the primary risk cluster.")
                         
                         # Create the synthetic cluster entry using its individual percentage
                         if percentage and percentage not in ('N/A', '0'):
                             clusters_info[SYNTHETIC_CLUSTER_KEY] = percentage
                         else:
-                            logging.warning(f"[{thread_id_str}] Top individual holder (Rank #{rank}) had an invalid percentage: {percentage}")
+                            logger.warning(f"[{thread_id_str}] Top individual holder (Rank #{rank}) had an invalid percentage: {percentage}")
                     else:
-                        logging.warning(f"[{thread_id_str}] No visual clusters were found, and could not identify a top individual holder to use as a proxy.")
+                        logger.warning(f"[{thread_id_str}] No visual clusters were found, and could not identify a top individual holder to use as a proxy.")
                 # --- END: NEW LOGIC ---
 
                 if not aug_data and initial_data:
-                    logging.warning(f"[{thread_id_str}] No augmented data from cluster processing, but initial data existed.")
+                    logger.warning(f"[{thread_id_str}] No augmented data from cluster processing, but initial data existed.")
                 else:
-                    logging.info(f"[{thread_id_str}] Cluster processing completed.")
+                    logger.info(f"[{thread_id_str}] Cluster processing completed.")
 
                 # Save data and mark as successful
                 save_address_data_txt(token_address, aug_data, EXTRACTED_DATA_DIR)
@@ -705,66 +771,66 @@ def process_single_token_threaded(token_address_with_config: tuple):
                     with CLUSTER_SUMMARY_LOCK:
                         save_cluster_summary_data(token_address, clusters_info)
                 else:
-                    logging.warning(f"[{thread_id_str}] clusters_info was not a dict, type: {type(clusters_info)}. Skipping summary.")
+                    logger.warning(f"[{thread_id_str}] clusters_info was not a dict, type: {type(clusters_info)}. Skipping summary.")
 
-                logging.info(f"[{thread_id_str}] Successfully processed and saved data for {token_address} on attempt {attempt + 1}.")
+                logger.info(f"[{thread_id_str}] Successfully processed and saved data for {token_address} on attempt {attempt + 1}.")
                 attempt_successful = True
                 break
 
             except NoSuchWindowException as e_critical:
-                logging.error(f"[{thread_id_str}] CRITICAL DRIVER ERROR for {token_address}: {e_critical}. Window closed.")
+                logger.error(f"[{thread_id_str}] CRITICAL DRIVER ERROR for {token_address}: {e_critical}. Window closed.")
                 return token_address, False
             except Exception as e_attempt:
-                logging.error(f"[{thread_id_str}] Error during attempt {attempt + 1} for token {token_address}: {e_attempt}", exc_info=True)
+                logger.error(f"[{thread_id_str}] Error during attempt {attempt + 1} for token {token_address}: {e_attempt}", exc_info=True)
 
             if not attempt_successful and attempt < MAX_BUBBLEMAPS_RETRIES - 1:
-                logging.info(f"[{thread_id_str}] Attempt {attempt + 1} failed for {token_address}. Retrying after delay...")
+                logger.info(f"[{thread_id_str}] Attempt {attempt + 1} failed for {token_address}. Retrying after delay...")
                 time.sleep(random.uniform(5, 8))
 
         if attempt_successful:
             return token_address, True
         else:
-            logging.error(f"[{thread_id_str}] All {MAX_BUBBLEMAPS_RETRIES} attempts failed for token {token_address}.")
+            logger.error(f"[{thread_id_str}] All {MAX_BUBBLEMAPS_RETRIES} attempts failed for token {token_address}.")
             return token_address, False
     except Exception as e:
-        logging.error(f"[{thread_id_str}] General error in process_single_token_threaded for {token_address}: {e}", exc_info=True)
+        logger.error(f"[{thread_id_str}] General error in process_single_token_threaded for {token_address}: {e}", exc_info=True)
         return token_address, False
     finally:
         if thread_driver:
             try:
                 thread_driver.quit()
-                logging.info(f"[{thread_id_str}] WebDriver quit for {token_address}.")
+                logger.info(f"[{thread_id_str}] WebDriver quit for {token_address}.")
             except Exception as e_quit:
-                logging.error(f"[{thread_id_str}] Error quitting WebDriver for {token_address}: {e_quit}")
+                logger.error(f"[{thread_id_str}] Error quitting WebDriver for {token_address}: {e_quit}")
     return token_address, False
 
 def run_risk_detector_once():
-    logging.info("Attempting to run risk_detector.py...")
+    logger.info("Attempting to run risk_detector.py...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
     risk_detector_script = os.path.join(script_dir, "risk_detector.py")
     if not os.path.exists(risk_detector_script):
-        logging.error(f"risk_detector.py not found at {risk_detector_script}.")
+        logger.error(f"risk_detector.py not found at {risk_detector_script}.")
         return False
     try:
         cluster_summary_path = os.path.join(script_dir, CLUSTER_SUMMARY_FILE)
         if not os.path.exists(cluster_summary_path):
-            logging.error(f"Cluster summary file not found at {cluster_summary_path}")
+            logger.error(f"Cluster summary file not found at {cluster_summary_path}")
             return False
 
         proc = subprocess.run(
             [sys.executable, risk_detector_script],
             check=True, cwd=script_dir, capture_output=True, text=True
         )
-        logging.info("risk_detector.py completed successfully.")
-        if proc.stdout: logging.info(f"Risk Detector STDOUT:\n{proc.stdout.strip()}")
-        if proc.stderr: logging.warning(f"Risk Detector STDERR:\n{proc.stderr.strip()}")
+        logger.info("risk_detector.py completed successfully.")
+        if proc.stdout: logger.info(f"Risk Detector STDOUT:\n{proc.stdout.strip()}")
+        if proc.stderr: logger.warning(f"Risk Detector STDERR:\n{proc.stderr.strip()}")
         return True
     except subprocess.CalledProcessError as e:
-        logging.error(f"Risk detector failed with exit code {e.returncode}")
-        if e.stdout: logging.error(f"STDOUT: {e.stdout}")
-        if e.stderr: logging.error(f"STDERR: {e.stderr}")
+        logger.error(f"Risk detector failed with exit code {e.returncode}")
+        if e.stdout: logger.error(f"STDOUT: {e.stdout}")
+        if e.stderr: logger.error(f"STDERR: {e.stderr}")
     except Exception as e:
-        logging.error(f"Error running risk_detector.py: {e}", exc_info=True)
+        logger.error(f"Error running risk_detector.py: {e}", exc_info=True)
     return False
 
 def clean_duplicate_entries(csv_path: str) -> None:
@@ -789,9 +855,9 @@ def clean_duplicate_entries(csv_path: str) -> None:
             with open(csv_path, 'w', newline='', encoding='utf-8') as f:
                 if header: f.write(header)
                 f.writelines(unique_lines)
-            logging.info(f"Removed duplicates from {csv_path}")
+            logger.info(f"Removed duplicates from {csv_path}")
     except Exception as e:
-        logging.error(f"Error cleaning duplicate entries from {csv_path}: {e}")
+        logger.error(f"Error cleaning duplicate entries from {csv_path}: {e}")
 
 def get_file_checksum(file_path: str) -> str:
     if not os.path.exists(file_path): return ""
@@ -821,14 +887,14 @@ def monitor_and_process_tokens(csv_fpath: str, chrome_bin_path: str, chrome_drv_
                             with PROCESSED_TOKENS_LOCK:
                                 save_processed_token_threadsafe(OPENED_TOKENS_FILE, token_addr)
                                 processed_set.add(token_addr)
-                            logging.info(f"Bubblemaps SUCCESS for {token_addr}.")
+                            logger.info(f"Bubblemaps SUCCESS for {token_addr}.")
                             newly_processed_count += 1
                             processed_since_last_run.add(token_addr)
-                        else: logging.error(f"Bubblemaps FAILED for {token_addr}.")
-                    except Exception as exc: logging.error(f"Token {token_addr} thread exception: {exc}")
+                        else: logger.error(f"Bubblemaps FAILED for {token_addr}.")
+                    except Exception as exc: logger.error(f"Token {token_addr} thread exception: {exc}")
 
                 if newly_processed_count > 0 and not active_futures:
-                    logging.info(f"{newly_processed_count} tokens updated. Triggering risk_detector.py.")
+                    logger.info(f"{newly_processed_count} tokens updated. Triggering risk_detector.py.")
                     if run_risk_detector_once():
                         for addr in processed_since_last_run: cleanup_token_data(addr)
                         processed_since_last_run.clear()
@@ -836,7 +902,7 @@ def monitor_and_process_tokens(csv_fpath: str, chrome_bin_path: str, chrome_drv_
 
                 current_checksum = get_file_checksum(csv_fpath)
                 if current_checksum != last_checksum:
-                    logging.info("CSV file changed, checking for new tokens.")
+                    logger.info("CSV file changed, checking for new tokens.")
                     last_checksum = current_checksum
                     clean_duplicate_entries(csv_fpath)
 
@@ -846,30 +912,28 @@ def monitor_and_process_tokens(csv_fpath: str, chrome_bin_path: str, chrome_drv_
                     
                     if new_tokens:
                         to_submit = new_tokens[:MAX_WORKERS - len(active_futures)]
-                        logging.info(f"Submitting {len(to_submit)} new tokens: {', '.join(to_submit)}")
+                        logger.info(f"Submitting {len(to_submit)} new tokens: {', '.join(to_submit)}")
                         for token_s in to_submit:
                             in_flight.add(token_s)
                             fut = executor.submit(process_single_token_threaded, (token_s, chrome_bin_path, chrome_drv_path))
                             active_futures[fut] = token_s
                     elif not active_futures:
-                        logging.info(f"No new tokens, no active tasks. Waiting {CHECK_INTERVAL}s...")
+                        logger.info(f"No new tokens, no active tasks. Waiting {CHECK_INTERVAL}s...")
                         time.sleep(CHECK_INTERVAL)
                     else:
-                        time.sleep(5)
-                else:
-                    time.sleep(10)
+                        time.sleep(10)
     except KeyboardInterrupt:
-        logging.info("Keyboard interrupt. Shutting down...")
+        logger.info("Keyboard interrupt. Shutting down...")
     except Exception as e:
-        logging.critical(f"Main loop error: {e}", exc_info=True)
+        logger.critical(f"Main loop error: {e}", exc_info=True)
     finally:
-        logging.info("Monitor loop finished.")
+        logger.info("Monitor loop finished.")
 
 if __name__ == '__main__':
-    logging.info("--- Starting Bubblemaps Extractor (Multi-Threaded) ---")
+    logger.info("--- Starting Bubblemaps Extractor (Multi-Threaded) ---")
     cli_chrome = sys.argv[1] if len(sys.argv) > 1 else None
     actual_chrome = detect_chrome_binary_path(cli_chrome)
-    if not actual_chrome: logging.error("Exiting: Chrome binary undetermined."); sys.exit(1)
+    if not actual_chrome: logger.error("Exiting: Chrome binary undetermined."); sys.exit(1)
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     csv_monitor_fpath = os.path.join(script_dir, CSV_FILE)

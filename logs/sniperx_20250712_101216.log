@@ -1,0 +1,33 @@
+2025-07-12 10:12:16,295 - SniperXMain - INFO - --- SniperX V2 Starting ---
+2025-07-12 10:12:16,544 - SniperXMain - INFO - Fetching trending tokens from Moralis...
+2025-07-12 10:12:16,546 - SniperXMain - ERROR - INFO:SniperXMain:Fetching trending tokens from Moralis...
+2025-07-12 10:12:16,546 - SniperXMain - INFO - Trying Moralis API key 1/5
+2025-07-12 10:12:16,548 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 1/5
+2025-07-12 10:12:17,018 - SniperXMain - INFO - [WARN] Key 1 HTTP 401 error: 401 Client Error: Unauthorized for url: https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana. Trying next key.
+2025-07-12 10:12:17,037 - SniperXMain - INFO - Trying Moralis API key 2/5
+2025-07-12 10:12:17,041 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 2/5
+2025-07-12 10:12:18,353 - SniperXMain - INFO - [INFO] Retrieved 199 trending tokens.
+2025-07-12 10:13:25,430 - SniperXMain - INFO - Fetching trending tokens from Moralis...
+2025-07-12 10:13:25,430 - SniperXMain - ERROR - INFO:SniperXMain:Fetching trending tokens from Moralis...
+2025-07-12 10:13:25,430 - SniperXMain - INFO - Trying Moralis API key 1/5
+2025-07-12 10:13:25,432 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 1/5
+2025-07-12 10:13:26,048 - SniperXMain - INFO - [WARN] Key 1 HTTP 401 error: 401 Client Error: Unauthorized for url: https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana. Trying next key.
+2025-07-12 10:13:26,060 - SniperXMain - INFO - Trying Moralis API key 2/5
+2025-07-12 10:13:26,062 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 2/5
+2025-07-12 10:13:27,002 - SniperXMain - INFO - [INFO] Retrieved 199 trending tokens.
+2025-07-12 10:14:39,725 - SniperXMain - INFO - Fetching trending tokens from Moralis...
+2025-07-12 10:14:39,727 - SniperXMain - ERROR - INFO:SniperXMain:Fetching trending tokens from Moralis...
+2025-07-12 10:14:39,728 - SniperXMain - INFO - Trying Moralis API key 1/5
+2025-07-12 10:14:39,728 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 1/5
+2025-07-12 10:14:40,371 - SniperXMain - INFO - [WARN] Key 1 HTTP 401 error: 401 Client Error: Unauthorized for url: https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana. Trying next key.
+2025-07-12 10:14:40,372 - SniperXMain - INFO - Trying Moralis API key 2/5
+2025-07-12 10:14:40,372 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 2/5
+2025-07-12 10:14:41,608 - SniperXMain - INFO - [INFO] Retrieved 199 trending tokens.
+2025-07-12 10:15:59,539 - SniperXMain - INFO - Fetching trending tokens from Moralis...
+2025-07-12 10:15:59,634 - SniperXMain - ERROR - INFO:SniperXMain:Fetching trending tokens from Moralis...
+2025-07-12 10:15:59,825 - SniperXMain - INFO - Trying Moralis API key 1/5
+2025-07-12 10:15:59,871 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 1/5
+2025-07-12 10:16:02,122 - SniperXMain - INFO - [WARN] Key 1 HTTP 401 error: 401 Client Error: Unauthorized for url: https://deep-index.moralis.io/api/v2.2/tokens/trending?chain=solana. Trying next key.
+2025-07-12 10:16:03,880 - SniperXMain - INFO - Trying Moralis API key 2/5
+2025-07-12 10:16:04,018 - SniperXMain - ERROR - INFO:SniperXMain:Trying Moralis API key 2/5
+2025-07-12 10:16:07,420 - SniperXMain - INFO - [INFO] Retrieved 199 trending tokens.
