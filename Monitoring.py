@@ -12,6 +12,8 @@ from collections import deque, OrderedDict
 import time
 from datetime import datetime
 import logging
+from dataclasses import dataclass
+from decimal import Decimal
 
 # --- Configuration ---
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -30,7 +32,8 @@ PRICE_IMPACT_THRESHOLD_MONITOR = 80.0
 TRAILING_STOP_THRESHOLD_PERCENT = 0.80  # 20% below highest price
 TRAILING_STOP_ACTIVATION_PERCENT = 1.005  # 0.5% above entry
 TAKE_PROFIT_THRESHOLD_PERCENT = 1.083  # 8.3% take profit
-PARTIAL_TAKE_PROFIT_PERCENT = 1.05  # 5% partial take profit
+PARTIAL_TP_THRESHOLD_PERCENT = 1.05  # +5 %
+TRAILING_SL_BUFFER_PERCENT = 0.97  # trail at -3 % from peak
 STOP_LOSS_THRESHOLD_PERCENT = 0.985  # 1.5% drop
 STAGNATION_PRICE_THRESHOLD_PERCENT = 0.80
 STAGNATION_TIMEOUT_SECONDS = 180
@@ -56,6 +59,17 @@ g_highest_price_usd = None
 g_token_monitor_start_time = 0
 g_trade_status = 'monitoring'
 g_stop_monitoring = False
+
+
+@dataclass
+class TradeState:
+    buy_price_usd: float = 0.0
+    partial_tp_triggered: bool = False
+    highest_price_seen: float = 0.0
+    remaining_qty: Decimal = Decimal("0")
+
+
+g_trade_state: TradeState | None = None
 
 # --- Helper Functions ---
 def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_price=None):
@@ -83,6 +97,57 @@ def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_pric
         })
     pnl_val = gain_loss_pct or 0
     print(f"\n📊 Trade Result: {'PROFIT' if pnl_val > 0 else 'LOSS' if pnl_val < 0 else 'EVENT'} | Gain/Loss: {pnl_val:+.2f}% | Reason: {reason}\n")
+
+def execute_sell(mint_address: str, qty: Decimal):
+    """Placeholder for executing a sell transaction."""
+    print(f"[EXECUTE SELL] {qty} units of {mint_address}")
+
+def close_position(token_name: str):
+    global g_trade_state, g_trade_status, g_stop_monitoring
+    g_trade_state = None
+    g_trade_status = 'closed'
+    g_stop_monitoring = True
+
+def process_price_update(state: TradeState, price_usd: float, token: str, mint_addr: str) -> str:
+    """Apply trade rules for a new price. Returns 'open' or 'closed'."""
+    if price_usd > state.highest_price_seen:
+        state.highest_price_seen = price_usd
+
+    if (not state.partial_tp_triggered and
+            price_usd >= state.buy_price_usd * PARTIAL_TP_THRESHOLD_PERCENT):
+        qty_to_sell = state.remaining_qty * Decimal('0.5')
+        execute_sell(mint_addr, qty_to_sell)
+        log_trade_result(token, mint_addr, "Partial take profit",
+                         state.buy_price_usd, price_usd)
+        state.remaining_qty -= qty_to_sell
+        state.partial_tp_triggered = True
+
+    if price_usd >= state.buy_price_usd * TAKE_PROFIT_THRESHOLD_PERCENT:
+        execute_sell(mint_addr, state.remaining_qty)
+        log_trade_result(token, mint_addr, "Full take profit",
+                         state.buy_price_usd, price_usd)
+        state.remaining_qty = Decimal('0')
+        close_position(token)
+        return 'closed'
+
+    if (state.partial_tp_triggered and
+            price_usd < state.highest_price_seen * TRAILING_SL_BUFFER_PERCENT):
+        execute_sell(mint_addr, state.remaining_qty)
+        log_trade_result(token, mint_addr, "Trailing stop-loss",
+                         state.buy_price_usd, price_usd)
+        state.remaining_qty = Decimal('0')
+        close_position(token)
+        return 'closed'
+
+    if state.remaining_qty > 0 and price_usd <= state.buy_price_usd * STOP_LOSS_THRESHOLD_PERCENT:
+        execute_sell(mint_addr, state.remaining_qty)
+        log_trade_result(token, mint_addr, "Fixed stop-loss",
+                         state.buy_price_usd, price_usd)
+        state.remaining_qty = Decimal('0')
+        close_position(token)
+        return 'closed'
+
+    return 'open'
 
 def remove_token_from_csv(token_address, csv_file_path):
     if not os.path.exists(csv_file_path): return False
@@ -152,12 +217,13 @@ def load_token_from_csv(csv_file_path):
 
 def reset_token_specific_state():
     global g_latest_trade_data, g_baseline_price_usd, g_buy_price_usd, \
-           g_token_monitor_start_time, g_highest_price_usd, g_trade_status, g_stop_monitoring
+           g_token_monitor_start_time, g_highest_price_usd, g_trade_status, g_stop_monitoring, g_trade_state
     g_latest_trade_data.clear()
     g_baseline_price_usd, g_buy_price_usd, g_highest_price_usd = None, None, None
     g_token_monitor_start_time = time.time()
     g_trade_status = 'monitoring'
     g_stop_monitoring = False
+    g_trade_state = None
     print(f"Token-specific state reset. New monitoring started at {time.strftime('%Y-%m-%d %H:%M:%S')}.")
 
 async def periodic_sol_price_updater():
@@ -321,19 +387,18 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
                     if all([dex_data.get('buy_volume', 0) >= MIN_BUY_VOLUME_USD, dex_data.get('buys', 0) >= MIN_BUY_TXS, vol_ratio >= MIN_VOLUME_RATIO, tx_ratio >= MIN_TX_RATIO]):
                         g_buy_price_usd = usd_price_per_token
                         g_highest_price_usd = g_buy_price_usd
+                        g_trade_state = TradeState(
+                            buy_price_usd=g_buy_price_usd,
+                            highest_price_seen=g_buy_price_usd,
+                            remaining_qty=Decimal('1')
+                        )
                         g_trade_status = 'bought'
                         print(f"\n🚨 BUY SIGNAL DETECTED for {token_name} at ${g_buy_price_usd:.9f}")
 
-            elif g_trade_status == 'bought' and g_buy_price_usd is not None:
-                if usd_price_per_token > g_highest_price_usd: g_highest_price_usd = usd_price_per_token
-                
-                if usd_price_per_token >= g_buy_price_usd * TAKE_PROFIT_THRESHOLD_PERCENT:
-                    print(f"\n✅ TAKE PROFIT for {token_name} at ${usd_price_per_token:.9f}")
-                    log_trade_result(token_name, mint_address, "Take profit", g_buy_price_usd, usd_price_per_token)
-                    return
-                if g_highest_price_usd > g_buy_price_usd * TRAILING_STOP_ACTIVATION_PERCENT and usd_price_per_token <= g_highest_price_usd * TRAILING_STOP_THRESHOLD_PERCENT:
-                    print(f"\n🛑 TRAILING STOP for {token_name} at ${usd_price_per_token:.9f} (Peak: ${g_highest_price_usd:.9f})")
-                    log_trade_result(token_name, mint_address, "Trailing stop", g_buy_price_usd, usd_price_per_token)
+            elif g_trade_status == 'bought' and g_trade_state is not None:
+                result = process_price_update(g_trade_state, usd_price_per_token, token_name, mint_address)
+                g_highest_price_usd = g_trade_state.highest_price_seen
+                if result == 'closed':
                     return
                 if usd_price_per_token <= g_baseline_price_usd * STAGNATION_PRICE_THRESHOLD_PERCENT:
                     if stagnation_timer_start is None: stagnation_timer_start = current_time
