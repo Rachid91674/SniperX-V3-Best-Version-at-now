@@ -55,6 +55,7 @@ g_buy_price_usd = None
 g_highest_price_usd = None
 g_token_monitor_start_time = 0
 g_trade_status = 'monitoring'
+g_stop_monitoring = False
 
 # --- Helper Functions ---
 def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_price=None):
@@ -151,11 +152,12 @@ def load_token_from_csv(csv_file_path):
 
 def reset_token_specific_state():
     global g_latest_trade_data, g_baseline_price_usd, g_buy_price_usd, \
-           g_token_monitor_start_time, g_highest_price_usd, g_trade_status
+           g_token_monitor_start_time, g_highest_price_usd, g_trade_status, g_stop_monitoring
     g_latest_trade_data.clear()
     g_baseline_price_usd, g_buy_price_usd, g_highest_price_usd = None, None, None
     g_token_monitor_start_time = time.time()
     g_trade_status = 'monitoring'
+    g_stop_monitoring = False
     print(f"Token-specific state reset. New monitoring started at {time.strftime('%Y-%m-%d %H:%M:%S')}.")
 
 async def periodic_sol_price_updater():
@@ -200,6 +202,7 @@ def get_dexscreener_data(token_address: str):
     return None
 
 async def listen_for_trades(mint_address, token_name):
+    global g_stop_monitoring
     uri = "wss://pumpportal.fun/api/data"
     while True:
         try:
@@ -209,6 +212,14 @@ async def listen_for_trades(mint_address, token_name):
                 async for message in websocket:
                     data = json.loads(message)
                     if data.get("mint") == mint_address:
+                        if data.get("tokenAmount", 0) > 0:
+                            usd_price = (data["solAmount"] / data["tokenAmount"]) * g_last_known_sol_price
+                            data["usd_price_per_token"] = usd_price
+                            if g_trade_status == 'bought' and g_buy_price_usd is not None and usd_price <= g_buy_price_usd * STOP_LOSS_THRESHOLD_PERCENT:
+                                print(f"\n🛑 STOP LOSS for {token_name} at ${usd_price:.9f}")
+                                log_trade_result(token_name, mint_address, "Stop loss", g_buy_price_usd, usd_price)
+                                g_stop_monitoring = True
+                                return
                         g_latest_trade_data.append(data)
         except asyncio.CancelledError:
             print(f"WebSocket listener for {token_name} cancelled.")
@@ -219,13 +230,15 @@ async def listen_for_trades(mint_address, token_name):
 
 async def trade_logic_and_price_display_loop(mint_address, token_name):
     global g_baseline_price_usd, g_buy_price_usd, g_highest_price_usd, \
-           g_token_monitor_start_time, g_trade_status, g_last_dex_price_fetch_time
+           g_token_monitor_start_time, g_trade_status, g_last_dex_price_fetch_time, g_stop_monitoring
 
     stagnation_timer_start = None
     
     while True:
         try: # --- FIX: Added try/except block to make the loop resilient ---
             await asyncio.sleep(TRADE_LOGIC_INTERVAL_SECONDS)
+            if g_stop_monitoring:
+                return
             current_time = time.time()
             
             usd_price_per_token = None
@@ -233,7 +246,8 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
             
             if g_latest_trade_data:
                 trade = g_latest_trade_data[-1]
-                if trade.get("tokenAmount", 0) > 0:
+                usd_price_per_token = trade.get("usd_price_per_token")
+                if usd_price_per_token is None and trade.get("tokenAmount", 0) > 0:
                     usd_price_per_token = (trade["solAmount"] / trade["tokenAmount"]) * g_last_known_sol_price
             
             if (current_time - g_last_dex_price_fetch_time) > 1.0:
@@ -316,10 +330,6 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
                 if usd_price_per_token >= g_buy_price_usd * TAKE_PROFIT_THRESHOLD_PERCENT:
                     print(f"\n✅ TAKE PROFIT for {token_name} at ${usd_price_per_token:.9f}")
                     log_trade_result(token_name, mint_address, "Take profit", g_buy_price_usd, usd_price_per_token)
-                    return
-                if usd_price_per_token <= g_buy_price_usd * STOP_LOSS_THRESHOLD_PERCENT:
-                    print(f"\n🛑 STOP LOSS for {token_name} at ${usd_price_per_token:.9f}")
-                    log_trade_result(token_name, mint_address, "Stop loss", g_buy_price_usd, usd_price_per_token)
                     return
                 if g_highest_price_usd > g_buy_price_usd * TRAILING_STOP_ACTIVATION_PERCENT and usd_price_per_token <= g_highest_price_usd * TRAILING_STOP_THRESHOLD_PERCENT:
                     print(f"\n🛑 TRAILING STOP for {token_name} at ${usd_price_per_token:.9f} (Peak: ${g_highest_price_usd:.9f})")
