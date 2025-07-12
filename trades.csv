@@ -1,19 +1,1 @@
 timestamp,token_name,mint_address,reason,buy_price,sell_price
-2025-07-12 00:45:30,BLUEY,6cDpE5UR7Vn7tF7ZByWdZVvyapN1EiqNjUX3giKXbonk,No buy signal timeout,,0.000062380,,
-2025-07-12 01:02:01,BOB THE BLOB,67KTfbMcg27pJuHQ6sT8wD9WfNshfJ99RZpPSANUbonk,No buy signal timeout,,0.000045880,,
-2025-07-12 01:05:05,jindoin,CLJX41zpDR3UPt5j7GwMpVY6dh2cZ5rSqLCtkUUybonk,No buy signal timeout,,0.000031520,,
-2025-07-12 01:06:45,I'm Rich Suddenly,6JfSL6ARbD3HZREPcW4awJHxqMP839RLKCemztoypump,Stop loss,0.000110200,0.000100000,-9.26%,LOSS
-2025-07-12 01:21:15,Savings Coin,HG7xcnaY5djaQGfgRYYdgvzz3VoKfwWTUjBbRysDbonk,No buy signal timeout,,0.000044420,,
-2025-07-12 01:24:18,Bonk it!,2R3iCrRnAcd9131FEecW4R6npXW5rS8ZHpmKhxfybonk,No buy signal timeout,,0.000052050,,
-2025-07-12 02:09:27,GOLD,3o3NMEae6mMhGEJFMkqomPENZSB4GZtFcLD9YB5rbonk,Stop loss,0.000033780,0.000029930,-11.40%,LOSS
-2025-07-12 02:12:30,Dubai Chocolate Labubu Matcha,BRYt1CnDkbrRNtWuBsciA9dvvZApQbwQubcfMZCpyPrb,No buy signal timeout,,0.000092730,,
-2025-07-12 03:42:55,eddi,858T3W1SZNc9XSKT6MUz2mj7eFg5GngyGixpCYs2bonk,Take profit,0.000083150,0.000091680,10.26%,PROFIT
-2025-07-12 03:58:44,wechat cat,CUoZNTtrhjYEhvKWTFEQtcEPRrkTrunuMFgXK1frbonk,No buy signal timeout,,0.000042720,,
-2025-07-12 04:12:42,green coin,yRE3s9fD19ZG3bjHAC312HY2mf5Uwu2rVSzYLPjbonk,No buy signal timeout,,0.000039860,,
-2025-07-12 04:58:18,The Dream.,Ej99CNqkBtRqybm9mVWrmB1zcLVkmfyQc13ZrCbabonk,Stop loss,0.000059370,0.000057930,-2.43%,LOSS
-2025-07-12 05:06:58,marv,14AMMKGzoh7VjQ9y9zL8g4E58L3M4oYvftu2PyThbonk,Take profit,0.000056950,0.000062660,10.03%,PROFIT
-2025-07-12 05:36:22,Pump Capital Markets,9wMQ94DeizisXMfVaVU2QQYtZfhzRm2Srt59pwHwpump,No buy signal timeout,,0.000047060,,
-2025-07-12 06:20:25,Tom Cruise,EJwcLFf3FgrMmnXEpcJGhyE6Pr6vAFnLAaz3SBWVbonk,No buy signal timeout,,0.000034790,,
-2025-07-12 07:22:04,BEPE (貝佩),BWLCBrca2iY21gwX4UCjbR9YAjZHxvhzUU1pTCDrbonk,Stop loss,0.000046960,0.000044060,-6.18%,LOSS
-2025-07-12 09:52:55,Turkish Hairline,7VPGasvLeyZCspA52mGaS1fdiBaFwBndkvvVQPAspump,Stop loss,0.000042960,0.000041750,-2.82%,LOSS
-2025-07-12 10:10:32,Nailong,AqMsX6g2LFsvEFQ78dshf6boxQfGWBwBSjXhAkGXbonk,No buy signal timeout,,0.000031470,,

@@ -137,12 +137,6 @@ class WalletManager:
         """Set a callback function to be invoked when balance changes."""
         self.on_balance_change_callback = callback_func
 
-async def maybe_await(func, *args, **kwargs):
-    """Await func if it's a coroutine function, otherwise call it directly."""
-    if asyncio.iscoroutinefunction(func):
-        return await func(*args, **kwargs)
-    return func(*args, **kwargs)
-
     async def _handle_account_notification(self, message_str: str):
         try:
             message = json.loads(message_str)
@@ -175,7 +169,6 @@ async def maybe_await(func, *args, **kwargs):
             print(f"[WALLET_MANAGER] WS Error: Could not decode JSON: {message_str}")
         except Exception as e:
             print(f"[WALLET_MANAGER] WS Error processing message: {e}")
-
 
     async def subscribe_to_balance_changes(self):
         """Subscribes to account changes for the wallet's public key."""

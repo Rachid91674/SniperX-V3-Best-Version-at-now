@@ -218,25 +218,42 @@ async def show_menu(update: Update, context: CallbackContext) -> None:
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
+    menu_text = 'SniperX Bot Control Panel:'
     
     try:
         if update.callback_query:
-            await update.callback_query.edit_message_text(
-                text='SniperX Bot Control Panel:',
-                reply_markup=reply_markup
-            )
+            # Check if the message content or keyboard has changed before editing
+            current_text = update.callback_query.message.text if update.callback_query.message else ''
+            current_markup = update.callback_query.message.reply_markup if update.callback_query.message else None
+            
+            # Check if either the text or the keyboard has changed
+            if current_text != menu_text or \
+               not current_markup or \
+               current_markup.to_dict() != reply_markup.to_dict():
+                await update.callback_query.edit_message_text(
+                    text=menu_text,
+                    reply_markup=reply_markup
+                )
         elif update.message:
             await update.message.reply_text(
-                'SniperX Bot Control Panel:',
+                menu_text,
                 reply_markup=reply_markup
             )
     except Exception as e:
         logger.error(f"Error showing menu: {e}")
         if update.callback_query and update.callback_query.message:
-            await update.callback_query.message.reply_text(
-                'SniperX Bot Control Panel:',
-                reply_markup=reply_markup
-            )
+            try:
+                # Try to edit first, if that fails, send a new message
+                await update.callback_query.edit_message_text(
+                    text=menu_text,
+                    reply_markup=reply_markup
+                )
+            except Exception as edit_error:
+                logger.error(f"Error editing message, sending new one: {edit_error}")
+                await update.callback_query.message.reply_text(
+                    menu_text,
+                    reply_markup=reply_markup
+                )
 
 async def read_wallet_balance():
     """Read the current wallet balance from the JSON file."""
@@ -513,44 +530,121 @@ def main_telegram_bot() -> None:
     finally:
         # Cleanup when bot stops
         global sniperx_process, wallet_manager_process
+        def is_process_running(pid):
+            """Check if a process is running by its PID."""
+            try:
+                if os.name == 'nt':
+                    # On Windows, use tasklist to check if process exists
+                    result = subprocess.run(
+                        ['tasklist', '/FI', f'PID eq {pid}'],
+                        capture_output=True, text=True, timeout=5
+                    )
+                    return str(pid) in result.stdout
+                else:
+                    # On Unix-like systems, use ps
+                    try:
+                        os.kill(pid, 0)  # Check if process exists
+                        return True
+                    except (ProcessLookupError, PermissionError):
+                        return False
+            except Exception as e:
+                logger.warning(f"Error checking if process {pid} is running: {e}")
+                return False
+
         def terminate_process(process, process_name):
-            if not process or process.poll() is not None:
+            if not process:
                 return
                 
             pid = process.pid
+            
+            # First check if process is still running
+            if not is_process_running(pid):
+                logger.info(f"{process_name} (PID: {pid}) is not running.")
+                return
+                
             logger.info(f"Attempting to stop {process_name} (PID: {pid})...")
             
-            try:
-                if os.name == 'nt':
-                    # On Windows, try taskkill first as it's more reliable
-                    try:
-                        subprocess.run(['taskkill', '/F', '/T', '/PID', str(pid)], 
-                                    timeout=5, check=True, capture_output=True)
-                        logger.info(f"{process_name} terminated successfully using taskkill.")
-                        return
-                    except (subprocess.SubprocessError, FileNotFoundError) as e:
-                        logger.warning(f"taskkill failed for {process_name} (PID: {pid}): {e}")
+            def try_terminate():
+                try:
+                    if os.name == 'nt':
+                        # On Windows, try taskkill first as it's more reliable
+                        try:
+                            result = subprocess.run(
+                                ['taskkill', '/F', '/T', '/PID', str(pid)],
+                                timeout=5, capture_output=True, text=True
+                            )
+                            if result.returncode == 0:
+                                logger.info(f"{process_name} terminated successfully using taskkill.")
+                                return True
+                            else:
+                                logger.warning(f"taskkill failed with return code {result.returncode}: {result.stderr}")
+                        except (subprocess.SubprocessError, FileNotFoundError) as e:
+                            logger.warning(f"taskkill command failed: {e}")
+                        
                         # Fall back to terminate() if taskkill fails
-                        process.terminate()
-                else:
-                    # On Unix-like systems
-                    os.kill(pid, signal.SIGINT)
-                
+                        try:
+                            process.terminate()
+                            return True
+                        except Exception as e:
+                            logger.warning(f"process.terminate() failed: {e}")
+                            return False
+                    else:
+                        # On Unix-like systems
+                        try:
+                            os.kill(pid, signal.SIGTERM)
+                            return True
+                        except ProcessLookupError:
+                            logger.info(f"Process {pid} not found.")
+                            return True
+                        except PermissionError:
+                            logger.error(f"Permission denied when trying to terminate process {pid}")
+                            return False
+                        except Exception as e:
+                            logger.error(f"Error sending SIGTERM to process {pid}: {e}")
+                            return False
+                except Exception as e:
+                    logger.error(f"Unexpected error in termination attempt: {e}")
+                    return False
+
+            # Try graceful termination first
+            if try_terminate():
                 # Wait for process to terminate
                 try:
                     process.wait(5)
                     logger.info(f"{process_name} terminated gracefully.")
+                    return
                 except subprocess.TimeoutExpired:
-                    logger.warning(f"{process_name} did not terminate gracefully, forcing kill...")
-                    if os.name == 'nt':
-                        process.kill()
+                    logger.warning(f"{process_name} did not terminate in time, forcing kill...")
+                except Exception as e:
+                    logger.error(f"Error waiting for process {pid}: {e}")
+
+            # Forceful termination if graceful failed
+            if os.name == 'nt':
+                try:
+                    # Try one more time with taskkill /F
+                    result = subprocess.run(
+                        ['taskkill', '/F', '/T', '/PID', str(pid)],
+                        capture_output=True, text=True, timeout=5
+                    )
+                    if result.returncode == 0:
+                        logger.info(f"{process_name} force terminated successfully.")
                     else:
-                        os.kill(pid, signal.SIGKILL)
+                        logger.warning(f"Force termination failed: {result.stderr}")
+                except Exception as e:
+                    logger.error(f"Error during force termination: {e}")
+            else:
+                try:
+                    os.kill(pid, signal.SIGKILL)
                     process.wait(5)
-            except Exception as e:
-                logger.error(f"Error terminating {process_name} (PID: {pid}): {e}")
-            finally:
-                logger.info(f"{process_name} shutdown completed.")
+                    logger.info(f"{process_name} force terminated with SIGKILL.")
+                except Exception as e:
+                    logger.error(f"Failed to force kill process {pid}: {e}")
+            
+            # Final check if process is still running
+            if is_process_running(pid):
+                logger.error(f"Failed to terminate {process_name} (PID: {pid}). Manual intervention may be required.")
+            else:
+                logger.info(f"{process_name} (PID: {pid}) has been terminated.")
         
         # Terminate processes
         terminate_process(sniperx_process, "SniperX V2.py")

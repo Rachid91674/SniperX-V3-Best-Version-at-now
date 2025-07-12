@@ -76,16 +76,36 @@ class CSVChangeHandler(FileSystemEventHandler):
                             pass
                     
                     # Now terminate the parent
-                    parent.terminate()
-                    parent.wait(3)
-                    print(f"Watchdog: Force terminated process group for PID {pid}")
+                    if os.name == 'nt':
+                        # On Windows, use taskkill to terminate the process tree
+                        try:
+                            subprocess.run(['taskkill', '/F', '/T', '/PID', str(pid)], 
+                                        timeout=3, capture_output=True, text=True)
+                            print(f"Watchdog: Terminated process tree for PID {pid} using taskkill")
+                        except (subprocess.SubprocessError, FileNotFoundError) as e:
+                            print(f"Watchdog: taskkill failed for PID {pid}, falling back to terminate(): {e}")
+                            parent.terminate()
+                    else:
+                        # On Unix-like systems
+                        parent.terminate()
+                    
+                    try:
+                        parent.wait(3)
+                        print(f"Watchdog: Process group for PID {pid} terminated")
+                    except (subprocess.TimeoutExpired, psutil.TimeoutExpired):
+                        print(f"Watchdog: Process group for PID {pid} did not terminate in time")
+                
                 except Exception as e:
                     print(f"Watchdog: Error in process tree termination for {pid}: {e}")
                     # Fall back to simple kill if psutil fails
                     try:
-                        os.kill(pid, signal.SIGKILL)
+                        if os.name == 'nt':
+                            subprocess.run(['taskkill', '/F', '/PID', str(pid)], 
+                                        timeout=3, capture_output=True, text=True)
+                        else:
+                            os.kill(pid, signal.SIGKILL)
                     except Exception as e2:
-                        print(f"Watchdog: Error sending SIGKILL to {pid}: {e2}")
+                        print(f"Watchdog: Error force killing PID {pid}: {e2}")
                 
             except ProcessLookupError:
                 print(f"Watchdog: Process {pid} not found, already terminated.")

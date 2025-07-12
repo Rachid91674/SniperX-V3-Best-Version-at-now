@@ -789,6 +789,121 @@ def initialize_all_files_once(script_dir_path):
     # --- END: Comprehensive File Initialization ---
     logging.info("File initialisation and template check complete.")
 
+def is_process_running(pid):
+    """Check if a process is running by its PID."""
+    if pid is None:
+        return False
+        
+    try:
+        if os.name == 'nt':
+            # On Windows, use tasklist to check if process exists
+            result = subprocess.run(
+                ['tasklist', '/FI', f'PID eq {pid}'],
+                capture_output=True, text=True, timeout=5
+            )
+            return str(pid) in result.stdout
+        else:
+            # On Unix-like systems, use kill -0
+            try:
+                os.kill(pid, 0)
+                return True
+            except (ProcessLookupError, PermissionError):
+                return False
+    except Exception as e:
+        logging.warning(f"Error checking if process {pid} is running: {e}")
+        return False
+
+def terminate_process(pid, process_name, timeout=5):
+    """Terminate a process by PID with proper error handling."""
+    if not is_process_running(pid):
+        logging.info(f"{process_name} (PID: {pid}) is not running.")
+        return True
+        
+    logging.info(f"Attempting to stop {process_name} (PID: {pid})...")
+    
+    def try_terminate():
+        try:
+            if os.name == 'nt':
+                # On Windows, try taskkill first
+                try:
+                    result = subprocess.run(
+                        ['taskkill', '/F', '/T', '/PID', str(pid)],
+                        timeout=5, capture_output=True, text=True
+                    )
+                    if result.returncode == 0:
+                        logging.info(f"{process_name} terminated successfully using taskkill.")
+                        return True
+                    else:
+                        logging.warning(f"taskkill failed with return code {result.returncode}: {result.stderr}")
+                except (subprocess.SubprocessError, FileNotFoundError) as e:
+                    logging.warning(f"taskkill command failed: {e}")
+                
+                # Fall back to terminate() if taskkill fails
+                try:
+                    os.kill(pid, signal.CTRL_BREAK_EVENT)
+                    return True
+                except (OSError, AttributeError) as e:
+                    logging.warning(f"CTRL_BREAK_EVENT failed: {e}")
+                    return False
+            else:
+                # On Unix-like systems
+                try:
+                    os.kill(pid, signal.SIGTERM)
+                    return True
+                except ProcessLookupError:
+                    logging.info(f"Process {pid} not found.")
+                    return True
+                except PermissionError:
+                    logging.error(f"Permission denied when trying to terminate process {pid}")
+                    return False
+        except Exception as e:
+            logging.error(f"Unexpected error in termination attempt: {e}")
+            return False
+
+    # Try graceful termination first
+    if try_terminate():
+        # Wait for process to terminate
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            if not is_process_running(pid):
+                logging.info(f"{process_name} (PID: {pid}) terminated gracefully.")
+                return True
+            time.sleep(0.5)
+    
+    # Forceful termination if graceful failed
+    logging.warning(f"{process_name} (PID: {pid}) did not terminate, attempting force kill...")
+    if os.name == 'nt':
+        try:
+            # Try one more time with taskkill /F
+            result = subprocess.run(
+                ['taskkill', '/F', '/T', '/PID', str(pid)],
+                capture_output=True, text=True, timeout=5
+            )
+            if result.returncode == 0:
+                logging.info(f"{process_name} (PID: {pid}) force terminated successfully.")
+                return True
+            else:
+                logging.warning(f"Force termination failed: {result.stderr}")
+        except Exception as e:
+            logging.error(f"Error during force termination: {e}")
+    else:
+        try:
+            os.kill(pid, signal.SIGKILL)
+            time.sleep(1)  # Give it a moment to terminate
+            if not is_process_running(pid):
+                logging.info(f"{process_name} (PID: {pid}) force terminated with SIGKILL.")
+                return True
+        except Exception as e:
+            logging.error(f"Failed to force kill process {pid}: {e}")
+    
+    # Final check if process is still running
+    if is_process_running(pid):
+        logging.error(f"Failed to terminate {process_name} (PID: {pid}). Manual intervention may be required.")
+        return False
+    else:
+        logging.info(f"{process_name} (PID: {pid}) has been terminated.")
+        return True
+
 def start_slave_watchdog(script_dir_path):
     slave_script_path = os.path.join(script_dir_path, 'run_testchrone_on_csv_change.py')
     pid_file = os.path.join(script_dir_path, 'testchrone_watchdog.pid')
@@ -797,29 +912,26 @@ def start_slave_watchdog(script_dir_path):
         return None
 
     # Terminate previous watchdog process if PID file exists
+    old_pid = None
     if os.path.exists(pid_file):
         try:
             with open(pid_file, 'r') as pf:
                 old_pid = int(pf.read().strip())
-            logging.info(f"Found previous watchdog PID {old_pid}. Attempting termination...")
-            os.kill(old_pid, signal.SIGTERM)
-            start_time = time.time()
-            while time.time() - start_time < 5:
-                try:
-                    os.kill(old_pid, 0)
-                    time.sleep(0.5)
-                except OSError:
-                    break
-            else:
-                os.kill(old_pid, signal.SIGKILL)
-                logging.info(f"Force killed watchdog PID {old_pid} after timeout.")
+                logging.info(f"Found previous watchdog PID {old_pid} in {pid_file}.")
         except Exception as e:
-            logging.info(f"Unable to terminate previous watchdog PID from file: {e}")
-        finally:
-            try:
-                os.remove(pid_file)
-            except FileNotFoundError:
-                pass
+            logging.warning(f"Error reading PID file {pid_file}: {e}")
+        
+        # Try to terminate the old process
+        if old_pid is not None:
+            terminate_process(old_pid, "Previous Watchdog Process")
+        
+        # Clean up the PID file
+        try:
+            os.remove(pid_file)
+        except FileNotFoundError:
+            pass
+        except Exception as e:
+            logging.warning(f"Error removing PID file {pid_file}: {e}")
 
     try:
         process = subprocess.Popen([sys.executable, slave_script_path], cwd=script_dir_path)

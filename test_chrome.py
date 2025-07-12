@@ -171,53 +171,59 @@ def save_processed_token_threadsafe(filepath: str, token_address: str):
         logger.error(f"Error saving processed token {token_address} to {filepath}: {e}")
 
 def get_new_tokens_from_csv_threadsafe(csv_filepath: str, current_processed_tokens: set) -> list:
-    new_tokens = []
+    """
+    Thread-safe function to get new tokens from CSV that haven't been processed yet.
+    Returns a list of unique token addresses in the order they appear in the file (most recent first).
+    """
     if not os.path.exists(csv_filepath):
         logger.warning(f"Monitored CSV file {csv_filepath} not found.")
-        return new_tokens
+        return []
     
     try:
         with open(csv_filepath, mode='r', newline='', encoding='utf-8') as f:
-            # Read all lines to get the latest content
             lines = f.readlines()
             if not lines:
-                return new_tokens
+                return []
 
-            # Skip header if present
-            start_idx = 1 if lines[0].strip().lower().startswith('address') else 0
-            processed_lines = set()
+        # Process lines in reverse order (newest first) and collect unique tokens
+        seen_tokens = set()
+        new_tokens = []
+        
+        # Skip header if present
+        start_idx = 1 if lines[0].strip().lower().startswith('address') else 0
+        
+        for line in reversed(lines[start_idx:]):
+            if not line.strip():
+                continue
+                
+            # Extract token address - handle both CSV and plain text formats
+            token_address = line.split(',')[0].strip() if ',' in line else line.strip()
+            
+            # Skip empty lines or invalid addresses
+            if not token_address:
+                continue
+                
+            # Skip if we've already seen this token in this batch
+            if token_address in seen_tokens:
+                continue
+                
+            seen_tokens.add(token_address)
+            
+            # Only add if not already processed
+            if token_address not in current_processed_tokens:
+                new_tokens.append(token_address)
+                logger.debug(f"Found new token to process: {token_address}")
+                
+                # Limit the batch size to prevent memory issues
+                if len(new_tokens) >= 10:  # Process max 10 new tokens at a time
+                    break
 
-            # Process lines in reverse order to get the most recent entries first
-            for line in reversed(lines[start_idx:]):
-                line = line.strip()
-                if not line:  # Skip empty lines
-                    continue
-
-                # Extract token address - handle both CSV and plain text formats
-                if ',' in line:
-                    token_address = line.split(',')[0].strip()
-                else:
-                    token_address = line.strip()
-
-                # Skip if we've already processed this token in this batch
-                if token_address in processed_lines:
-                    continue
-                    
-                processed_lines.add(token_address)
-
-                if token_address and token_address not in current_processed_tokens:
-                    new_tokens.append(token_address)
-                    logger.info(f"Found new token to process: {token_address}")
-                    
-                    # Limit the number of new tokens to process in one batch
-                    if len(new_tokens) >= 10:  # Process max 10 new tokens at a time
-                        break
+        logger.info(f"Found {len(new_tokens)} new tokens to process")
+        return new_tokens
 
     except Exception as e:
         logger.error(f"Error reading CSV file {csv_filepath}: {e}", exc_info=True)
-    
-    logger.info(f"Found {len(new_tokens)} new tokens to process")
-    return new_tokens
+        return []
 
 def initialize_driver(chrome_binary_path: str, driver_path: str | None = None) -> webdriver.Chrome | None:
     chrome_options = Options()
@@ -906,22 +912,34 @@ def monitor_and_process_tokens(csv_fpath: str, chrome_bin_path: str, chrome_drv_
                     last_checksum = current_checksum
                     clean_duplicate_entries(csv_fpath)
 
+                # Only check for new tokens if we have capacity
                 if len(active_futures) < MAX_WORKERS:
                     with PROCESSED_TOKENS_LOCK:
-                        new_tokens = get_new_tokens_from_csv_threadsafe(csv_fpath, processed_set.union(in_flight))
+                        # Get new tokens, excluding those already processed or in flight
+                        new_tokens = [
+                            token for token in get_new_tokens_from_csv_threadsafe(csv_fpath, processed_set)
+                            if token not in in_flight
+                        ][:MAX_WORKERS - len(active_futures)]
                     
                     if new_tokens:
-                        to_submit = new_tokens[:MAX_WORKERS - len(active_futures)]
-                        logger.info(f"Submitting {len(to_submit)} new tokens: {', '.join(to_submit)}")
-                        for token_s in to_submit:
-                            in_flight.add(token_s)
-                            fut = executor.submit(process_single_token_threaded, (token_s, chrome_bin_path, chrome_drv_path))
-                            active_futures[fut] = token_s
-                    elif not active_futures:
-                        logger.info(f"No new tokens, no active tasks. Waiting {CHECK_INTERVAL}s...")
-                        time.sleep(CHECK_INTERVAL)
-                    else:
-                        time.sleep(10)
+                        logger.info(f"Submitting {len(new_tokens)} new tokens: {', '.join(new_tokens)}")
+                        for token_s in new_tokens:
+                            # Double-check to prevent race condition
+                            if token_s not in in_flight:
+                                in_flight.add(token_s)
+                                fut = executor.submit(process_single_token_threaded, 
+                                                    (token_s, chrome_bin_path, chrome_drv_path))
+                                active_futures[fut] = token_s
+                                # Small delay between starting tasks to prevent race conditions
+                                time.sleep(0.5)
+                
+                # Sleep if no work is being done
+                if not active_futures:
+                    logger.info(f"No active tasks. Waiting {CHECK_INTERVAL}s...")
+                    time.sleep(CHECK_INTERVAL)
+                else:
+                    # Small sleep to prevent busy waiting when at max workers
+                    time.sleep(2)
     except KeyboardInterrupt:
         logger.info("Keyboard interrupt. Shutting down...")
     except Exception as e:
