@@ -5,6 +5,7 @@ import time
 import os
 import sys
 import logging
+import re
 from collections import OrderedDict
 import pandas as pd
 
@@ -225,6 +226,16 @@ def run_full_risk_analysis():
             results_to_write.append(output_row)
             continue
 
+        # Parse top holder percentage from the Individual_Cluster_Percentages field
+        top_holder_pct = None
+        indiv_percent_str = cluster_info.get("Individual_Cluster_Percentages", "")
+        match = re.search(r"TopIndividual:\s*([0-9]*\.?[0-9]+)%", indiv_percent_str)
+        if match:
+            try:
+                top_holder_pct = float(match.group(1))
+            except ValueError:
+                top_holder_pct = None
+
         time.sleep(0.2)
         liquidity_usd, price_usd, pair_addr, token_name_dex = get_primary_pool_data_from_dexscreener(token_address)
         
@@ -232,6 +243,29 @@ def run_full_risk_analysis():
             logging.warning(f"No valid DexScreener data for {token_address}. Cannot perform risk analysis.")
             output_row["Overall_Risk_Status"] = "Data Missing"
             output_row["Risk_Warning_Details"] = "DexScreener data not available."
+            results_to_write.append(output_row)
+            continue
+
+        # Early risk filters based on liquidity and top holder percentage
+        if liquidity_usd < 15000:
+            logging.info(f"Filtering {token_address} due to low liquidity: ${liquidity_usd:.2f}")
+            output_row["DexScreener_Pair_Address"] = pair_addr
+            output_row["DexScreener_Liquidity_USD"] = f"{liquidity_usd:.2f}"
+            output_row["DexScreener_Token_Price_USD"] = f"{price_usd:.8f}"
+            output_row["DexScreener_Token_Name"] = token_name_dex or token_row.get('Name', 'N/A')
+            output_row["Overall_Risk_Status"] = "High Risk"
+            output_row["Risk_Warning_Details"] = "Low Liquidity"
+            results_to_write.append(output_row)
+            continue
+
+        if top_holder_pct is not None and top_holder_pct > 10.0:
+            logging.info(f"Filtering {token_address} due to whale trap risk: top holder {top_holder_pct:.2f}%")
+            output_row["DexScreener_Pair_Address"] = pair_addr
+            output_row["DexScreener_Liquidity_USD"] = f"{liquidity_usd:.2f}"
+            output_row["DexScreener_Token_Price_USD"] = f"{price_usd:.8f}"
+            output_row["DexScreener_Token_Name"] = token_name_dex or token_row.get('Name', 'N/A')
+            output_row["Overall_Risk_Status"] = "High Risk"
+            output_row["Risk_Warning_Details"] = "Whale Trap"
             results_to_write.append(output_row)
             continue
 
