@@ -14,6 +14,7 @@ from datetime import datetime
 import logging
 from dataclasses import dataclass
 from decimal import Decimal
+from db import log_stage_token, log_trade
 
 # --- Configuration ---
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -59,6 +60,7 @@ g_highest_price_usd = None
 g_token_monitor_start_time = 0
 g_trade_status = 'monitoring'
 g_stop_monitoring = False
+g_buy_timestamp = None
 
 
 @dataclass
@@ -73,6 +75,7 @@ g_trade_state: TradeState | None = None
 
 # --- Helper Functions ---
 def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_price=None):
+    global g_buy_timestamp
     log_file = os.path.join(SCRIPT_DIR, 'trades.csv')
     file_exists = os.path.isfile(log_file)
     gain_loss_pct = None
@@ -95,6 +98,7 @@ def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_pric
             'gain_loss_pct': f"{gain_loss_pct:.2f}%" if gain_loss_pct is not None else '',
             'result': trade_result
         })
+    log_trade(mint_address, buy_price, sell_price, g_buy_timestamp, datetime.utcnow().isoformat())
     pnl_val = gain_loss_pct or 0
     print(f"\n📊 Trade Result: {'PROFIT' if pnl_val > 0 else 'LOSS' if pnl_val < 0 else 'EVENT'} | Gain/Loss: {pnl_val:+.2f}% | Reason: {reason}\n")
 
@@ -199,16 +203,26 @@ def load_token_from_csv(csv_file_path):
                         price_impact_val = float(price_impact_str)
                     except (ValueError, TypeError):
                         print(f"❌ Invalid liquidity/price impact data for {token_name}. Skipping.")
+                        log_stage_token(row.get('Address'), token_name, 'monitoring', False, {})
                         continue
                     if liquidity_val >= MIN_LIQUIDITY_USD and price_impact_val < PRICE_IMPACT_THRESHOLD_MONITOR:
                         print(f"✅ Found valid Low Risk token: {token_name}")
+                        log_stage_token(row.get('Address'), token_name, 'monitoring', True, {
+                            'liquidity': liquidity_val,
+                            'price_impact': price_impact_val
+                        })
                         return row.get('Address'), token_name
                     else:
                         print(f"❌ Low Risk token {token_name} failed final sanity check.")
                         if liquidity_val < MIN_LIQUIDITY_USD: print(f"   Liquidity: ${liquidity_val:,.2f} (Required >= ${MIN_LIQUIDITY_USD})")
                         if price_impact_val >= PRICE_IMPACT_THRESHOLD_MONITOR: print(f"   Price Impact: {price_impact_val:.2f}% (Required < {PRICE_IMPACT_THRESHOLD_MONITOR}%)")
+                        log_stage_token(row.get('Address'), token_name, 'monitoring', False, {
+                            'liquidity': liquidity_val,
+                            'price_impact': price_impact_val
+                        })
                 else:
                     print(f"ℹ️ Skipping token {token_name} (risk status is '{risk_status}')")
+                    log_stage_token(row.get('Address'), token_name, 'monitoring', False, {'risk_status': risk_status})
             print("No 'Low Risk' tokens found that meet monitoring criteria.")
             return None, None
     except Exception as e:
@@ -217,13 +231,14 @@ def load_token_from_csv(csv_file_path):
 
 def reset_token_specific_state():
     global g_latest_trade_data, g_baseline_price_usd, g_buy_price_usd, \
-           g_token_monitor_start_time, g_highest_price_usd, g_trade_status, g_stop_monitoring, g_trade_state
+           g_token_monitor_start_time, g_highest_price_usd, g_trade_status, g_stop_monitoring, g_trade_state, g_buy_timestamp
     g_latest_trade_data.clear()
     g_baseline_price_usd, g_buy_price_usd, g_highest_price_usd = None, None, None
     g_token_monitor_start_time = time.time()
     g_trade_status = 'monitoring'
     g_stop_monitoring = False
     g_trade_state = None
+    g_buy_timestamp = None
     print(f"Token-specific state reset. New monitoring started at {time.strftime('%Y-%m-%d %H:%M:%S')}.")
 
 async def periodic_sol_price_updater():
@@ -296,7 +311,7 @@ async def listen_for_trades(mint_address, token_name):
 
 async def trade_logic_and_price_display_loop(mint_address, token_name):
     global g_baseline_price_usd, g_buy_price_usd, g_highest_price_usd, \
-           g_token_monitor_start_time, g_trade_status, g_last_dex_price_fetch_time, g_stop_monitoring
+           g_token_monitor_start_time, g_trade_status, g_last_dex_price_fetch_time, g_stop_monitoring, g_buy_timestamp
 
     stagnation_timer_start = None
     
@@ -393,6 +408,13 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
                             remaining_qty=Decimal('1')
                         )
                         g_trade_status = 'bought'
+                        g_buy_timestamp = datetime.utcnow().isoformat()
+                        log_stage_token(mint_address, token_name, 'snipe', True, {
+                            'buy_volume': dex_data.get('buy_volume', 0),
+                            'buys': dex_data.get('buys', 0),
+                            'vol_ratio': vol_ratio,
+                            'tx_ratio': tx_ratio
+                        })
                         print(f"\n🚨 BUY SIGNAL DETECTED for {token_name} at ${g_buy_price_usd:.9f}")
 
             elif g_trade_status == 'bought' and g_trade_state is not None:
