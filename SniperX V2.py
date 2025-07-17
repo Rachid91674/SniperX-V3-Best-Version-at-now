@@ -18,6 +18,7 @@ import subprocess
 import signal
 from typing import Optional, Dict, Any
 from logger_util import setup_logger
+from db import log_stage_token
 
 # Initialize logger with a special name to prevent recursion
 logger = logging.getLogger('SniperXMain')
@@ -386,7 +387,7 @@ def get_token_metrics(token_pair_data_list):
     except: volume = 0.0
     return price, liquidity, volume
 
-def whale_trap_avoidance(token_address, first_snap, second_snap):
+def whale_trap_avoidance(token_address, first_snap, second_snap, token_name):
     price1, liquidity1, volume1 = first_snap
     price2, liquidity2, volume2 = second_snap
     
@@ -404,15 +405,25 @@ def whale_trap_avoidance(token_address, first_snap, second_snap):
     if price_change_pct > WHALE_PRICE_UP_PCT and liq_change_pct > WHALE_LIQUIDITY_UP_PCT:
         if volume_change_pct < WHALE_VOLUME_DOWN_PCT:
             logging.warning(f"Whale trap detected for {token_address}: "
-                          f"Price↑ {price_change_pct:+.2%} > {WHALE_PRICE_UP_PCT:.0%}, "
-                          f"Liq↑ {liq_change_pct:+.2%} > {WHALE_LIQUIDITY_UP_PCT:.0%}, "
-                          f"Vol↓ {volume_change_pct:+.2%} < {WHALE_VOLUME_DOWN_PCT:.0%}")
+                            f"Price↑ {price_change_pct:+.2%} > {WHALE_PRICE_UP_PCT:.0%}, "
+                            f"Liq↑ {liq_change_pct:+.2%} > {WHALE_LIQUIDITY_UP_PCT:.0%}, "
+                            f"Vol↓ {volume_change_pct:+.2%} < {WHALE_VOLUME_DOWN_PCT:.0%}")
+            log_stage_token(token_address, token_name, 'whale_trap', False, {
+                'price_change_pct': price_change_pct,
+                'liq_change_pct': liq_change_pct,
+                'volume_change_pct': volume_change_pct
+            })
             return False
         else:
             logging.info(f"Token {token_address} passed whale trap check: "
                        f"Price↑ {price_change_pct:+.2%}, "
                        f"Liq↑ {liq_change_pct:+.2%}, "
                        f"Vol Δ {volume_change_pct:+.2%}")
+            log_stage_token(token_address, token_name, 'whale_trap', True, {
+                'price_change_pct': price_change_pct,
+                'liq_change_pct': liq_change_pct,
+                'volume_change_pct': volume_change_pct
+            })
             return True
     
     # Log why token didn't pass whale trap check
@@ -428,7 +439,11 @@ def apply_whale_trap(tokens, first_snaps, second_snaps):
     max_workers_for_whale_trap = DEFAULT_MAX_WORKERS if tokens else 1 # Adheres to global DEFAULT_MAX_WORKERS
     
     with ThreadPoolExecutor(max_workers=max_workers_for_whale_trap) as executor:
-        futures = {executor.submit(whale_trap_avoidance, t.get('tokenAddress'), first_snaps.get(t.get('tokenAddress'), (0,0,0)), second_snaps.get(t.get('tokenAddress'), (0,0,0))): t for t in tokens if t.get('tokenAddress')}
+        futures = {executor.submit(whale_trap_avoidance,
+                                  t.get('tokenAddress'),
+                                  first_snaps.get(t.get('tokenAddress'), (0,0,0)),
+                                  second_snaps.get(t.get('tokenAddress'), (0,0,0)),
+                                  t.get('name')): t for t in tokens if t.get('tokenAddress')}
         for future in as_completed(futures):
             if future.result(): passed.append(futures[future])
     logging.info(f"{len(passed)} tokens passed Whale Trap Avoidance.")
@@ -569,11 +584,21 @@ def process_window(win_minutes, prelim_tokens, script_dir_path):
             logging.info(f"Token {token_name} ({token_address}) added to SNIPE candidates: "
                        f"Vol↑ {vol_chg:+.2%}, Price↑ {prc_chg:+.2%}, Liq↑ {liq_chg:+.2%}")
             snipe_candidates.append(token_info)
+            log_stage_token(token_address, token_name, 'snipe_filter', True, {
+                'vol_chg': vol_chg,
+                'prc_chg': prc_chg,
+                'liq_chg': liq_chg
+            })
         else:
             logging.debug(f"Token {token_name} ({token_address}) did not meet all SNIPE conditions: "
                          f"Vol↑ {vol_chg:+.2%} > 1%: {vol_chg > 0.01}, "
                          f"Price↑ {prc_chg:+.2%} > 1%: {prc_chg > 0.01}, "
                          f"Liq↑ {liq_chg:+.2%} ≥ 1.5%: {liq_chg >= 0.015}")
+            log_stage_token(token_address, token_name, 'snipe_filter', False, {
+                'vol_chg': vol_chg,
+                'prc_chg': prc_chg,
+                'liq_chg': liq_chg
+            })
         
         # Check for Ghost Buyer conditions
         ghost_vol_min = 0.30  # 30% minimum volume increase for 1m (overriding GHOST_VOLUME_MIN_PCT_1M)

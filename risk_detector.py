@@ -207,6 +207,11 @@ def run_full_risk_analysis():
         
         output_row = token_row.copy()
         output_row.update({h: "N/A" for h in risk_headers})
+        volume_str = token_row.get('Volume(1m)', '0').replace(',', '')
+        try:
+            volume_val = float(volume_str)
+        except ValueError:
+            volume_val = 0.0
 
         cluster_info = cluster_data_map.get(token_address)
         if not cluster_info:
@@ -214,6 +219,7 @@ def run_full_risk_analysis():
             output_row["Overall_Risk_Status"] = "Data Missing"
             output_row["Risk_Warning_Details"] = "Bubblemaps data not available."
             results_to_write.append(output_row)
+            log_risk_analysis(token_address, None, volume_val, None, None, None, "Data Missing", "risk_detector")
             continue
         
         try:
@@ -224,6 +230,7 @@ def run_full_risk_analysis():
             output_row["Overall_Risk_Status"] = "Data Error"
             output_row["Risk_Warning_Details"] = "Invalid cluster percentage format."
             results_to_write.append(output_row)
+            log_risk_analysis(token_address, None, volume_val, None, None, None, "Data Error", "risk_detector")
             continue
 
         # Parse top holder percentage from the Individual_Cluster_Percentages field
@@ -244,6 +251,7 @@ def run_full_risk_analysis():
             output_row["Overall_Risk_Status"] = "Data Missing"
             output_row["Risk_Warning_Details"] = "DexScreener data not available."
             results_to_write.append(output_row)
+            log_risk_analysis(token_address, None, volume_val, None, cluster_percent_supply_val, None, "Data Missing", "risk_detector")
             continue
 
         # Early risk filters based on liquidity and top holder percentage
@@ -256,6 +264,7 @@ def run_full_risk_analysis():
             output_row["Overall_Risk_Status"] = "High Risk"
             output_row["Risk_Warning_Details"] = "Low Liquidity"
             results_to_write.append(output_row)
+            log_risk_analysis(token_address, liquidity_usd, volume_val, None, cluster_percent_supply_val, None, "Low Liquidity", "risk_detector")
             continue
 
         if top_holder_pct is not None and top_holder_pct > 10.0:
@@ -267,6 +276,7 @@ def run_full_risk_analysis():
             output_row["Overall_Risk_Status"] = "High Risk"
             output_row["Risk_Warning_Details"] = "Whale Trap"
             results_to_write.append(output_row)
+            log_risk_analysis(token_address, liquidity_usd, volume_val, None, cluster_percent_supply_val, None, "Whale Trap", "risk_detector")
             continue
 
         output_row["DexScreener_Pair_Address"] = pair_addr
@@ -305,6 +315,16 @@ def run_full_risk_analysis():
             output_row["Risk_Warning_Details"] = "; ".join(risk_warnings)
         
         results_to_write.append(output_row)
+        log_risk_analysis(
+            token_address,
+            liquidity_usd,
+            volume_val,
+            price_impact_pct,
+            cluster_percent_supply_val,
+            dump_risk_ratio,
+            output_row["Overall_Risk_Status"],
+            "risk_detector",
+        )
 
     if results_to_write:
         # Append results to the main analysis file
