@@ -1,0 +1,131 @@
+2025-07-18 10:45:57,803 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-07-18 10:45:57,838 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-18 10:45:57,871 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-18 10:45:57,923 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-07-18 10:45:57,924 - httpx - DEBUG - load_verify_locations cafile='c:\\Users\\Rachid Aitali\\OneDrive - 4JM Solutions Limited\\Desktop\\SniperX-V3-Best-Version-at-now\\SniperX-V3-Best-Version-at-now\\.venv\\lib\\site-packages\\certifi\\cacert.pem'
+2025-07-18 10:45:57,947 - __main__ - INFO - Telegram Manager Bot started. Send /menu to interact.
+2025-07-18 10:45:57,950 - telegram.ext.ExtBot - DEBUG - Entering: send_message
+2025-07-18 10:45:58,151 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-18 10:45:58,253 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001D6891BEA40>
+2025-07-18 10:45:58,253 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001D68917C540> server_hostname='api.telegram.org' timeout=5.0
+2025-07-18 10:45:58,360 - httpcore.connection - DEBUG - start_tls.failed exception=ConnectError(BrokenResourceError())
+2025-07-18 10:45:58,362 - __main__ - ERROR - Could not send startup message to TELEGRAM_CHAT_ID 7049055170: httpx.ConnectError: 
+2025-07-18 10:45:58,368 - telegram.ext.ExtBot - DEBUG - Entering: get_me
+2025-07-18 10:45:58,374 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
+2025-07-18 10:45:58,395 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001D68A1D90C0>
+2025-07-18 10:45:58,396 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001D68917C540> server_hostname='api.telegram.org' timeout=5.0
+2025-07-18 10:45:58,418 - httpcore.connection - DEBUG - start_tls.failed exception=ConnectError(BrokenResourceError())
+2025-07-18 10:45:58,425 - telegram.ext.Application - DEBUG - This Application is already shut down. Returning.
+2025-07-18 10:45:58,429 - __main__ - ERROR - Error in main_telegram_bot: httpx.ConnectError: 
+2025-07-18 10:45:58,650 - __main__ - ERROR - Traceback (most recent call last):
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\anyio\streams\tls.py", line 155, in _call_sslobject_method
+    result = func(*args)
+  File "C:\Users\Rachid Aitali\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 975, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLSyscallError: Some I/O error occurred (_ssl.c:1007)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_backends\anyio.py", line 78, in start_tls
+    raise exc
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_backends\anyio.py", line 69, in start_tls
+    ssl_stream = await anyio.streams.tls.TLSStream.wrap(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\anyio\streams\tls.py", line 147, in wrap
+    await wrapper._call_sslobject_method(ssl_object.do_handshake)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\anyio\streams\tls.py", line 176, in _call_sslobject_method
+    raise BrokenResourceError from exc
+anyio.BrokenResourceError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_async\connection.py", line 149, in _connect
+    stream = await stream.start_tls(**kwargs)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_backends\anyio.py", line 66, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\Rachid Aitali\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\request\_httpxrequest.py", line 219, in do_request
+    res = await self._client.request(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\Rachid Aitali\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\telegram_manager.py", line 569, in main_telegram_bot
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_application.py", line 765, in run_polling
+    return self.__run(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_application.py", line 957, in __run
+    raise exc
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_application.py", line 946, in __run
+    loop.run_until_complete(self.initialize())
+  File "C:\Users\Rachid Aitali\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_application.py", line 422, in initialize
+    await self.bot.initialize()
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_extbot.py", line 281, in initialize
+    await super().initialize()
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\_bot.py", line 604, in initialize
+    await self.get_me()
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_extbot.py", line 1692, in get_me
+    return await super().get_me(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\_bot.py", line 394, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\_bot.py", line 749, in get_me
+    result = await self._post(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\_bot.py", line 482, in _post
+    return await self._do_post(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\ext\_extbot.py", line 335, in _do_post
+    return await super()._do_post(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\_bot.py", line 510, in _do_post
+    return await request.post(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\request\_baserequest.py", line 288, in _request_wrapper
+    raise exc
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\request\_baserequest.py", line 278, in _request_wrapper
+    code, payload = await self.do_request(
+  File "c:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\.venv\lib\site-packages\telegram\request\_httpxrequest.py", line 243, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+2025-07-18 10:45:58,653 - __main__ - INFO - Wallet manager process has been terminated.
