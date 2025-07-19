@@ -1,38 +1,10 @@
 timestamp,token_name,mint_address,reason,buy_price,sell_price
-2025-07-18 16:36:36,xAI Imagine,S4y4nqQFxxFM5heBHLgUzeCj4cErDFxGHEFSwMcpump,No buy signal timeout,,0.000116200,,
-2025-07-18 16:40:34,#TrumpPedoFiles,7jK7MUk6TvbaBxv8gLXSVSUVcKCN7c6YeVDNLMWobonk,No buy signal timeout,,0.000029060,,
-2025-07-18 16:53:09,elontine,6nRoYapK3K3XyCJk2s2baQhefFNRgtfozGanEhcfbonk,No buy signal timeout,,0.000032120,,
-2025-07-18 17:11:57,Imagine,2m2k1k5fvnxvsrGqBFyFoLeXuZ6UTqpWtyEsEbhWbonk,No buy signal timeout,,0.000031020,,
-2025-07-18 17:15:10,BonkieDoge,LnMZrvMAs2nhwEaytTgUZCK1t1QseZAnSwvWKRebonk,No buy signal timeout,,0.000060700,,
-2025-07-18 17:17:47,PumpTok,FZBQRGmqt883Ycv2EyU4ezaJtiWUmfJCGsCfq65ppump,Stop loss,0.000400600,0.000381200,-4.84%,LOSS
-2025-07-18 17:29:37,johnny face,1jcqcbheVH7hkTGNLFABE9UmPXchgPC4enGdaAbbonk,No buy signal timeout,,0.000031350,,
-2025-07-18 17:39:35,IMGEN BY GROK,GS29biiyFF9Su88XaK2F1Sn1EHqtJh9CP5xoKV3Tbonk,No buy signal timeout,,0.000060150,,
-2025-07-18 17:42:44,Carcodes,jHkiz85qeZRWCZ1D17KFejckRCvBmred5BuVWTkbonk,No buy signal timeout,,0.000080680,,
-2025-07-18 18:10:30,Trumpedo,Fq4gdZgZcGNxUKRBntt3GcN6zUG5q8yGvsDYMGJzbonk,No buy signal timeout,,0.000061650,,
-2025-07-18 18:18:55,Grok 4,EscR7Ume6z6F61Ega3fisth3z62VCRWHDsXsFW1ybonk,No buy signal timeout,,0.000032200,,
-2025-07-18 18:52:06,KOLFLIX,Dkkv9Yv8ZhSxNDugVcSfiyj9E2FFnn1Fi2rWgAPwbonk,No buy signal timeout,,0.000034610,,
-2025-07-18 19:17:48,elontine,6nRoYapK3K3XyCJk2s2baQhefFNRgtfozGanEhcfbonk,No buy signal timeout,,0.000029070,,
-2025-07-18 19:39:40,bozo the bull,3CAHhAZvC1wRMWub78VtTfeLNXH6ZyPdawoynjrMbonk,No buy signal timeout,,0.000079130,,
-2025-07-18 21:23:56,Delusional,jmv1etN5rXiZRWVxe1yfLLoDPihVHE63Ye6uAxybonk,Take profit,0.000154200,0.000174300,13.04%,PROFIT
-2025-07-18 21:56:10,Anthropic coin,9Tnm9E62xZnmM9QhLr8LEfKw6eJyE63ZxmgWoy98bonk,Stop loss,0.000045720,0.000032070,-29.86%,LOSS
-2025-07-18 21:59:35,BOOM,5K4Cgfwsa3ggf497tiks46fXUxEppBUSi144Hykcboom,No buy signal timeout,,0.000033250,,
-2025-07-18 22:55:19,bruv,HibC3jm1oq2jVzMR2NSX7xdCNnsGLQ13yK8FEkmhpump,Take profit,0.000137900,0.000153300,11.17%,PROFIT
-2025-07-18 23:04:24,CodeputerBot,5kx6u1iN3bEUxWboawVS8uK745tBuhxSb8jApcYbonk,No buy signal timeout,,0.000054660,,
-2025-07-18 23:24:11,CTO COIN,3pqL1GCZeSszT22SxnViRL3EjDojXKGygWbLnkquRkCm,Stop loss,0.000131700,0.000121500,-7.74%,LOSS
-2025-07-18 23:37:06,MEME42069,3xbf9UwgKgXvHsV6mZEjVxM4Uvob43hsEMgrxFJGpump,Take profit,0.000088360,0.000096770,9.52%,PROFIT
-2025-07-18 23:59:07,Molly Reddit Companion,F8BAyDDWVL8giqa4WPXfRzcoLSSUWqiJRHBaiRpmpump,No buy signal timeout,,0.000094830,,
-2025-07-19 00:17:28,hey,3vg5XkVrdyknL6TTTVoRGrBD8meitF9efxAyDGpSpump,No buy signal timeout,,0.000034650,,
-2025-07-19 00:39:18,COLDPLAYED,E2y78D7ooakr6xCEdfnnUHoFB1E35QvukdECkJWtbonk,No buy signal timeout,,0.000029630,,
-2025-07-19 01:05:44,trencher evolution,129EAe1b9pbPSGduFE1WdG8Luy13xLGAJ3q8bWkH1Jvx,No buy signal timeout,,0.000051510,,
-2025-07-19 01:08:48,FARTCOIN,GBZ9knZmAsCSPzxPqrFEKCXX5JBx1Yr3LKDxnKNqpump,No buy signal timeout,,0.000054990,,
-2025-07-19 01:19:24,UNIGGA,9v62yAHmQSAy3VXmQvMgjrNoJbBDayfHy35pu6Csbonk,No buy signal timeout,,0.000078450,,
-2025-07-19 01:55:38,7 hours stealing in Target,9Pe4atHfrbxHUwQdXCaQAyLSuv5GnjDeiFGuDcAobonk,Take profit,0.000031360,0.000035010,11.64%,PROFIT
-2025-07-19 02:13:33,bonke,55GmJmGxkCGMNL2EkWJLFRP4XAq4VEDMNvaVx9wbonk,Stop loss,0.000045600,0.000043210,-5.24%,LOSS
-2025-07-19 02:17:22,aloff,6pVhSbhT8qod1LQFLaifieeecxhy7B7gp6aCMfKGbonk,Stop loss,0.000044780,0.000043450,-2.97%,LOSS
-2025-07-19 02:51:43,芥末,Aex8pWBPFiL1gUT6HZTH5hAtAs4AeeLtA9J1jUojbonk,No buy signal timeout,,0.000038600,,
-2025-07-19 03:19:25,Just a chill affair,C7sBrioRy26QBe9JN8p1tkBboM2k9i8roRd8uX28pump,Stop loss,0.000084600,0.000074630,-11.78%,LOSS
-2025-07-19 03:45:08,nicknotfun OpenAI Companion,AwGNAQG5Uxj3PQNUwYbGpL5mgWVSsYZ95DzChKo5bonk,No buy signal timeout,,0.000057210,,
-2025-07-19 05:13:32,neko,hfLebPhSwfD4G9kWZUxvZZ93SMu2rayqNFmGAnzbonk,No buy signal timeout,,0.000072970,,
-2025-07-19 05:22:32,neko,hfLebPhSwfD4G9kWZUxvZZ93SMu2rayqNFmGAnzbonk,Take profit,0.000073000,0.000083370,14.21%,PROFIT
-2025-07-19 05:45:34,Mentally Unstable Sumoppi,8vnz48PX4kGy74cyVeLs7nxigW2TDEzwfJahkD34bonk,Stop loss,0.000058790,0.000054560,-7.20%,LOSS
-2025-07-19 05:57:09,Kinu Reeves,NBcNdhF4F58GRbeNQxgEtJjNhX55zurmjpXSMyYpump,No buy signal timeout,,0.000069780,,
+2025-07-10 14:45:56,Grok 4,Ar8FNn4xzrRZnxyi1uTsMCik9rete5UiU18g2B8apump,No buy signal timeout,,0.000040950,,
+2025-07-10 14:49:36,What Did I miss?,FUVkgu4YS2sm3gGiUomTmT9cNjkp5KLqUn1h6E3ybonk,Stop loss,0.000058620,0.000056330,-3.91%,LOSS
+2025-07-10 14:56:46,SOLO LEVELING,GNmw9SgwhwBWYN9eHM8m6MHEsToMDiZmv4tvo1bMbonk,No buy signal timeout,,0.000367800,,
+2025-07-10 15:07:25,Bitcoin Game,BcSEP7Z45219RFV76zvG2FfHgod5wRjj12zhXCfHbonk,Stop loss,0.000058350,0.000048000,-17.74%,LOSS
+2025-07-10 15:31:40,Kwon Eunbi,BzJ3yBrmeCugS7mNHcvhbNw6tv7JXSXCoULJu5hdbonk,Stop loss,0.000050780,0.000046830,-7.78%,LOSS
+2025-07-10 15:36:47,Kwon Eunbi,BzJ3yBrmeCugS7mNHcvhbNw6tv7JXSXCoULJu5hdbonk,No buy signal timeout,,0.000044260,,
+2025-07-10 15:50:54,bull,dFDvTmZAT4j5RxCBJdcD8kWfsdvpGqt5HpbLhRFbonk,Take profit,0.000097530,0.000152500,56.36%,PROFIT
+2025-07-10 16:13:14,Ryan,FgW6j5Kcy9msdG9v9jo9VbtNz8VXNudWdXXNitPgbonk,No buy signal timeout,,0.000032200,,
+2025-07-10 16:17:30,bull,dFDvTmZAT4j5RxCBJdcD8kWfsdvpGqt5HpbLhRFbonk,Stop loss,0.000096610,0.000080860,-16.30%,LOSS
