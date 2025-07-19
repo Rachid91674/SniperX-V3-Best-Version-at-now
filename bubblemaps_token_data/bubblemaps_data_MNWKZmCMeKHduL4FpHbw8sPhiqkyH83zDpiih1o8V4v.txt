@@ -1,0 +1,11 @@
+Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
+2	dnation-reward.sol	12.72	MuiBox-root css-1fhflc4	80.93
+3	2CHyv5...mWVg	0.97	MuiBox-root css-141d73e	0
+4	Ajof7z...FqP9	0.97	MuiBox-root css-1fhflc4	80.93
+5	FpqeQT...EsBa	0.96	MuiBox-root css-1fhflc4	80.93
+6	FkgrTp...dDdw	0.95	MuiBox-root css-1fhflc4	80.93
+7	pivzAu...Eevq	0.95	MuiBox-root css-1fhflc4	80.93
+8	6KCfSy...8VhP	0.95	MuiBox-root css-1fhflc4	80.93
+9	HgBt22...MKhE	0.95	MuiBox-root css-1fhflc4	80.93
+10	9vov1F...Ho87	0.95	MuiBox-root css-1fhflc4	80.93
+11	5jDsjg...UVBr	0.94	MuiBox-root css-1fhflc4	80.93
