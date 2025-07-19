@@ -56,6 +56,7 @@ g_highest_price_usd = None
 g_token_monitor_start_time = 0
 g_trade_status = 'monitoring'
 g_stop_monitoring = False
+g_risk_data = {}
 
 # --- Helper Functions ---
 def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_price=None):
@@ -83,6 +84,58 @@ def log_trade_result(token_name, mint_address, reason, buy_price=None, sell_pric
         })
     pnl_val = gain_loss_pct or 0
     print(f"\n📊 Trade Result: {'PROFIT' if pnl_val > 0 else 'LOSS' if pnl_val < 0 else 'EVENT'} | Gain/Loss: {pnl_val:+.2f}% | Reason: {reason}\n")
+
+def load_risk_data(csv_path=str(SCRIPT_DIR / 'token_risk_analysis.csv')):
+    """Load risk analysis CSV into a dict keyed by Address."""
+    risk_map = {}
+    if not os.path.isfile(csv_path):
+        print(f"Risk data file {csv_path} not found.")
+        return risk_map
+    try:
+        with open(csv_path, 'r', newline='', encoding='utf-8-sig') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                addr = row.get('Address')
+                if addr:
+                    risk_map[addr] = row
+    except Exception as e:
+        print(f"Error reading risk data: {e}")
+    return risk_map
+
+
+def log_trade_with_risk(token_name, mint_address, reason, buy_price=None, sell_price=None, risk_data=None):
+    """Log trade result along with risk analysis info."""
+    if risk_data is None:
+        risk_data = g_risk_data
+
+    log_file = os.path.join(SCRIPT_DIR, 'trades.csv')
+    file_exists = os.path.isfile(log_file)
+
+    fieldnames = [
+        'timestamp', 'token_name', 'mint_address', 'reason', 'buy_price', 'sell_price',
+        'Price USD', 'Liquidity(1m)', 'Volume(1m)', '1m Change', 'Snipe',
+        'Ghost Buyer', 'Global_Cluster_Percentage', 'Dump_Risk_LP_vs_Cluster_Ratio',
+        'Price_Impact_Cluster_Sell_Percent', 'Overall_Risk_Status', 'Risk_Warning_Details'
+    ]
+
+    row = {
+        'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'token_name': token_name,
+        'mint_address': mint_address,
+        'reason': reason,
+        'buy_price': f"{buy_price:.9f}" if buy_price is not None else '',
+        'sell_price': f"{sell_price:.9f}" if sell_price is not None else '',
+    }
+
+    risk_info = (risk_data or {}).get(mint_address, {})
+    for key in fieldnames[6:]:
+        row[key] = risk_info.get(key, '') if risk_info else ''
+
+    with open(log_file, 'a', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(row)
 
 def remove_token_from_csv(token_address, csv_file_path):
     if not os.path.exists(csv_file_path): return False
@@ -217,7 +270,7 @@ async def listen_for_trades(mint_address, token_name):
                             data["usd_price_per_token"] = usd_price
                             if g_trade_status == 'bought' and g_buy_price_usd is not None and usd_price <= g_buy_price_usd * STOP_LOSS_THRESHOLD_PERCENT:
                                 print(f"\n🛑 STOP LOSS for {token_name} at ${usd_price:.9f}")
-                                log_trade_result(token_name, mint_address, "Stop loss", g_buy_price_usd, usd_price)
+                                log_trade_with_risk(token_name, mint_address, "Stop loss", g_buy_price_usd, usd_price)
                                 g_stop_monitoring = True
                                 return
                         g_latest_trade_data.append(data)
@@ -310,7 +363,7 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
             if g_trade_status == 'monitoring':
                 if (current_time - g_token_monitor_start_time) > NO_BUY_SIGNAL_TIMEOUT_SECONDS:
                     print(f"\n⏳ Timeout: No buy signal for {token_name}. Ending monitoring.")
-                    log_trade_result(token_name, mint_address, "No buy signal timeout", sell_price=usd_price_per_token)
+                    log_trade_with_risk(token_name, mint_address, "No buy signal timeout", sell_price=usd_price_per_token)
                     return # Exit the task
 
                 price_cond = usd_price_per_token > g_baseline_price_usd * BUY_SIGNAL_PRICE_INCREASE_PERCENT
@@ -329,17 +382,17 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
                 
                 if usd_price_per_token >= g_buy_price_usd * TAKE_PROFIT_THRESHOLD_PERCENT:
                     print(f"\n✅ TAKE PROFIT for {token_name} at ${usd_price_per_token:.9f}")
-                    log_trade_result(token_name, mint_address, "Take profit", g_buy_price_usd, usd_price_per_token)
+                    log_trade_with_risk(token_name, mint_address, "Take profit", g_buy_price_usd, usd_price_per_token)
                     return
                 if g_highest_price_usd > g_buy_price_usd * TRAILING_STOP_ACTIVATION_PERCENT and usd_price_per_token <= g_highest_price_usd * TRAILING_STOP_THRESHOLD_PERCENT:
                     print(f"\n🛑 TRAILING STOP for {token_name} at ${usd_price_per_token:.9f} (Peak: ${g_highest_price_usd:.9f})")
-                    log_trade_result(token_name, mint_address, "Trailing stop", g_buy_price_usd, usd_price_per_token)
+                    log_trade_with_risk(token_name, mint_address, "Trailing stop", g_buy_price_usd, usd_price_per_token)
                     return
                 if usd_price_per_token <= g_baseline_price_usd * STAGNATION_PRICE_THRESHOLD_PERCENT:
                     if stagnation_timer_start is None: stagnation_timer_start = current_time
                     elif (current_time - stagnation_timer_start) > STAGNATION_TIMEOUT_SECONDS:
                         print(f"\n⏳ STAGNATION TIMEOUT for {token_name}")
-                        log_trade_result(token_name, mint_address, "Stagnation timeout", g_buy_price_usd, usd_price_per_token)
+                        log_trade_with_risk(token_name, mint_address, "Stagnation timeout", g_buy_price_usd, usd_price_per_token)
                         return
                 else:
                     stagnation_timer_start = None
@@ -348,8 +401,9 @@ async def trade_logic_and_price_display_loop(mint_address, token_name):
             await asyncio.sleep(1) # Brief pause after an error
 
 async def main():
-    global g_current_mint_address, g_token_name
+    global g_current_mint_address, g_token_name, g_risk_data
     sol_price_task = asyncio.create_task(periodic_sol_price_updater())
+    g_risk_data = load_risk_data()
     
     try:
         while True:
