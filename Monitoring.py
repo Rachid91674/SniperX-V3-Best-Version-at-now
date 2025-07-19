@@ -111,13 +111,22 @@ def log_trade_with_risk(token_name, mint_address, reason, buy_price=None, sell_p
     log_file = os.path.join(SCRIPT_DIR, 'trades.csv')
     file_exists = os.path.isfile(log_file)
 
+    # Calculate profit percentage if we have both buy and sell prices
+    profit_pct = None
+    if buy_price is not None and sell_price is not None and buy_price > 0:
+        profit_pct = ((sell_price - buy_price) / buy_price) * 100.0
+
     fieldnames = [
-        'timestamp', 'token_name', 'mint_address', 'reason', 'buy_price', 'sell_price',
-        'Price USD', 'Liquidity(1m)', 'Volume(1m)', '1m Change', 'Snipe',
-        'Ghost Buyer', 'Global_Cluster_Percentage', 'Dump_Risk_LP_vs_Cluster_Ratio',
-        'Price_Impact_Cluster_Sell_Percent', 'Overall_Risk_Status', 'Risk_Warning_Details'
+        'timestamp', 'token_name', 'mint_address', 'reason',
+        'buy_price', 'sell_price', 'profit_percent', 'result'
     ]
 
+    # Add risk analysis fields if risk data is available
+    if risk_data and mint_address in risk_data:
+        risk_fields = [f for f in risk_data[mint_address].keys() if f.lower() not in ['address', 'name']]
+        fieldnames.extend([f for f in risk_fields if f not in fieldnames])
+
+    # Prepare the basic trade data
     row = {
         'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'token_name': token_name,
@@ -125,17 +134,30 @@ def log_trade_with_risk(token_name, mint_address, reason, buy_price=None, sell_p
         'reason': reason,
         'buy_price': f"{buy_price:.9f}" if buy_price is not None else '',
         'sell_price': f"{sell_price:.9f}" if sell_price is not None else '',
+        'profit_percent': f"{profit_pct:.2f}" if profit_pct is not None else '',
+        'result': 'PROFIT' if profit_pct and profit_pct > 0 else 'LOSS' if profit_pct and profit_pct < 0 else 'EVENT'
     }
 
-    risk_info = (risk_data or {}).get(mint_address, {})
-    for key in fieldnames[6:]:
-        row[key] = risk_info.get(key, '') if risk_info else ''
+    # Add risk analysis data if available
+    if risk_data and mint_address in risk_data:
+        for key, value in risk_data[mint_address].items():
+            if key.lower() not in ['address', 'name']:
+                row[key] = value
 
+    # Write to CSV
     with open(log_file, 'a', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         if not file_exists:
             writer.writeheader()
         writer.writerow(row)
+
+    # Print summary to console
+    result_str = 'PROFIT' if profit_pct and profit_pct > 0 else 'LOSS' if profit_pct and profit_pct < 0 else 'EVENT'
+    print(f"\n📊 Trade Result: {result_str} | "
+          f"Gain/Loss: {profit_pct:+.2f}% | "
+          f"Buy: {buy_price:.9f if buy_price is not None else ''} | "
+          f"Sell: {sell_price:.9f if sell_price is not None else ''} | "
+          f"{token_name} | {mint_address}\n")
 
 def remove_token_from_csv(token_address, csv_file_path):
     if not os.path.exists(csv_file_path): return False
