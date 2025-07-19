@@ -1,8 +1,0 @@
-2025-07-12 09:49:12 - SniperX - INFO - Logger initialized successfully
-2025-07-12 09:49:12 - SniperX - ERROR - This is a test error
-Traceback (most recent call last):
-  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\logger_util.py", line 74, in <module>
-    1 / 0
-ZeroDivisionError: division by zero
-2025-07-12 09:49:12 - SniperX - WARNING - This is a warning
-2025-07-12 09:49:12 - SniperX - INFO - This is an info message
