@@ -1,0 +1,11 @@
+Rank	Address	Individual_Percentage	MuiBox_Class	Cluster_Supply_Percentage
+2	42PsQe...uZze	2.99	MuiBox-root css-141d73e	0
+3	39KTKR...wePq	2.89	MuiBox-root css-x32hj2	5.14
+4	5KGjkn...u4s2	2.25	MuiBox-root css-x32hj2	5.14
+5	2NoNSA...Ymwi	2.08	MuiBox-root css-1auu7vt	2.91
+6	CzsH4K...AFhG	2.04	MuiBox-root css-141d73e	0
+7	5xvjBK...8jBj	1.99	MuiBox-root css-141d73e	0
+8	65MtrV...d3rN	1.84	MuiBox-root css-x32hj2	5.14
+9	A5PsdM...RHPj	1.80	MuiBox-root css-x32hj2	5.14
+10	HdMkx8...Zuka	1.75	MuiBox-root css-141d73e	0
+11	stopwatchingmywalletyoupussy.sol	1.71	MuiBox-root css-141d73e	0
