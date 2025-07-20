@@ -1,0 +1,11 @@
+2025-07-20 16:15:29,651 - __main__ - ERROR - TELEGRAM_TOKEN not found in environment variables. Bot cannot start.
+2025-07-20 16:15:29,659 - __main__ - INFO - Wallet manager process has been terminated.
+2025-07-20 16:15:29,660 - __main__ - ERROR - Error in main: 'NoneType' object has no attribute 'close'
+
+Traceback (most recent call last):
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\telegram_manager.py", line 713, in <module>
+    main_telegram_bot()
+  File "C:\Users\Rachid Aitali\OneDrive - 4JM Solutions Limited\Desktop\SniperX-V3-Best-Version-at-now\SniperX-V3-Best-Version-at-now\telegram_manager.py", line 707, in main_telegram_bot
+    loop.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
