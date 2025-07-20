@@ -8,7 +8,6 @@ import datetime # Added for marker file timestamp
 import dateparser
 import csv      # Added for CSV writing
 import unicodedata
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import sys
 import time
 from dotenv import load_dotenv
@@ -306,12 +305,12 @@ async def fetch_token_data(session, token_address):
         return None
 
 async def fetch_all_token_data(token_addresses):
-    async with aiohttp.ClientSession() as session:
-        tasks = [fetch_token_data(session, addr) for addr in token_addresses]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+    """Fetch DexScreener data sequentially for each token address."""
     data_map = {}
-    for addr, res in zip(token_addresses, results):
-        data_map[addr] = res if not isinstance(res, Exception) else None
+    async with aiohttp.ClientSession() as session:
+        for addr in token_addresses:
+            res = await fetch_token_data(session, addr)
+            data_map[addr] = res
     return data_map
 
 def get_token_metrics(token_pair_data_list):
@@ -367,13 +366,16 @@ def whale_trap_avoidance(token_address, first_snap, second_snap):
     return False
 
 def apply_whale_trap(tokens, first_snaps, second_snaps):
+    """Evaluate whale trap sequentially for each token."""
     passed = []
-    max_workers_for_whale_trap = DEFAULT_MAX_WORKERS if tokens else 1 # Adheres to global DEFAULT_MAX_WORKERS
-    
-    with ThreadPoolExecutor(max_workers=max_workers_for_whale_trap) as executor:
-        futures = {executor.submit(whale_trap_avoidance, t.get('tokenAddress'), first_snaps.get(t.get('tokenAddress'), (0,0,0)), second_snaps.get(t.get('tokenAddress'), (0,0,0))): t for t in tokens if t.get('tokenAddress')}
-        for future in as_completed(futures):
-            if future.result(): passed.append(futures[future])
+    for t in tokens:
+        addr = t.get('tokenAddress')
+        if not addr:
+            continue
+        if whale_trap_avoidance(addr,
+                                first_snaps.get(addr, (0, 0, 0)),
+                                second_snaps.get(addr, (0, 0, 0))):
+            passed.append(t)
     logging.info(f"{len(passed)} tokens passed Whale Trap Avoidance.")
     return passed
 
@@ -400,6 +402,7 @@ def load_existing_tokens(csv_filepath):
     return existing_tokens
 
 def process_window(win_minutes, prelim_tokens, script_dir_path):
+    """Process one window sequentially and overwrite CSV with a single token."""
     sleep_seconds = win_minutes * 60
     abs_csv_filepath = os.path.join(script_dir_path, f"sniperx_results_{win_minutes}m.csv")
     
@@ -537,57 +540,45 @@ def process_window(win_minutes, prelim_tokens, script_dir_path):
                          f"|Price| {abs(prc_chg):.2%} < {vol_chg * GHOST_PRICE_REL_MULTIPLIER:.2%}: {abs(prc_chg) < (vol_chg * GHOST_PRICE_REL_MULTIPLIER)}")
             
     final_results_for_csv = snipe_candidates + [t for t in ghost_buyer_candidates if t not in snipe_candidates]
-    
+
     # Filter out tokens that were already in the file at the start
-    new_tokens = [t for t in final_results_for_csv 
+    new_tokens = [t for t in final_results_for_csv
                  if t.get('tokenAddress') and t['tokenAddress'] not in existing_tokens_at_start]
-    
+
     if not new_tokens:
         logging.info(f"No new tokens to add to {abs_csv_filepath}")
         return {'whale': [], 'snipe': [], 'ghost': []}
-    
-    # Write header if file doesn't exist
-    write_header = not os.path.exists(abs_csv_filepath)
-    
+
+    # Always keep only the first new token and overwrite any existing CSV
+    new_token = new_tokens[0]
+
     try:
-        with open(abs_csv_filepath, 'a' if os.path.exists(abs_csv_filepath) else 'w', 
-                 newline='', encoding='utf-8') as csvfile:
-            
+        with open(abs_csv_filepath, 'w', newline='', encoding='utf-8') as csvfile:
+
             fieldnames = ['Address','Name','Price USD',f'Liquidity({win_minutes}m)',
                         f'Volume({win_minutes}m)',f'{win_minutes}m Change',
                         'Open Chart','Snipe','Ghost Buyer']
-            
+
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if write_header:
-                writer.writeheader()
-            
-            rows_added = 0
-            for t_data in new_tokens:
-                addr = t_data.get('tokenAddress')
-                if not addr or addr in existing_tokens:
-                    continue
-                    
-                p1, l1, v1 = first_snaps.get(addr, (0, 0, 0))
-                p2, l2, v2 = second_snaps.get(addr, (0, 0, 0))
-                
-                writer.writerow({
-                    'Address': addr, 
-                    'Name': sanitize_name(t_data.get('name'), t_data.get('symbol')),
-                    'Price USD': f"{p2:.8f}", 
-                    f'Liquidity({win_minutes}m)': f"{l2:.2f}",
-                    f'Volume({win_minutes}m)': f"{max(0, v2-v1):.2f}", 
-                    f'{win_minutes}m Change': f"{((p2/p1-1)*100 if p1 else 0):.2f}",
-                    'Open Chart': f'=HYPERLINK(\"https://dexscreener.com/{DEXSCREENER_CHAIN_ID}/{addr}\",\"Open Chart\")',
-                    'Snipe': 'Yes' if t_data in snipe_candidates else '', 
-                    'Ghost Buyer': 'Yes' if t_data in ghost_buyer_candidates else ''
-                })
-                existing_tokens.add(addr)
-                rows_added += 1
-                
-        if rows_added > 0:
-            logging.info(f"Successfully added {rows_added} new tokens to {abs_csv_filepath}")
-        else:
-            logging.info("No new tokens were added to the CSV file")
+            writer.writeheader()
+
+            addr = new_token.get('tokenAddress')
+            p1, l1, v1 = first_snaps.get(addr, (0, 0, 0))
+            p2, l2, v2 = second_snaps.get(addr, (0, 0, 0))
+
+            writer.writerow({
+                'Address': addr,
+                'Name': sanitize_name(new_token.get('name'), new_token.get('symbol')),
+                'Price USD': f"{p2:.8f}",
+                f'Liquidity({win_minutes}m)': f"{l2:.2f}",
+                f'Volume({win_minutes}m)': f"{max(0, v2-v1):.2f}",
+                f'{win_minutes}m Change': f"{((p2/p1-1)*100 if p1 else 0):.2f}",
+                'Open Chart': f'=HYPERLINK(\"https://dexscreener.com/{DEXSCREENER_CHAIN_ID}/{addr}\",\"Open Chart\")',
+                'Snipe': 'Yes' if new_token in snipe_candidates else '',
+                'Ghost Buyer': 'Yes' if new_token in ghost_buyer_candidates else ''
+            })
+
+        logging.info(f"Wrote token {addr} to {abs_csv_filepath}")
             
     except IOError as e: 
         logging.error(f"Error writing to {abs_csv_filepath}: {e}")
@@ -775,19 +766,18 @@ def start_slave_watchdog(script_dir_path):
         return None
 
 def main_token_processing_loop(script_dir_path):
+    """Process each window serially without threading."""
     tokens = get_trending_tokens()
     prelim_filtered_tokens = filter_preliminary(tokens)
     window_results_aggregator = {}
     if prelim_filtered_tokens:
-        max_workers_for_windows = DEFAULT_MAX_WORKERS # This will be 1
-        
-        with ThreadPoolExecutor(max_workers=max_workers_for_windows, thread_name_prefix="WindowProc") as executor:
-            future_to_window = {executor.submit(process_window, wd_min, prelim_filtered_tokens, script_dir_path): wd_min for wd_min in WINDOW_MINS}
-            for future in as_completed(future_to_window):
-                wd_min = future_to_window[future]
-                try: window_results_aggregator[wd_min] = future.result()
-                except Exception as exc: logging.error(f'[ERROR] Window {wd_min}m exc: {exc}')
-    else: logging.info("[INFO] No tokens passed preliminary filters for this cycle.")
+        for wd_min in WINDOW_MINS:
+            try:
+                window_results_aggregator[wd_min] = process_window(wd_min, prelim_filtered_tokens, script_dir_path)
+            except Exception as exc:
+                logging.error(f'[ERROR] Window {wd_min}m exc: {exc}')
+    else:
+        logging.info("[INFO] No tokens passed preliminary filters for this cycle.")
     return window_results_aggregator
 
 if __name__ == "__main__":
